@@ -1,21 +1,27 @@
+
 from module.base.button import ButtonWrapper
 from module.base.decorator import run_once
 from module.base.timer import Timer
 from module.exception import GameNotRunningError, GamePageUnknownError
 from module.logger import logger
 from module.ocr.ocr import Ocr
-from tasks.base.assets.assets_base_main_page import ROGUE_LEAVE_FOR_NOW, ROGUE_LEAVE_FOR_NOW_OE
-from tasks.base.assets.assets_base_page import CLOSE, MAIN_GOTO_CHARACTER, MAP_EXIT, MAP_EXIT_OE
-from tasks.base.main_page import MainPage
-from tasks.base.page import Page, page_gacha, page_main
-from tasks.combat.assets.assets_combat_finish import COMBAT_EXIT
-from tasks.combat.assets.assets_combat_interact import MAP_LOADING
-from tasks.combat.assets.assets_combat_prepare import COMBAT_PREPARE
-from tasks.daily.assets.assets_daily_trial import INFO_CLOSE, START_TRIAL
+
+from tasks.base.popup import PopupHandler
+
+# from tasks.base.assets.assets_base_main_page import ROGUE_LEAVE_FOR_NOW, ROGUE_LEAVE_FOR_NOW_OE
+from tasks.base.assets.assets_base_page import MAIN_GOTO_CHARACTER
+# from tasks.base.assets.assets_base_page import CLOSE, MAIN_GOTO_CHARACTER, MAP_EXIT, MAP_EXIT_OE
+# from tasks.base.main_page import MainPage
+from tasks.base.page import *
+
+# from tasks.combat.assets.assets_combat_finish import COMBAT_EXIT
+# from tasks.combat.assets.assets_combat_interact import MAP_LOADING
+# from tasks.combat.assets.assets_combat_prepare import COMBAT_PREPARE
+# from tasks.daily.assets.assets_daily_trial import INFO_CLOSE, START_TRIAL
 from tasks.login.assets.assets_login import LOGIN_CONFIRM
 
 
-class UI(MainPage):
+class UI(PopupHandler):
     ui_current: Page
     ui_main_confirm_timer = Timer(0.2, count=0)
 
@@ -57,13 +63,13 @@ class UI(MainPage):
         def rotation_check():
             self.device.get_orientation()
 
-        @run_once
-        def cloud_login():
-            if self.config.is_cloud_game:
-                from tasks.login.login import Login
-                login = Login(config=self.config, device=self.device)
-                self.device.dump_hierarchy()
-                login.cloud_try_enter_game()
+        # @run_once
+        # def cloud_login():
+        #     if self.config.is_cloud_game:
+        #         from tasks.login.login import Login
+        #         login = Login(config=self.config, device=self.device)
+        #         self.device.dump_hierarchy()
+        #         login.cloud_try_enter_game()
 
         timeout = Timer(10, count=20).start()
         while 1:
@@ -89,28 +95,28 @@ class UI(MainPage):
 
             # Unknown page but able to handle
             logger.info("Unknown ui page")
-            if self.ui_additional():
-                timeout.reset()
-                continue
-            if self.handle_popup_single():
-                timeout.reset()
-                continue
-            if self.handle_popup_confirm():
-                timeout.reset()
-                continue
+            # if self.ui_additional():
+            #     timeout.reset()
+            #     continue
+            # if self.handle_popup_single():
+            #     timeout.reset()
+            #     continue
+            # if self.handle_popup_confirm():
+            #     timeout.reset()
+            #     continue
             if self.is_in_login_confirm(interval=5):
                 self.device.click(LOGIN_CONFIRM)
                 timeout.reset()
                 continue
-            if self.appear(MAP_LOADING, interval=5):
-                logger.info('Map loading')
-                timeout.reset()
-                continue
+            # if self.appear(MAP_LOADING, interval=5):
+            #     logger.info('Map loading')
+            #     timeout.reset()
+            #     continue
 
             app_check()
             minicap_check()
             rotation_check()
-            cloud_login()
+            # cloud_login()
 
         # Unknown page, need manual switching
         logger.warning("Unknown ui page")
@@ -154,7 +160,7 @@ class UI(MainPage):
                     continue
                 if self.ui_page_appear(page, interval=5):
                     logger.info(f'Page switch: {page} -> {page.parent}')
-                    self.handle_lang_check(page)
+                    # self.handle_lang_check(page)
                     if self.ui_page_confirm(page):
                         logger.info(f'Page arrive confirm {page}')
                     button = page.links[page.parent]
@@ -166,12 +172,12 @@ class UI(MainPage):
                 continue
 
             # Additional
-            if self.ui_additional():
-                continue
-            if self.handle_popup_single():
-                continue
-            if self.handle_popup_confirm():
-                continue
+            # if self.ui_additional():
+            #     continue
+            # if self.handle_popup_single():
+            #     continue
+            # if self.handle_popup_confirm():
+            #     continue
             if self.is_in_login_confirm(interval=5):
                 self.device.click(LOGIN_CONFIRM)
                 continue
@@ -179,11 +185,11 @@ class UI(MainPage):
         # Reset connection
         Page.clear_connection()
 
-    def ui_ensure(self, destination, acquire_lang_checked=True, skip_first_screenshot=True):
+    def ui_ensure(self, destination,  skip_first_screenshot=True):
         """
         Args:
             destination (Page):
-            acquire_lang_checked:
+            # acquire_lang_checked: # 删了，焚化炉没英语。。。
             skip_first_screenshot:
 
         Returns:
@@ -192,11 +198,11 @@ class UI(MainPage):
         logger.hr("UI ensure")
         self.ui_get_current_page(skip_first_screenshot=skip_first_screenshot)
 
-        self.ui_leave_special()
+        # self.ui_leave_special()
 
-        if acquire_lang_checked:
-            if self.acquire_lang_checked():
-                self.ui_get_current_page(skip_first_screenshot=skip_first_screenshot)
+        # if acquire_lang_checked:
+        #     if self.acquire_lang_checked():
+        #         self.ui_get_current_page(skip_first_screenshot=skip_first_screenshot)
 
         if self.ui_current == destination:
             logger.info("Already at %s" % destination)
@@ -206,6 +212,15 @@ class UI(MainPage):
             self.ui_goto(destination, skip_first_screenshot=True)
             return True
 
+    #
+    # 地图章节翻页，包含重试以防止没翻到或者翻过头。使用场景：设置地图章节，选择队伍，设置猫箱购买数量等。
+    #
+    # index 目标数字
+    # letter当前数字，可以是获取当前数字的方法，也可以是OCR类
+    # prev_button往前的按钮
+    # next_button往后的按钮
+    # fast True则一次性点完，不对再重试。
+    # False则点一下识别一下。False用在队伍选择上，因为如果少了一队，数字就不连续了。
     def ui_ensure_index(
             self,
             index,
@@ -277,6 +292,7 @@ class UI(MainPage):
             appear_button = click_button
         logger.info(f'UI click: {appear_button} -> {check_button}')
 
+        # TODO:这又是啥
         def process_appear(button):
             if isinstance(button, ButtonWrapper):
                 return self.appear(button)
@@ -322,9 +338,10 @@ class UI(MainPage):
             if self.image_color_count(MAIN_GOTO_CHARACTER, color=(235, 235, 235), threshold=234, count=400):
                 appear = True
         if not appear:
-            if MAP_EXIT.match_template_luma(self.device.image):
-                if self.image_color_count(MAP_EXIT, color=(235, 235, 235), threshold=221, count=50):
-                    appear = True
+            pass
+            # if MAP_EXIT.match_template_luma(self.device.image):
+            #     if self.image_color_count(MAP_EXIT, color=(235, 235, 235), threshold=221, count=50):
+            #         appear = True
 
         if appear and interval:
             self.interval_reset(MAIN_GOTO_CHARACTER, interval=interval)
@@ -344,24 +361,24 @@ class UI(MainPage):
 
         return appear
 
-    def is_in_map_exit(self, interval=0):
-        self.device.stuck_record_add(MAP_EXIT)
-
-        if interval and not self.interval_is_reached(MAP_EXIT, interval=interval):
-            return False
-
-        appear = False
-        if MAP_EXIT.match_template_luma(self.device.image):
-            if self.image_color_count(MAP_EXIT, color=(235, 235, 235), threshold=221, count=50):
-                appear = True
-        if MAP_EXIT_OE.match_template_luma(self.device.image):
-            if self.image_color_count(MAP_EXIT_OE, color=(235, 235, 235), threshold=221, count=50):
-                appear = True
-
-        if appear and interval:
-            self.interval_reset(MAP_EXIT, interval=interval)
-
-        return appear
+    # def is_in_map_exit(self, interval=0):
+    #     self.device.stuck_record_add(MAP_EXIT)
+    #
+    #     if interval and not self.interval_is_reached(MAP_EXIT, interval=interval):
+    #         return False
+    #
+    #     appear = False
+    #     if MAP_EXIT.match_template_luma(self.device.image):
+    #         if self.image_color_count(MAP_EXIT, color=(235, 235, 235), threshold=221, count=50):
+    #             appear = True
+    #     if MAP_EXIT_OE.match_template_luma(self.device.image):
+    #         if self.image_color_count(MAP_EXIT_OE, color=(235, 235, 235), threshold=221, count=50):
+    #             appear = True
+    #
+    #     if appear and interval:
+    #         self.interval_reset(MAP_EXIT, interval=interval)
+    #
+    #     return appear
 
     def ui_goto_main(self):
         return self.ui_ensure(destination=page_main)
@@ -369,24 +386,29 @@ class UI(MainPage):
     def ui_additional(self) -> bool:
         """
         Handle all possible popups during UI switching.
-
+        处理各种在ui界面切换间的弹窗
         Returns:
             If handled any popup.
         """
+        # 各种恭喜获得奖励
         if self.handle_reward():
             return True
-        if self.handle_battle_pass_notification():
+        if self.handle_taoyuan_blessing():
             return True
-        if self.handle_monthly_card_reward():
+        if self.handle_cattery_get_cat():
             return True
-        if self.handle_get_light_cone():
-            return True
-        if self.handle_ui_close(COMBAT_PREPARE, interval=5):
-            return True
-        if self.appear_then_click(COMBAT_EXIT, interval=5):
-            return True
-        if self.appear_then_click(INFO_CLOSE, interval=5):
-            return True
+        # if self.handle_battle_pass_notification():
+        #     return True
+        # if self.handle_monthly_card_reward():
+        #     return True
+        # if self.handle_get_light_cone():
+        #     return True
+        # if self.handle_ui_close(COMBAT_PREPARE, interval=5):
+        #     return True
+        # if self.appear_then_click(COMBAT_EXIT, interval=5):
+        #     return True
+        # if self.appear_then_click(INFO_CLOSE, interval=5):
+        #     return True
 
         return False
 
@@ -451,8 +473,8 @@ class UI(MainPage):
             in: Any
             out: page_main
         """
-        if not self.is_in_map_exit():
-            return False
+        # if not self.is_in_map_exit():
+        #     return False
 
         logger.info('UI leave special')
         skip_first_screenshot = True
@@ -469,21 +491,30 @@ class UI(MainPage):
                     logger.info(f'Leave to {page_main}')
                     break
 
-            if self.is_in_map_exit(interval=2):
-                self.device.click(MAP_EXIT)
-                continue
-            if self.handle_popup_confirm():
-                continue
-            if self.match_template_color(START_TRIAL, interval=2):
-                logger.info(f'{START_TRIAL} -> {CLOSE}')
-                self.device.click(CLOSE)
-                clicked = True
-                continue
-            if self.handle_ui_close(page_gacha.check_button, interval=2):
-                continue
-            if self.appear_then_click(ROGUE_LEAVE_FOR_NOW, interval=2):
-                clicked = True
-                continue
-            if self.appear_then_click(ROGUE_LEAVE_FOR_NOW_OE, interval=2):
-                clicked = True
-                continue
+            # if self.is_in_map_exit(interval=2):
+            #     self.device.click(MAP_EXIT)
+            #     continue
+            # if self.handle_popup_confirm():
+            #     continue
+            # if self.match_template_color(START_TRIAL, interval=2):
+            #     logger.info(f'{START_TRIAL} -> {CLOSE}')
+            #     self.device.click(CLOSE)
+            #     clicked = True
+            #     continue
+            # if self.handle_ui_close(page_gacha.check_button, interval=2):
+            #     continue
+            # if self.appear_then_click(ROGUE_LEAVE_FOR_NOW, interval=2):
+            #     clicked = True
+            #     continue
+            # if self.appear_then_click(ROGUE_LEAVE_FOR_NOW_OE, interval=2):
+            #     clicked = True
+            #     continue
+
+
+
+# ui = UI('src')
+# while 1:
+#     page = ui.ui_get_current_page()
+#     ui.ui_page_confirm(page_main)
+#     if ui.is_in_main():
+#         ui.ui_goto(page_cattery)

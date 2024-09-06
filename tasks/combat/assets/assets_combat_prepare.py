@@ -3,23 +3,6 @@ from module.base.button import Button, ButtonWrapper
 # This file was auto-generated, do not modify it manually. To generate:
 # ``` python -m dev_tools.button_extract ```
 
-COMBAT_PREPARE = ButtonWrapper(
-    name='COMBAT_PREPARE',
-    cn=Button(
-        file='./assets/cn/combat/prepare/COMBAT_PREPARE.png',
-        area=(1071, 649, 1110, 667),
-        search=(836, 640, 1225, 677),
-        color=(141, 140, 141),
-        button=(956, 640, 1224, 676),
-    ),
-    en=Button(
-        file='./assets/en/combat/prepare/COMBAT_PREPARE.png',
-        area=(1043, 650, 1137, 666),
-        search=(836, 640, 1225, 677),
-        color=(153, 154, 155),
-        button=(956, 640, 1225, 676),
-    ),
-)
 OCR_WAVE_COST = ButtonWrapper(
     name='OCR_WAVE_COST',
     share=Button(

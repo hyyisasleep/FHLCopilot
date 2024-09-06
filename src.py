@@ -66,9 +66,9 @@ class FHLCopilot(AzurLaneAutoScript):
         from module.daemon.benchmark import run_benchmark
         run_benchmark(config=self.config)
 
-    def daemon(self):
-        from tasks.base.daemon import Daemon
-        Daemon(config=self.config, device=self.device, task="Daemon").run()
+    # def daemon(self):
+    #     from tasks.base.daemon import Daemon
+    #     Daemon(config=self.config, device=self.device, task="Daemon").run()
 
     def planner_scan(self):
         from tasks.planner.scan import PlannerScan

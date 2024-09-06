@@ -22,29 +22,41 @@ Daily:
   menu: 'list'
   page: 'setting'
   tasks:
-    Dungeon:
+    DailyShop:
+      - Scheduler
+      - Shop
+      - SupportReward # (Freebies?
+    TaoYuan:
+      - Scheduler
+      - # todo:
+    Cattery:
+      - Scheduler
+      - # todo:
+      - HideAndSeek
+    QilinNavi:
+      - Scheduler
+      - # todo:
+    Yashe:
+      - Scheduler
+      - # todo:
+
+    Dungeon: # 每日副本
       - Scheduler
       - Planner
       - Dungeon
       - DungeonSupport
       - DungeonStorage
       - TrailblazePower
-    DailyQuest:
+    DailyQuest: # 每日任务
       - Scheduler
       - DailyStorage
-    BattlePass:
+    BattlePass: # 昌平文引
       - Scheduler
       - BattlePassStorage
-    Assignment:
-      - Scheduler
-      - Assignment
-    DataUpdate:
+    DataUpdate: # 仪表盘更新
       - Scheduler
       - ItemStorage
-      - CloudStorage
-    Freebies:
-      - Scheduler
-      - SupportReward
+
 
 # ==================== Weekly ====================
 
@@ -52,20 +64,19 @@ Weekly:
   menu: 'list'
   page: 'setting'
   tasks:
-    Weekly:
+#    Weekly:
+#      - Scheduler
+#      - Weekly
+#      - DungeonSupport
+    WeeklyShop:
       - Scheduler
-      - Weekly
-      - DungeonSupport
-    Rogue:
+      - #TODO:
+    OneClickSweep:
       - Scheduler
-      - RogueWorld
-      - RogueBlessing
-      - RogueDebug
-    Ornament:
-      - Scheduler
-      - Ornament
-      - DungeonSupport
-      - TrailblazePower
+      - Gengjin
+      - Qizheng
+      - Xuanju
+
 
 # ==================== Tool ====================
 

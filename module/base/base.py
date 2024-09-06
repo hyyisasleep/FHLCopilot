@@ -198,7 +198,12 @@ class ModuleBase:
         if appear:
             self.device.click(button)
         return appear
-
+    def appear_then_long_click(self,button,interval=5, similarity=0.85):
+        button = self.xpath(button)
+        appear = self.appear(button, interval=interval, similarity=similarity)
+        if appear:
+            self.device.long_click(button)
+        return appear
     def wait_until_stable(self, button, timer=Timer(0.3, count=1), timeout=Timer(5, count=10)):
         """
         A terrible method, don't rely too much on it.

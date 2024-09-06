@@ -88,6 +88,42 @@ Optimization:
     option: [ stay_there, goto_main, close_game ]
 
 # ==================== Daily ====================
+Shop:
+  SignInGift:
+    type: checkbox
+    value: 1
+  MonthlyCard30:
+    type: checkbox
+    value: 0
+  MonthlyCard68:
+    type: checkbox
+    value: 0
+  CopperBuyCommonCatPuppet:
+    type: checkbox
+    value: 1
+
+Taoyuan:
+  UseTongBaoBuyExpiredPower:
+    type: checkbox
+    value: 0
+  TransAllKaoGongYeTu:
+    type: checkbox
+    value: 1
+  VisitOthersForClivia:
+    type: checkbox
+    value: 1
+
+Cattery:
+  AutoHideAndSeek:
+    type: checkbox
+    value: 1
+
+JinGe:
+  FirstWin:
+    type: checkbox
+    value: 1
+
+
 
 Dungeon:
   Name:
@@ -115,6 +151,8 @@ DungeonSupport:
     # Options will be injected in config updater
     value: FirstCharacter
     option: [ FirstCharacter, ]
+
+
 DungeonStorage:
   TrailblazePower:
     stored: StoredTrailblazePower

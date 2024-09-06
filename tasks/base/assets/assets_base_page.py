@@ -3,456 +3,388 @@ from module.base.button import Button, ButtonWrapper
 # This file was auto-generated, do not modify it manually. To generate:
 # ``` python -m dev_tools.button_extract ```
 
-ASSIGNMENT_CHECK = ButtonWrapper(
-    name='ASSIGNMENT_CHECK',
-    cn=Button(
-        file='./assets/cn/base/page/ASSIGNMENT_CHECK.png',
-        area=(535, 165, 587, 181),
-        search=(515, 145, 607, 201),
-        color=(207, 199, 181),
-        button=(535, 165, 587, 181),
-    ),
-    en=Button(
-        file='./assets/en/base/page/ASSIGNMENT_CHECK.png',
-        area=(535, 165, 581, 180),
-        search=(515, 145, 601, 200),
-        color=(204, 195, 176),
-        button=(535, 165, 581, 180),
-    ),
-)
 BACK = ButtonWrapper(
     name='BACK',
-    share=Button(
-        file='./assets/share/base/page/BACK.png',
-        area=(1217, 21, 1248, 51),
-        search=(1197, 1, 1268, 71),
-        color=(56, 59, 71),
-        button=(1217, 21, 1248, 51),
-    ),
+    share=[
+        Button(
+            file='./assets/share/base/page/BACK.png',
+            area=(26, 3, 54, 46),
+            search=(6, 0, 74, 66),
+            color=(84, 82, 67),
+            button=(26, 3, 54, 46),
+        ),
+        Button(
+            file='./assets/share/base/page/BACK.2.png',
+            area=(24, 1, 62, 47),
+            search=(4, 0, 82, 67),
+            color=(83, 77, 62),
+            button=(24, 1, 62, 47),
+        ),
+        Button(
+            file='./assets/share/base/page/BACK.3.png',
+            area=(26, 2, 54, 44),
+            search=(6, 0, 74, 64),
+            color=(88, 79, 64),
+            button=(26, 2, 54, 44),
+        ),
+    ],
 )
-BATTLE_PASS_CHECK = ButtonWrapper(
-    name='BATTLE_PASS_CHECK',
+CATTERY_CHECK = ButtonWrapper(
+    name='CATTERY_CHECK',
     share=Button(
-        file='./assets/share/base/page/BATTLE_PASS_CHECK.png',
-        area=(42, 22, 72, 55),
-        search=(22, 2, 92, 75),
-        color=(159, 142, 108),
-        button=(42, 22, 72, 55),
-    ),
-)
-CAMERA_CHECK = ButtonWrapper(
-    name='CAMERA_CHECK',
-    share=Button(
-        file='./assets/share/base/page/CAMERA_CHECK.png',
-        area=(1120, 344, 1160, 375),
-        search=(1100, 324, 1180, 395),
-        color=(172, 173, 172),
-        button=(1120, 344, 1160, 375),
+        file='./assets/share/base/page/CATTERY_CHECK.png',
+        area=(103, 18, 155, 45),
+        search=(83, 0, 175, 65),
+        color=(169, 146, 147),
+        button=(103, 18, 155, 45),
     ),
 )
 CHARACTER_CHECK = ButtonWrapper(
     name='CHARACTER_CHECK',
     share=Button(
         file='./assets/share/base/page/CHARACTER_CHECK.png',
-        area=(41, 18, 73, 47),
-        search=(21, 0, 93, 67),
-        color=(172, 153, 119),
-        button=(41, 18, 73, 47),
+        area=(90, 18, 169, 45),
+        search=(70, 0, 189, 65),
+        color=(125, 97, 82),
+        button=(90, 18, 169, 45),
     ),
 )
-CLOSE = ButtonWrapper(
-    name='CLOSE',
-    share=Button(
-        file='./assets/share/base/page/CLOSE.png',
-        area=(1222, 25, 1252, 55),
-        search=(1202, 5, 1272, 75),
-        color=(53, 54, 54),
-        button=(1222, 25, 1252, 55),
-    ),
-)
-EVENT_CHECK = ButtonWrapper(
-    name='EVENT_CHECK',
-    share=Button(
-        file='./assets/share/base/page/EVENT_CHECK.png',
-        area=(39, 19, 75, 56),
-        search=(19, 0, 95, 76),
-        color=(133, 125, 103),
-        button=(39, 19, 75, 56),
-    ),
-)
-FORGOTTEN_HALL_CHECK = ButtonWrapper(
-    name='FORGOTTEN_HALL_CHECK',
-    share=Button(
-        file='./assets/share/base/page/FORGOTTEN_HALL_CHECK.png',
-        area=(41, 21, 73, 53),
-        search=(21, 1, 93, 73),
-        color=(150, 136, 108),
-        button=(41, 21, 73, 53),
-    ),
-)
-GACHA_CHECK = ButtonWrapper(
-    name='GACHA_CHECK',
+CLOSE_LOGIN_ADVERTISEMENT = ButtonWrapper(
+    name='CLOSE_LOGIN_ADVERTISEMENT',
     share=[
         Button(
-            file='./assets/share/base/page/GACHA_CHECK.png',
-            area=(40, 20, 74, 54),
-            search=(20, 0, 94, 74),
-            color=(157, 139, 112),
-            button=(40, 20, 74, 54),
+            file='./assets/share/base/page/CLOSE_LOGIN_ADVERTISEMENT.png',
+            area=(1156, 59, 1202, 105),
+            search=(1136, 39, 1222, 125),
+            color=(88, 73, 41),
+            button=(1156, 59, 1202, 105),
         ),
         Button(
-            file='./assets/share/base/page/GACHA_CHECK.2.png',
-            area=(41, 21, 74, 54),
-            search=(21, 1, 94, 74),
-            color=(188, 167, 142),
-            button=(41, 21, 74, 54),
+            file='./assets/share/base/page/CLOSE_LOGIN_ADVERTISEMENT.2.png',
+            area=(1156, 59, 1203, 105),
+            search=(1136, 39, 1223, 125),
+            color=(93, 77, 43),
+            button=(1156, 59, 1203, 105),
         ),
     ],
 )
-GUIDE_CHECK = ButtonWrapper(
-    name='GUIDE_CHECK',
+CLOSE_UPDATE_NOTICE = ButtonWrapper(
+    name='CLOSE_UPDATE_NOTICE',
     share=Button(
-        file='./assets/share/base/page/GUIDE_CHECK.png',
-        area=(64, 297, 83, 326),
-        search=(44, 277, 103, 346),
-        color=(197, 196, 197),
-        button=(64, 297, 83, 326),
+        file='./assets/share/base/page/CLOSE_UPDATE_NOTICE.png',
+        area=(0, 0, 1280, 720),
+        search=(0, 0, 1280, 720),
+        color=(7, 4, 10),
+        button=(0, 0, 1280, 720),
     ),
 )
-GUIDE_CLOSE = ButtonWrapper(
-    name='GUIDE_CLOSE',
+CLOSE_YASHE_FRAGMENT_THANKS = ButtonWrapper(
+    name='CLOSE_YASHE_FRAGMENT_THANKS',
     share=Button(
-        file='./assets/share/base/page/GUIDE_CLOSE.png',
-        area=(1215, 21, 1248, 54),
-        search=(1195, 1, 1268, 74),
-        color=(75, 82, 95),
-        button=(1215, 21, 1248, 54),
+        file='./assets/share/base/page/CLOSE_YASHE_FRAGMENT_THANKS.png',
+        area=(862, 22, 932, 90),
+        search=(842, 2, 952, 110),
+        color=(106, 58, 44),
+        button=(862, 22, 932, 90),
     ),
 )
-ITEM_CHECK = ButtonWrapper(
-    name='ITEM_CHECK',
+DAILY_QUEST_CHECK = ButtonWrapper(
+    name='DAILY_QUEST_CHECK',
     share=Button(
-        file='./assets/share/base/page/ITEM_CHECK.png',
-        area=(43, 23, 72, 54),
-        search=(23, 3, 92, 74),
-        color=(188, 169, 129),
-        button=(43, 23, 72, 54),
+        file='./assets/share/base/page/DAILY_QUEST_CHECK.png',
+        area=(87, 19, 335, 45),
+        search=(67, 0, 355, 65),
+        color=(154, 88, 70),
+        button=(87, 19, 335, 45),
     ),
 )
-MAIN_GOTO_BATTLE_PASS = ButtonWrapper(
-    name='MAIN_GOTO_BATTLE_PASS',
+FULI_AND_CHANGPING_CHECK = ButtonWrapper(
+    name='FULI_AND_CHANGPING_CHECK',
     share=Button(
-        file='./assets/share/base/page/MAIN_GOTO_BATTLE_PASS.png',
-        area=(860, 36, 889, 56),
-        search=(840, 16, 909, 76),
-        color=(165, 164, 162),
-        button=(860, 36, 889, 56),
+        file='./assets/share/base/page/FULI_AND_CHANGPING_CHECK.png',
+        area=(54, 95, 152, 120),
+        search=(34, 75, 172, 140),
+        color=(224, 183, 111),
+        button=(54, 95, 152, 120),
+    ),
+)
+GUSHIFENGYUN_CHECK = ButtonWrapper(
+    name='GUSHIFENGYUN_CHECK',
+    share=Button(
+        file='./assets/share/base/page/GUSHIFENGYUN_CHECK.png',
+        area=(77, 19, 181, 45),
+        search=(57, 0, 201, 65),
+        color=(194, 141, 102),
+        button=(77, 19, 181, 45),
+    ),
+)
+INTERACT_CHECK = ButtonWrapper(
+    name='INTERACT_CHECK',
+    share=Button(
+        file='./assets/share/base/page/INTERACT_CHECK.png',
+        area=(76, 18, 181, 46),
+        search=(56, 0, 201, 66),
+        color=(101, 86, 68),
+        button=(76, 18, 181, 46),
+    ),
+)
+JINGEGUAN_CHECK = ButtonWrapper(
+    name='JINGEGUAN_CHECK',
+    share=Button(
+        file='./assets/share/base/page/JINGEGUAN_CHECK.png',
+        area=(90, 18, 169, 44),
+        search=(70, 0, 189, 64),
+        color=(123, 89, 68),
+        button=(90, 18, 169, 44),
+    ),
+)
+MAIN_GOTO_CATTERY = ButtonWrapper(
+    name='MAIN_GOTO_CATTERY',
+    share=Button(
+        file='./assets/share/base/page/MAIN_GOTO_CATTERY.png',
+        area=(581, 472, 611, 522),
+        search=(561, 452, 631, 542),
+        color=(211, 200, 174),
+        button=(581, 472, 611, 522),
     ),
 )
 MAIN_GOTO_CHARACTER = ButtonWrapper(
     name='MAIN_GOTO_CHARACTER',
-    share=[
-        Button(
-            file='./assets/share/base/page/MAIN_GOTO_CHARACTER.png',
-            area=(1204, 25, 1234, 51),
-            search=(1184, 5, 1254, 71),
-            color=(184, 185, 187),
-            button=(1204, 25, 1234, 51),
-        ),
-        Button(
-            file='./assets/share/base/page/MAIN_GOTO_CHARACTER.2.png',
-            area=(1204, 25, 1234, 51),
-            search=(1184, 5, 1254, 71),
-            color=(211, 181, 211),
-            button=(1204, 25, 1234, 51),
-        ),
-    ],
-)
-MAIN_GOTO_EVENT = ButtonWrapper(
-    name='MAIN_GOTO_EVENT',
     share=Button(
-        file='./assets/share/base/page/MAIN_GOTO_EVENT.png',
-        area=(786, 33, 814, 56),
-        search=(766, 13, 834, 76),
-        color=(185, 184, 183),
-        button=(786, 33, 814, 56),
+        file='./assets/share/base/page/MAIN_GOTO_CHARACTER.png',
+        area=(1074, 661, 1157, 692),
+        search=(1054, 641, 1177, 712),
+        color=(223, 210, 183),
+        button=(1074, 661, 1157, 692),
     ),
 )
-MAIN_GOTO_GACHA = ButtonWrapper(
-    name='MAIN_GOTO_GACHA',
+MAIN_GOTO_DAILY_QUEST = ButtonWrapper(
+    name='MAIN_GOTO_DAILY_QUEST',
     share=Button(
-        file='./assets/share/base/page/MAIN_GOTO_GACHA.png',
-        area=(929, 38, 957, 59),
-        search=(909, 18, 977, 79),
-        color=(161, 162, 163),
-        button=(929, 38, 957, 59),
+        file='./assets/share/base/page/MAIN_GOTO_DAILY_QUEST.png',
+        area=(342, 663, 441, 691),
+        search=(322, 643, 461, 711),
+        color=(215, 199, 170),
+        button=(342, 663, 441, 691),
     ),
 )
-MAIN_GOTO_GUIDE = ButtonWrapper(
-    name='MAIN_GOTO_GUIDE',
+MAIN_GOTO_FULIWANGCHUAN = ButtonWrapper(
+    name='MAIN_GOTO_FULIWANGCHUAN',
     share=Button(
-        file='./assets/share/base/page/MAIN_GOTO_GUIDE.png',
-        area=(997, 34, 1027, 59),
-        search=(977, 14, 1047, 79),
-        color=(170, 171, 173),
-        button=(997, 34, 1027, 59),
+        file='./assets/share/base/page/MAIN_GOTO_FULIWANGCHUAN.png',
+        area=(1206, 83, 1246, 167),
+        search=(1186, 63, 1266, 187),
+        color=(247, 169, 127),
+        button=(1206, 83, 1246, 167),
     ),
 )
-MAIN_GOTO_ITEM = ButtonWrapper(
-    name='MAIN_GOTO_ITEM',
+MAIN_GOTO_GUSHIFENGYUN = ButtonWrapper(
+    name='MAIN_GOTO_GUSHIFENGYUN',
     share=Button(
-        file='./assets/share/base/page/MAIN_GOTO_ITEM.png',
-        area=(1064, 35, 1098, 59),
-        search=(1044, 15, 1118, 79),
-        color=(179, 180, 182),
-        button=(1064, 35, 1098, 59),
+        file='./assets/share/base/page/MAIN_GOTO_GUSHIFENGYUN.png',
+        area=(394, 110, 423, 205),
+        search=(374, 90, 443, 225),
+        color=(238, 141, 95),
+        button=(394, 110, 423, 205),
     ),
 )
-MAIN_GOTO_MAP = ButtonWrapper(
-    name='MAIN_GOTO_MAP',
+MAIN_GOTO_INTERACT = ButtonWrapper(
+    name='MAIN_GOTO_INTERACT',
     share=Button(
-        file='./assets/share/base/page/MAIN_GOTO_MAP.png',
-        area=(70, 78, 166, 174),
-        search=(50, 58, 186, 194),
-        color=(91, 105, 119),
-        button=(70, 78, 166, 174),
+        file='./assets/share/base/page/MAIN_GOTO_INTERACT.png',
+        area=(977, 663, 1036, 690),
+        search=(957, 643, 1056, 710),
+        color=(222, 208, 180),
+        button=(977, 663, 1036, 690),
     ),
 )
-MAIN_GOTO_MENU = ButtonWrapper(
-    name='MAIN_GOTO_MENU',
+MAIN_GOTO_JINGEGUAN = ButtonWrapper(
+    name='MAIN_GOTO_JINGEGUAN',
     share=Button(
-        file='./assets/share/base/page/MAIN_GOTO_MENU.png',
-        area=(22, 60, 51, 81),
-        search=(2, 40, 71, 101),
-        color=(176, 177, 179),
-        button=(22, 60, 51, 81),
+        file='./assets/share/base/page/MAIN_GOTO_JINGEGUAN.png',
+        area=(221, 223, 250, 304),
+        search=(201, 203, 270, 324),
+        color=(224, 214, 188),
+        button=(221, 223, 250, 304),
     ),
 )
-MAIN_GOTO_MESSAGE = ButtonWrapper(
-    name='MAIN_GOTO_MESSAGE',
+MAIN_GOTO_MIJING = ButtonWrapper(
+    name='MAIN_GOTO_MIJING',
     share=Button(
-        file='./assets/share/base/page/MAIN_GOTO_MESSAGE.png',
-        area=(184, 182, 203, 212),
-        search=(164, 162, 223, 232),
-        color=(230, 230, 230),
-        button=(184, 182, 203, 212),
+        file='./assets/share/base/page/MAIN_GOTO_MIJING.png',
+        area=(533, 82, 562, 159),
+        search=(513, 62, 582, 179),
+        color=(225, 215, 187),
+        button=(533, 82, 562, 159),
     ),
 )
-MAIN_GOTO_MISSION = ButtonWrapper(
-    name='MAIN_GOTO_MISSION',
+MAIN_GOTO_SHOP = ButtonWrapper(
+    name='MAIN_GOTO_SHOP',
     share=Button(
-        file='./assets/share/base/page/MAIN_GOTO_MISSION.png',
-        area=(21, 199, 51, 221),
-        search=(1, 179, 71, 241),
-        color=(168, 169, 172),
-        button=(21, 199, 51, 221),
+        file='./assets/share/base/page/MAIN_GOTO_SHOP.png',
+        area=(1196, 663, 1250, 690),
+        search=(1176, 643, 1270, 710),
+        color=(242, 192, 155),
+        button=(1196, 663, 1250, 690),
     ),
 )
-MAIN_GOTO_TEAM = ButtonWrapper(
-    name='MAIN_GOTO_TEAM',
+MAIN_GOTO_TAOYUAN = ButtonWrapper(
+    name='MAIN_GOTO_TAOYUAN',
     share=Button(
-        file='./assets/share/base/page/MAIN_GOTO_TEAM.png',
-        area=(1135, 41, 1166, 58),
-        search=(1115, 21, 1186, 78),
-        color=(160, 161, 164),
-        button=(1135, 41, 1166, 58),
+        file='./assets/share/base/page/MAIN_GOTO_TAOYUAN.png',
+        area=(708, 278, 736, 355),
+        search=(688, 258, 756, 375),
+        color=(219, 208, 181),
+        button=(708, 278, 736, 355),
     ),
 )
-MAIN_GOTO_TUTORIAL = ButtonWrapper(
-    name='MAIN_GOTO_TUTORIAL',
+MAIN_GOTO_YASHE = ButtonWrapper(
+    name='MAIN_GOTO_YASHE',
     share=Button(
-        file='./assets/share/base/page/MAIN_GOTO_TUTORIAL.png',
-        area=(195, 58, 207, 82),
-        search=(175, 38, 227, 102),
-        color=(127, 131, 139),
-        button=(195, 58, 207, 82),
+        file='./assets/share/base/page/MAIN_GOTO_YASHE.png',
+        area=(575, 662, 629, 690),
+        search=(555, 642, 649, 710),
+        color=(216, 198, 165),
+        button=(575, 662, 629, 690),
     ),
 )
-MAP_CHECK = ButtonWrapper(
-    name='MAP_CHECK',
+MIJING_CHECK = ButtonWrapper(
+    name='MIJING_CHECK',
     share=Button(
-        file='./assets/share/base/page/MAP_CHECK.png',
-        area=(46, 19, 68, 54),
-        search=(26, 0, 88, 74),
-        color=(75, 75, 75),
-        button=(46, 19, 68, 54),
+        file='./assets/share/base/page/MIJING_CHECK.png',
+        area=(99, 17, 159, 47),
+        search=(79, 0, 179, 67),
+        color=(178, 100, 75),
+        button=(99, 17, 159, 47),
     ),
 )
-MAP_EXIT = ButtonWrapper(
-    name='MAP_EXIT',
-    share=[
-        Button(
-            file='./assets/share/base/page/MAP_EXIT.png',
-            area=(27, 46, 44, 74),
-            search=(7, 26, 64, 94),
-            color=(142, 144, 148),
-            button=(27, 46, 44, 74),
-        ),
-        Button(
-            file='./assets/share/base/page/MAP_EXIT.2.png',
-            area=(27, 46, 44, 74),
-            search=(7, 26, 64, 94),
-            color=(160, 187, 206),
-            button=(27, 46, 44, 74),
-        ),
-    ],
-)
-MAP_EXIT_OE = ButtonWrapper(
-    name='MAP_EXIT_OE',
+SHOP_CHECK = ButtonWrapper(
+    name='SHOP_CHECK',
     share=Button(
-        file='./assets/share/base/page/MAP_EXIT_OE.png',
-        area=(51, 55, 68, 84),
-        search=(31, 35, 88, 104),
-        color=(141, 140, 141),
-        button=(51, 55, 68, 84),
+        file='./assets/share/base/page/SHOP_CHECK.png',
+        area=(101, 18, 156, 45),
+        search=(81, 0, 176, 65),
+        color=(167, 111, 91),
+        button=(101, 18, 156, 45),
     ),
 )
-MAP_GOTO_WORLD = ButtonWrapper(
-    name='MAP_GOTO_WORLD',
+TAOYUAN_AFFAIR_CHECK = ButtonWrapper(
+    name='TAOYUAN_AFFAIR_CHECK',
     share=Button(
-        file='./assets/share/base/page/MAP_GOTO_WORLD.png',
-        area=(896, 80, 1225, 116),
-        search=(876, 60, 1245, 136),
-        color=(132, 132, 132),
-        button=(896, 80, 1225, 116),
+        file='./assets/share/base/page/TAOYUAN_AFFAIR_CHECK.png',
+        area=(705, 12, 816, 44),
+        search=(685, 0, 836, 64),
+        color=(243, 190, 139),
+        button=(705, 12, 816, 44),
     ),
 )
-MENU_CHECK = ButtonWrapper(
-    name='MENU_CHECK',
+TAOYUAN_CHECK = ButtonWrapper(
+    name='TAOYUAN_CHECK',
     share=Button(
-        file='./assets/share/base/page/MENU_CHECK.png',
-        area=(1222, 298, 1237, 326),
-        search=(1202, 278, 1257, 346),
-        color=(65, 65, 68),
-        button=(1222, 298, 1237, 326),
+        file='./assets/share/base/page/TAOYUAN_CHECK.png',
+        area=(96, 19, 176, 45),
+        search=(76, 0, 196, 65),
+        color=(162, 147, 130),
+        button=(96, 19, 176, 45),
     ),
 )
-MENU_GOTO_ASSIGNMENT = ButtonWrapper(
-    name='MENU_GOTO_ASSIGNMENT',
+TAOYUAN_FURNITURE_CHECK = ButtonWrapper(
+    name='TAOYUAN_FURNITURE_CHECK',
     share=Button(
-        file='./assets/share/base/page/MENU_GOTO_ASSIGNMENT.png',
-        area=(1090, 269, 1153, 328),
-        search=(1070, 249, 1173, 348),
-        color=(71, 71, 74),
-        button=(1090, 269, 1153, 328),
+        file='./assets/share/base/page/TAOYUAN_FURNITURE_CHECK.png',
+        area=(78, 19, 181, 45),
+        search=(58, 0, 201, 65),
+        color=(128, 98, 79),
+        button=(78, 19, 181, 45),
     ),
 )
-MENU_GOTO_CAMERA = ButtonWrapper(
-    name='MENU_GOTO_CAMERA',
+TAOYUAN_GAME_CHECK = ButtonWrapper(
+    name='TAOYUAN_GAME_CHECK',
     share=Button(
-        file='./assets/share/base/page/MENU_GOTO_CAMERA.png',
-        area=(1219, 465, 1255, 495),
-        search=(1199, 445, 1275, 515),
-        color=(51, 52, 53),
-        button=(1219, 465, 1255, 495),
+        file='./assets/share/base/page/TAOYUAN_GAME_CHECK.png',
+        area=(78, 19, 181, 45),
+        search=(58, 0, 201, 65),
+        color=(142, 105, 77),
+        button=(78, 19, 181, 45),
     ),
 )
-MENU_GOTO_SYNTHESIZE = ButtonWrapper(
-    name='MENU_GOTO_SYNTHESIZE',
+TAOYUAN_GOTO_AFFAIR = ButtonWrapper(
+    name='TAOYUAN_GOTO_AFFAIR',
     share=Button(
-        file='./assets/share/base/page/MENU_GOTO_SYNTHESIZE.png',
-        area=(994, 389, 1035, 424),
-        search=(974, 369, 1055, 444),
-        color=(85, 85, 85),
-        button=(994, 389, 1035, 424),
+        file='./assets/share/base/page/TAOYUAN_GOTO_AFFAIR.png',
+        area=(1164, 644, 1217, 697),
+        search=(1144, 624, 1237, 717),
+        color=(90, 41, 21),
+        button=(1164, 644, 1217, 697),
     ),
 )
-MENU_SCROLL = ButtonWrapper(
-    name='MENU_SCROLL',
+TAOYUAN_GOTO_FURNITURE = ButtonWrapper(
+    name='TAOYUAN_GOTO_FURNITURE',
     share=Button(
-        file='./assets/share/base/page/MENU_SCROLL.png',
-        area=(1178, 261, 1184, 681),
-        search=(1158, 241, 1204, 701),
-        color=(100, 100, 105),
-        button=(1178, 261, 1184, 681),
+        file='./assets/share/base/page/TAOYUAN_GOTO_FURNITURE.png',
+        area=(653, 645, 711, 694),
+        search=(633, 625, 731, 714),
+        color=(39, 22, 10),
+        button=(653, 645, 711, 694),
     ),
 )
-MESSAGE_CLOSE = ButtonWrapper(
-    name='MESSAGE_CLOSE',
+TAOYUAN_GOTO_GAME = ButtonWrapper(
+    name='TAOYUAN_GOTO_GAME',
     share=Button(
-        file='./assets/share/base/page/MESSAGE_CLOSE.png',
-        area=(863, 95, 895, 127),
-        search=(843, 75, 915, 147),
-        color=(175, 174, 175),
-        button=(863, 95, 895, 127),
+        file='./assets/share/base/page/TAOYUAN_GOTO_GAME.png',
+        area=(1206, 92, 1244, 141),
+        search=(1186, 72, 1264, 161),
+        color=(228, 189, 122),
+        button=(1206, 92, 1244, 141),
     ),
 )
-MISSION_CHECK = ButtonWrapper(
-    name='MISSION_CHECK',
+TAOYUAN_GOTO_MEAL = ButtonWrapper(
+    name='TAOYUAN_GOTO_MEAL',
     share=Button(
-        file='./assets/share/base/page/MISSION_CHECK.png',
-        area=(44, 33, 70, 55),
-        search=(24, 13, 90, 75),
-        color=(194, 177, 139),
-        button=(44, 33, 70, 55),
+        file='./assets/share/base/page/TAOYUAN_GOTO_MEAL.png',
+        area=(1195, 382, 1254, 426),
+        search=(1175, 362, 1274, 446),
+        color=(139, 136, 118),
+        button=(1195, 382, 1254, 426),
     ),
 )
-PLANNER_CHECK = ButtonWrapper(
-    name='PLANNER_CHECK',
+TAOYUAN_GOTO_VISIT = ButtonWrapper(
+    name='TAOYUAN_GOTO_VISIT',
     share=Button(
-        file='./assets/share/base/page/PLANNER_CHECK.png',
-        area=(39, 47, 74, 74),
-        search=(19, 27, 94, 94),
-        color=(148, 131, 98),
-        button=(39, 47, 74, 74),
+        file='./assets/share/base/page/TAOYUAN_GOTO_VISIT.png',
+        area=(788, 642, 832, 698),
+        search=(768, 622, 852, 718),
+        color=(54, 31, 15),
+        button=(788, 642, 832, 698),
     ),
 )
-ROGUE_CHECK = ButtonWrapper(
-    name='ROGUE_CHECK',
-    share=[
-        Button(
-            file='./assets/share/base/page/ROGUE_CHECK.png',
-            area=(39, 17, 76, 51),
-            search=(19, 0, 96, 71),
-            color=(81, 74, 76),
-            button=(39, 17, 76, 51),
-        ),
-        Button(
-            file='./assets/share/base/page/ROGUE_CHECK.2.png',
-            area=(39, 22, 75, 52),
-            search=(19, 2, 95, 72),
-            color=(110, 100, 79),
-            button=(39, 22, 75, 52),
-        ),
-    ],
-)
-SYNTHESIZE_CHECK = ButtonWrapper(
-    name='SYNTHESIZE_CHECK',
+TAOYUAN_MEAL_CHECK = ButtonWrapper(
+    name='TAOYUAN_MEAL_CHECK',
     share=Button(
-        file='./assets/share/base/page/SYNTHESIZE_CHECK.png',
-        area=(39, 23, 75, 52),
-        search=(19, 3, 95, 72),
-        color=(109, 101, 89),
-        button=(39, 23, 75, 52),
+        file='./assets/share/base/page/TAOYUAN_MEAL_CHECK.png',
+        area=(105, 19, 156, 45),
+        search=(85, 0, 176, 65),
+        color=(152, 126, 103),
+        button=(105, 19, 156, 45),
     ),
 )
-TEAM_CHECK = ButtonWrapper(
-    name='TEAM_CHECK',
+TAOYUAN_VISIT_CHECK = ButtonWrapper(
+    name='TAOYUAN_VISIT_CHECK',
     share=Button(
-        file='./assets/share/base/page/TEAM_CHECK.png',
-        area=(41, 34, 73, 54),
-        search=(21, 14, 93, 74),
-        color=(138, 123, 101),
-        button=(41, 34, 73, 54),
+        file='./assets/share/base/page/TAOYUAN_VISIT_CHECK.png',
+        area=(75, 123, 110, 189),
+        search=(55, 103, 130, 209),
+        color=(244, 212, 165),
+        button=(75, 123, 110, 189),
     ),
 )
-TUTORIAL_CHECK = ButtonWrapper(
-    name='TUTORIAL_CHECK',
+YASHE_CHECK = ButtonWrapper(
+    name='YASHE_CHECK',
     share=Button(
-        file='./assets/share/base/page/TUTORIAL_CHECK.png',
-        area=(44, 30, 70, 56),
-        search=(24, 10, 90, 76),
-        color=(141, 126, 99),
-        button=(44, 30, 70, 56),
-    ),
-)
-WORLD_CHECK = ButtonWrapper(
-    name='WORLD_CHECK',
-    share=Button(
-        file='./assets/share/base/page/WORLD_CHECK.png',
-        area=(46, 19, 68, 54),
-        search=(26, 0, 88, 74),
-        color=(110, 102, 87),
-        button=(46, 19, 68, 54),
+        file='./assets/share/base/page/YASHE_CHECK.png',
+        area=(103, 20, 156, 45),
+        search=(83, 0, 176, 65),
+        color=(182, 133, 98),
+        button=(103, 20, 156, 45),
     ),
 )

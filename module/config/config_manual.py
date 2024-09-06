@@ -10,11 +10,18 @@ class ManualConfig:
 
     SCHEDULER_PRIORITY = """
     Restart
-    > Weekly > Ornament > Dungeon > Assignment
-    > BattlePass > DailyQuest
-    > Freebies > DataUpdate
-    > Rogue
+    > WeeklyShop > OneClickSweep
+    > DailyShop > TaoYuan > Cattery > QilinNavi > YaShe > BattlePass > DailyQuest
+    > Dungeon > DataUpdate
     """
+
+    # """
+    # Restart
+    # > Weekly > Ornament > Dungeon > Assignment
+    # > BattlePass > DailyQuest
+    # > Freebies > DataUpdate
+    # > Rogue
+    # """
 
     """
     module.assets

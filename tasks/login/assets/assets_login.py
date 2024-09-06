@@ -3,6 +3,36 @@ from module.base.button import Button, ButtonWrapper
 # This file was auto-generated, do not modify it manually. To generate:
 # ``` python -m dev_tools.button_extract ```
 
+ACTIVITY_SIGN_IN_GIFT = ButtonWrapper(
+    name='ACTIVITY_SIGN_IN_GIFT',
+    share=Button(
+        file='./assets/share/login/ACTIVITY_SIGN_IN_GIFT.png',
+        area=(99, 628, 169, 663),
+        search=(79, 608, 189, 683),
+        color=(255, 199, 147),
+        button=(99, 628, 169, 663),
+    ),
+)
+ACTIVITY_SIGN_IN_GIFT_LOCKED = ButtonWrapper(
+    name='ACTIVITY_SIGN_IN_GIFT_LOCKED',
+    share=Button(
+        file='./assets/share/login/ACTIVITY_SIGN_IN_GIFT_LOCKED.png',
+        area=(98, 539, 172, 581),
+        search=(78, 519, 192, 601),
+        color=(65, 94, 79),
+        button=(98, 539, 172, 581),
+    ),
+)
+DAILY_SIGN_IN = ButtonWrapper(
+    name='DAILY_SIGN_IN',
+    share=Button(
+        file='./assets/share/login/DAILY_SIGN_IN.png',
+        area=(1155, 577, 1225, 648),
+        search=(1135, 557, 1245, 668),
+        color=(230, 190, 115),
+        button=(1155, 577, 1225, 648),
+    ),
+)
 LOGIN_CONFIRM = ButtonWrapper(
     name='LOGIN_CONFIRM',
     share=Button(
@@ -17,20 +47,9 @@ LOGIN_LOADING = ButtonWrapper(
     name='LOGIN_LOADING',
     share=Button(
         file='./assets/share/login/LOGIN_LOADING.png',
-        area=(1103, 599, 1119, 616),
-        search=(1083, 579, 1139, 636),
-        color=(98, 98, 106),
-        button=(1103, 599, 1119, 616),
+        area=(15, 673, 279, 705),
+        search=(0, 653, 299, 720),
+        color=(59, 56, 55),
+        button=(15, 673, 279, 705),
     ),
-)
-USER_AGREEMENT_ACCEPT = ButtonWrapper(
-    name='USER_AGREEMENT_ACCEPT',
-    cn=Button(
-        file='./assets/cn/login/USER_AGREEMENT_ACCEPT.png',
-        area=(751, 467, 791, 488),
-        search=(731, 447, 811, 508),
-        color=(196, 167, 111),
-        button=(678, 459, 867, 496),
-    ),
-    en=None,
 )

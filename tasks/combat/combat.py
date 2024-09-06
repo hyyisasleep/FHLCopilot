@@ -1,10 +1,10 @@
 from module.base.decorator import run_once
 from module.exception import RequestHumanTakeover
 from module.logger import logger
-from tasks.combat.assets.assets_combat_finish import COMBAT_AGAIN, COMBAT_EXIT
-from tasks.combat.assets.assets_combat_interact import DUNGEON_COMBAT_INTERACT
-from tasks.combat.assets.assets_combat_prepare import COMBAT_PREPARE
-from tasks.combat.assets.assets_combat_team import COMBAT_TEAM_PREPARE, COMBAT_TEAM_SUPPORT
+# from tasks.combat.assets.assets_combat_finish import COMBAT_AGAIN, COMBAT_EXIT
+# from tasks.combat.assets.assets_combat_interact import DUNGEON_COMBAT_INTERACT
+# from tasks.combat.assets.assets_combat_prepare import COMBAT_PREPARE
+# from tasks.combat.assets.assets_combat_team import COMBAT_TEAM_PREPARE, COMBAT_TEAM_SUPPORT
 from tasks.combat.fuel import Fuel
 from tasks.combat.interact import CombatInteract
 from tasks.combat.obtain import CombatObtain
@@ -73,6 +73,8 @@ class Combat(CombatInteract, CombatPrepare, CombatState, CombatTeam, CombatSuppo
         return False
 
     def combat_prepare(self, team=1, support_character: str = None):
+        pass
+    def combat_prepare_src(self, team=1, support_character: str = None):
         """
         Args:
             team: 1 to 6.

@@ -19,7 +19,7 @@ from tasks.daily.keywords import (
 )
 from tasks.daily.synthesize import SynthesizeMaterialUI
 from tasks.daily.use_technique import UseTechniqueUI
-from tasks.dungeon.assets.assets_dungeon_ui import DAILY_TRAINING_CHECK
+# from tasks.dungeon.assets.assets_dungeon_ui import DAILY_TRAINING_CHECK
 from tasks.dungeon.keywords import KEYWORDS_DUNGEON_TAB
 from tasks.dungeon.ui import DungeonUI
 from tasks.item.consumable_usage import ConsumableUsageUI
@@ -28,41 +28,41 @@ from tasks.map.route.loader import RouteLoader
 from tasks.map.route.route import ROUTE_DAILY
 
 
-class DailyQuestOcr(Ocr):
-    merge_thres_y = 20
-
-    def pre_process(self, image):
-        image = super().pre_process(image)
-        image = crop(image, OCR_DAILY_QUEST.area, copy=False)
-        mask = MASK_DAILY_QUEST.matched_button.image
-        # Remove "+200Activity"
-        image = cv2.bitwise_and(image, mask)
-        return image
-
-    def after_process(self, result):
-        result = super().after_process(result)
-        if self.lang == 'cn':
-            result = result.replace("J", "」")
-            result = result.replace(";", "」")
-            result = result.replace("了", "」")
-            result = result.replace("宇审", "宇宙")
-            result = result.replace("凝带", "凝滞")
-            # 进行中」hbadarin
-            if "进行中" in result:
-                result = "进行中"
-            if "已领取" in result:
-                result = "已领取"
-        if self.lang == 'en':
-            result = result.replace('wor(d', 'world')
-            # Echo/ofWar
-            result = result.replace('cho/of', 'cho of')
-            # Catyx(Golden).1.times
-            result = result.replace('atyx', 'alyx')
-            if "progress" in result.lower():
-                result = "In Progress"
-            if "claimed" in result.lower():
-                result = "Claimed"
-        return result
+# class DailyQuestOcr(Ocr):
+#     merge_thres_y = 20
+#
+#     def pre_process(self, image):
+#         image = super().pre_process(image)
+#         image = crop(image, OCR_DAILY_QUEST.area, copy=False)
+#         mask = MASK_DAILY_QUEST.matched_button.image
+#         # Remove "+200Activity"
+#         image = cv2.bitwise_and(image, mask)
+#         return image
+#
+#     def after_process(self, result):
+#         result = super().after_process(result)
+#         if self.lang == 'cn':
+#             result = result.replace("J", "」")
+#             result = result.replace(";", "」")
+#             result = result.replace("了", "」")
+#             result = result.replace("宇审", "宇宙")
+#             result = result.replace("凝带", "凝滞")
+#             # 进行中」hbadarin
+#             if "进行中" in result:
+#                 result = "进行中"
+#             if "已领取" in result:
+#                 result = "已领取"
+#         if self.lang == 'en':
+#             result = result.replace('wor(d', 'world')
+#             # Echo/ofWar
+#             result = result.replace('cho/of', 'cho of')
+#             # Catyx(Golden).1.times
+#             result = result.replace('atyx', 'alyx')
+#             if "progress" in result.lower():
+#                 result = "In Progress"
+#             if "claimed" in result.lower():
+#                 result = "Claimed"
+#         return result
 
 
 class DailyQuestUI(DungeonUI, RouteLoader):
@@ -117,7 +117,7 @@ class DailyQuestUI(DungeonUI, RouteLoader):
             return state != KEYWORDS_DAILY_QUEST_STATE.Go and state != KEYWORDS_DAILY_QUEST_STATE.In_Progress
 
         return [quest for quest, _ in
-                split_and_pair_buttons(results, split_func=completed_state, relative_area=(0, 0, 200, 720))]
+                split_and_pai0r_buttons(results, split_func=completed_state, relative_area=(0, 0, 200, 720))]
 
     def daily_quests_recognition(self) -> list[DailyQuest]:
         """
