@@ -162,9 +162,10 @@ class Taoyuanju(UI):
                 logger.info("Success build furniture")
                 break
             # TODO: ocr看百工图数量 回来写吧哈哈
-            ocr = Digit(BAIGONGTU_NUM)
-            result = ocr.ocr()
-            num = ocr.format_result()
+            # ocr = Digit(BAIGONGTU_NUM)
+            # result = ocr.ocr()
+            # num = ocr.format_result()
+            num = 45
             if not has_build and num < 30:
                 logger.info("baigongtu is not enough, cancel build furniture")
                 break
