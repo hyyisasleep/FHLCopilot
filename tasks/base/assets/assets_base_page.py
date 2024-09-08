@@ -138,6 +138,26 @@ JINGEGUAN_CHECK = ButtonWrapper(
         button=(90, 18, 169, 44),
     ),
 )
+JINGEGUAN_GOTO_JINGEYANWU = ButtonWrapper(
+    name='JINGEGUAN_GOTO_JINGEYANWU',
+    share=Button(
+        file='./assets/share/base/page/JINGEGUAN_GOTO_JINGEYANWU.png',
+        area=(425, 138, 463, 284),
+        search=(405, 118, 483, 304),
+        color=(239, 188, 122),
+        button=(425, 138, 463, 284),
+    ),
+)
+JINGEYANWU_CHECK = ButtonWrapper(
+    name='JINGEYANWU_CHECK',
+    share=Button(
+        file='./assets/share/base/page/JINGEYANWU_CHECK.png',
+        area=(1, 676, 92, 705),
+        search=(0, 656, 112, 720),
+        color=(146, 108, 86),
+        button=(1, 676, 92, 705),
+    ),
+)
 MAIN_GOTO_CATTERY = ButtonWrapper(
     name='MAIN_GOTO_CATTERY',
     share=Button(
@@ -272,21 +292,37 @@ TAOYUAN_AFFAIR_CHECK = ButtonWrapper(
     name='TAOYUAN_AFFAIR_CHECK',
     share=Button(
         file='./assets/share/base/page/TAOYUAN_AFFAIR_CHECK.png',
-        area=(705, 12, 816, 44),
-        search=(685, 0, 836, 64),
-        color=(243, 190, 139),
-        button=(705, 12, 816, 44),
+        area=(76, 19, 181, 44),
+        search=(56, 0, 201, 64),
+        color=(158, 127, 96),
+        button=(76, 19, 181, 44),
     ),
 )
 TAOYUAN_CHECK = ButtonWrapper(
     name='TAOYUAN_CHECK',
-    share=Button(
-        file='./assets/share/base/page/TAOYUAN_CHECK.png',
-        area=(96, 19, 176, 45),
-        search=(76, 0, 196, 65),
-        color=(162, 147, 130),
-        button=(96, 19, 176, 45),
-    ),
+    share=[
+        Button(
+            file='./assets/share/base/page/TAOYUAN_CHECK.png',
+            area=(97, 19, 174, 44),
+            search=(77, 0, 194, 64),
+            color=(184, 146, 102),
+            button=(97, 19, 174, 44),
+        ),
+        Button(
+            file='./assets/share/base/page/TAOYUAN_CHECK.2.png',
+            area=(97, 19, 174, 44),
+            search=(77, 0, 194, 64),
+            color=(161, 144, 131),
+            button=(97, 19, 174, 44),
+        ),
+        Button(
+            file='./assets/share/base/page/TAOYUAN_CHECK.3.png',
+            area=(97, 19, 174, 44),
+            search=(77, 0, 194, 64),
+            color=(132, 101, 84),
+            button=(97, 19, 174, 44),
+        ),
+    ],
 )
 TAOYUAN_FURNITURE_CHECK = ButtonWrapper(
     name='TAOYUAN_FURNITURE_CHECK',
@@ -312,10 +348,10 @@ TAOYUAN_GOTO_AFFAIR = ButtonWrapper(
     name='TAOYUAN_GOTO_AFFAIR',
     share=Button(
         file='./assets/share/base/page/TAOYUAN_GOTO_AFFAIR.png',
-        area=(1164, 644, 1217, 697),
-        search=(1144, 624, 1237, 717),
-        color=(90, 41, 21),
-        button=(1164, 644, 1217, 697),
+        area=(1164, 634, 1199, 698),
+        search=(1144, 614, 1219, 718),
+        color=(41, 18, 9),
+        button=(1164, 634, 1199, 698),
     ),
 )
 TAOYUAN_GOTO_FURNITURE = ButtonWrapper(

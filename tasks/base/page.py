@@ -124,7 +124,10 @@ page_yashe = Page(YASHE_CHECK)
 page_yashe.link(BACK,destination=page_main)
 page_main.link(MAIN_GOTO_YASHE, destination=page_yashe)
 
-
+# =============金戈馆================
+page_jingeyanwu = Page(JINGEYANWU_CHECK)
+page_jingeyanwu.link(BACK,destination=page_jingeguan)
+page_jingeguan.link(JINGEGUAN_GOTO_JINGEYANWU,destination=page_jingeyanwu)
 # =============桃源居================
 # 桃源事务
 page_taoyuan_affair = Page(TAOYUAN_AFFAIR_CHECK)

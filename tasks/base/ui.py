@@ -172,8 +172,8 @@ class UI(PopupHandler):
                 continue
 
             # Additional
-            # if self.ui_additional():
-            #     continue
+            if self.ui_additional():
+                continue
             # if self.handle_popup_single():
             #     continue
             # if self.handle_popup_confirm():

@@ -20,12 +20,13 @@ class Cattery(UI):
         logger.hr('Cattery\'s affair', level=1)
         # self.ui_ensure(page_cattery)
 
-        # TODO: 用uigoto替换，判断猫的加入uiadditional
+
         self.ui_goto(page_cattery)
-        # self._goto_cattery()
 
         self._feed_cats()
         self._play_with_cats()
+        # TODO:躲猫猫 妈呀咋写啊
+        self._hide_and_seek()
         self.ui_goto_main()
 
         self.config.task_delay(server_update=True)
@@ -104,7 +105,7 @@ class Cattery(UI):
                 timeout.reset()
                 continue
 
-            if self.appear_then_click(FEED_CAT_REWARD, similarity=0.7, interval=2):
+            if self.appear_then_click(FEED_CAT_REWARD, similarity=0.7, interval=5):
                 timeout.reset()
                 continue
 
@@ -148,6 +149,9 @@ class Cattery(UI):
             if self.appear_then_click(SKIP_BUTTON, similarity=0.70, interval=2):
                 timeout.reset()
                 continue
+
+    def _hide_and_seek(self):
+        pass
 
 
 if __name__ == '__main__':
