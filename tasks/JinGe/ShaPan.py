@@ -14,7 +14,7 @@ class ShaPanLunYi(UI):
 
         while 1:
             # self.device.screenshot()
-            #
+
             # logger.info("?")
             # self.device.screenshot()
             # self.ui_ensure(page_shapanlunyi)
