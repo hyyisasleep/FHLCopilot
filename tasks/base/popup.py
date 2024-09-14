@@ -104,10 +104,10 @@ class PopupHandler(ModuleBase):
         Returns:
             If handled.
         """
-        if self.appear_then_long_click(CATTERY_GET_CAT):
+        if self.appear_then_long_click(CATTERY_GET_CAT, interval):
             logger.info('Get a new cat')
             return True
-        if self.appear_then_click(CATTERY_GET_CAT_QUIT):
+        if self.appear_then_click(CATTERY_GET_CAT_QUIT, interval):
             return True
         return False
     # def handle_battle_pass_notification(self, interval=5) -> bool:
@@ -248,6 +248,10 @@ class PopupHandler(ModuleBase):
     #
     #     return False
 
+    def handle_promote_pack(self):
+        if self.appear_then_click(CLOSE_PROMOTE_PACK):
+            return True
+        return False
     def handle_ui_back(self, appear_button: ButtonWrapper | Callable, interval=2) -> bool:
         """
         Args:

@@ -34,247 +34,50 @@
       "ServerUpdate": "04:00"
     }
   },
-  "Dungeon": {
-    "Scheduler": {
-      "Enable": true,
-      "NextRun": "2020-01-01 00:00:00",
-      "Command": "Dungeon",
-      "ServerUpdate": "04:00"
-    },
-    "Planner": {
-      "PlannerOverall": {},
-      "Item_Credit": {},
-      "Item_Trailblaze_EXP": {},
-      "Item_Traveler_Guide": {},
-      "Item_Refined_Aether": {},
-      "Item_Lost_Crystal": {},
-      "Item_Broken_Teeth_of_Iron_Wolf": {},
-      "Item_Endotherm_Chitin": {},
-      "Item_Horn_of_Snow": {},
-      "Item_Lightning_Crown_of_the_Past_Shadow": {},
-      "Item_Storm_Eye": {},
-      "Item_Void_Cast_Iron": {},
-      "Item_Golden_Crown_of_the_Past_Shadow": {},
-      "Item_Netherworld_Token": {},
-      "Item_Searing_Steel_Blade": {},
-      "Item_Gelid_Chitin": {},
-      "Item_Shape_Shifter_Lightning_Staff": {},
-      "Item_Ascendant_Debris": {},
-      "Item_Nail_of_the_Ape": {},
-      "Item_Suppressing_Edict": {},
-      "Item_IPC_Work_Permit": {},
-      "Item_Raging_Heart": {},
-      "Item_Dream_Fridge": {},
-      "Item_Dream_Flamer": {},
-      "Item_Worldbreaker_Blade": {},
-      "Item_Arrow_of_the_Starchaser": {},
-      "Item_Key_of_Wisdom": {},
-      "Item_Safeguard_of_Amber": {},
-      "Item_Obsidian_of_Obsession": {},
-      "Item_Stellaris_Symphony": {},
-      "Item_Flower_of_Eternity": {},
-      "Item_Moon_Rage_Fang": {},
-      "Item_Countertemporal_Shot": {},
-      "Item_Exquisite_Colored_Draft": {},
-      "Item_Divine_Amber": {},
-      "Item_Heaven_Incinerator": {},
-      "Item_Heavenly_Melody": {},
-      "Item_Myriad_Fruit": {},
-      "Item_Tracks_of_Destiny": {},
-      "Item_Destroyer_Final_Road": {},
-      "Item_Guardian_Lament": {},
-      "Item_Regret_of_Infinite_Ochema": {},
-      "Item_Past_Evils_of_the_Borehole_Planet_Disaster": {},
-      "Item_Lost_Echo_of_the_Shared_Wish": {},
-      "Item_Squirming_Core": {},
-      "Item_Conqueror_Will": {},
-      "Item_Silvermane_Medal": {},
-      "Item_Ancient_Engine": {},
-      "Item_Immortal_Lumintwig": {},
-      "Item_Artifex_Gyreheart": {},
-      "Item_Dream_Making_Engine": {},
-      "Item_Shards_of_Desires": {}
-    },
-    "Dungeon": {
-      "Name": "Calyx_Golden_Treasures_Jarilo_VI",
-      "NameAtDoubleCalyx": "Calyx_Golden_Treasures_Jarilo_VI",
-      "NameAtDoubleRelic": "Cavern_of_Corrosion_Path_of_Providence",
-      "Team": 1
-    },
-    "DungeonSupport": {
-      "Use": "when_daily",
-      "Character": "FirstCharacter"
-    },
-    "DungeonStorage": {
-      "TrailblazePower": {},
-      "Reserved": {},
-      "Immersifier": {},
-      "DungeonDouble": {},
-      "EchoOfWar": {},
-      "SimulatedUniverse": {}
-    },
-    "TrailblazePower": {
-      "ExtractReservedTrailblazePower": false,
-      "UseFuel": false,
-      "FuelReserve": 5
-    }
-  },
-  "DailyQuest": {
-    "Scheduler": {
-      "Enable": true,
-      "NextRun": "2020-01-01 00:00:00",
-      "Command": "DailyQuest",
-      "ServerUpdate": "04:00"
-    },
-    "DailyStorage": {
-      "DailyActivity": {},
-      "DailyQuest": {}
-    }
-  },
-  "BattlePass": {
-    "Scheduler": {
-      "Enable": true,
-      "NextRun": "2020-01-01 00:00:00",
-      "Command": "BattlePass",
-      "ServerUpdate": "04:00"
-    },
-    "BattlePassStorage": {
-      "BattlePassLevel": {},
-      "BattlePassWeeklyQuest": {},
-      "BattlePassSimulatedUniverse": {},
-      "BattlePassQuestCalyx": {},
-      "BattlePassQuestEchoOfWar": {},
-      "BattlePassQuestCredits": {},
-      "BattlePassQuestSynthesizeConsumables": {},
-      "BattlePassQuestStagnantShadow": {},
-      "BattlePassQuestCavernOfCorrosion": {},
-      "BattlePassQuestTrailblazePower": {}
-    }
-  },
-  "Assignment": {
-    "Scheduler": {
-      "Enable": true,
-      "NextRun": "2020-01-01 00:00:00",
-      "Command": "Assignment",
-      "ServerUpdate": "04:00"
-    },
-    "Assignment": {
-      "Name_1": "Nameless_Land_Nameless_People",
-      "Name_2": "Akashic_Records",
-      "Name_3": "The_Invisible_Hand",
-      "Name_4": "Nine_Billion_Names",
-      "Duration": 20,
-      "Event": true,
-      "Assignment": {}
-    }
-  },
-  "DataUpdate": {
-    "Scheduler": {
-      "Enable": true,
-      "NextRun": "2020-01-01 00:00:00",
-      "Command": "DataUpdate",
-      "ServerUpdate": "04:00"
-    },
-    "ItemStorage": {
-      "Credit": {},
-      "StallerJade": {}
-    },
-    "CloudStorage": {
-      "CloudRemainSeasonPass": {},
-      "CloudRemainPaid": {},
-      "CloudRemainFree": {}
-    }
-  },
-  "Freebies": {
-    "Scheduler": {
-      "Enable": true,
-      "NextRun": "2020-01-01 00:00:00",
-      "Command": "Freebies",
-      "ServerUpdate": "04:00"
-    },
-    "SupportReward": {
-      "Collect": true
-    }
-  },
-  "Weekly": {
+  "Shop": {
     "Scheduler": {
       "Enable": false,
       "NextRun": "2020-01-01 00:00:00",
-      "Command": "Weekly",
+      "Command": "Shop",
       "ServerUpdate": "04:00"
     },
-    "Weekly": {
-      "Name": "Echo_of_War_Divine_Seed",
-      "Team": 1
-    },
-    "DungeonSupport": {
-      "Use": "do_not_use",
-      "Character": "FirstCharacter"
+    "Shop": {
+      "SignInGift": 1,
+      "MonthlyCard30": 0,
+      "MonthlyCard68": 0,
+      "CopperBuyCommonCatPuppet": 1
     }
   },
-  "Rogue": {
+  "TaoYuan": {
     "Scheduler": {
       "Enable": false,
       "NextRun": "2020-01-01 00:00:00",
-      "Command": "Rogue",
+      "Command": "TaoYuan",
       "ServerUpdate": "04:00"
-    },
-    "RogueWorld": {
-      "World": "Simulated_Universe_World_7",
-      "Path": "The_Hunt",
-      "Bonus": "Blessing Universe",
-      "DomainStrategy": "combat",
-      "UseImmersifier": true,
-      "DoubleEvent": true,
-      "WeeklyFarming": false,
-      "UseStamina": false,
-      "SimulatedUniverseFarm": {}
-    },
-    "RogueBlessing": {
-      "PresetBlessingFilter": "preset",
-      "CustomBlessingFilter": "巡猎-3 > 《冠军晚餐·猫的摇篮》 > 丰饶众生，一法界心 > 毁灭-3 \n> 火堆外的夜 > 巡猎-2 > 毁灭-2 > 巡猎 > reset > random",
-      "PresetCurioFilter": "preset",
-      "CustomCurioFilter": "博士之袍 > 福灵胶 > 分裂金币 > 信仰债券 > 换境桂冠 > 俱乐部券 > 碎星芳饵 > random",
-      "PresetResonanceFilter": "preset",
-      "CustomResonanceFilter": "回响构音：均晶转变 > 回响构音：零维强化\n> 回响构音：第二次初恋 > 回响构音：体验的富翁\n> 回响构音：局外人 > 回响构音：怀疑的四重根\n> 回响构音：诸法无我 > 回响构音：诸行无常\n> 回响构音：射不主皮 > 回响构音：柘弓危矢\n> 回响构音：激变变星 > 回响构音：极端氦闪\n> 回响构音：末日狂欢 > 回响构音：树苗长高舞\n> random",
-      "SelectionStrategy": "before-random"
-    },
-    "RogueDebug": {
-      "DebugMode": false
     }
   },
-  "Ornament": {
+  "Cattery": {
     "Scheduler": {
       "Enable": false,
       "NextRun": "2020-01-01 00:00:00",
-      "Command": "Ornament",
+      "Command": "Cattery",
       "ServerUpdate": "04:00"
-    },
-    "Ornament": {
-      "Dungeon": "Divergent_Universe_Eternal_Comedy",
-      "UseImmersifier": true,
-      "DoubleEvent": true,
-      "UseStamina": false
-    },
-    "DungeonSupport": {
-      "Use": "when_daily",
-      "Character": "FirstCharacter"
-    },
-    "TrailblazePower": {
-      "ExtractReservedTrailblazePower": false,
-      "UseFuel": false,
-      "FuelReserve": 5
     }
   },
-  "Daemon": {
-    "Daemon": {
-      "Enable": true,
-      "AimClicker": "do_not_click"
+  "QilinNavi": {
+    "Scheduler": {
+      "Enable": false,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "QilinNavi",
+      "ServerUpdate": "04:00"
     }
   },
-  "PlannerScan": {
-    "PlannerScan": {
-      "ResultAdd": false
+  "Yashe": {
+    "Scheduler": {
+      "Enable": false,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "Yashe",
+      "ServerUpdate": "04:00"
     }
   }
 }

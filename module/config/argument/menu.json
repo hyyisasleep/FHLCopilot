@@ -11,29 +11,11 @@
     "menu": "list",
     "page": "setting",
     "tasks": [
-      "Dungeon",
-      "DailyQuest",
-      "BattlePass",
-      "Assignment",
-      "DataUpdate",
-      "Freebies"
-    ]
-  },
-  "Weekly": {
-    "menu": "list",
-    "page": "setting",
-    "tasks": [
-      "Weekly",
-      "Rogue",
-      "Ornament"
-    ]
-  },
-  "Tool": {
-    "menu": "list",
-    "page": "tool",
-    "tasks": [
-      "Daemon",
-      "PlannerScan"
+      "Shop",
+      "TaoYuan",
+      "Cattery",
+      "QilinNavi",
+      "Yashe"
     ]
   }
 }

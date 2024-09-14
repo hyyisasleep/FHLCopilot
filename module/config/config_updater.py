@@ -64,60 +64,60 @@ class ConfigGenerator:
         # Insert packages
         option_add(keys='Emulator.PackageName.option', options=list(VALID_SERVER.keys()))
         # Insert dungeons
-        from tasks.dungeon.keywords import DungeonList
-        calyx_golden = [dungeon.name for dungeon in DungeonList.instances.values() if dungeon.is_Calyx_Golden_Memories] \
-                       + [dungeon.name for dungeon in DungeonList.instances.values() if dungeon.is_Calyx_Golden_Aether] \
-                       + [dungeon.name for dungeon in DungeonList.instances.values() if
-                          dungeon.is_Calyx_Golden_Treasures]
-        # calyx_crimson
-        from tasks.rogue.keywords import KEYWORDS_ROGUE_PATH as Path
-        order = [Path.Destruction, Path.Preservation, Path.The_Hunt, Path.Abundance,
-                 Path.Erudition, Path.The_Harmony, Path.Nihility]
-        calyx_crimson = []
-        for path in order:
-            calyx_crimson += [dungeon.name for dungeon in DungeonList.instances.values()
-                              if dungeon.Calyx_Crimson_Path == path]
-        # stagnant_shadow
-        from tasks.character.keywords import CombatType
-        stagnant_shadow = []
-        for type_ in CombatType.instances.values():
-            stagnant_shadow += [dungeon.name for dungeon in DungeonList.instances.values()
-                                if dungeon.Stagnant_Shadow_Combat_Type == type_]
-        cavern_of_corrosion = [dungeon.name for dungeon in DungeonList.instances.values() if
-                               dungeon.is_Cavern_of_Corrosion]
-        option_add(
-            keys='Dungeon.Name.option',
-            options=calyx_golden + calyx_crimson + stagnant_shadow + cavern_of_corrosion
-        )
-        # Double events
-        option_add(keys='Dungeon.NameAtDoubleCalyx.option', options=calyx_golden + calyx_crimson)
-        option_add(keys='Dungeon.NameAtDoubleRelic.option', options=cavern_of_corrosion)
-        option_add(
-            keys='Weekly.Name.option',
-            options=[dungeon.name for dungeon in DungeonList.instances.values() if dungeon.is_Echo_of_War])
-        # OrnamentExtraction
-        ornament = [dungeon.name for dungeon in DungeonList.instances.values() if dungeon.is_Ornament_Extraction]
-        option_add(keys='Ornament.Dungeon.option', options=ornament)
-        # Insert characters
-        from tasks.character.keywords import CharacterList
-        unsupported_characters = ["Jiaoqiu"]
-        characters = [character.name for character in CharacterList.instances.values()
-                      if character.name not in unsupported_characters]
-        option_add(keys='DungeonSupport.Character.option', options=characters)
-        # Insert assignments
-        from tasks.assignment.keywords import AssignmentEntry
-        assignments = [entry.name for entry in AssignmentEntry.instances.values()]
-        for i in range(4):
-            option_add(keys=f'Assignment.Name_{i + 1}.option', options=assignments)
-        # Insert planner items
-        from tasks.planner.keywords.classes import ItemBase
-        for item in ItemBase.instances.values():
-            base = item.group_base
-            deep_set(raw, keys=['Planner', f'Item_{base.name}'], value={
-                'stored': 'StoredPlanner',
-                'display': 'display',
-                'type': 'planner',
-            })
+        # from tasks.dungeon.keywords import DungeonList
+        # calyx_golden = [dungeon.name for dungeon in DungeonList.instances.values() if dungeon.is_Calyx_Golden_Memories] \
+        #                + [dungeon.name for dungeon in DungeonList.instances.values() if dungeon.is_Calyx_Golden_Aether] \
+        #                + [dungeon.name for dungeon in DungeonList.instances.values() if
+        #                   dungeon.is_Calyx_Golden_Treasures]
+        # # calyx_crimson
+        # from tasks.rogue.keywords import KEYWORDS_ROGUE_PATH as Path
+        # order = [Path.Destruction, Path.Preservation, Path.The_Hunt, Path.Abundance,
+        #          Path.Erudition, Path.The_Harmony, Path.Nihility]
+        # calyx_crimson = []
+        # for path in order:
+        #     calyx_crimson += [dungeon.name for dungeon in DungeonList.instances.values()
+        #                       if dungeon.Calyx_Crimson_Path == path]
+        # # stagnant_shadow
+        # from tasks.character.keywords import CombatType
+        # stagnant_shadow = []
+        # for type_ in CombatType.instances.values():
+        #     stagnant_shadow += [dungeon.name for dungeon in DungeonList.instances.values()
+        #                         if dungeon.Stagnant_Shadow_Combat_Type == type_]
+        # cavern_of_corrosion = [dungeon.name for dungeon in DungeonList.instances.values() if
+        #                        dungeon.is_Cavern_of_Corrosion]
+        # option_add(
+        #     keys='Dungeon.Name.option',
+        #     options=calyx_golden + calyx_crimson + stagnant_shadow + cavern_of_corrosion
+        # )
+        # # Double events
+        # option_add(keys='Dungeon.NameAtDoubleCalyx.option', options=calyx_golden + calyx_crimson)
+        # option_add(keys='Dungeon.NameAtDoubleRelic.option', options=cavern_of_corrosion)
+        # option_add(
+        #     keys='Weekly.Name.option',
+        #     options=[dungeon.name for dungeon in DungeonList.instances.values() if dungeon.is_Echo_of_War])
+        # # OrnamentExtraction
+        # ornament = [dungeon.name for dungeon in DungeonList.instances.values() if dungeon.is_Ornament_Extraction]
+        # option_add(keys='Ornament.Dungeon.option', options=ornament)
+        # # Insert characters
+        # from tasks.character.keywords import CharacterList
+        # unsupported_characters = ["Jiaoqiu"]
+        # characters = [character.name for character in CharacterList.instances.values()
+        #               if character.name not in unsupported_characters]
+        # option_add(keys='DungeonSupport.Character.option', options=characters)
+        # # Insert assignments
+        # from tasks.assignment.keywords import AssignmentEntry
+        # assignments = [entry.name for entry in AssignmentEntry.instances.values()]
+        # for i in range(4):
+        #     option_add(keys=f'Assignment.Name_{i + 1}.option', options=assignments)
+        # # Insert planner items
+        # from tasks.planner.keywords.classes import ItemBase
+        # for item in ItemBase.instances.values():
+        #     base = item.group_base
+        #     deep_set(raw, keys=['Planner', f'Item_{base.name}'], value={
+        #         'stored': 'StoredPlanner',
+        #         'display': 'display',
+        #         'type': 'planner',
+        #     })
 
         # Load
         for path, value in deep_iter(raw, depth=2):
@@ -443,10 +443,10 @@ class ConfigGenerator:
                     deep_set(new, keys=['Ornament', 'Dungeon', dungeon.name], value=f'{value}{suffix}')
 
         # Stagnant shadows with character names
-        for dungeon in DungeonDetailed.instances.values():
-            if dungeon.name in dailies:
-                value = dungeon.__getattribute__(ingame_lang)
-                deep_set(new, keys=['Dungeon', 'Name', dungeon.name], value=value)
+        # for dungeon in DungeonDetailed.instances.values():
+        #     if dungeon.name in dailies:
+        #         value = dungeon.__getattribute__(ingame_lang)
+        #         deep_set(new, keys=['Dungeon', 'Name', dungeon.name], value=value)
 
         # Copy dungeon i18n to double events
         def update_dungeon_names(keys):
@@ -664,8 +664,8 @@ class ConfigGenerator:
         write_file(filepath_args('stored'), self.stored)
         self.generate_code()
         self.generate_stored()
-        for lang in LANGUAGES:
-            self.generate_i18n(lang)
+        # for lang in LANGUAGES:
+        #     self.generate_i18n(lang)
         self.generate_deploy_template()
 
 

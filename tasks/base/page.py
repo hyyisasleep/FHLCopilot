@@ -69,7 +69,7 @@ class Page:
 
 
 # Main page
-page_main = Page(MAIN_GOTO_SHOP)
+page_main = Page(MAIN_GOTO_CHARACTER)
 
 # 商铺
 page_shop = Page(SHOP_CHECK)

@@ -95,9 +95,9 @@ class UI(PopupHandler):
 
             # Unknown page but able to handle
             logger.info("Unknown ui page")
-            # if self.ui_additional():
-            #     timeout.reset()
-            #     continue
+            if self.ui_additional():
+                timeout.reset()
+                continue
             # if self.handle_popup_single():
             #     timeout.reset()
             #     continue
@@ -396,6 +396,8 @@ class UI(PopupHandler):
         if self.handle_taoyuan_blessing():
             return True
         if self.handle_cattery_get_cat():
+            return True
+        if self.handle_promote_pack():
             return True
         # if self.handle_battle_pass_notification():
         #     return True

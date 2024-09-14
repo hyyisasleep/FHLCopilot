@@ -3,24 +3,15 @@ from module.base.button import Button, ButtonWrapper
 # This file was auto-generated, do not modify it manually. To generate:
 # ``` python -m dev_tools.button_extract ```
 
-BAIGONGTU_AMOUNT_LOCKED = ButtonWrapper(
-    name='BAIGONGTU_AMOUNT_LOCKED',
-    share=[
-        Button(
-            file='./assets/share/taoyuanju/BAIGONGTU_AMOUNT_LOCKED.png',
-            area=(853, 415, 898, 460),
-            search=(833, 395, 918, 480),
-            color=(109, 108, 107),
-            button=(853, 415, 898, 460),
-        ),
-        Button(
-            file='./assets/share/taoyuanju/BAIGONGTU_AMOUNT_LOCKED.2.png',
-            area=(586, 521, 762, 572),
-            search=(566, 501, 782, 592),
-            color=(126, 125, 124),
-            button=(586, 521, 762, 572),
-        ),
-    ],
+BAIGONGTU_AMOUNT_MAX = ButtonWrapper(
+    name='BAIGONGTU_AMOUNT_MAX',
+    share=Button(
+        file='./assets/share/taoyuanju/BAIGONGTU_AMOUNT_MAX.png',
+        area=(853, 415, 898, 460),
+        search=(833, 395, 918, 480),
+        color=(109, 108, 107),
+        button=(853, 415, 898, 460),
+    ),
 )
 BAIGONGTU_AMOUNT_MINUS = ButtonWrapper(
     name='BAIGONGTU_AMOUNT_MINUS',
@@ -56,10 +47,10 @@ BAIGONGTU_CONVERT_CLOSE = ButtonWrapper(
     name='BAIGONGTU_CONVERT_CLOSE',
     share=Button(
         file='./assets/share/taoyuanju/BAIGONGTU_CONVERT_CLOSE.png',
-        area=(989, 64, 1062, 137),
-        search=(969, 44, 1082, 157),
-        color=(100, 56, 42),
-        button=(989, 64, 1062, 137),
+        area=(998, 70, 1054, 128),
+        search=(978, 50, 1074, 148),
+        color=(174, 103, 75),
+        button=(998, 70, 1054, 128),
     ),
 )
 BAIGONGTU_CONVERT_CONFIRM = ButtonWrapper(
@@ -70,6 +61,16 @@ BAIGONGTU_CONVERT_CONFIRM = ButtonWrapper(
         search=(577, 503, 767, 590),
         color=(226, 118, 84),
         button=(597, 523, 747, 570),
+    ),
+)
+BAIGONGTU_CONVERT_CONFIRM_LOCKED = ButtonWrapper(
+    name='BAIGONGTU_CONVERT_CONFIRM_LOCKED',
+    share=Button(
+        file='./assets/share/taoyuanju/BAIGONGTU_CONVERT_CONFIRM_LOCKED.png',
+        area=(586, 521, 762, 572),
+        search=(566, 501, 782, 592),
+        color=(126, 125, 124),
+        button=(586, 521, 762, 572),
     ),
 )
 BAIGONGTU_NUM = ButtonWrapper(
@@ -114,13 +115,22 @@ BUILD_FURNITURE_FINISH = ButtonWrapper(
 )
 CHOOSE_AFFAIR_1 = ButtonWrapper(
     name='CHOOSE_AFFAIR_1',
-    share=Button(
-        file='./assets/share/taoyuanju/CHOOSE_AFFAIR_1.png',
-        area=(735, 423, 785, 472),
-        search=(715, 403, 805, 492),
-        color=(249, 215, 150),
-        button=(735, 423, 785, 472),
-    ),
+    share=[
+        Button(
+            file='./assets/share/taoyuanju/CHOOSE_AFFAIR_1.png',
+            area=(735, 423, 785, 472),
+            search=(715, 403, 805, 492),
+            color=(249, 215, 150),
+            button=(735, 423, 785, 472),
+        ),
+        Button(
+            file='./assets/share/taoyuanju/CHOOSE_AFFAIR_1.2.png',
+            area=(732, 444, 847, 474),
+            search=(712, 424, 867, 494),
+            color=(247, 211, 144),
+            button=(732, 444, 847, 474),
+        ),
+    ],
 )
 CHOOSE_AFFAIR_2 = ButtonWrapper(
     name='CHOOSE_AFFAIR_2',

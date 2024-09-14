@@ -9,11 +9,16 @@ class ManualConfig:
         return server.lang
 
     SCHEDULER_PRIORITY = """
-    Restart
-    > WeeklyShop > OneClickSweep
-    > DailyShop > TaoYuan > Cattery > QilinNavi > YaShe > BattlePass > DailyQuest
-    > Dungeon > DataUpdate
+    Restart > DailyShop > TaoYuan > Cattery
     """
+
+
+    # """
+    # Restart
+    # > WeeklyShop > OneClickSweep
+    # > DailyShop > TaoYuan > Cattery > QilinNavi > YaShe > BattlePass > DailyQuest
+    # > Dungeon > DataUpdate
+    # """
 
     # """
     # Restart

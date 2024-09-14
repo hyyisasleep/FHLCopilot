@@ -28,6 +28,7 @@ class Taoyuanju(UI):
         # self.ui_ensure(page_cattery)
         # 主页去桃源居，有祝福就领\
         # self.ui_ensure(page_taoyuan)
+        self.device.screenshot()
         self.ui_goto(page_taoyuan)
         # 领午晚饭体力
         self._get_lunch_and_dinner()
@@ -98,10 +99,10 @@ class Taoyuanju(UI):
 
         self.ui_goto(page_taoyuan)
 
-    def _deal_with_affairs(self):
+    def _deal_with_affairs(self,interval=2):
 
         logger.info('Going to deal with taoyuan affair')
-        timeout = Timer(5).start()
+        timeout = Timer(10).start()
         skip_first_screenshot = True
         self.ui_goto(page_taoyuan_affair)
 
@@ -120,41 +121,38 @@ class Taoyuanju(UI):
             # ocr_affair = Digit(DEAL_WITH_AFFAIR_START)
             # num = ocr_affair.ocr_single_line(self.device.image)
             # 显示事务0，不用做
-            if self.appear(DEAL_WITH_AFFAIR_FINISH):
+            if self.appear(DEAL_WITH_AFFAIR_FINISH,interval):
                 if start_deal:
                     logger.info("Finish deal with affair")
                     break
                 else:
                     logger.info("No need deal with affair")
                     break
-            if not start_deal and self.appear_then_click(DEAL_WITH_AFFAIR_START):
+            if not start_deal and self.appear_then_click(DEAL_WITH_AFFAIR_START,interval):
                 logger.info("Start deal with affair")
                 start_deal = True
                 continue
             # 1已经选过了就点2
-            if self.appear_then_click(CHOOSE_AFFAIR_1):
+            if self.appear_then_click(CHOOSE_AFFAIR_1,interval):
                 # start_deal = True
                 affair_cnt += 1
                 logger.info(f"Finish {affair_cnt} affair")
                 timeout.reset()
                 continue
-            if self.appear_then_click(CHOOSE_AFFAIR_2):
+            if self.appear_then_click(CHOOSE_AFFAIR_2,interval):
                 affair_cnt += 1
                 logger.info(f"Finish {affair_cnt} affair with choice 2")
                 timeout.reset()
                 continue
             # 只写handle_reward每次点完事务都要点一次领奖？怪了
-            if self.appear(GET_REWARD):
+            if self.appear(GET_REWARD,interval):
                 self.handle_reward()
                 continue
 
 
         self.ui_goto(page_taoyuan)
 
-
-
-
-        pass
+        self.config.task_delay(server_update=True)
 
     def _visit_other(self):
         pass
@@ -235,36 +233,41 @@ class Taoyuanju(UI):
             # self._item_amount_set(10, BAIGONGTU_AMOUNT_OCR, BAIGONGTU_AMOUNT_MINUS, BAIGONGTU_AMOUNT_PLUS)
 
             # 点确定转换
-            timeout = Timer(1).start()
-            has_convert = False
+            timeout = Timer(5).start()
+            # has_convert = False
             skip_first_screenshot = False
+            # need_close = False
             finish = False
+            amount = 0
             while 1:
                 if skip_first_screenshot:
                     skip_first_screenshot = False
                 else:
                     self.device.screenshot()
-                if finish:
-                    break
-                if self.appear(BAIGONGTU_AMOUNT_LOCKED):
-                    self.appear_then_click(BAIGONGTU_CONVERT_CLOSE)
-                    finish = True
-                    continue
                 if timeout.reached():
                     logger.info("Get confirm to convert bgt timeout")
                     break
-
-                if self.appear_then_click(BAIGONGTU_AMOUNT_PLUS,interval=0.3):
+                if finish:
+                    logger.info("Convert finish")
+                    break
+                if self.appear(BAIGONGTU_CONVERT_CONFIRM_LOCKED):
+                    finish = self.appear_then_click(BAIGONGTU_CONVERT_CLOSE)
+                    logger.info(finish)
+                    continue
+                if self.appear(BAIGONGTU_AMOUNT_MAX):
+                    self.appear_then_click(BAIGONGTU_CONVERT_CONFIRM)
+                    logger.info(f"Convert {amount} item")
+                    continue
+                if self.appear_then_click(BAIGONGTU_AMOUNT_PLUS,interval=0.5):
                     logger.info("add a item")
+                    amount += 1
                     timeout.reset()
                     continue
 
-                if self.appear_then_click(BAIGONGTU_CONVERT_CONFIRM):
-                    continue
                 if self.handle_reward():
-                    logger.info("Convert baigontu finished")
+                    # logger.info("Convert baigontu finished")
                     timeout.reset()
-                    has_convert = True
+                    # has_convert = True
                     continue
 
 
@@ -325,7 +328,9 @@ class Taoyuanju(UI):
 ui = Taoyuanju('src')
 ui.device.screenshot()
 ui.run()
-#ui._convert_kaogong()
+# ui._convert_kaogong()
+# ui.image_file = r'C:\Users\huixi\Documents\MuMu共享文件夹\Screenshots\MuMu12-20240909-184813.png'
+# print(ui.appear(BAIGONGTU_CONVERT_CLOSE))
 # 测桃源居这仨字在不同背景下能不能被检测到，目前用了三张全检测到了
 # 王阳明那个洞天没图，等遇到bug再说吧
 # path = r'D:\myProject\FHLCopilot\testPicFolder'

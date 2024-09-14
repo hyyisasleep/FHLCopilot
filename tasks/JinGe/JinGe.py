@@ -1,4 +1,4 @@
-from pygments.formatters.terminal256 import TerminalTrueColorFormatter
+
 
 from module.base.timer import Timer
 from module.logger import logger
@@ -141,7 +141,8 @@ class JinGe(UI):
 
 if __name__ == '__main__':
     ui = JinGe('src')
-    # ui.device.screenshot()
+    ui.device.screenshot()
+    #print(ui.is_in_main())
     ui.run()
     # ui.image_file = r"C:\Users\huixi\Documents\MuMu共享文件夹\Screenshots\MuMu12-20240908-190406.png"
     # print(ui.pvp_ocr())

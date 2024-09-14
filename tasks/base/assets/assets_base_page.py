@@ -148,6 +148,16 @@ JINGEGUAN_GOTO_JINGEYANWU = ButtonWrapper(
         button=(425, 138, 463, 284),
     ),
 )
+JINGEGUAN_GOTO_SHAPANLUNYI = ButtonWrapper(
+    name='JINGEGUAN_GOTO_SHAPANLUNYI',
+    share=Button(
+        file='./assets/share/base/page/JINGEGUAN_GOTO_SHAPANLUNYI.png',
+        area=(1190, 134, 1225, 281),
+        search=(1170, 114, 1245, 301),
+        color=(240, 188, 122),
+        button=(1190, 134, 1225, 281),
+    ),
+)
 JINGEYANWU_CHECK = ButtonWrapper(
     name='JINGEYANWU_CHECK',
     share=Button(
@@ -276,6 +286,16 @@ MIJING_CHECK = ButtonWrapper(
         search=(79, 0, 179, 67),
         color=(178, 100, 75),
         button=(99, 17, 159, 47),
+    ),
+)
+SHAPANLUNYI_CHECK = ButtonWrapper(
+    name='SHAPANLUNYI_CHECK',
+    share=Button(
+        file='./assets/share/base/page/SHAPANLUNYI_CHECK.png',
+        area=(74, 18, 182, 45),
+        search=(54, 0, 202, 65),
+        color=(140, 100, 73),
+        button=(74, 18, 182, 45),
     ),
 )
 SHOP_CHECK = ButtonWrapper(

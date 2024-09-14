@@ -153,3 +153,99 @@ PVP_WIN_CHECK = ButtonWrapper(
         button=(504, 62, 774, 131),
     ),
 )
+SHAPAN_COMBAT_CHECK = ButtonWrapper(
+    name='SHAPAN_COMBAT_CHECK',
+    share=Button(
+        file='./assets/share/JinGe/SHAPAN_COMBAT_CHECK.png',
+        area=(1178, 484, 1245, 504),
+        search=(1158, 464, 1265, 524),
+        color=(179, 128, 117),
+        button=(1178, 484, 1245, 504),
+    ),
+)
+SHAPAN_COMBAT_PREPARE = ButtonWrapper(
+    name='SHAPAN_COMBAT_PREPARE',
+    share=Button(
+        file='./assets/share/JinGe/SHAPAN_COMBAT_PREPARE.png',
+        area=(1166, 427, 1256, 504),
+        search=(1146, 407, 1276, 524),
+        color=(196, 135, 109),
+        button=(1166, 427, 1256, 504),
+    ),
+)
+SHAPAN_COMBAT_START = ButtonWrapper(
+    name='SHAPAN_COMBAT_START',
+    share=Button(
+        file='./assets/share/JinGe/SHAPAN_COMBAT_START.png',
+        area=(1129, 597, 1253, 680),
+        search=(1109, 577, 1273, 700),
+        color=(203, 138, 105),
+        button=(1129, 597, 1253, 680),
+    ),
+)
+SHAPAN_FLAG_OCR = ButtonWrapper(
+    name='SHAPAN_FLAG_OCR',
+    share=Button(
+        file='./assets/share/JinGe/SHAPAN_FLAG_OCR.png',
+        area=(863, 18, 952, 44),
+        search=(843, 0, 972, 64),
+        color=(78, 59, 49),
+        button=(863, 18, 952, 44),
+    ),
+)
+SHAPAN_GET_REWARD_CONFIRM = ButtonWrapper(
+    name='SHAPAN_GET_REWARD_CONFIRM',
+    share=Button(
+        file='./assets/share/JinGe/SHAPAN_GET_REWARD_CONFIRM.png',
+        area=(569, 447, 709, 496),
+        search=(549, 427, 729, 516),
+        color=(226, 118, 83),
+        button=(569, 447, 709, 496),
+    ),
+)
+SHAPAN_REFRESH = ButtonWrapper(
+    name='SHAPAN_REFRESH',
+    share=Button(
+        file='./assets/share/JinGe/SHAPAN_REFRESH.png',
+        area=(1163, 603, 1255, 699),
+        search=(1143, 583, 1275, 719),
+        color=(150, 111, 74),
+        button=(1163, 603, 1255, 699),
+    ),
+)
+SHAPAN_REFRESH_CONFIRM = ButtonWrapper(
+    name='SHAPAN_REFRESH_CONFIRM',
+    share=Button(
+        file='./assets/share/JinGe/SHAPAN_REFRESH_CONFIRM.png',
+        area=(711, 446, 847, 496),
+        search=(691, 426, 867, 516),
+        color=(225, 118, 83),
+        button=(711, 446, 847, 496),
+    ),
+)
+SHAPAN_REWARD_LOCK = ButtonWrapper(
+    name='SHAPAN_REWARD_LOCK',
+    share=[
+        Button(
+            file='./assets/share/JinGe/SHAPAN_REWARD_LOCK.png',
+            area=(625, 606, 695, 649),
+            search=(605, 586, 715, 669),
+            color=(150, 178, 143),
+            button=(625, 606, 695, 649),
+        ),
+        Button(
+            file='./assets/share/JinGe/SHAPAN_REWARD_LOCK.2.png',
+            area=(526, 594, 584, 651),
+            search=(506, 574, 604, 671),
+            color=(137, 144, 131),
+            button=(526, 594, 584, 651),
+        ),
+        Button(
+            file='./assets/share/JinGe/SHAPAN_REWARD_LOCK.3.png',
+            area=(423, 594, 484, 651),
+            search=(403, 574, 504, 671),
+            color=(136, 143, 130),
+            button=(423, 594, 484, 651),
+        ),
+    ],
+)

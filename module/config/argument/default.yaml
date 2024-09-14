@@ -6,25 +6,25 @@
 
 
 # ==================== Daily ====================
-
-Dungeon:
-  Scheduler:
-    Enable: true
-DailyQuest:
-  Scheduler:
-    Enable: true
-BattlePass:
-  Scheduler:
-    Enable: true
-Assignment:
-  Scheduler:
-    Enable: true
-Freebies:
-  Scheduler:
-    Enable: true
+#
+#Dungeon:
+#  Scheduler:
+#    Enable: true
+#DailyQuest:
+#  Scheduler:
+#    Enable: true
+#BattlePass:
+#  Scheduler:
+#    Enable: true
+#Assignment:
+#  Scheduler:
+#    Enable: true
+#Freebies:
+#  Scheduler:
+#    Enable: true
 
 # ==================== Weekly ====================
 
-Weekly:
-  DungeonSupport:
-    Use: do_not_use
+#Weekly:
+#  DungeonSupport:
+#    Use: do_not_use

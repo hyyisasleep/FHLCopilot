@@ -23,6 +23,16 @@ CATTERY_GET_CAT_QUIT = ButtonWrapper(
         button=(250, 627, 585, 705),
     ),
 )
+CLOSE_PROMOTE_PACK = ButtonWrapper(
+    name='CLOSE_PROMOTE_PACK',
+    share=Button(
+        file='./assets/share/base/popup/CLOSE_PROMOTE_PACK.png',
+        area=(1082, 93, 1137, 143),
+        search=(1062, 73, 1157, 163),
+        color=(149, 114, 72),
+        button=(1082, 93, 1137, 143),
+    ),
+)
 GET_REWARD = ButtonWrapper(
     name='GET_REWARD',
     share=Button(
