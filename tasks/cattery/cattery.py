@@ -1,6 +1,6 @@
 from module.base.timer import Timer
 from module.logger import logger
-from tasks.base.assets.assets_base_page import CATTERY_CHECK, MAIN_GOTO_CATTERY
+# from tasks.base.assets.assets_base_page import CATTERY_CHECK, MAIN_GOTO_CATTERY
 from tasks.base.page import page_cattery
 from tasks.base.ui import UI
 from tasks.cattery.assets.assets_cattery import (
@@ -89,9 +89,9 @@ class Cattery(UI):
             if timeout.reached():
                 logger.warning('Get feed cat timeout')
                 break
-            if not has_feed and empty.reached():
-                logger.info('No need feed cat.')
-                break
+            # if not has_feed and empty.reached():
+            #     logger.info('No need feed cat.')
+            #     break
             if self.handle_reward():
                 logger.info('Get feed cat reward')
                 has_feed = True

@@ -51,6 +51,8 @@ class DailyShop(UI):
             if self.appear_then_click(MENU_GOTO_MONTHLY_CARD):
                 return True
         elif mode == 'leisure-friendship':
+
+            # TODO: 加检测已领取 有时候在奖励界面点68月卡，算进奖励然后就返回了
             if self.handle_choose_gift_num():
                 return True
             if self.appear(MENU_LEISURE_FRIENDSHIP_CHECK):
