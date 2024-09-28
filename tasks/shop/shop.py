@@ -29,6 +29,7 @@ class DailyShop(UI):
         self.buy_gift(mode='leisure-cattery')
 
         self.ui_goto_main()
+        self.config.task_delay(server_update=True)
 
     def handle_gift_mode(self, mode, interval=5):
         if mode == 'sign-in':
@@ -41,13 +42,13 @@ class DailyShop(UI):
             if self.appear_then_click(MENU_GOTO_GIFT):
                 return True
         elif mode == 'monthly-card':
-            if self.appear(MENU_MONTHLY_CARD_CHECK):
-                if self.appear_then_click(MONTHLY_CARD_30_UNLOCK):
-                    logger.info("Get 30 monthly card")
-                    return True
-                if self.appear_then_click(MONTHLY_CARD_68_UNLOCK):
-                    logger.info("Get 68 monthly card")
-                    return True
+            # if self.appear(MENU_MONTHLY_CARD_CHECK):
+            if self.appear_then_click(MONTHLY_CARD_30_UNLOCK):
+                logger.info("Get 30 monthly card")
+                return True
+            if self.appear_then_click(MONTHLY_CARD_68_UNLOCK):
+                logger.info("Get 68 monthly card")
+                return True
             if self.appear_then_click(MENU_GOTO_MONTHLY_CARD):
                 return True
         elif mode == 'leisure-friendship':
@@ -83,8 +84,9 @@ class DailyShop(UI):
         if self.appear_then_click(BUY_GIFT_MAX_UNLOCK):
             return True
         return False
+
     def buy_gift(self, mode, interval=2, skip_first_screenshot=True):
-        timeout = Timer(4).start()
+        timeout = Timer(5).start()
         while 1:
             if skip_first_screenshot:
                 skip_first_screenshot = False
@@ -100,7 +102,7 @@ class DailyShop(UI):
                 timeout.reset()
                 continue
 
-    def get_friendship_point(self,skip_first_screenshot=True):
+    def get_friendship_point(self, skip_first_screenshot=True):
         timeout = Timer(4).start()
         finish = False
         while 1:

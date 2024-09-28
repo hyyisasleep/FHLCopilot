@@ -1,14 +1,7 @@
-import os
 from datetime import datetime
-from operator import truediv, itemgetter
-
-from sympy.codegen.ast import ContinueToken
-
 from module.base.timer import Timer
-
 from module.logger import logger
 from module.ocr.ocr import Digit
-from tasks.base.assets.assets_base_page import TAOYUAN_CHECK, TAOYUAN_GOTO_GAME
 from tasks.base.assets.assets_base_popup import GET_REWARD
 
 from tasks.base.page import page_taoyuan, page_taoyuan_meal, page_taoyuan_furniture, page_taoyuan_affair, \
@@ -48,8 +41,19 @@ class Taoyuanju(UI):
 
         self.config.task_delay(server_update=True)
 
-    def handle_get_power_back(self, state='lunch'):
-        pass
+    def handle_get_power_back(self, state='lunch', need_get_back=True):
+        #
+        if state == 'lunch' and self.appear(LUNCH_GETBACK):
+            logger.info("Still have unclaimed lunch stamina")
+            if need_get_back and self.device.click(LUNCH_GETBACK):
+                logger.info("Use tongbao to exchange lunch stamina")
+            return True
+        if state == 'dinner' and self.appear(DINNER_GETBACK):
+            logger.info("Still have unclaimed lunch stamina")
+            if need_get_back and self.device.click(DINNER_GETBACK):
+                logger.info("Use tongbao to exchange lunch stamina")
+            return True
+        return False
 
     def _get_lunch_and_dinner(self):
 
@@ -57,7 +61,7 @@ class Taoyuanju(UI):
         skip_first_screenshot = True
         get_lunch = False
         get_dinner = False
-        check = False
+        # check = False
         timeout = Timer(5).start()
 
         while 1:
@@ -65,6 +69,11 @@ class Taoyuanju(UI):
                 skip_first_screenshot = False
             else:
                 self.device.screenshot()
+
+            if timeout.reached():
+                logger.info('Get meal timeout')
+                break
+
             current_time = datetime.now()
             current_hour = current_time.hour
 
@@ -74,7 +83,7 @@ class Taoyuanju(UI):
                         logger.info('Get lunch power')
                     else:
                         logger.info("No need get lunch")
-                    check = True
+                    # check = True
                     break
                 if self.appear_then_click(LUNCH_UNLOCK, interval=5):
                     get_lunch = True
@@ -83,30 +92,37 @@ class Taoyuanju(UI):
             elif 17 <= current_hour < 22:
                 # TODO: 用偏移量？省的同一张图截两遍
                 self.handle_get_power_back('lunch')
-                break
-                pass
+
+                if self.appear(DINNER_FINISH):
+                    if get_dinner:
+                        logger.info('Get dinner power')
+                    else:
+                        logger.info("No need dinner lunch")
+                    # check = True
+                    break
+                if self.appear_then_click(DINNER_UNLOCK, interval=5):
+                    get_dinner = True
+                    timeout.reset()
+                    continue
+                continue
             elif 22 <= current_hour < 24:
                 self.handle_get_power_back('lunch')
                 self.handle_get_power_back('dinner')
-                break
+                continue
             else:
                 logger.info(f"Now time is {current_hour} h,no need get power")
                 break
 
-            if timeout.reached():
-                logger.info('Get meal timeout')
-                break
-
         self.ui_goto(page_taoyuan)
 
-    def _deal_with_affairs(self,interval=2):
+    def _deal_with_affairs(self, interval=2):
 
         logger.info('Going to deal with taoyuan affair')
         timeout = Timer(10).start()
         skip_first_screenshot = True
         self.ui_goto(page_taoyuan_affair)
 
-        #has_build = False
+        # has_build = False
         start_deal = False
         affair_cnt = 0
         # ocr_affair =
@@ -121,34 +137,33 @@ class Taoyuanju(UI):
             # ocr_affair = Digit(DEAL_WITH_AFFAIR_START)
             # num = ocr_affair.ocr_single_line(self.device.image)
             # 显示事务0，不用做
-            if self.appear(DEAL_WITH_AFFAIR_FINISH,interval):
+            if self.appear(DEAL_WITH_AFFAIR_FINISH, interval):
                 if start_deal:
                     logger.info("Finish deal with affair")
                     break
                 else:
                     logger.info("No need deal with affair")
                     break
-            if not start_deal and self.appear_then_click(DEAL_WITH_AFFAIR_START,interval):
+            if not start_deal and self.appear_then_click(DEAL_WITH_AFFAIR_START, interval):
                 logger.info("Start deal with affair")
                 start_deal = True
                 continue
             # 1已经选过了就点2
-            if self.appear_then_click(CHOOSE_AFFAIR_1,interval):
+            if self.appear_then_click(CHOOSE_AFFAIR_1, interval):
                 # start_deal = True
                 affair_cnt += 1
                 logger.info(f"Finish {affair_cnt} affair")
                 timeout.reset()
                 continue
-            if self.appear_then_click(CHOOSE_AFFAIR_2,interval):
+            if self.appear_then_click(CHOOSE_AFFAIR_2, interval):
                 affair_cnt += 1
                 logger.info(f"Finish {affair_cnt} affair with choice 2")
                 timeout.reset()
                 continue
             # 只写handle_reward每次点完事务都要点一次领奖？怪了
-            if self.appear(GET_REWARD,interval):
+            if self.appear(GET_REWARD, interval):
                 self.handle_reward()
                 continue
-
 
         self.ui_goto(page_taoyuan)
 
@@ -181,10 +196,9 @@ class Taoyuanju(UI):
                 logger.info("Get build furniture timeout")
                 break
 
-            #ocr看百工图数量
-            bgt_ocr = Digit(BAIGONGTU_NUM,lang=self.config.LANG)
+            # ocr看百工图数量
+            bgt_ocr = Digit(BAIGONGTU_NUM, lang=self.config.LANG)
             num = bgt_ocr.ocr_single_line(self.device.image)
-
 
             if not has_build and num < 30:
                 logger.info("baigongtu is not enough, cancel build furniture")
@@ -198,7 +212,7 @@ class Taoyuanju(UI):
 
         self.ui_goto(page_taoyuan)
 
-    def _goto_taoyuan_game_if_full(self)->bool:
+    def _goto_taoyuan_game_if_full(self) -> bool:
         skip_first_screenshot = False
         timeout = Timer(1).start()
         full = True
@@ -258,7 +272,7 @@ class Taoyuanju(UI):
                     self.appear_then_click(BAIGONGTU_CONVERT_CONFIRM)
                     logger.info(f"Convert {amount} item")
                     continue
-                if self.appear_then_click(BAIGONGTU_AMOUNT_PLUS,interval=0.5):
+                if self.appear_then_click(BAIGONGTU_AMOUNT_PLUS, interval=0.5):
                     logger.info("add a item")
                     amount += 1
                     timeout.reset()
@@ -270,10 +284,8 @@ class Taoyuanju(UI):
                     # has_convert = True
                     continue
 
-
-
-
             self.ui_goto(page_taoyuan)
+
     # 抄自 stamina
     def _item_amount_set(
             self,
@@ -293,7 +305,7 @@ class Taoyuanju(UI):
             else:
                 self.device.screenshot()
 
-            current = ocr.ocr_single_line(cv.cvtColor(self.device.image,cv.COLOR_BGR2GRAY))
+            current = ocr.ocr_single_line(cv.cvtColor(self.device.image, cv.COLOR_BGR2GRAY))
             if not current:
                 continue
             # End
@@ -314,7 +326,6 @@ class Taoyuanju(UI):
                 else:
                     logger.error(f'Invalid world diff: {diff}')
 
-
     def _get_affairs_impression_reward(self):
         """
         领10通宝，之后再写吧
@@ -324,10 +335,16 @@ class Taoyuanju(UI):
         pass
 
 
-
 ui = Taoyuanju('src')
 ui.device.screenshot()
 ui.run()
+# path = r"C:\Users\huixi\Desktop\MuMu12-20240831-193937.png"
+# ui.image_file = r"C:\Users\huixi\Documents\MuMu共享文件夹\Screenshots\午晚饭素材\MuMu12-20240831-193937.png"
+# # import cv2
+# # _ = LUNCH_FINISH.match_template(cv2.imread(os.fspath(path)),similarity=0.9)
+# # print(LUNCH_FINISH.button_offset)
+# print(ui.appear(LUNCH_FINISH,similarity=0.6))
+
 # ui._convert_kaogong()
 # ui.image_file = r'C:\Users\huixi\Documents\MuMu共享文件夹\Screenshots\MuMu12-20240909-184813.png'
 # print(ui.appear(BAIGONGTU_CONVERT_CLOSE))
@@ -341,7 +358,3 @@ ui.run()
 # ui.image_file = r"C:\Users\huixi\Documents\MuMu共享文件夹\Screenshots\MuMu12-20240907-192155.png"
 #
 # print(ui.appear(GAME_BAIGONGTU_FULL_CHECK,similarity=0.6))
-
-
-
-

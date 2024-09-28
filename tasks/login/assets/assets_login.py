@@ -33,6 +33,16 @@ DAILY_SIGN_IN = ButtonWrapper(
         button=(1155, 577, 1225, 648),
     ),
 )
+DIVINE_CHECK = ButtonWrapper(
+    name='DIVINE_CHECK',
+    share=Button(
+        file='./assets/share/login/DIVINE_CHECK.png',
+        area=(737, 282, 818, 316),
+        search=(717, 262, 838, 336),
+        color=(240, 218, 193),
+        button=(737, 282, 818, 316),
+    ),
+)
 LOGIN_CONFIRM = ButtonWrapper(
     name='LOGIN_CONFIRM',
     share=Button(

@@ -24,9 +24,9 @@ class PreservedAssets:
         assets |= get_assets_from_file(
             file='./tasks/base/assets/assets_base_popup.py',
         )
-        assets |= get_assets_from_file(
-            file='./tasks/base/assets/assets_base_main_page.py',
-        )
+        # assets |= get_assets_from_file(
+        #     file='./tasks/base/assets/assets_base_main_page.py',
+        # )
         return assets
 
 

@@ -18,10 +18,10 @@ class Cattery(UI):
         Run get support reward task
         """
         logger.hr('Cattery\'s affair', level=1)
-        # self.ui_ensure(page_cattery)
+        self.ui_ensure(page_cattery)
 
 
-        self.ui_goto(page_cattery)
+        # self.ui_goto(page_cattery)
 
         self._feed_cats()
         self._play_with_cats()

@@ -24,6 +24,8 @@ class JinGe(UI):
 
         # self.ui_ensure(page_jingeyanwu)
         #
+        from datetime import datetime
+
         while 1:
             # self.device.screenshot()
             #
@@ -33,6 +35,10 @@ class JinGe(UI):
             talisman_num, soul_num = self.pvp_ocr()
             if talisman_num == 0:
                 logger.info("No need pvp")
+                break
+            current_time = datetime.now().hour
+            # current_hour = current_time.hour
+            if current_time > 21:
                 break
             logger.hr("Start one pvp game", level=2)
             self._run_pvp(soul_num == 500)
@@ -118,11 +124,14 @@ class JinGe(UI):
             if finish_pvp:
                 logger.info("One combat finish")
                 break
+
             if self.handle_reward(interval):
                 logger.info("Get pvp reward")
                 finish_pvp = True
                 continue
-
+                # 每周有段位结算
+            if self.appear_then_click(PVP_SKIP_LAST_WEEK_LEVEL):
+                continue
             if self.handle_pvp_combat(interval):
                 timeout.reset()
                 continue

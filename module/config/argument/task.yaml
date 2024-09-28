@@ -24,9 +24,9 @@ Daily:
   tasks:
     Shop:
       - Scheduler
-      - Shop
+      - DailyShop
       # - SupportReward # (Freebies?
-    TaoYuan:
+    Taoyuanju:
       - Scheduler
       - Taoyuanju
       # - # todo:

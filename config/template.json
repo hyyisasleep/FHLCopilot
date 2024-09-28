@@ -40,19 +40,13 @@
       "NextRun": "2020-01-01 00:00:00",
       "Command": "Shop",
       "ServerUpdate": "04:00"
-    },
-    "Shop": {
-      "SignInGift": 1,
-      "MonthlyCard30": 0,
-      "MonthlyCard68": 0,
-      "CopperBuyCommonCatPuppet": 1
     }
   },
-  "TaoYuan": {
+  "Taoyuanju": {
     "Scheduler": {
       "Enable": false,
       "NextRun": "2020-01-01 00:00:00",
-      "Command": "TaoYuan",
+      "Command": "Taoyuanju",
       "ServerUpdate": "04:00"
     }
   },
@@ -62,22 +56,9 @@
       "NextRun": "2020-01-01 00:00:00",
       "Command": "Cattery",
       "ServerUpdate": "04:00"
-    }
-  },
-  "QilinNavi": {
-    "Scheduler": {
-      "Enable": false,
-      "NextRun": "2020-01-01 00:00:00",
-      "Command": "QilinNavi",
-      "ServerUpdate": "04:00"
-    }
-  },
-  "Yashe": {
-    "Scheduler": {
-      "Enable": false,
-      "NextRun": "2020-01-01 00:00:00",
-      "Command": "Yashe",
-      "ServerUpdate": "04:00"
+    },
+    "Cattery": {
+      "AutoHideAndSeek": 1
     }
   }
 }

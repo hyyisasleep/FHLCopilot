@@ -26,10 +26,16 @@ class FHLCopilot(AzurLaneAutoScript):
             Login(self.config, device=self.device).app_start()
             UI(self.config, device=self.device).ui_goto_main()
 
+    def cattery(self):
+        from tasks.cattery.cattery import Cattery
+        Cattery(config=self.config, device=self.device).run()
+
     def shop(self):
         from tasks.shop.shop import DailyShop
         DailyShop(config=self.config, device=self.device).run()
-
+    def taoyuanju(self):
+        from tasks.taoyuanju.taoyuanju import Taoyuanju
+        Taoyuanju(config=self.config, device=self.device).run()
     #
     # def dungeon(self):
     #     from tasks.dungeon.dungeon import Dungeon

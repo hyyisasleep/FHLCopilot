@@ -63,6 +63,16 @@ PVP_MATCHING_CHECK = ButtonWrapper(
         button=(554, 624, 729, 681),
     ),
 )
+PVP_SKIP_LAST_WEEK_LEVEL = ButtonWrapper(
+    name='PVP_SKIP_LAST_WEEK_LEVEL',
+    share=Button(
+        file='./assets/share/JinGe/PVP_SKIP_LAST_WEEK_LEVEL.png',
+        area=(570, 651, 711, 700),
+        search=(550, 631, 731, 720),
+        color=(235, 175, 108),
+        button=(570, 651, 711, 700),
+    ),
+)
 PVP_SOUL_OCR = ButtonWrapper(
     name='PVP_SOUL_OCR',
     share=Button(
@@ -221,6 +231,16 @@ SHAPAN_REFRESH_CONFIRM = ButtonWrapper(
         search=(691, 426, 867, 516),
         color=(225, 118, 83),
         button=(711, 446, 847, 496),
+    ),
+)
+SHAPAN_REWARD_CHECK = ButtonWrapper(
+    name='SHAPAN_REWARD_CHECK',
+    share=Button(
+        file='./assets/share/JinGe/SHAPAN_REWARD_CHECK.png',
+        area=(620, 586, 705, 671),
+        search=(600, 566, 725, 691),
+        color=(168, 148, 108),
+        button=(620, 586, 705, 671),
     ),
 )
 SHAPAN_REWARD_LOCK = ButtonWrapper(

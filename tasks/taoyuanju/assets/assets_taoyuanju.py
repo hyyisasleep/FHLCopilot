@@ -192,6 +192,36 @@ DEAL_WITH_AFFAIR_START_4 = ButtonWrapper(
         button=(348, 338, 375, 372),
     ),
 )
+DINNER_FINISH = ButtonWrapper(
+    name='DINNER_FINISH',
+    share=Button(
+        file='./assets/share/taoyuanju/DINNER_FINISH.png',
+        area=(827, 596, 920, 620),
+        search=(807, 576, 940, 640),
+        color=(179, 127, 112),
+        button=(827, 596, 920, 620),
+    ),
+)
+DINNER_GETBACK = ButtonWrapper(
+    name='DINNER_GETBACK',
+    share=Button(
+        file='./assets/share/taoyuanju/DINNER_GETBACK.png',
+        area=(773, 597, 870, 623),
+        search=(753, 577, 890, 643),
+        color=(185, 134, 114),
+        button=(773, 597, 870, 623),
+    ),
+)
+DINNER_UNLOCK = ButtonWrapper(
+    name='DINNER_UNLOCK',
+    share=Button(
+        file='./assets/share/taoyuanju/DINNER_UNLOCK.png',
+        area=(826, 597, 920, 619),
+        search=(806, 577, 940, 639),
+        color=(180, 128, 114),
+        button=(811, 436, 961, 551),
+    ),
+)
 GAME_BAIGONGTU_FULL_CHECK = ButtonWrapper(
     name='GAME_BAIGONGTU_FULL_CHECK',
     share=Button(
@@ -230,6 +260,16 @@ LUNCH_FINISH = ButtonWrapper(
         search=(345, 576, 480, 641),
         color=(135, 124, 119),
         button=(365, 596, 460, 621),
+    ),
+)
+LUNCH_FINISH_OFFSET = ButtonWrapper(
+    name='LUNCH_FINISH_OFFSET',
+    share=Button(
+        file='./assets/share/taoyuanju/LUNCH_FINISH_OFFSET.png',
+        area=(366, 596, 827, 620),
+        search=(346, 576, 847, 640),
+        color=(183, 112, 85),
+        button=(366, 596, 827, 620),
     ),
 )
 LUNCH_GETBACK = ButtonWrapper(

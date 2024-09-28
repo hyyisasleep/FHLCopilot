@@ -5,7 +5,7 @@ from tasks.base.assets.assets_base_page import CLOSE_LOGIN_ADVERTISEMENT, BACK, 
 from tasks.base.page import page_main
 from tasks.base.ui import UI
 from tasks.login.assets.assets_login import LOGIN_CONFIRM, LOGIN_LOADING, DAILY_SIGN_IN, \
-    ACTIVITY_SIGN_IN_GIFT, ACTIVITY_SIGN_IN_GIFT_LOCKED  # , USER_AGREEMENT_ACCEPT
+    ACTIVITY_SIGN_IN_GIFT, ACTIVITY_SIGN_IN_GIFT_LOCKED, DIVINE_CHECK  # , USER_AGREEMENT_ACCEPT
 
 
 # from tasks.login.cloud import LoginAndroidCloud
@@ -42,7 +42,9 @@ class Login(UI):  # , LoginAndroidCloud):
             #     logger.info("Get 5-day sign in reward")
             # 占卜吧
             return True
-        if self.appear_then_click(BACK, interval=2):
+
+        if self.appear(DIVINE_CHECK):
+            self.appear_then_click(BACK, interval=2)
             logger.info("Sign in finish")
 
             return True

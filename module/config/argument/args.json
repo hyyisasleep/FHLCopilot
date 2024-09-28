@@ -191,27 +191,9 @@
         "value": "04:00",
         "display": "hide"
       }
-    },
-    "Shop": {
-      "SignInGift": {
-        "type": "checkbox",
-        "value": 1
-      },
-      "MonthlyCard30": {
-        "type": "checkbox",
-        "value": 0
-      },
-      "MonthlyCard68": {
-        "type": "checkbox",
-        "value": 0
-      },
-      "CopperBuyCommonCatPuppet": {
-        "type": "checkbox",
-        "value": 1
-      }
     }
   },
-  "TaoYuan": {
+  "Taoyuanju": {
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
@@ -228,7 +210,7 @@
       },
       "Command": {
         "type": "input",
-        "value": "TaoYuan",
+        "value": "Taoyuanju",
         "display": "hide"
       },
       "ServerUpdate": {
@@ -263,59 +245,11 @@
         "value": "04:00",
         "display": "hide"
       }
-    }
-  },
-  "QilinNavi": {
-    "Scheduler": {
-      "Enable": {
+    },
+    "Cattery": {
+      "AutoHideAndSeek": {
         "type": "checkbox",
-        "value": false,
-        "option": [
-          true,
-          false
-        ]
-      },
-      "NextRun": {
-        "type": "datetime",
-        "value": "2020-01-01 00:00:00",
-        "validate": "datetime"
-      },
-      "Command": {
-        "type": "input",
-        "value": "QilinNavi",
-        "display": "hide"
-      },
-      "ServerUpdate": {
-        "type": "input",
-        "value": "04:00",
-        "display": "hide"
-      }
-    }
-  },
-  "Yashe": {
-    "Scheduler": {
-      "Enable": {
-        "type": "checkbox",
-        "value": false,
-        "option": [
-          true,
-          false
-        ]
-      },
-      "NextRun": {
-        "type": "datetime",
-        "value": "2020-01-01 00:00:00",
-        "validate": "datetime"
-      },
-      "Command": {
-        "type": "input",
-        "value": "Yashe",
-        "display": "hide"
-      },
-      "ServerUpdate": {
-        "type": "input",
-        "value": "04:00",
-        "display": "hide"
+        "value": 1
       }
     }
   }
