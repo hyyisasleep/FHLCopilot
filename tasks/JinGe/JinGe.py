@@ -131,6 +131,10 @@ class JinGe(UI):
                 continue
                 # 每周有段位结算
             if self.appear_then_click(PVP_SKIP_LAST_WEEK_LEVEL):
+                logger.info("Skip last week level settlement page")
+                continue
+            if self.appear_then_click(PVP_SKIP_LAST_WEEK_LEVEL_2):
+                logger.info("Skip last week level inherit page")
                 continue
             if self.handle_pvp_combat(interval):
                 timeout.reset()

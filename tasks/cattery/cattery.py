@@ -31,31 +31,6 @@ class Cattery(UI):
 
         self.config.task_delay(server_update=True)
 
-    # def _goto_cattery(self):
-    #     """
-    #     Pages:
-    #         in: MENU
-    #         out: PROFILE
-    #     """
-    #     skip_first_screenshot = False
-    #     logger.info('Going to cattery')
-    #     while 1:
-    #         if skip_first_screenshot:
-    #             skip_first_screenshot = False
-    #         else:
-    #             self.device.screenshot()
-    #
-    #
-    #         if self.appear(CATTERY_CHECK):
-    #             logger.info('Successfully in cattery')
-    #             return True
-    #
-    #         if self.appear_then_click(MAIN_GOTO_CATTERY):
-    #             continue
-    #     return False
-
-        # if self.appear_then_click(PROFILE):
-        #     continue
 
     def _feed_cats(self, skip_first_screenshot=True):
         """

@@ -67,9 +67,19 @@ PVP_SKIP_LAST_WEEK_LEVEL = ButtonWrapper(
     name='PVP_SKIP_LAST_WEEK_LEVEL',
     share=Button(
         file='./assets/share/JinGe/PVP_SKIP_LAST_WEEK_LEVEL.png',
-        area=(570, 651, 711, 700),
-        search=(550, 631, 731, 720),
-        color=(235, 175, 108),
+        area=(513, 66, 770, 128),
+        search=(493, 46, 790, 148),
+        color=(214, 147, 103),
+        button=(570, 651, 711, 700),
+    ),
+)
+PVP_SKIP_LAST_WEEK_LEVEL_2 = ButtonWrapper(
+    name='PVP_SKIP_LAST_WEEK_LEVEL_2',
+    share=Button(
+        file='./assets/share/JinGe/PVP_SKIP_LAST_WEEK_LEVEL_2.png',
+        area=(506, 60, 776, 131),
+        search=(486, 40, 796, 151),
+        color=(211, 142, 101),
         button=(570, 651, 711, 700),
     ),
 )
