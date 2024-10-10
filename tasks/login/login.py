@@ -1,3 +1,5 @@
+from sympy.codegen.ast import continue_
+
 from module.base.timer import Timer
 from module.exception import GameNotRunningError
 from module.logger import logger
@@ -5,7 +7,7 @@ from tasks.base.assets.assets_base_page import CLOSE_LOGIN_ADVERTISEMENT, BACK, 
 from tasks.base.page import page_main
 from tasks.base.ui import UI
 from tasks.login.assets.assets_login import LOGIN_CONFIRM, LOGIN_LOADING, DAILY_SIGN_IN, \
-    ACTIVITY_SIGN_IN_GIFT, ACTIVITY_SIGN_IN_GIFT_LOCKED, DIVINE_CHECK  # , USER_AGREEMENT_ACCEPT
+    ACTIVITY_SIGN_IN_GIFT, ACTIVITY_SIGN_IN_GIFT_LOCKED, DIVINE_CHECK, LOGIN_DOWNLOADING  # , USER_AGREEMENT_ACCEPT
 
 
 # from tasks.login.cloud import LoginAndroidCloud
@@ -91,11 +93,18 @@ class Login(UI):  # , LoginAndroidCloud):
 
             # Watch resource downloading and loading
             if self.appear(LOGIN_LOADING, interval=5):
-                logger.info('Game resources downloading or loading')
+                logger.info('Game is loading')
                 self.device.stuck_record_clear()
                 app_timer.reset()
                 orientation_timer.reset()
+                continue
 
+            if self.appear(LOGIN_DOWNLOADING, interval=5):
+                logger.info('Game resources downloading')
+                self.device.stuck_record_clear()
+                app_timer.reset()
+                orientation_timer.reset()
+                continue
             # Login
             if self.is_in_login_confirm(interval=5):
                 self.device.click(LOGIN_CONFIRM)
@@ -106,7 +115,7 @@ class Login(UI):  # , LoginAndroidCloud):
             # Additional
             # 更新公告，没测上😓
             # 好了不知道为什么现在每次启动都会出现这个
-            if not login_success and self.appear_then_click(CLOSE_UPDATE_NOTICE):
+            if self.appear_then_click(CLOSE_UPDATE_NOTICE):
                 logger.info("Close update notification")
                 continue
             # 有的时候有卡池和主线广告
@@ -169,11 +178,11 @@ class Login(UI):  # , LoginAndroidCloud):
         self.config.task_delay(server_update=True)
 
 
-ui = Login('src')
-ui.app_start()
+# ui = Login('src')
+# ui.app_start()
 # ui.handle_activity_sign_in_gift()
 # ui.app_restart()
-# az = Login('src')
-# az.image_file = r'C:\Users\huixi\Documents\MuMu共享文件夹\Screenshots\MuMu12-20240905-194258.png'
+# az = Login('fhlc')
+# az.image_file = r'C:\Users\huixi\Documents\MuMu共享文件夹\Screenshots\MuMu12-20240929-221758.png'
 #
-# print(az.appear(CLOSE_LOGIN_ADVERTISEMENT))
+# print(az.appear(CLOSE_UPDATE_NOTICE))

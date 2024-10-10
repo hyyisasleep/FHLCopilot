@@ -5,7 +5,7 @@ from module.ocr.ocr import Digit
 from tasks.base.assets.assets_base_popup import GET_REWARD
 
 from tasks.base.page import page_taoyuan, page_taoyuan_meal, page_taoyuan_furniture, page_taoyuan_affair, \
-    page_taoyuan_game
+    page_taoyuan_game, page_taoyuan_visit
 from tasks.base.ui import UI
 
 from tasks.taoyuanju.assets.assets_taoyuanju import *
@@ -41,7 +41,7 @@ class Taoyuanju(UI):
 
         self.config.task_delay(server_update=True)
 
-    def handle_get_power_back(self, state='lunch', need_get_back=True):
+    def handle_get_power_back(self, state='lunch', need_get_back=False):
         #
         if state == 'lunch' and self.appear(LUNCH_GETBACK):
             logger.info("Still have unclaimed lunch stamina")
@@ -91,6 +91,7 @@ class Taoyuanju(UI):
                     continue
             elif 17 <= current_hour < 22:
                 # TODO: 用偏移量？省的同一张图截两遍
+                # 没研究明白，截了两张图:)
                 self.handle_get_power_back('lunch')
 
                 if self.appear(DINNER_FINISH):
@@ -170,6 +171,19 @@ class Taoyuanju(UI):
         self.config.task_delay(server_update=True)
 
     def _visit_other(self):
+        self.ui_goto(page_taoyuan_visit)
+        skip_first_screenshot = True
+        timeout = Timer(5).start()
+
+        while 1:
+            if skip_first_screenshot:
+                skip_first_screenshot = False
+            else:
+                self.device.screenshot()
+
+            if timeout.reached():
+                break
+
         pass
 
     def _build_random_furniture(self):
@@ -334,10 +348,9 @@ class Taoyuanju(UI):
         """
         pass
 
-
-ui = Taoyuanju('src')
-ui.device.screenshot()
-ui.run()
+# ui = Taoyuanju('fhlc')
+# ui.device.screenshot()
+# ui.run()
 # path = r"C:\Users\huixi\Desktop\MuMu12-20240831-193937.png"
 # ui.image_file = r"C:\Users\huixi\Documents\MuMu共享文件夹\Screenshots\午晚饭素材\MuMu12-20240831-193937.png"
 # # import cv2

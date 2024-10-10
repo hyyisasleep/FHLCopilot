@@ -129,7 +129,7 @@ class Cattery(UI):
         pass
 
 
-if __name__ == '__main__':
-    self = Cattery('src')
-    self.device.screenshot()
-    self.run()
+# if __name__ == '__main__':
+#     self = Cattery('fhlc')
+#     self.device.screenshot()
+#     self.run()

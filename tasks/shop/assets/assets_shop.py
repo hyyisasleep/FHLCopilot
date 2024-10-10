@@ -173,6 +173,16 @@ MENU_GOTO_MONTHLY_CARD = ButtonWrapper(
         button=(25, 202, 146, 251),
     ),
 )
+MENU_GOTO_RESOURCE = ButtonWrapper(
+    name='MENU_GOTO_RESOURCE',
+    share=Button(
+        file='./assets/share/shop/MENU_GOTO_RESOURCE.png',
+        area=(21, 267, 162, 316),
+        search=(1, 247, 182, 336),
+        color=(163, 93, 87),
+        button=(21, 267, 162, 316),
+    ),
+)
 MENU_LEISURE_CATTERY_CHECK = ButtonWrapper(
     name='MENU_LEISURE_CATTERY_CHECK',
     share=Button(
@@ -241,6 +251,46 @@ MENU_MONTHLY_CARD_TODO = ButtonWrapper(
         search=(139, 176, 190, 236),
         color=(242, 148, 99),
         button=(159, 196, 170, 216),
+    ),
+)
+MENU_RESOURCE_CHECK = ButtonWrapper(
+    name='MENU_RESOURCE_CHECK',
+    share=Button(
+        file='./assets/share/shop/MENU_RESOURCE_CHECK.png',
+        area=(15, 265, 164, 314),
+        search=(0, 245, 184, 334),
+        color=(226, 180, 90),
+        button=(15, 265, 164, 314),
+    ),
+)
+MENU_RESOURCE_COMMON_CAT_PUPPET_UNLOCK = ButtonWrapper(
+    name='MENU_RESOURCE_COMMON_CAT_PUPPET_UNLOCK',
+    share=Button(
+        file='./assets/share/shop/MENU_RESOURCE_COMMON_CAT_PUPPET_UNLOCK.png',
+        area=(341, 184, 439, 280),
+        search=(321, 164, 459, 300),
+        color=(112, 128, 145),
+        button=(341, 184, 439, 280),
+    ),
+)
+MENU_RESOURCE_COPPER_CHECK = ButtonWrapper(
+    name='MENU_RESOURCE_COPPER_CHECK',
+    share=Button(
+        file='./assets/share/shop/MENU_RESOURCE_COPPER_CHECK.png',
+        area=(562, 66, 627, 111),
+        search=(542, 46, 647, 131),
+        color=(202, 132, 108),
+        button=(562, 66, 627, 111),
+    ),
+)
+MENU_RESOURCE_GOTO_COPPER = ButtonWrapper(
+    name='MENU_RESOURCE_GOTO_COPPER',
+    share=Button(
+        file='./assets/share/shop/MENU_RESOURCE_GOTO_COPPER.png',
+        area=(567, 70, 623, 111),
+        search=(547, 50, 643, 131),
+        color=(203, 119, 112),
+        button=(567, 70, 623, 111),
     ),
 )
 MONTHLY_CARD_30_UNLOCK = ButtonWrapper(

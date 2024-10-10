@@ -53,6 +53,16 @@ LOGIN_CONFIRM = ButtonWrapper(
         button=(832, 300, 1113, 565),
     ),
 )
+LOGIN_DOWNLOADING = ButtonWrapper(
+    name='LOGIN_DOWNLOADING',
+    share=Button(
+        file='./assets/share/login/LOGIN_DOWNLOADING.png',
+        area=(436, 594, 656, 618),
+        search=(416, 574, 676, 638),
+        color=(143, 133, 125),
+        button=(436, 594, 656, 618),
+    ),
+)
 LOGIN_LOADING = ButtonWrapper(
     name='LOGIN_LOADING',
     share=Button(

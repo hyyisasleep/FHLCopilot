@@ -20,6 +20,8 @@ class DailyShop(UI):
         self.get_friendship_point()
         self.ui_ensure(page_shop)
 
+        self.buy_gift(mode='copper-puppet')
+
         self.buy_gift(mode='sign-in')
 
         self.buy_gift(mode='monthly-card')
@@ -74,6 +76,17 @@ class DailyShop(UI):
             if self.appear_then_click(MENU_LEISURE_GOTO_CATTERY):
                 return True
             if self.appear_then_click(MENU_GOTO_LEISURE):
+                return True
+        elif mode == 'copper-puppet':
+            if self.handle_choose_gift_num():
+                return True
+            if self.appear(MENU_RESOURCE_COPPER_CHECK):
+                if self.appear_then_click(MENU_RESOURCE_COMMON_CAT_PUPPET_UNLOCK):
+                    logger.info("Buy 3 common cat puppet in copper menu")
+                    return True
+            if self.appear_then_click(MENU_RESOURCE_GOTO_COPPER):
+                return True
+            if self.appear_then_click(MENU_GOTO_RESOURCE):
                 return True
         return False
 
@@ -131,7 +144,7 @@ class DailyShop(UI):
 
 
 if __name__ == '__main__':
-    ui = DailyShop('src')
+    ui = DailyShop('fhlc')
     ui.device.screenshot()
     # print(ui.is_in_main())
     ui.run()

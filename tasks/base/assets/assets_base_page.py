@@ -72,10 +72,10 @@ CLOSE_UPDATE_NOTICE = ButtonWrapper(
     name='CLOSE_UPDATE_NOTICE',
     share=Button(
         file='./assets/share/base/page/CLOSE_UPDATE_NOTICE.png',
-        area=(0, 0, 1280, 720),
-        search=(0, 0, 1280, 720),
-        color=(7, 4, 10),
-        button=(0, 0, 1280, 720),
+        area=(1180, 63, 1218, 100),
+        search=(1160, 43, 1238, 120),
+        color=(212, 130, 99),
+        button=(1180, 63, 1218, 100),
     ),
 )
 CLOSE_YASHE_FRAGMENT_THANKS = ButtonWrapper(

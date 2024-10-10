@@ -31,8 +31,9 @@ class UI(PopupHandler):
             page (Page):
             interval:
         """
-        if page == page_main:
-            return self.is_in_main(interval=interval)
+        # is_in_main用的是明度对比？？我这个不需要吧好像
+        # if page == page_main:
+        #     return self.is_in_main(interval=interval)
         return self.appear(page.check_button, interval=interval)
 
     def ui_get_current_page(self, skip_first_screenshot=True):
@@ -399,6 +400,11 @@ class UI(PopupHandler):
             return True
         if self.handle_promote_pack():
             return True
+        if self.handle_week_jinge():
+            # 每周段位结算
+            return True
+        # if self.handle_update_notification():
+        #     return True
         # if self.handle_battle_pass_notification():
         #     return True
         # if self.handle_monthly_card_reward():

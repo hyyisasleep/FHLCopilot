@@ -5,6 +5,7 @@ from typing import Callable
 from module.base.base import ModuleBase
 
 from module.logger import logger
+from tasks.PVP.assets.assets_PVP_JinGeYanWu import SKIP_LAST_WEEK_LEVEL_2, SKIP_LAST_WEEK_LEVEL
 from tasks.base.assets.assets_base_page import BACK, CLOSE_UPDATE_NOTICE  # , CLOSE
 from tasks.base.assets.assets_base_popup import *
 # from tasks.taoyuanju.assets.assets_taoyuanju import GET_BLESSING, GET_BLESSING_CONFIRM
@@ -53,21 +54,29 @@ class PopupHandler(ModuleBase):
 
         return appear
 
-    def handle_update_notification(self,interval=5) -> bool:
-        """
-        Popup update notification every Wednesday
+    # def handle_update_notification(self,interval=5) -> bool:
+    #     """
+    #     Popup update notification every Wednesday
+    #
+    #     Args:
+    #          interval:
+    #
+    #      Returns:
+    #          If handled.
+    #     """
+    #     if self.appear_then_click(CLOSE_UPDATE_NOTICE, interval=interval):
+    #         return True
+    #
+    #     return False
 
-        Args:
-             interval:
-
-         Returns:
-             If handled.
-        """
-        if self.appear_then_click(CLOSE_UPDATE_NOTICE, interval=interval):
+    def handle_week_jinge(self,interval=5) -> bool:
+        if self.appear_then_click(SKIP_LAST_WEEK_LEVEL):
+            logger.info("Skip last week level settlement page")
             return True
-
+        if self.appear_then_click(SKIP_LAST_WEEK_LEVEL_2):
+            logger.info("Skip last week level inherit page")
+            return True
         return False
-
     def handle_taoyuan_blessing(self,interval=5) -> bool:
         """
         Popup blessing in taoyuanju everyday
