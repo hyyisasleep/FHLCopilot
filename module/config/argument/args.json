@@ -24,7 +24,7 @@
       },
       "GameLanguage": {
         "type": "select",
-        "value": "auto",
+        "value": "cn",
         "option": [
           "auto",
           "cn",
@@ -170,7 +170,7 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false,
+        "value": true,
         "option": [
           true,
           false
@@ -193,14 +193,16 @@
       }
     }
   },
-  "Taoyuanju": {
+  "Office": {
     "Scheduler": {
       "Enable": {
-        "type": "checkbox",
-        "value": false,
+        "type": "state",
+        "value": true,
         "option": [
-          true,
-          false
+          true
+        ],
+        "option_bold": [
+          true
         ]
       },
       "NextRun": {
@@ -210,7 +212,7 @@
       },
       "Command": {
         "type": "input",
-        "value": "Taoyuanju",
+        "value": "Office",
         "display": "hide"
       },
       "ServerUpdate": {
@@ -224,7 +226,7 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false,
+        "value": true,
         "option": [
           true,
           false

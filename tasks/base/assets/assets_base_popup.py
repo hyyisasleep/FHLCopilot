@@ -33,6 +33,26 @@ CLOSE_PROMOTE_PACK = ButtonWrapper(
         button=(1082, 93, 1137, 143),
     ),
 )
+CLUB_BEGGING_THANKS_CHECK = ButtonWrapper(
+    name='CLUB_BEGGING_THANKS_CHECK',
+    share=Button(
+        file='./assets/share/base/popup/CLUB_BEGGING_THANKS_CHECK.png',
+        area=(698, 260, 866, 308),
+        search=(678, 240, 886, 328),
+        color=(221, 127, 94),
+        button=(698, 260, 866, 308),
+    ),
+)
+CLUB_BEGGING_THANKS_CLOSE = ButtonWrapper(
+    name='CLUB_BEGGING_THANKS_CLOSE',
+    share=Button(
+        file='./assets/share/base/popup/CLUB_BEGGING_THANKS_CLOSE.png',
+        area=(879, 36, 918, 75),
+        search=(859, 16, 938, 95),
+        color=(209, 126, 96),
+        button=(879, 36, 918, 75),
+    ),
+)
 GET_REWARD = ButtonWrapper(
     name='GET_REWARD',
     share=Button(

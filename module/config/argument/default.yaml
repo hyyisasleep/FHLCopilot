@@ -7,6 +7,15 @@
 
 # ==================== Daily ====================
 #
+Office:
+  Scheduler:
+    Enable: true
+Shop:
+  Scheduler:
+    Enable: true
+Cattery:
+  Scheduler:
+    Enable: true
 #Dungeon:
 #  Scheduler:
 #    Enable: true

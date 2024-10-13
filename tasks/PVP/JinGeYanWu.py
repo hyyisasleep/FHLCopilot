@@ -1,7 +1,7 @@
 from module.base.timer import Timer
 from module.logger import logger
 from module.ocr.ocr import Digit
-from tasks.PVP.assets.assets_PVP_JinGeYanWu import *
+from tasks.PVP.assets.assets_pvp_JinGeYanWu import *
 from tasks.base.page import page_jingeyanwu
 from tasks.base.ui import UI
 

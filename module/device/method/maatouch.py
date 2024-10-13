@@ -310,5 +310,5 @@ class MaaTouch(Connection):
 
 
 if __name__ == '__main__':
-    self = MaaTouch('src')
+    self = MaaTouch('fhlc')
     self.maatouch_uninstall()

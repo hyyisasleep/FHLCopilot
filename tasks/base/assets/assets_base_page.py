@@ -27,6 +27,13 @@ BACK = ButtonWrapper(
             color=(88, 79, 64),
             button=(26, 2, 54, 44),
         ),
+        Button(
+            file='./assets/share/base/page/BACK.4.png',
+            area=(42, 8, 55, 21),
+            search=(22, 0, 75, 41),
+            color=(252, 241, 204),
+            button=(42, 8, 55, 21),
+        ),
     ],
 )
 CATTERY_CHECK = ButtonWrapper(
@@ -120,13 +127,22 @@ GUSHIFENGYUN_CHECK = ButtonWrapper(
 )
 INTERACT_CHECK = ButtonWrapper(
     name='INTERACT_CHECK',
-    share=Button(
-        file='./assets/share/base/page/INTERACT_CHECK.png',
-        area=(76, 18, 181, 46),
-        search=(56, 0, 201, 66),
-        color=(101, 86, 68),
-        button=(76, 18, 181, 46),
-    ),
+    share=[
+        Button(
+            file='./assets/share/base/page/INTERACT_CHECK.png',
+            area=(76, 19, 181, 44),
+            search=(56, 0, 201, 64),
+            color=(190, 166, 134),
+            button=(76, 19, 181, 44),
+        ),
+        Button(
+            file='./assets/share/base/page/INTERACT_CHECK.2.png',
+            area=(76, 19, 181, 44),
+            search=(56, 0, 201, 64),
+            color=(143, 128, 91),
+            button=(76, 19, 181, 44),
+        ),
+    ],
 )
 JINGEGUAN_CHECK = ButtonWrapper(
     name='JINGEGUAN_CHECK',

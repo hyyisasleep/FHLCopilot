@@ -1,7 +1,7 @@
 {
   "Menu": {
     "Alas": {
-      "name": "SRC",
+      "name": "FHLC",
       "help": ""
     },
     "Daily": {
@@ -19,7 +19,7 @@
   },
   "Task": {
     "Alas": {
-      "name": "SRC设置",
+      "name": "FHLC设置",
       "help": ""
     },
     "Restart": {

@@ -25,7 +25,7 @@ Emulator:
     value: auto
     option: [ auto, ]
   GameLanguage:
-    value: auto
+    value: cn
     option: [ auto, cn, en ]
   ScreenshotMethod:
     value: auto
@@ -102,7 +102,7 @@ Shop:
     type: checkbox
     value: 1
 
-Taoyuan:
+Office:
   UseTongBaoBuyExpiredPower:
     type: checkbox
     value: 0

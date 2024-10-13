@@ -23,36 +23,6 @@ BUY_GIFT_MAX_UNLOCK = ButtonWrapper(
         button=(821, 473, 865, 516),
     ),
 )
-CLOSE_FRIEND_PAGE = ButtonWrapper(
-    name='CLOSE_FRIEND_PAGE',
-    share=Button(
-        file='./assets/share/shop/CLOSE_FRIEND_PAGE.png',
-        area=(72, 25, 107, 63),
-        search=(52, 5, 127, 83),
-        color=(173, 95, 90),
-        button=(72, 25, 107, 63),
-    ),
-)
-GIVE_RECEIVE_FRIENDSHIP_POINT = ButtonWrapper(
-    name='GIVE_RECEIVE_FRIENDSHIP_POINT',
-    share=Button(
-        file='./assets/share/shop/GIVE_RECEIVE_FRIENDSHIP_POINT.png',
-        area=(162, 648, 333, 694),
-        search=(142, 628, 353, 714),
-        color=(226, 186, 151),
-        button=(162, 648, 333, 694),
-    ),
-)
-GOTO_FRIEND_PAGE = ButtonWrapper(
-    name='GOTO_FRIEND_PAGE',
-    share=Button(
-        file='./assets/share/shop/GOTO_FRIEND_PAGE.png',
-        area=(1079, 2, 1129, 51),
-        search=(1059, 0, 1149, 71),
-        color=(159, 128, 102),
-        button=(1079, 2, 1129, 51),
-    ),
-)
 LEISURE_CATTERY_FRAGMENT_UNLOCK = ButtonWrapper(
     name='LEISURE_CATTERY_FRAGMENT_UNLOCK',
     share=Button(

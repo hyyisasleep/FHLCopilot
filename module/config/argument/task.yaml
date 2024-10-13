@@ -25,10 +25,13 @@ Daily:
     Shop:
       - Scheduler
       - DailyShop
-      # - SupportReward # (Freebies?
-    Taoyuanju:
+    Office:
       - Scheduler
-      - Taoyuanju
+      - Office
+      - Visit
+      - Meal
+      - Affair
+      - Jigsaw
       # - # todo:
     Cattery:
       - Scheduler

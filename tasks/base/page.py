@@ -1,6 +1,7 @@
 import traceback
 
 from tasks.base.assets.assets_base_page import *
+from tasks.office.assets.assets_office_visit import OTHER_OFFICE_CHECK
 
 
 class Page:
@@ -116,9 +117,9 @@ page_gushifengyun = Page(GUSHIFENGYUN_CHECK)
 page_gushifengyun.link(BACK,destination=page_main)
 page_main.link(MAIN_GOTO_GUSHIFENGYUN, destination=page_gushifengyun)
 # 桃源居
-page_taoyuan = Page(TAOYUAN_CHECK)
-page_taoyuan.link(BACK,destination=page_main)
-page_main.link(MAIN_GOTO_TAOYUAN, destination=page_taoyuan)
+page_office = Page(TAOYUAN_CHECK)
+page_office.link(BACK, destination=page_main)
+page_main.link(MAIN_GOTO_TAOYUAN, destination=page_office)
 # 雅社
 page_yashe = Page(YASHE_CHECK)
 page_yashe.link(BACK,destination=page_main)
@@ -130,105 +131,28 @@ page_jingeyanwu.link(BACK,destination=page_jingeguan)
 page_jingeguan.link(JINGEGUAN_GOTO_JINGEYANWU,destination=page_jingeyanwu)
 # =============桃源居================
 # 桃源事务
-page_taoyuan_affair = Page(TAOYUAN_AFFAIR_CHECK)
-page_taoyuan_affair.link(BACK,destination=page_taoyuan)
-page_taoyuan.link(TAOYUAN_GOTO_AFFAIR, destination=page_taoyuan_affair)
+page_office_affair = Page(TAOYUAN_AFFAIR_CHECK)
+page_office_affair.link(BACK, destination=page_office)
+page_office.link(TAOYUAN_GOTO_AFFAIR, destination=page_office_affair)
 # 考工治图
-page_taoyuan_game = Page(TAOYUAN_GAME_CHECK)
-page_taoyuan_game.link(BACK,destination=page_taoyuan)
-page_taoyuan.link(TAOYUAN_GOTO_GAME, destination=page_taoyuan_game)
+page_office_jigsaw = Page(TAOYUAN_GAME_CHECK)
+page_office_jigsaw.link(BACK, destination=page_office)
+page_office.link(TAOYUAN_GOTO_GAME, destination=page_office_jigsaw)
 # 用膳
-page_taoyuan_meal = Page(TAOYUAN_MEAL_CHECK)
-page_taoyuan_meal.link(BACK,destination=page_taoyuan)
-page_taoyuan.link(TAOYUAN_GOTO_MEAL, destination=page_taoyuan_meal)
+page_office_meal = Page(TAOYUAN_MEAL_CHECK)
+page_office_meal.link(BACK, destination=page_office)
+page_office.link(TAOYUAN_GOTO_MEAL, destination=page_office_meal)
 # 拜访他人
-page_taoyuan_visit = Page(TAOYUAN_VISIT_CHECK)
-page_taoyuan_visit.link(BACK,destination=page_taoyuan)
-page_taoyuan.link(TAOYUAN_GOTO_VISIT, destination=page_taoyuan_visit)
+page_office_visit = Page(TAOYUAN_VISIT_CHECK)
+page_office_visit.link(BACK, destination=page_office)
+page_office.link(TAOYUAN_GOTO_VISIT, destination=page_office_visit)
+# 他人的桃源居
+page_other_office = Page(OTHER_OFFICE_CHECK)
+page_other_office.link(BACK, destination=page_office_visit)
+
 # 制造家具
-page_taoyuan_furniture = Page(TAOYUAN_FURNITURE_CHECK)
-page_taoyuan_furniture.link(BACK,destination=page_taoyuan)
-page_taoyuan.link(TAOYUAN_GOTO_FURNITURE, destination=page_taoyuan_furniture)
+page_office_furniture = Page(TAOYUAN_FURNITURE_CHECK)
+page_office_furniture.link(BACK, destination=page_office)
+page_office.link(TAOYUAN_GOTO_FURNITURE, destination=page_office_furniture)
 
 
-# # Team
-# page_team = Page(TEAM_CHECK)
-# page_team.link(CLOSE, destination=page_main)
-# page_main.link(MAIN_GOTO_TEAM, destination=page_team)
-#
-# # Item, storage
-# page_item = Page(ITEM_CHECK)
-# page_item.link(CLOSE, destination=page_main)
-# page_main.link(MAIN_GOTO_ITEM, destination=page_item)
-#
-# # Guide, which includes beginners' guide, daily missions and dungeons
-# page_guide = Page(GUIDE_CHECK)
-# page_guide.link(GUIDE_CLOSE, destination=page_main)
-# page_main.link(MAIN_GOTO_GUIDE, destination=page_guide)
-#
-# # Gacha
-# page_gacha = Page(GACHA_CHECK)
-# page_gacha.link(CLOSE, destination=page_main)
-# page_main.link(MAIN_GOTO_GACHA, destination=page_gacha)
-#
-# # Battle Pass
-# page_battle_pass = Page(BATTLE_PASS_CHECK)
-# page_battle_pass.link(CLOSE, destination=page_main)
-# page_main.link(MAIN_GOTO_BATTLE_PASS, destination=page_battle_pass)
-#
-# # Event
-# page_event = Page(EVENT_CHECK)
-# page_event.link(CLOSE, destination=page_main)
-# page_main.link(MAIN_GOTO_EVENT, destination=page_event)
-#
-# # Map
-# page_map = Page(MAP_CHECK)
-# page_map.link(CLOSE, destination=page_main)
-# page_main.link(MAIN_GOTO_MAP, destination=page_map)
-#
-# # page_world, subpage of map, used to choose a world/planet e.g. Herta Space Station
-# page_world = Page(WORLD_CHECK)
-# page_world.link(BACK, destination=page_map)
-# page_map.link(MAP_GOTO_WORLD, destination=page_world)
-#
-# # Tutorial
-# page_tutorial = Page(TUTORIAL_CHECK)
-# page_tutorial.link(CLOSE, destination=page_main)
-# page_main.link(MAIN_GOTO_TUTORIAL, destination=page_tutorial)
-#
-# # Mission
-# page_mission = Page(MISSION_CHECK)
-# page_mission.link(CLOSE, destination=page_main)
-# page_main.link(MAIN_GOTO_MISSION, destination=page_mission)
-#
-# # Message
-# page_message = Page(MESSAGE_CLOSE)
-# page_message.link(MESSAGE_CLOSE, destination=page_main)
-# page_main.link(MAIN_GOTO_MESSAGE, destination=page_message)
-#
-# # Camera
-# page_camera = Page(CAMERA_CHECK)
-# page_camera.link(CLOSE, destination=page_menu)
-# page_menu.link(MENU_GOTO_CAMERA, destination=page_camera)
-#
-# # Synthesize
-# page_synthesize = Page(SYNTHESIZE_CHECK)
-# page_synthesize.link(CLOSE, destination=page_menu)
-# page_menu.link(MENU_GOTO_SYNTHESIZE, destination=page_synthesize)
-#
-# # Assignment
-# page_assignment = Page(ASSIGNMENT_CHECK)
-# page_assignment.link(CLOSE, destination=page_main)
-# page_menu.link(MENU_GOTO_ASSIGNMENT, destination=page_assignment)
-#
-# # Forgotten Hall
-# page_forgotten_hall = Page(FORGOTTEN_HALL_CHECK)
-# page_forgotten_hall.link(CLOSE, destination=page_main)
-#
-# # Rogue, Simulated Universe
-# page_rogue = Page(ROGUE_CHECK)
-# page_rogue.link(CLOSE, destination=page_main)
-#
-# # Planner result
-# page_planner = Page(PLANNER_CHECK)
-# page_planner.link(CLOSE, destination=page_menu)

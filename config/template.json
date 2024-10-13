@@ -4,7 +4,7 @@
       "Serial": "auto",
       "GameClient": "android",
       "PackageName": "auto",
-      "GameLanguage": "auto",
+      "GameLanguage": "cn",
       "ScreenshotMethod": "scrcpy",
       "ControlMethod": "MaaTouch",
       "AdbRestart": false
@@ -36,23 +36,23 @@
   },
   "Shop": {
     "Scheduler": {
-      "Enable": false,
+      "Enable": true,
       "NextRun": "2020-01-01 00:00:00",
       "Command": "Shop",
       "ServerUpdate": "04:00"
     }
   },
-  "Taoyuanju": {
+  "Office": {
     "Scheduler": {
-      "Enable": false,
+      "Enable": true,
       "NextRun": "2020-01-01 00:00:00",
-      "Command": "Taoyuanju",
+      "Command": "Office",
       "ServerUpdate": "04:00"
     }
   },
   "Cattery": {
     "Scheduler": {
-      "Enable": false,
+      "Enable": true,
       "NextRun": "2020-01-01 00:00:00",
       "Command": "Cattery",
       "ServerUpdate": "04:00"

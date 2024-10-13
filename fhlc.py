@@ -33,9 +33,10 @@ class FHLCopilot(AzurLaneAutoScript):
     def shop(self):
         from tasks.shop.shop import DailyShop
         DailyShop(config=self.config, device=self.device).run()
-    def taoyuanju(self):
-        from tasks.taoyuanju.taoyuanju import Taoyuanju
-        Taoyuanju(config=self.config, device=self.device).run()
+
+    def office(self):
+        from tasks.office.office import Office
+        Office(config=self.config, device=self.device).run()
 
 
 if __name__ == '__main__':

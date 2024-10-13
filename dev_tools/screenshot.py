@@ -50,12 +50,12 @@ def handle_sensitive_info(image):
 
 _ = EmptyConnection()
 name = input(
-    '输入src配置文件名称，或者模拟器serial，或者模拟器端口号: (默认输入 "src"):\n'
+    '输入src配置文件名称，或者模拟器serial，或者模拟器端口号: (默认输入 "fhlc"):\n'
     '例如："src", "127.0.0.1:16384", "7555"\n'
 )
 name = name.strip().strip('"').strip()
 if not name:
-    name = 'src'
+    name = 'fhlc'
 if name.isdigit():
     name = f'127.0.0.1:{name}'
 if name in alas_instance():
@@ -66,7 +66,7 @@ else:
     config = AzurLaneConfig('template')
     config.override(
         Emulator_Serial=name,
-        Emulator_PackageName='com.miHoYo.hkrpg',
+        Emulator_PackageName='com.netease.pm03',
         Emulator_ScreenshotMethod='adb_nc',
     )
     device = Device(config)

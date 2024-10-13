@@ -17,7 +17,7 @@ class DailyShop(UI):
         # self.device.screenshot()
         self.device.screenshot()
         self.ui_goto_main()
-        self.get_friendship_point()
+
         self.ui_ensure(page_shop)
 
         self.buy_gift(mode='copper-puppet')
@@ -115,32 +115,7 @@ class DailyShop(UI):
                 timeout.reset()
                 continue
 
-    def get_friendship_point(self, skip_first_screenshot=True):
-        timeout = Timer(4).start()
-        finish = False
-        while 1:
-            if skip_first_screenshot:
-                skip_first_screenshot = False
-            else:
-                self.device.screenshot()
-            if timeout.reached():
-                logger.info("Get friendship point timeout")
-                break
 
-            if finish:
-                # 关不掉不重复啊啊啊啊 不对又没法退循环了
-                self.appear_then_click(CLOSE_FRIEND_PAGE)
-                # timeout.reset()
-                continue
-
-            if self.appear_then_click(GIVE_RECEIVE_FRIENDSHIP_POINT):
-                logger.info("Give and receive friend ship point")
-                timeout.reset()
-                finish = True
-                continue
-            if self.appear_then_click(GOTO_FRIEND_PAGE):
-                logger.info("Open friend page")
-                continue
 
 
 if __name__ == '__main__':
