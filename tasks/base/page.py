@@ -121,9 +121,9 @@ page_office = Page(TAOYUAN_CHECK)
 page_office.link(BACK, destination=page_main)
 page_main.link(MAIN_GOTO_TAOYUAN, destination=page_office)
 # 雅社
-page_yashe = Page(YASHE_CHECK)
-page_yashe.link(BACK,destination=page_main)
-page_main.link(MAIN_GOTO_YASHE, destination=page_yashe)
+page_guild = Page(YASHE_CHECK)
+page_guild.link(BACK,destination=page_main)
+page_main.link(MAIN_GOTO_YASHE, destination=page_guild)
 
 # =============金戈馆================
 page_jingeyanwu = Page(JINGEYANWU_CHECK)

@@ -38,6 +38,10 @@ class FHLCopilot(AzurLaneAutoScript):
         from tasks.office.office import Office
         Office(config=self.config, device=self.device).run()
 
+    def dispatch(self):
+        from tasks.dispatch.dispatch import Dispatch
+        Dispatch(config=self.config, device=self.device).run()
+
 
 if __name__ == '__main__':
     src = FHLCopilot('fhlc')

@@ -55,21 +55,6 @@ class PopupHandler(ModuleBase):
 
         return appear
 
-    # def handle_update_notification(self,interval=5) -> bool:
-    #     """
-    #     Popup update notification every Wednesday
-    #
-    #     Args:
-    #          interval:
-    #
-    #      Returns:
-    #          If handled.
-    #     """
-    #     if self.appear_then_click(CLOSE_UPDATE_NOTICE, interval=interval):
-    #         return True
-    #
-    #     return False
-
     def handle_week_jinge(self,interval=5) -> bool:
         if self.appear_then_click(SKIP_LAST_WEEK_LEVEL):
             logger.info("Skip last week level settlement page")

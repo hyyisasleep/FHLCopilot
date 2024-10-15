@@ -48,6 +48,11 @@
       "NextRun": "2020-01-01 00:00:00",
       "Command": "Office",
       "ServerUpdate": "04:00"
+    },
+    "Office": {
+      "UseTongBaoBuyExpiredPower": 0,
+      "TransAllKaoGongYeTu": 1,
+      "VisitOthersForClivia": 1
     }
   },
   "Cattery": {
@@ -59,6 +64,14 @@
     },
     "Cattery": {
       "AutoHideAndSeek": 1
+    }
+  },
+  "Dispatch": {
+    "Scheduler": {
+      "Enable": true,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "Dispatch",
+      "ServerUpdate": "04:00"
     }
   }
 }

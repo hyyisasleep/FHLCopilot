@@ -13,7 +13,8 @@
     "tasks": [
       "Shop",
       "Office",
-      "Cattery"
+      "Cattery",
+      "Dispatch"
     ]
   }
 }

@@ -196,13 +196,11 @@
   "Office": {
     "Scheduler": {
       "Enable": {
-        "type": "state",
+        "type": "checkbox",
         "value": true,
         "option": [
-          true
-        ],
-        "option_bold": [
-          true
+          true,
+          false
         ]
       },
       "NextRun": {
@@ -219,6 +217,20 @@
         "type": "input",
         "value": "04:00",
         "display": "hide"
+      }
+    },
+    "Office": {
+      "UseTongBaoBuyExpiredPower": {
+        "type": "checkbox",
+        "value": 0
+      },
+      "TransAllKaoGongYeTu": {
+        "type": "checkbox",
+        "value": 1
+      },
+      "VisitOthersForClivia": {
+        "type": "checkbox",
+        "value": 1
       }
     }
   },
@@ -252,6 +264,33 @@
       "AutoHideAndSeek": {
         "type": "checkbox",
         "value": 1
+      }
+    }
+  },
+  "Dispatch": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": true,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "Dispatch",
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "04:00",
+        "display": "hide"
       }
     }
   }

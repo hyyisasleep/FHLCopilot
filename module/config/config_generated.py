@@ -46,10 +46,10 @@ class GeneratedConfig:
     Shop_MonthlyCard68 = 0
     Shop_CopperBuyCommonCatPuppet = 1
 
-    # Group `Taoyuan`
-    Taoyuan_UseTongBaoBuyExpiredPower = 0
-    Taoyuan_TransAllKaoGongYeTu = 1
-    Taoyuan_VisitOthersForClivia = 1
+    # Group `Office`
+    Office_UseTongBaoBuyExpiredPower = 0
+    Office_TransAllKaoGongYeTu = 1
+    Office_VisitOthersForClivia = 1
 
     # Group `Cattery`
     Cattery_AutoHideAndSeek = 1

@@ -1,0 +1,60 @@
+from module.base.timer import Timer
+from module.logger import logger
+from tasks.base.page import page_interact
+from tasks.base.ui import UI
+from tasks.dispatch.assets.assets_dispatch_interact import *
+
+#TODO: 送礼中途升级
+# TODO: 怎么判断结束。。。。
+class Interact(UI):
+
+    def run(self):
+        """
+        """
+        logger.hr('Give celebrity gift', level=1)
+        # 跳转到互动界面
+        self.ui_ensure(page_interact)
+        self._give_gift()
+        self.ui_goto_main()
+
+
+
+        self.config.task_delay(server_update=True)
+
+    def _give_gift(self,interact=2,skip_first_screenshot=True):
+
+        timeout = Timer(5).start()
+        finish = False
+        # skip_first_screenshot = False
+        while 1:
+            if skip_first_screenshot:
+                skip_first_screenshot = False
+            else:
+                self.device.screenshot()
+            if timeout.reached():
+                logger.info("Get interact timeout")
+                break
+            if self.appear_then_click(LEVEL_REWARD_UNLOCK):
+                logger.info("Get friendship upgrade reward")
+                continue
+            if self.appear(GIVE_GIFT_CHECK):
+                if self.appear_then_click(GIVE_MODE_UPGRADE_UNLOCK,interact):
+                    logger.info("Choose mode: give gift until friendship upgrade")
+                    continue
+                if self.appear(GIVE_MODE_UPGRADE_LOCKED,interact):
+                    self.appear_then_click(GIVE_GIFT,interact)
+                    logger.info("Give gift to celebrity")
+                    continue
+            if self.handle_reward(interact):
+                logger.info("Get fragment reward or upgrade reward")
+                continue
+
+if __name__ == "__main__":
+    ui = Interact("fhlc")
+    ui.device.screenshot()
+    ui.run()
+    # ui.image_file = r"C:\Users\huixi\Documents\MuMu共享文件夹\Screenshots\MuMu12-20241012-200231.png"
+    # print(ui.appear(GIVE_MODE_UPGRADE_LOCKED))
+    #
+    # ui.image_file = r"C:\Users\huixi\Documents\MuMu共享文件夹\Screenshots\MuMu12-20241012-201006.png"
+    # print(ui.appear(GIVE_MODE_UPGRADE_LOCKED))

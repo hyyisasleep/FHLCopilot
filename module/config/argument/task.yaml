@@ -32,15 +32,18 @@ Daily:
       - Meal
       - Affair
       - Jigsaw
-      # - # todo:
+
     Cattery:
       - Scheduler
       - Cattery
-      # - # todo:
-      # - HideAndSeek
-#    QilinNavi:
-#      - Scheduler
-#      # - # todo:
+    Dispatch:
+      - Scheduler
+      - Dispatch
+      - Interact
+      - FriendPoint
+      - Moments
+      - HideAndSeek
+
 #    Yashe:
 #      - Scheduler
 #      # - # todo:

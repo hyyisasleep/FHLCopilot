@@ -16,6 +16,9 @@ Shop:
 Cattery:
   Scheduler:
     Enable: true
+Dispatch:
+  Scheduler:
+    Enable: true
 #Dungeon:
 #  Scheduler:
 #    Enable: true
