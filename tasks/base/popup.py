@@ -1,8 +1,10 @@
+
 from typing import Callable
 
 
 
 from module.base.base import ModuleBase
+from module.base.timer import Timer
 
 from module.logger import logger
 from tasks.PVP.assets.assets_pvp_JinGeYanWu import SKIP_LAST_WEEK_LEVEL, SKIP_LAST_WEEK_LEVEL_2
@@ -53,7 +55,10 @@ class PopupHandler(ModuleBase):
         if appear and interval:
             self.interval_reset(GET_REWARD, interval=interval)
 
-        return appear
+        # TODO:。。。领完奖还得等动画放完才能接着下一步 我知道这么写不好但是先放着
+        wait = Timer(1).start()
+        if wait.reached():
+            return appear
 
     def handle_week_jinge(self,interval=5) -> bool:
         if self.appear_then_click(SKIP_LAST_WEEK_LEVEL):

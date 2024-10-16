@@ -113,13 +113,10 @@ Office:
     type: checkbox
     value: 1
 
-Cattery:
-  AutoHideAndSeek:
-    type: checkbox
-    value: 1
 
-JinGe:
-  FirstWin:
+
+Dispatch:
+  AutoHideAndSeek:
     type: checkbox
     value: 1
 

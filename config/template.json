@@ -61,9 +61,6 @@
       "NextRun": "2020-01-01 00:00:00",
       "Command": "Cattery",
       "ServerUpdate": "04:00"
-    },
-    "Cattery": {
-      "AutoHideAndSeek": 1
     }
   },
   "Dispatch": {
@@ -72,6 +69,9 @@
       "NextRun": "2020-01-01 00:00:00",
       "Command": "Dispatch",
       "ServerUpdate": "04:00"
+    },
+    "Dispatch": {
+      "AutoHideAndSeek": 1
     }
   }
 }

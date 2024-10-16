@@ -14,13 +14,13 @@ class Affair(UI):
 
         """
         logger.hr('Deal with taoyuan affair', level=1)
-        self.ui_goto(page_office_affair, skip_first_screenshot)
+        self.ui_ensure(page_office_affair, skip_first_screenshot)
         has_reward = self._deal_with_affairs()
         #
         if has_reward:
             # logger.info("Has impression reward to get")
             self._get_affairs_impression_reward()
-        self.ui_goto(page_office)
+        self.ui_ensure(page_office)
 
         self.config.task_delay(server_update=True)
 
@@ -54,25 +54,26 @@ class Affair(UI):
                 else:
                     logger.info("No need deal with affair")
                     break
-            if not start_deal and self.appear_then_click(DEAL_WITH_AFFAIR_START):
+            if not start_deal and self.appear_then_click(DEAL_WITH_AFFAIR_START, interval):
                 logger.info("Start deal with affair")
                 start_deal = True
                 continue
             # 1已经选过了就点2
-            if self.appear_then_click(CHOOSE_AFFAIR_1):
+            if self.appear_then_click(CHOOSE_AFFAIR_1, interval):
                 # start_deal = True
                 affair_cnt += 1
                 logger.info(f"Finish {affair_cnt} affair")
                 timeout.reset()
                 continue
-            if self.appear_then_click(CHOOSE_AFFAIR_2):
+            if self.appear_then_click(CHOOSE_AFFAIR_2, interval):
                 affair_cnt += 1
                 logger.info(f"Finish {affair_cnt} affair with choice 2")
                 timeout.reset()
                 continue
             # 只写handle_reward每次点完事务都要点一次领奖？怪了
-            if self.appear(GET_REWARD):
+            if self.appear(GET_REWARD, interval):
                 self.handle_reward()
+                timeout.reset()
                 continue
 
         return has_reward

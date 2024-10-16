@@ -9,12 +9,12 @@ from tasks.office.assets.assets_office_jigsaw import *
 class Jigsaw(UI):
 
     def run(self, skip_first_screenshot=True):
-        self.ui_goto(page_office_jigsaw)
+        self.ui_ensure(page_office_jigsaw)
         logger.hr('Convert baigongtu', level=1)
-        self.ui_goto(page_office_jigsaw, skip_first_screenshot)
+        self.ui_ensure(page_office_jigsaw, skip_first_screenshot)
         if self._goto_convert_page():
             self._convert_kaogong()
-        self.ui_goto(page_office)
+        self.ui_ensure(page_office)
 
         # self.config.task_delay(server_update=True)
 

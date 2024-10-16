@@ -51,8 +51,5 @@ class GeneratedConfig:
     Office_TransAllKaoGongYeTu = 1
     Office_VisitOthersForClivia = 1
 
-    # Group `Cattery`
-    Cattery_AutoHideAndSeek = 1
-
-    # Group `JinGe`
-    JinGe_FirstWin = 1
+    # Group `Dispatch`
+    Dispatch_AutoHideAndSeek = 1

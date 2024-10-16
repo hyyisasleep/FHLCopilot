@@ -25,7 +25,7 @@ class Office(UI):
         # 主页去桃源居，有祝福就领\
         # self.ui_ensure(page_office)
         self.device.screenshot()
-        self.ui_goto(page_office)
+        self.ui_ensure(page_office)
         # 领午晚饭体力
         Meal(self.config, self.device).run()
         # 处理事务
@@ -45,7 +45,7 @@ class Office(UI):
 
         timeout = Timer(5).start()
         skip_first_screenshot = True
-        self.ui_goto(page_office_furniture)
+        self.ui_ensure(page_office_furniture)
         logger.info('Going to build random furniture')
         has_build = False
         while 1:
@@ -79,7 +79,7 @@ class Office(UI):
                 has_build = True
                 continue
 
-        self.ui_goto(page_office)
+        self.ui_ensure(page_office)
 
 
 if __name__ == "__main__":

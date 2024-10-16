@@ -13,9 +13,9 @@ class Visit(UI):
 
         """
         logger.hr('Deal with taoyuan affair', level=1)
-        self.ui_goto(page_office_visit, skip_first_screenshot)
+        self.ui_ensure(page_office_visit, skip_first_screenshot)
         self._visit_other()
-        self.ui_goto(page_office)
+        self.ui_ensure(page_office)
 
         self.config.task_delay(server_update=True)
 
@@ -96,7 +96,7 @@ class Visit(UI):
 
 
 
-        self.ui_goto(page_office_visit)
+        self.ui_ensure(page_office_visit)
         return finish
 
 

@@ -259,12 +259,6 @@
         "value": "04:00",
         "display": "hide"
       }
-    },
-    "Cattery": {
-      "AutoHideAndSeek": {
-        "type": "checkbox",
-        "value": 1
-      }
     }
   },
   "Dispatch": {
@@ -291,6 +285,12 @@
         "type": "input",
         "value": "04:00",
         "display": "hide"
+      }
+    },
+    "Dispatch": {
+      "AutoHideAndSeek": {
+        "type": "checkbox",
+        "value": 1
       }
     }
   }

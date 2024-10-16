@@ -156,5 +156,6 @@ if __name__ == '__main__':
     # ui.device.screenshot()
     # # print(ui.is_in_main())
     # ui.run()
-    ui.image_file = r"C:\Users\huixi\Documents\MuMu共享文件夹\Screenshots\MuMu12-20241015-132802.png"
-    print(ui.appear(MENU_RESOURCE_COMMON_CAT_PUPPET))
+    # ui.image_file = r"C:\Users\huixi\Documents\MuMu共享文件夹\Screenshots\MuMu12-20241015-132802.png"
+    # print(ui.appear(MENU_RESOURCE_COMMON_CAT_PUPPET))
+

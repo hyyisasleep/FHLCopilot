@@ -14,9 +14,9 @@ class Meal(UI):
 
         """
         logger.hr('Get meal power', level=1)
-        self.ui_goto(page_office_meal, skip_first_screenshot)
+        self.ui_ensure(page_office_meal, skip_first_screenshot)
         self._get_lunch_and_dinner()
-        self.ui_goto(page_office)
+        self.ui_ensure(page_office)
 
         self.config.task_delay(server_update=True)
 
