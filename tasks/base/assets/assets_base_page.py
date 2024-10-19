@@ -115,6 +115,65 @@ FULI_AND_CHANGPING_CHECK = ButtonWrapper(
         button=(54, 95, 152, 120),
     ),
 )
+GUILD_BEGGING_CHECK = ButtonWrapper(
+    name='GUILD_BEGGING_CHECK',
+    share=Button(
+        file='./assets/share/base/page/GUILD_BEGGING_CHECK.png',
+        area=(112, 18, 216, 46),
+        search=(92, 0, 236, 66),
+        color=(131, 102, 86),
+        button=(112, 18, 216, 46),
+    ),
+)
+GUILD_CHECK = ButtonWrapper(
+    name='GUILD_CHECK',
+    share=[
+        Button(
+            file='./assets/share/base/page/GUILD_CHECK.png',
+            area=(103, 20, 156, 45),
+            search=(83, 0, 176, 65),
+            color=(182, 133, 98),
+            button=(103, 20, 156, 45),
+        ),
+        Button(
+            file='./assets/share/base/page/GUILD_CHECK.2.png',
+            area=(101, 18, 157, 45),
+            search=(81, 0, 177, 65),
+            color=(149, 97, 74),
+            button=(101, 18, 157, 45),
+        ),
+    ],
+)
+GUILD_GOTO_BEGGING = ButtonWrapper(
+    name='GUILD_GOTO_BEGGING',
+    share=Button(
+        file='./assets/share/base/page/GUILD_GOTO_BEGGING.png',
+        area=(855, 668, 921, 701),
+        search=(835, 648, 941, 720),
+        color=(208, 197, 175),
+        button=(855, 668, 921, 701),
+    ),
+)
+GUILD_GOTO_MISSION = ButtonWrapper(
+    name='GUILD_GOTO_MISSION',
+    share=Button(
+        file='./assets/share/base/page/GUILD_GOTO_MISSION.png',
+        area=(964, 670, 1020, 699),
+        search=(944, 650, 1040, 719),
+        color=(199, 188, 167),
+        button=(964, 670, 1020, 699),
+    ),
+)
+GUILD_MISSION_CHECK = ButtonWrapper(
+    name='GUILD_MISSION_CHECK',
+    share=Button(
+        file='./assets/share/base/page/GUILD_MISSION_CHECK.png',
+        area=(78, 18, 182, 45),
+        search=(58, 0, 202, 65),
+        color=(138, 93, 71),
+        button=(78, 18, 182, 45),
+    ),
+)
 GUSHIFENGYUN_CHECK = ButtonWrapper(
     name='GUSHIFENGYUN_CHECK',
     share=Button(
@@ -224,6 +283,16 @@ MAIN_GOTO_FULIWANGCHUAN = ButtonWrapper(
         button=(1206, 83, 1246, 167),
     ),
 )
+MAIN_GOTO_GUILD = ButtonWrapper(
+    name='MAIN_GOTO_GUILD',
+    share=Button(
+        file='./assets/share/base/page/MAIN_GOTO_GUILD.png',
+        area=(575, 662, 629, 690),
+        search=(555, 642, 649, 710),
+        color=(216, 198, 165),
+        button=(575, 662, 629, 690),
+    ),
+)
 MAIN_GOTO_GUSHIFENGYUN = ButtonWrapper(
     name='MAIN_GOTO_GUSHIFENGYUN',
     share=Button(
@@ -282,16 +351,6 @@ MAIN_GOTO_TAOYUAN = ButtonWrapper(
         search=(688, 258, 756, 375),
         color=(219, 208, 181),
         button=(708, 278, 736, 355),
-    ),
-)
-MAIN_GOTO_YASHE = ButtonWrapper(
-    name='MAIN_GOTO_YASHE',
-    share=Button(
-        file='./assets/share/base/page/MAIN_GOTO_YASHE.png',
-        area=(575, 662, 629, 690),
-        search=(555, 642, 649, 710),
-        color=(216, 198, 165),
-        button=(575, 662, 629, 690),
     ),
 )
 MIJING_CHECK = ButtonWrapper(
@@ -448,15 +507,5 @@ TAOYUAN_VISIT_CHECK = ButtonWrapper(
         search=(55, 103, 130, 209),
         color=(244, 212, 165),
         button=(75, 123, 110, 189),
-    ),
-)
-YASHE_CHECK = ButtonWrapper(
-    name='YASHE_CHECK',
-    share=Button(
-        file='./assets/share/base/page/YASHE_CHECK.png',
-        area=(103, 20, 156, 45),
-        search=(83, 0, 176, 65),
-        color=(182, 133, 98),
-        button=(103, 20, 156, 45),
     ),
 )

@@ -178,19 +178,57 @@ class StoredCounter(StoredBase):
             stored['total'] = self.FIXED_TOTAL
         return stored
 
-
 class StoredDailyActivity(StoredCounter, StoredExpiredAt0400):
-    FIXED_TOTAL = 500
+    FIXED_TOTAL = 100
 
 
-class StoredTrailblazePower(StoredCounter):
-    FIXED_TOTAL = 240
+class StoredGuildWeeklyActivity(StoredCounter, StoredExpiredAtMonday0400):
+    FIXED_TOTAL = 8000
 
+class StoredMonthlyCard(StoredInt):
+    value = 0
     def predict_current(self) -> int:
         """
         Predict current stamina from records
         """
         # Overflowed
+        value = self.value
+        if value <= 0:
+            return value
+
+        # Invalid time, record in the future
+        record = self.time
+        now = datetime.now()
+        if record >= now:
+            return value
+        # Calculate
+        # 月卡减去当前天数
+        diff = int(now - record)
+        value = max(value - diff,0)
+        return value
+    pass
+
+class StoredMonthlyCard68(StoredMonthlyCard):
+    pass
+
+class StoredMonthlyCard30(StoredMonthlyCard):
+    pass
+
+# 体力
+class StoredPower(StoredCounter):
+    FIXED_TOTAL = 150
+
+    def predict_current(self) -> int:
+        """
+        Predict current stamina from records
+        """
+        # 修改上限，有月卡是250没有是150
+        if StoredMonthlyCard30.value > 0 or StoredMonthlyCard68.value > 0:
+            self.FIXED_TOTAL = 250
+        else:
+            self.FIXED_TOTAL = 150
+        # Overflowed
+
         value = self.value
         if value >= self.FIXED_TOTAL:
             return value
@@ -200,253 +238,255 @@ class StoredTrailblazePower(StoredCounter):
         if record >= now:
             return value
         # Calculate
+        # ?
         # Recover 1 trailbaze power each 6 minutes
         diff = (now - record).total_seconds()
         value += int(diff // 360)
         return value
+#
+#
 
-
-class StoredResersed(StoredCounter):
-    FIXED_TOTAL = 2400
-
-
-class StoredImmersifier(StoredCounter):
-    FIXED_TOTAL = 8
-
-
-class StoredSimulatedUniverse(StoredCounter, StoredExpiredAtMonday0400):
-    pass
-
-
-class StoredSimulatedUniverseElite(StoredCounter, StoredExpiredAtMonday0400):
-    # These variables are used in Rogue Farming feature.
-
-    # FIXED_TOTAL --- Times of boss drop chance per week. In current version of StarRail, this value is 100.
-    FIXED_TOTAL = 100
-
-    # value --- Times left to farm. Resets to 100 every Monday 04:00, and decreases each time the elite boss is cleared.
-
-
-class StoredAssignment(StoredCounter):
-    pass
-
-
-class StoredDaily(StoredCounter, StoredExpiredAt0400):
-    quest1 = ''
-    quest2 = ''
-    quest3 = ''
-    quest4 = ''
-    quest5 = ''
-    quest6 = ''
-    quest7 = ''
-    quest8 = ''
-
-    FIXED_TOTAL = 8
-
-    def load_quests(self):
-        """
-        Returns:
-            list[DailyQuest]: Note that must check if quests are expired
-        """
-        # DailyQuest should be lazy loaded
-        from tasks.daily.keywords import DailyQuest
-        quests = []
-        for name in [self.quest1, self.quest2, self.quest3, self.quest4,
-                     self.quest5, self.quest6, self.quest7, self.quest8]:
-            if not name:
-                continue
-            try:
-                quest = DailyQuest.find(name)
-                quests.append(quest)
-            except ScriptError:
-                pass
-        return quests
-
-    def write_quests(self, quests):
-        """
-        Args:
-            quests (list[DailyQuest, str]):
-        """
-        from tasks.daily.keywords import DailyQuest
-        quests = [q.name if isinstance(q, DailyQuest) else q for q in quests]
-        with self._config.multi_set():
-            self.set(value=max(self.FIXED_TOTAL - len(quests), 0))
-            try:
-                self.quest1 = quests[0]
-            except IndexError:
-                self.quest1 = ''
-            try:
-                self.quest2 = quests[1]
-            except IndexError:
-                self.quest2 = ''
-            try:
-                self.quest3 = quests[2]
-            except IndexError:
-                self.quest3 = ''
-            try:
-                self.quest4 = quests[3]
-            except IndexError:
-                self.quest4 = ''
-            try:
-                self.quest5 = quests[4]
-            except IndexError:
-                self.quest5 = ''
-            try:
-                self.quest6 = quests[5]
-            except IndexError:
-                self.quest6 = ''
-            try:
-                self.quest7 = quests[6]
-            except IndexError:
-                self.quest7 = ''
-            try:
-                self.quest8 = quests[7]
-            except IndexError:
-                self.quest8 = ''
-
-    def clear(self):
-        with self._config.multi_set():
-            self.quest1 = ''
-            self.quest2 = ''
-            self.quest3 = ''
-            self.quest4 = ''
-            self.quest5 = ''
-            self.quest6 = ''
-            self.quest7 = ''
-            self.quest8 = ''
-
-
-class StoredDungeonDouble(StoredExpiredAt0400):
-    calyx = 0
-    relic = 0
-    rogue = 0
-
-
-class StoredEchoOfWar(StoredCounter, StoredExpiredAtMonday0400):
-    FIXED_TOTAL = 3
-
-
-class StoredBattlePassLevel(StoredCounter):
-    FIXED_TOTAL = 70
-
-
-class StoredBattlePassWeeklyQuest(StoredCounter, StoredExpiredAtMonday0400):
-    quest1 = ''
-    quest2 = ''
-    quest3 = ''
-    quest4 = ''
-    quest5 = ''
-    quest6 = ''
-    quest7 = ''
-
-    FIXED_TOTAL = 7
-
-    def load_quests(self):
-        """
-        Returns:
-            list[DailyQuest]: Note that must check if quests are expired
-        """
-        # BattlePassQuest should be lazy loaded
-        from tasks.battle_pass.keywords import BattlePassQuest
-        quests = []
-        for name in [self.quest1, self.quest2, self.quest3, self.quest4, self.quest5, self.quest6, self.quest7]:
-            if not name:
-                continue
-            try:
-                quest = BattlePassQuest.find(name)
-                quests.append(quest)
-            except ScriptError:
-                pass
-        return quests
-
-    def write_quests(self, quests):
-        """
-        Args:
-            quests (list[DailyQuest, str]):
-        """
-        from tasks.battle_pass.keywords import BattlePassQuest
-        quests = [q.name if isinstance(q, BattlePassQuest) else q for q in quests]
-        with self._config.multi_set():
-            self.set(value=max(self.FIXED_TOTAL - len(quests), 0))
-            try:
-                self.quest1 = quests[0]
-            except IndexError:
-                self.quest1 = ''
-            try:
-                self.quest2 = quests[1]
-            except IndexError:
-                self.quest2 = ''
-            try:
-                self.quest3 = quests[2]
-            except IndexError:
-                self.quest3 = ''
-            try:
-                self.quest4 = quests[3]
-            except IndexError:
-                self.quest4 = ''
-            try:
-                self.quest5 = quests[4]
-            except IndexError:
-                self.quest5 = ''
-            try:
-                self.quest6 = quests[5]
-            except IndexError:
-                self.quest6 = ''
-            try:
-                self.quest7 = quests[6]
-            except IndexError:
-                self.quest7 = ''
-
-    def clear(self):
-        with self._config.multi_set():
-            self.quest1 = ''
-            self.quest2 = ''
-            self.quest3 = ''
-            self.quest4 = ''
-            self.quest5 = ''
-            self.quest6 = ''
-            self.quest7 = ''
-
-
-class StoredBattlePassSimulatedUniverse(StoredCounter):
-    FIXED_TOTAL = 1
-
-
-class StoredBattlePassQuestCalyx(StoredCounter):
-    FIXED_TOTAL = 20
-
-
-class StoredBattlePassQuestEchoOfWar(StoredCounter):
-    FIXED_TOTAL = 2
-
-
-class StoredBattlePassQuestCredits(StoredCounter):
-    FIXED_TOTAL = 300000
-
-
-class StoredBattlePassQuestSynthesizeConsumables(StoredCounter):
-    FIXED_TOTAL = 10
-
-
-class StoredBattlePassQuestStagnantShadow(StoredCounter):
-    FIXED_TOTAL = 3
-
-
-class StoredBattlePassQuestCavernOfCorrosion(StoredCounter):
-    FIXED_TOTAL = 8
-
-
-class StoredBattlePassQuestTrailblazePower(StoredCounter):
-    # Dynamic total from 100 to 1400
-    LIST_TOTAL = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400]
-
-
-class StoredPlanner(StoredBase):
-    value: int
-    total: int
-    synthesize: int
-
-
-class StoredPlannerOverall(StoredBase):
-    value: str = '??%'
-    comment: str = '<??d'
+# class StoredResersed(StoredCounter):
+#     FIXED_TOTAL = 2400
+#
+#
+# class StoredImmersifier(StoredCounter):
+#     FIXED_TOTAL = 8
+#
+#
+# class StoredSimulatedUniverse(StoredCounter, StoredExpiredAtMonday0400):
+#     pass
+#
+#
+# class StoredSimulatedUniverseElite(StoredCounter, StoredExpiredAtMonday0400):
+#     # These variables are used in Rogue Farming feature.
+#
+#     # FIXED_TOTAL --- Times of boss drop chance per week. In current version of StarRail, this value is 100.
+#     FIXED_TOTAL = 100
+#
+#     # value --- Times left to farm. Resets to 100 every Monday 04:00, and decreases each time the elite boss is cleared.
+#
+#
+# class StoredAssignment(StoredCounter):
+#     pass
+#
+#
+# class StoredDaily(StoredCounter, StoredExpiredAt0400):
+#     quest1 = ''
+#     quest2 = ''
+#     quest3 = ''
+#     quest4 = ''
+#     quest5 = ''
+#     quest6 = ''
+#     quest7 = ''
+#     quest8 = ''
+#
+#     FIXED_TOTAL = 8
+#
+#     def load_quests(self):
+#         """
+#         Returns:
+#             list[DailyQuest]: Note that must check if quests are expired
+#         """
+#         # DailyQuest should be lazy loaded
+#         from tasks.daily.keywords import DailyQuest
+#         quests = []
+#         for name in [self.quest1, self.quest2, self.quest3, self.quest4,
+#                      self.quest5, self.quest6, self.quest7, self.quest8]:
+#             if not name:
+#                 continue
+#             try:
+#                 quest = DailyQuest.find(name)
+#                 quests.append(quest)
+#             except ScriptError:
+#                 pass
+#         return quests
+#
+#     def write_quests(self, quests):
+#         """
+#         Args:
+#             quests (list[DailyQuest, str]):
+#         """
+#         from tasks.daily.keywords import DailyQuest
+#         quests = [q.name if isinstance(q, DailyQuest) else q for q in quests]
+#         with self._config.multi_set():
+#             self.set(value=max(self.FIXED_TOTAL - len(quests), 0))
+#             try:
+#                 self.quest1 = quests[0]
+#             except IndexError:
+#                 self.quest1 = ''
+#             try:
+#                 self.quest2 = quests[1]
+#             except IndexError:
+#                 self.quest2 = ''
+#             try:
+#                 self.quest3 = quests[2]
+#             except IndexError:
+#                 self.quest3 = ''
+#             try:
+#                 self.quest4 = quests[3]
+#             except IndexError:
+#                 self.quest4 = ''
+#             try:
+#                 self.quest5 = quests[4]
+#             except IndexError:
+#                 self.quest5 = ''
+#             try:
+#                 self.quest6 = quests[5]
+#             except IndexError:
+#                 self.quest6 = ''
+#             try:
+#                 self.quest7 = quests[6]
+#             except IndexError:
+#                 self.quest7 = ''
+#             try:
+#                 self.quest8 = quests[7]
+#             except IndexError:
+#                 self.quest8 = ''
+#
+#     def clear(self):
+#         with self._config.multi_set():
+#             self.quest1 = ''
+#             self.quest2 = ''
+#             self.quest3 = ''
+#             self.quest4 = ''
+#             self.quest5 = ''
+#             self.quest6 = ''
+#             self.quest7 = ''
+#             self.quest8 = ''
+#
+#
+# class StoredDungeonDouble(StoredExpiredAt0400):
+#     calyx = 0
+#     relic = 0
+#     rogue = 0
+#
+#
+# class StoredEchoOfWar(StoredCounter, StoredExpiredAtMonday0400):
+#     FIXED_TOTAL = 3
+#
+#
+# class StoredBattlePassLevel(StoredCounter):
+#     FIXED_TOTAL = 70
+#
+#
+# class StoredBattlePassWeeklyQuest(StoredCounter, StoredExpiredAtMonday0400):
+#     quest1 = ''
+#     quest2 = ''
+#     quest3 = ''
+#     quest4 = ''
+#     quest5 = ''
+#     quest6 = ''
+#     quest7 = ''
+#
+#     FIXED_TOTAL = 7
+#
+#     def load_quests(self):
+#         """
+#         Returns:
+#             list[DailyQuest]: Note that must check if quests are expired
+#         """
+#         # BattlePassQuest should be lazy loaded
+#         from tasks.battle_pass.keywords import BattlePassQuest
+#         quests = []
+#         for name in [self.quest1, self.quest2, self.quest3, self.quest4, self.quest5, self.quest6, self.quest7]:
+#             if not name:
+#                 continue
+#             try:
+#                 quest = BattlePassQuest.find(name)
+#                 quests.append(quest)
+#             except ScriptError:
+#                 pass
+#         return quests
+#
+#     def write_quests(self, quests):
+#         """
+#         Args:
+#             quests (list[DailyQuest, str]):
+#         """
+#         from tasks.battle_pass.keywords import BattlePassQuest
+#         quests = [q.name if isinstance(q, BattlePassQuest) else q for q in quests]
+#         with self._config.multi_set():
+#             self.set(value=max(self.FIXED_TOTAL - len(quests), 0))
+#             try:
+#                 self.quest1 = quests[0]
+#             except IndexError:
+#                 self.quest1 = ''
+#             try:
+#                 self.quest2 = quests[1]
+#             except IndexError:
+#                 self.quest2 = ''
+#             try:
+#                 self.quest3 = quests[2]
+#             except IndexError:
+#                 self.quest3 = ''
+#             try:
+#                 self.quest4 = quests[3]
+#             except IndexError:
+#                 self.quest4 = ''
+#             try:
+#                 self.quest5 = quests[4]
+#             except IndexError:
+#                 self.quest5 = ''
+#             try:
+#                 self.quest6 = quests[5]
+#             except IndexError:
+#                 self.quest6 = ''
+#             try:
+#                 self.quest7 = quests[6]
+#             except IndexError:
+#                 self.quest7 = ''
+#
+#     def clear(self):
+#         with self._config.multi_set():
+#             self.quest1 = ''
+#             self.quest2 = ''
+#             self.quest3 = ''
+#             self.quest4 = ''
+#             self.quest5 = ''
+#             self.quest6 = ''
+#             self.quest7 = ''
+#
+#
+# class StoredBattlePassSimulatedUniverse(StoredCounter):
+#     FIXED_TOTAL = 1
+#
+#
+# class StoredBattlePassQuestCalyx(StoredCounter):
+#     FIXED_TOTAL = 20
+#
+#
+# class StoredBattlePassQuestEchoOfWar(StoredCounter):
+#     FIXED_TOTAL = 2
+#
+#
+# class StoredBattlePassQuestCredits(StoredCounter):
+#     FIXED_TOTAL = 300000
+#
+#
+# class StoredBattlePassQuestSynthesizeConsumables(StoredCounter):
+#     FIXED_TOTAL = 10
+#
+#
+# class StoredBattlePassQuestStagnantShadow(StoredCounter):
+#     FIXED_TOTAL = 3
+#
+#
+# class StoredBattlePassQuestCavernOfCorrosion(StoredCounter):
+#     FIXED_TOTAL = 8
+#
+#
+# class StoredBattlePassQuestTrailblazePower(StoredCounter):
+#     # Dynamic total from 100 to 1400
+#     LIST_TOTAL = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400]
+#
+#
+# class StoredPlanner(StoredBase):
+#     value: int
+#     total: int
+#     synthesize: int
+#
+#
+# class StoredPlannerOverall(StoredBase):
+#     value: str = '??%'
+#     comment: str = '<??d'

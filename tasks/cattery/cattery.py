@@ -111,9 +111,6 @@ class Cattery(UI):
                 logger.info('Get play with cat reward')
                 got_reward = True
                 continue
-            # if self.appear(REWARD_POPUP):
-            #     logger.info('Got reward popup')
-            #     break
             if self.appear_then_click(PLAY_WITH_CAT, similarity=0.70, interval=5):
                 in_flash = True
                 timeout.reset()

@@ -121,9 +121,18 @@ page_office = Page(TAOYUAN_CHECK)
 page_office.link(BACK, destination=page_main)
 page_main.link(MAIN_GOTO_TAOYUAN, destination=page_office)
 # 雅社
-page_guild = Page(YASHE_CHECK)
+page_guild = Page(GUILD_CHECK)
 page_guild.link(BACK,destination=page_main)
-page_main.link(MAIN_GOTO_YASHE, destination=page_guild)
+page_main.link(MAIN_GOTO_GUILD, destination=page_guild)
+# 雅社放河灯
+page_guild_begging = Page(GUILD_BEGGING_CHECK)
+page_guild_begging.link(BACK,destination=page_guild)
+page_guild.link(GUILD_GOTO_BEGGING, destination=page_guild_begging)
+# 雅社悬赏
+page_guild_mission = Page(GUILD_MISSION_CHECK)
+page_guild_mission.link(BACK,destination=page_guild)
+page_guild.link(GUILD_GOTO_MISSION, destination=page_guild_mission)
+
 
 # =============金戈馆================
 page_jingeyanwu = Page(JINGEYANWU_CHECK)

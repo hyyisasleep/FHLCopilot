@@ -84,7 +84,7 @@ Optimization:
   ScreenshotInterval: 0.3
   CombatScreenshotInterval: 1.0
   WhenTaskQueueEmpty:
-    value: goto_main
+    value: stay_there
     option: [ stay_there, goto_main, close_game ]
 
 # ==================== Daily ====================

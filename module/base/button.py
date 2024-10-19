@@ -144,7 +144,7 @@ class Button(Resource):
 
     def match_multi_template(self, image, similarity=0.85, direct_match=False):
         """
-        Detects assets by template matching, return multiple reults
+        Detects assets by template matching, return multiple results
 
         Args:
             image: Screenshot.

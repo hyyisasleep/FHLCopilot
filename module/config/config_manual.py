@@ -9,7 +9,7 @@ class ManualConfig:
         return server.lang
 
     SCHEDULER_PRIORITY = """
-    Restart  > Shop > Office > Cattery
+    Restart > Dispatch > Shop > Office > Cattery > Guild
     """
 
 

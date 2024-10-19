@@ -83,3 +83,13 @@ TAOYUAN_GET_BLESSING_CONFIRM = ButtonWrapper(
         button=(696, 575, 842, 617),
     ),
 )
+UPDATE_FINISH_CONFIRM = ButtonWrapper(
+    name='UPDATE_FINISH_CONFIRM',
+    share=Button(
+        file='./assets/share/base/popup/UPDATE_FINISH_CONFIRM.png',
+        area=(592, 426, 723, 478),
+        search=(572, 406, 743, 498),
+        color=(225, 120, 86),
+        button=(592, 426, 723, 478),
+    ),
+)

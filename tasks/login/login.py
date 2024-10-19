@@ -4,6 +4,7 @@ from module.base.timer import Timer
 from module.exception import GameNotRunningError
 from module.logger import logger
 from tasks.base.assets.assets_base_page import CLOSE_LOGIN_ADVERTISEMENT, BACK, CLOSE_UPDATE_NOTICE
+from tasks.base.assets.assets_base_popup import UPDATE_FINISH_CONFIRM
 from tasks.base.page import page_main
 from tasks.base.ui import UI
 from tasks.login.assets.assets_login import LOGIN_CONFIRM, LOGIN_LOADING, DAILY_SIGN_IN, \
@@ -105,6 +106,14 @@ class Login(UI):  # , LoginAndroidCloud):
                 app_timer.reset()
                 orientation_timer.reset()
                 continue
+            # 更新数据下载完成后有个弹窗提示重启
+            if self.appear_then_click(UPDATE_FINISH_CONFIRM):
+                logger.info("Game resources downloading finish")
+                self.device.stuck_record_clear()
+                app_timer.reset()
+                orientation_timer.reset()
+                continue
+
             # Login
             if self.is_in_login_confirm(interval=5):
                 self.device.click(LOGIN_CONFIRM)

@@ -3,34 +3,54 @@ from module.base.button import Button, ButtonWrapper
 # This file was auto-generated, do not modify it manually. To generate:
 # ``` python -m dev_tools.button_extract ```
 
-COMBAT_CHECK = ButtonWrapper(
-    name='COMBAT_CHECK',
+ATTACKING_CHECK = ButtonWrapper(
+    name='ATTACKING_CHECK',
     share=Button(
-        file='./assets/share/pvp/ShaPanLunYi/COMBAT_CHECK.png',
+        file='./assets/share/pvp/ShaPanLunYi/ATTACKING_CHECK.png',
         area=(1178, 484, 1245, 504),
         search=(1158, 464, 1265, 524),
         color=(179, 128, 117),
         button=(1178, 484, 1245, 504),
     ),
 )
-COMBAT_PREPARE = ButtonWrapper(
-    name='COMBAT_PREPARE',
+ATTACK_CONFIRM = ButtonWrapper(
+    name='ATTACK_CONFIRM',
     share=Button(
-        file='./assets/share/pvp/ShaPanLunYi/COMBAT_PREPARE.png',
+        file='./assets/share/pvp/ShaPanLunYi/ATTACK_CONFIRM.png',
+        area=(1129, 597, 1253, 680),
+        search=(1109, 577, 1273, 700),
+        color=(203, 138, 105),
+        button=(1129, 597, 1253, 680),
+    ),
+)
+ATTACK_START = ButtonWrapper(
+    name='ATTACK_START',
+    share=Button(
+        file='./assets/share/pvp/ShaPanLunYi/ATTACK_START.png',
         area=(1166, 427, 1256, 504),
         search=(1146, 407, 1276, 524),
         color=(196, 135, 109),
         button=(1166, 427, 1256, 504),
     ),
 )
-COMBAT_START = ButtonWrapper(
-    name='COMBAT_START',
+BUY_FLAG = ButtonWrapper(
+    name='BUY_FLAG',
     share=Button(
-        file='./assets/share/pvp/ShaPanLunYi/COMBAT_START.png',
-        area=(1129, 597, 1253, 680),
-        search=(1109, 577, 1273, 700),
-        color=(203, 138, 105),
-        button=(1129, 597, 1253, 680),
+        file='./assets/share/pvp/ShaPanLunYi/BUY_FLAG.png',
+        area=(585, 72, 717, 110),
+        search=(565, 52, 737, 130),
+        color=(225, 125, 99),
+        button=(879, 54, 916, 91),
+    ),
+)
+FLAG_CLEAR_NOTICE = ButtonWrapper(
+    name='FLAG_CLEAR_NOTICE',
+    share=Button(
+        file='./assets/share/pvp/ShaPanLunYi/FLAG_CLEAR_NOTICE.png',
+        area=(495, 307, 778, 348),
+        search=(475, 287, 798, 368),
+        color=(225, 212, 191),
+        button=(430, 446, 571, 497),
     ),
 )
 FLAG_OCR = ButtonWrapper(
@@ -73,39 +93,43 @@ REFRESH_CONFIRM = ButtonWrapper(
         button=(711, 446, 847, 496),
     ),
 )
-REWARD_CHECK = ButtonWrapper(
-    name='REWARD_CHECK',
+REWARD_CHECKED = ButtonWrapper(
+    name='REWARD_CHECKED',
     share=Button(
-        file='./assets/share/pvp/ShaPanLunYi/REWARD_CHECK.png',
-        area=(620, 586, 705, 671),
-        search=(600, 566, 725, 691),
-        color=(168, 148, 108),
-        button=(620, 586, 705, 671),
+        file='./assets/share/pvp/ShaPanLunYi/REWARD_CHECKED.png',
+        area=(409, 576, 497, 647),
+        search=(389, 556, 517, 667),
+        color=(153, 112, 110),
+        button=(409, 576, 497, 647),
     ),
 )
-REWARD_LOCK = ButtonWrapper(
-    name='REWARD_LOCK',
-    share=[
-        Button(
-            file='./assets/share/pvp/ShaPanLunYi/REWARD_LOCK.png',
-            area=(625, 606, 695, 649),
-            search=(605, 586, 715, 669),
-            color=(150, 178, 143),
-            button=(625, 606, 695, 649),
-        ),
-        Button(
-            file='./assets/share/pvp/ShaPanLunYi/REWARD_LOCK.2.png',
-            area=(526, 594, 584, 651),
-            search=(506, 574, 604, 671),
-            color=(137, 144, 131),
-            button=(526, 594, 584, 651),
-        ),
-        Button(
-            file='./assets/share/pvp/ShaPanLunYi/REWARD_LOCK.3.png',
-            area=(423, 594, 484, 651),
-            search=(403, 574, 504, 671),
-            color=(136, 143, 130),
-            button=(423, 594, 484, 651),
-        ),
-    ],
+REWARD_LOCKED = ButtonWrapper(
+    name='REWARD_LOCKED',
+    share=Button(
+        file='./assets/share/pvp/ShaPanLunYi/REWARD_LOCKED.png',
+        area=(423, 594, 484, 651),
+        search=(403, 574, 504, 671),
+        color=(136, 143, 130),
+        button=(423, 594, 484, 651),
+    ),
+)
+REWARD_PROGRESS_BAR = ButtonWrapper(
+    name='REWARD_PROGRESS_BAR',
+    share=Button(
+        file='./assets/share/pvp/ShaPanLunYi/REWARD_PROGRESS_BAR.png',
+        area=(397, 705, 495, 717),
+        search=(377, 685, 515, 720),
+        color=(202, 137, 61),
+        button=(397, 705, 495, 717),
+    ),
+)
+REWARD_UNLOCK = ButtonWrapper(
+    name='REWARD_UNLOCK',
+    share=Button(
+        file='./assets/share/pvp/ShaPanLunYi/REWARD_UNLOCK.png',
+        area=(410, 574, 508, 646),
+        search=(390, 554, 528, 666),
+        color=(167, 124, 112),
+        button=(410, 574, 508, 646),
+    ),
 )

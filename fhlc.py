@@ -42,6 +42,8 @@ class FHLCopilot(AzurLaneAutoScript):
         from tasks.dispatch.dispatch import Dispatch
         Dispatch(config=self.config, device=self.device).run()
 
+    def guild(self):
+        pass
 
 if __name__ == '__main__':
     src = FHLCopilot('fhlc')

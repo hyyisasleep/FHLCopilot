@@ -19,6 +19,9 @@ Cattery:
 Dispatch:
   Scheduler:
     Enable: true
+Guild:
+  Scheduler:
+    Enable: false
 #Dungeon:
 #  Scheduler:
 #    Enable: true
