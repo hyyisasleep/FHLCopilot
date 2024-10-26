@@ -56,45 +56,6 @@ CHARACTER_CHECK = ButtonWrapper(
         button=(90, 18, 169, 45),
     ),
 )
-CLOSE_LOGIN_ADVERTISEMENT = ButtonWrapper(
-    name='CLOSE_LOGIN_ADVERTISEMENT',
-    share=[
-        Button(
-            file='./assets/share/base/page/CLOSE_LOGIN_ADVERTISEMENT.png',
-            area=(1156, 59, 1202, 105),
-            search=(1136, 39, 1222, 125),
-            color=(88, 73, 41),
-            button=(1156, 59, 1202, 105),
-        ),
-        Button(
-            file='./assets/share/base/page/CLOSE_LOGIN_ADVERTISEMENT.2.png',
-            area=(1156, 59, 1203, 105),
-            search=(1136, 39, 1223, 125),
-            color=(93, 77, 43),
-            button=(1156, 59, 1203, 105),
-        ),
-    ],
-)
-CLOSE_UPDATE_NOTICE = ButtonWrapper(
-    name='CLOSE_UPDATE_NOTICE',
-    share=Button(
-        file='./assets/share/base/page/CLOSE_UPDATE_NOTICE.png',
-        area=(1180, 63, 1218, 100),
-        search=(1160, 43, 1238, 120),
-        color=(212, 130, 99),
-        button=(1180, 63, 1218, 100),
-    ),
-)
-CLOSE_YASHE_FRAGMENT_THANKS = ButtonWrapper(
-    name='CLOSE_YASHE_FRAGMENT_THANKS',
-    share=Button(
-        file='./assets/share/base/page/CLOSE_YASHE_FRAGMENT_THANKS.png',
-        area=(862, 22, 932, 90),
-        search=(842, 2, 952, 110),
-        color=(106, 58, 44),
-        button=(862, 22, 932, 90),
-    ),
-)
 DAILY_QUEST_CHECK = ButtonWrapper(
     name='DAILY_QUEST_CHECK',
     share=Button(

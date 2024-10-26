@@ -1,6 +1,6 @@
 from module.base.timer import Timer
 from module.logger import logger
-from tasks.base.assets.assets_base_page import BACK
+# from tasks.base.assets.assets_base_page import BACK
 from tasks.base.page import page_office_visit, page_office
 from tasks.base.ui import UI
 from tasks.office.assets.assets_office_visit import *
@@ -73,6 +73,10 @@ class Visit(UI):
                 skip_first_screenshot = False
             else:
                 self.device.screenshot()
+
+            if self.handle_reward():
+                logger.info("Get a flower")
+                continue
             # 跳转到
             if self.appear(LIKE_LOCKED):
                 logger.info("Give like finish or no need give like")
@@ -89,9 +93,7 @@ class Visit(UI):
                 logger.info("give a like")
                 timeout.reset()
                 continue
-            if self.handle_reward():
-                logger.info("Get a flower")
-                continue
+
 
 
 

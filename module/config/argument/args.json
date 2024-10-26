@@ -128,7 +128,7 @@
       },
       "WhenTaskQueueEmpty": {
         "type": "select",
-        "value": "goto_main",
+        "value": "stay_there",
         "option": [
           "stay_there",
           "goto_main",
@@ -170,7 +170,7 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": true,
+        "value": false,
         "option": [
           true,
           false
@@ -190,6 +190,24 @@
         "type": "input",
         "value": "04:00",
         "display": "hide"
+      }
+    },
+    "Shop": {
+      "SignInGift": {
+        "type": "checkbox",
+        "value": 1
+      },
+      "MonthlyCard30": {
+        "type": "checkbox",
+        "value": 0
+      },
+      "MonthlyCard68": {
+        "type": "checkbox",
+        "value": 0
+      },
+      "CopperBuyCommonCatPuppet": {
+        "type": "checkbox",
+        "value": 1
       }
     }
   },
@@ -291,6 +309,33 @@
       "AutoHideAndSeek": {
         "type": "checkbox",
         "value": 1
+      }
+    }
+  },
+  "Guild": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": true,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "Guild",
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "04:00",
+        "display": "hide"
       }
     }
   }

@@ -9,7 +9,7 @@ from module.base.timer import Timer
 from module.logger import logger
 from tasks.PVP.assets.assets_pvp_JinGeYanWu import SKIP_LAST_WEEK_LEVEL, SKIP_LAST_WEEK_LEVEL_2
 # tasks.PVP.assets.assets_PVP_JinGeYanWu import SKIP_LAST_WEEK_LEVEL_2, SKIP_LAST_WEEK_LEVEL
-from tasks.base.assets.assets_base_page import BACK, CLOSE_UPDATE_NOTICE  # , CLOSE
+from tasks.base.assets.assets_base_page import BACK  # , CLOSE
 from tasks.base.assets.assets_base_popup import *
 # from tasks.taoyuanju.assets.assets_taoyuanju import GET_BLESSING, GET_BLESSING_CONFIRM
 
@@ -55,10 +55,13 @@ class PopupHandler(ModuleBase):
         if appear and interval:
             self.interval_reset(GET_REWARD, interval=interval)
 
+
+        return appear
         # TODO:。。。领完奖还得等动画放完才能接着下一步 我知道这么写不好但是先放着
-        wait = Timer(1).start()
-        if wait.reached():
-            return appear
+        # 好的这么写直接不返回True，了一堆用handle_reward判定完成的语句也没用了
+        # wait = Timer(1).start()
+        # if wait.reached():
+        #     return appear
 
     def handle_week_jinge(self,interval=5) -> bool:
         if self.appear_then_click(SKIP_LAST_WEEK_LEVEL):
@@ -96,7 +99,7 @@ class PopupHandler(ModuleBase):
 
     def handle_cattery_get_cat(self, interval=5) -> bool:
         """
-        Popup blessing in taoyuanju everyday
+        Popup new cat
 
         Args:
             interval:
@@ -104,6 +107,10 @@ class PopupHandler(ModuleBase):
         Returns:
             If handled.
         """
+        # 有时候会冒出一些标准猫让你捏脸，但是随机和完成键是同时出现的，避免抽风直接不随机了
+        if self.appear_then_click(CATTERY_SHAPE_CAT_CONFIRM, interval):
+            logger.info("Skip shape the cat")
+            return True
         if self.appear_then_long_click(CATTERY_GET_CAT, interval):
             logger.info('Get a new cat')
             return True

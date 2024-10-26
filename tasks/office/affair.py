@@ -1,6 +1,6 @@
 from module.base.timer import Timer
 from module.logger import logger
-from tasks.base.assets.assets_base_page import CLOSE_LOGIN_ADVERTISEMENT
+# from tasks.base.assets.assets_base_page import CLOSE_LOGIN_ADVERTISEMENT
 from tasks.base.assets.assets_base_popup import GET_REWARD
 from tasks.base.page import page_office_affair, page_office
 from tasks.base.ui import UI
@@ -100,11 +100,14 @@ class Affair(UI):
                 self.appear_then_click(AFFAIR_GOTO_TODO)
                 self.appear_then_click(AFFAIR_GOTO_IMPRESSION)
                 logger.info("Switch page to refresh reward's location")
+                # timeout.reset()
                 continue
             if get_reward_finish:
                 logger.info("Get impression reward finish")
+                # timeout.reset()
                 break
             if self.appear_then_click(AFFAIR_GOTO_IMPRESSION):
+                timeout.reset()
                 continue
             if self.appear_then_click(REWARD_UNLOCK):
                 continue
@@ -113,6 +116,7 @@ class Affair(UI):
             if self.appear_then_click(GET_REWARD_UNLOCK):
                 continue
             if self.appear_then_click(CLOSE_REWARD_PAGE):
+                timeout.reset()
                 continue
             if self.appear(REWARD_FINISH):
                 get_reward_finish = True

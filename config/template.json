@@ -23,7 +23,7 @@
     "Optimization": {
       "ScreenshotInterval": 0.2,
       "CombatScreenshotInterval": 1.0,
-      "WhenTaskQueueEmpty": "goto_main"
+      "WhenTaskQueueEmpty": "stay_there"
     }
   },
   "Restart": {
@@ -36,10 +36,16 @@
   },
   "Shop": {
     "Scheduler": {
-      "Enable": true,
+      "Enable": false,
       "NextRun": "2020-01-01 00:00:00",
       "Command": "Shop",
       "ServerUpdate": "04:00"
+    },
+    "Shop": {
+      "SignInGift": 1,
+      "MonthlyCard30": 0,
+      "MonthlyCard68": 0,
+      "CopperBuyCommonCatPuppet": 1
     }
   },
   "Office": {
@@ -72,6 +78,14 @@
     },
     "Dispatch": {
       "AutoHideAndSeek": 1
+    }
+  },
+  "Guild": {
+    "Scheduler": {
+      "Enable": true,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "Guild",
+      "ServerUpdate": "04:00"
     }
   }
 }

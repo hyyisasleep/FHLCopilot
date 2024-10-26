@@ -32,8 +32,11 @@ class Interact(UI):
             else:
                 self.device.screenshot()
             if timeout.reached():
-                logger.info("Get interval timeout")
+                logger.info("Get interact timeout")
                 break
+            if self.appear_then_click(LEVEL_UP_NOTICE):
+                logger.info("Close level up popup")
+                continue
             if self.appear_then_click(LEVEL_REWARD_UNLOCK):
                 logger.info("Get friendship upgrade reward")
                 continue

@@ -38,7 +38,7 @@ class GeneratedConfig:
     # Group `Optimization`
     Optimization_ScreenshotInterval = 0.3
     Optimization_CombatScreenshotInterval = 1.0
-    Optimization_WhenTaskQueueEmpty = 'goto_main'  # stay_there, goto_main, close_game
+    Optimization_WhenTaskQueueEmpty = 'stay_there'  # stay_there, goto_main, close_game
 
     # Group `Shop`
     Shop_SignInGift = 1

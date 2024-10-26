@@ -27,7 +27,7 @@ class Guild(UI):
 
         if self._check_join_guild():
             self._sign_in()
-            self._float_river_lantern()
+            # self._float_river_lantern()
         self.ui_goto_main()
 
 
@@ -35,7 +35,7 @@ class Guild(UI):
         self.config.task_delay(server_update=True)
 
     def _sign_in(self,skip_first_screenshot=True,interval=2):
-        timeout = Timer(10).start()
+        timeout = Timer(15).start()
 
         while 1:
             if skip_first_screenshot:
@@ -48,7 +48,7 @@ class Guild(UI):
             if self.appear_then_click(NOTICE_CHECK):
                 logger.info("Close notice")
                 continue
-            if self.appear_then_click(GOTO_SIGN_IN):
+            if self.appear_then_click(GOTO_SIGN_IN,interval=2):
                 continue
             if self.handle_reward():
                 continue

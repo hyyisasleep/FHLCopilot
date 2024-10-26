@@ -50,7 +50,7 @@ class ShaPanLunYi(UI):
 
     def _refresh(self, interval=2, skip_first_screenshot=True)->bool:
         click_refresh = False
-        timeout = Timer(10).start()
+        timeout = Timer(20).start()
         while 1:
             if skip_first_screenshot:
                 skip_first_screenshot = False
@@ -59,8 +59,6 @@ class ShaPanLunYi(UI):
             if timeout.reached():
                 logger.warning("Get refresh timeout")
                 return False
-
-
             # 截的图会导致没拿到奖和拿到奖励的图被同时匹配上
             # 加个只有在UNLOCK和LOCKED状态才会出现的进度条做判定
             if self.appear(REWARD_CHECKED) and not self.appear(REWARD_PROGRESS_BAR):
@@ -109,7 +107,7 @@ class ShaPanLunYi(UI):
 
     def _wait_until_get_reward(self, interval=2, skip_first_screenshot=True)->bool:
         timeout = Timer(10).start()
-        attack_finish = False
+        # attack_finish = False
         while 1:
             if skip_first_screenshot:
                 skip_first_screenshot = False
@@ -123,18 +121,18 @@ class ShaPanLunYi(UI):
             # if attack_finish and self.appear_then_click(REWARD_UNLOCK):
             #     continue
             if self.handle_reward():
-                if attack_finish:
-                    logger.info("Get win time reward")
-                else:
-                    attack_finish = True
-                    logger.info("Get attack reward")
+                # if attack_finish:
+                #     logger.info("Get win time reward")
+                # else:
+                #     attack_finish = True
+                #     logger.info("Get attack reward")
                 continue
             if self.appear(REWARD_LOCKED) and self.appear(ATTACK_START):
                 logger.info("Reward is locked,finish")
                 return True
             # 有的时候会出现 进攻次数奖励弹窗冒出来前先把二胜奖励点了的鬼情况。。。
-            if (attack_finish and self.appear(ATTACK_START)
-                    and self.appear_then_click(REWARD_UNLOCK)):
+            # 但是用标记位好像也没用0.0
+            if self.appear(ATTACK_START) and self.appear_then_click(REWARD_UNLOCK):
                 logger.info("Attack finish and reward unlock")
                 # attack_finish = True
                 continue

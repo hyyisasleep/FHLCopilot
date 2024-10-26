@@ -72,3 +72,13 @@ LEVEL_REWARD_UNLOCK = ButtonWrapper(
         button=(712, 195, 750, 225),
     ),
 )
+LEVEL_UP_NOTICE = ButtonWrapper(
+    name='LEVEL_UP_NOTICE',
+    share=Button(
+        file='./assets/share/dispatch/interact/LEVEL_UP_NOTICE.png',
+        area=(622, 137, 670, 411),
+        search=(602, 117, 690, 431),
+        color=(243, 209, 154),
+        button=(622, 137, 670, 411),
+    ),
+)

@@ -366,7 +366,7 @@ class AzurLaneConfig(ConfigUpdater, ManualConfig, GeneratedConfig, ConfigWatcher
     def task_delay(self, success=None, server_update=None, target=None, minute=None, task=None):
         """
         Set Scheduler.NextRun
-        Should set at least one arguments.
+        Should set at least one argument.
         If multiple arguments are set, use the nearest.
 
         Args:

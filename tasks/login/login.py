@@ -3,8 +3,9 @@ from sympy.codegen.ast import continue_
 from module.base.timer import Timer
 from module.exception import GameNotRunningError
 from module.logger import logger
-from tasks.base.assets.assets_base_page import CLOSE_LOGIN_ADVERTISEMENT, BACK, CLOSE_UPDATE_NOTICE
-from tasks.base.assets.assets_base_popup import UPDATE_FINISH_CONFIRM
+from tasks.base.assets.assets_base_page import  BACK
+from tasks.base.assets.assets_base_popup import UPDATE_FINISH_CONFIRM, CLOSE_LOGIN_ADVERTISEMENT, CLOSE_UPDATE_NOTICE, \
+    CLOSE_JINGEZHIZUN_NOTICE, TIME_LIMIT_SIGN_IN_CHECK, ACTIVITY_SIGN_IN_GET_REWARD
 from tasks.base.page import page_main
 from tasks.base.ui import UI
 from tasks.login.assets.assets_login import LOGIN_CONFIRM, LOGIN_LOADING, DAILY_SIGN_IN, \
@@ -19,7 +20,7 @@ class Login(UI):  # , LoginAndroidCloud):
     def handle_activity_sign_in_gift(self):
         """
         活动期间的签到
-        #TODO: 多天后的屏幕适配
+        #TODO: 多天后的屏幕适配....签到好找但是已领取怎么找，烦
         """
         if self.appear_then_click(ACTIVITY_SIGN_IN_GIFT):
             logger.info("Get activity sign in gift")
@@ -119,11 +120,10 @@ class Login(UI):  # , LoginAndroidCloud):
                 self.device.click(LOGIN_CONFIRM)
                 login_success = True
                 continue
-            # if self.appear_then_click(USER_AGREEMENT_ACCEPT):
-            #     continue
+
             # Additional
-            # 更新公告，没测上😓
-            # 好了不知道为什么现在每次启动都会出现这个
+
+            # 更新公告
             if self.appear_then_click(CLOSE_UPDATE_NOTICE):
                 logger.info("Close update notification")
                 continue
@@ -131,8 +131,19 @@ class Login(UI):  # , LoginAndroidCloud):
             if self.appear_then_click(CLOSE_LOGIN_ADVERTISEMENT):
                 logger.info("Skip main story or banner notification")
                 continue
+            # 金戈至尊赛结英广告
+            if self.appear_then_click(CLOSE_JINGEZHIZUN_NOTICE):
+                logger.info("Skip jin-ge-zhi-zun notice")
+                continue
 
+            # 活动签到啊啊啊啊啊
             if self.handle_activity_sign_in_gift():
+                # if self.appear(ACTIVITY_SIGN_IN_GET_REWARD)
+                continue
+            # TODO:处理活动签到，或许这一项不该放在popup里。。。
+            if self.appear(TIME_LIMIT_SIGN_IN_CHECK):
+                self.appear_then_click(BACK)
+                logger.info("Skip 10 days sign in")
                 continue
 
             # 处理签到+占卜
@@ -187,11 +198,11 @@ class Login(UI):  # , LoginAndroidCloud):
         self.config.task_delay(server_update=True)
 
 
-# ui = Login('src')
+# ui = Login('fhlc')
 # ui.app_start()
 # ui.handle_activity_sign_in_gift()
 # ui.app_restart()
 # az = Login('fhlc')
-# az.image_file = r'C:\Users\huixi\Documents\MuMu共享文件夹\Screenshots\MuMu12-20240929-221758.png'
+# az.image_file = r'C:\Users\huixi\Documents\MuMu共享文件夹\Screenshots\MuMu12-20241022-135513.png'
 #
-# print(az.appear(CLOSE_UPDATE_NOTICE))
+# print(az.appear(CLOSE_JINGEZHIZUN_NOTICE))

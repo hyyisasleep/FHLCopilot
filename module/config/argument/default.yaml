@@ -12,7 +12,7 @@ Office:
     Enable: true
 Shop:
   Scheduler:
-    Enable: true
+    Enable: false
 Cattery:
   Scheduler:
     Enable: true
@@ -21,7 +21,7 @@ Dispatch:
     Enable: true
 Guild:
   Scheduler:
-    Enable: false
+    Enable: true
 #Dungeon:
 #  Scheduler:
 #    Enable: true
