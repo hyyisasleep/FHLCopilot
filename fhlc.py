@@ -49,3 +49,5 @@ class FHLCopilot(AzurLaneAutoScript):
 if __name__ == '__main__':
     src = FHLCopilot('fhlc')
     src.loop()
+
+

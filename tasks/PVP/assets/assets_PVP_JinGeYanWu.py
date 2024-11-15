@@ -63,6 +63,16 @@ MATCHING_CHECK = ButtonWrapper(
         button=(554, 624, 729, 681),
     ),
 )
+OCR_JINGE_LEVEL = ButtonWrapper(
+    name='OCR_JINGE_LEVEL',
+    share=Button(
+        file='./assets/share/pvp/JinGeYanWu/OCR_JINGE_LEVEL.png',
+        area=(939, 310, 1128, 351),
+        search=(919, 290, 1148, 371),
+        color=(160, 139, 100),
+        button=(939, 310, 1128, 351),
+    ),
+)
 SKIP_LAST_WEEK_LEVEL = ButtonWrapper(
     name='SKIP_LAST_WEEK_LEVEL',
     share=Button(

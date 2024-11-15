@@ -63,6 +63,16 @@ CLOSE_JINGEZHIZUN_NOTICE = ButtonWrapper(
         button=(1154, 49, 1209, 105),
     ),
 )
+CLOSE_JINGEZHIZUN_REWARD = ButtonWrapper(
+    name='CLOSE_JINGEZHIZUN_REWARD',
+    share=Button(
+        file='./assets/share/base/popup/CLOSE_JINGEZHIZUN_REWARD.png',
+        area=(1099, 173, 1151, 224),
+        search=(1079, 153, 1171, 244),
+        color=(148, 106, 76),
+        button=(1099, 173, 1151, 224),
+    ),
+)
 CLOSE_LOGIN_ADVERTISEMENT = ButtonWrapper(
     name='CLOSE_LOGIN_ADVERTISEMENT',
     share=[
@@ -130,6 +140,16 @@ CLUB_BEGGING_THANKS_CLOSE = ButtonWrapper(
         search=(859, 16, 938, 95),
         color=(209, 126, 96),
         button=(879, 36, 918, 75),
+    ),
+)
+GET_LOST_MONTHLY_CARD_REWARD = ButtonWrapper(
+    name='GET_LOST_MONTHLY_CARD_REWARD',
+    share=Button(
+        file='./assets/share/base/popup/GET_LOST_MONTHLY_CARD_REWARD.png',
+        area=(551, 543, 721, 592),
+        search=(531, 523, 741, 612),
+        color=(226, 120, 85),
+        button=(551, 543, 721, 592),
     ),
 )
 GET_REWARD = ButtonWrapper(

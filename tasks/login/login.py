@@ -5,7 +5,7 @@ from module.exception import GameNotRunningError
 from module.logger import logger
 from tasks.base.assets.assets_base_page import  BACK
 from tasks.base.assets.assets_base_popup import UPDATE_FINISH_CONFIRM, CLOSE_LOGIN_ADVERTISEMENT, CLOSE_UPDATE_NOTICE, \
-    CLOSE_JINGEZHIZUN_NOTICE, TIME_LIMIT_SIGN_IN_CHECK, ACTIVITY_SIGN_IN_GET_REWARD
+    CLOSE_JINGEZHIZUN_NOTICE, TIME_LIMIT_SIGN_IN_CHECK, ACTIVITY_SIGN_IN_GET_REWARD, GET_LOST_MONTHLY_CARD_REWARD
 from tasks.base.page import page_main
 from tasks.base.ui import UI
 from tasks.login.assets.assets_login import LOGIN_CONFIRM, LOGIN_LOADING, DAILY_SIGN_IN, \
@@ -134,6 +134,12 @@ class Login(UI):  # , LoginAndroidCloud):
             # 金戈至尊赛结英广告
             if self.appear_then_click(CLOSE_JINGEZHIZUN_NOTICE):
                 logger.info("Skip jin-ge-zhi-zun notice")
+                continue
+            # 翻截图看到的，大雪归鸿在登陆界面提示你拿未领取月卡奖励
+            # 但是点完领取后会弹出reward弹窗，下面是能看到pagemain的检查标志的。。。
+            # TODO:哪天不登陆测试一下？
+            if self.appear_then_click(GET_LOST_MONTHLY_CARD_REWARD):
+                logger.info("Get unclaimed monthly card reward")
                 continue
 
             # 活动签到啊啊啊啊啊

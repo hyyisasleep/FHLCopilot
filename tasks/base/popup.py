@@ -71,6 +71,13 @@ class PopupHandler(ModuleBase):
             logger.info("Skip last week level inherit page")
             return True
         return False
+
+    def handle_jingezhizun_rewards(self) -> bool:
+        if self.appear_then_click(CLOSE_JINGEZHIZUN_REWARD):
+            logger.info("Close jingezhizun rewards page, this first appear in 11.11-11.13")
+            return True
+        return False
+
     def handle_taoyuan_blessing(self,interval=5) -> bool:
         """
         Popup blessing in taoyuanju everyday
@@ -117,143 +124,6 @@ class PopupHandler(ModuleBase):
         if self.appear_then_click(CATTERY_GET_CAT_QUIT, interval):
             return True
         return False
-    # def handle_battle_pass_notification(self, interval=5) -> bool:
-    #     """
-    #     Popup notification that you enter battle pass the first time.
-    #
-    #     Args:
-    #         interval:
-    #
-    #     Returns:
-    #         If handled.
-    #     """
-    #     if self.appear_then_click(BATTLE_PASS_NOTIFICATION, interval=interval):
-    #         return True
-    #
-    #     return False
-
-    # def handle_monthly_card_reward(self, interval=1) -> bool:
-    #     """
-    #     Popup at 04:00 server time if you have purchased the monthly card.
-    #
-    #     Args:
-    #         interval:
-    #
-    #     Returns:
-    #         If handled.
-    #     """
-    #     if self.appear_then_click(MONTHLY_CARD_REWARD, interval=interval):
-    #         # Language check at the first login of the day may fail due to popups
-    #         # Retry later
-    #         from tasks.base.main_page import MainPage
-    #         if not MainPage._lang_check_success:
-    #             MainPage._lang_checked = False
-    #         return True
-    #     if self.appear_then_click(MONTHLY_CARD_GET_ITEM, interval=interval):
-    #         from tasks.base.main_page import MainPage
-    #         if not MainPage._lang_check_success:
-    #             MainPage._lang_checked = False
-    #         return True
-    #
-    #     return False
-
-    # def handle_popup_cancel(self, interval=2) -> bool:
-    #     """
-    #     Args:
-    #         interval:
-    #
-    #     Returns:
-    #         If handled.
-    #     """
-    #     if self.appear_then_click(POPUP_CANCEL, interval=interval):
-    #         return True
-    #
-    #     return False
-    #
-    # def handle_popup_confirm(self, interval=2) -> bool:
-    #     """
-    #     Args:
-    #         interval:
-    #
-    #     Returns:
-    #         If handled.
-    #     """
-    #     if self.appear_then_click(POPUP_CONFIRM, interval=interval):
-    #         return True
-    #
-    #     return False
-    #
-    # def handle_popup_single(self, interval=2) -> bool:
-    #     """
-    #     Popup with one single confirm button in the middle.
-    #
-    #     Args:
-    #         interval:
-    #
-    #     Returns:
-    #         If handled.
-    #     """
-    #     if self.appear_then_click(POPUP_SINGLE, interval=interval):
-    #         return True
-    #
-    #     return False
-
-    # def handle_get_light_cone(self, interval=2) -> bool:
-    #     """
-    #     Popup when getting a light cone from Echo of War.
-    #
-    #     Args:
-    #         interval:
-    #
-    #     Returns:
-    #         If handled.
-    #     """
-    #     if self.appear(GET_LIGHT_CONE, interval=interval):
-    #         logger.info(f'{GET_LIGHT_CONE} -> {GET_REWARD}')
-    #         self.device.click(GET_REWARD)
-    #         return True
-    #
-    #     return False
-
-    # def handle_get_character(self, interval=2) -> bool:
-    #     """
-    #     Popup when getting a character from rogue rewards.
-    #
-    #     Args:
-    #         interval:
-    #
-    #     Returns:
-    #         If handled.
-    #     """
-    #     if self.appear(GET_CHARACTER, interval=interval):
-    #         logger.info(f'{GET_CHARACTER} -> {GET_REWARD}')
-    #         self.device.click(GET_REWARD)
-    #         return True
-    #
-    #     return False
-
-    # def handle_ui_close(self, appear_button: ButtonWrapper | Callable, interval=2) -> bool:
-    #     """
-    #     Args:
-    #         appear_button: Click if button appears
-    #         interval:
-    #
-    #     Returns:
-    #         If handled.
-    #     """
-    #     if callable(appear_button):
-    #         if self.interval_is_reached(appear_button, interval=interval) and appear_button():
-    #             logger.info(f'{appear_button.__name__} -> {CLOSE}')
-    #             self.device.click(CLOSE)
-    #             self.interval_reset(appear_button, interval=interval)
-    #             return True
-    #     else:
-    #         if self.appear(appear_button, interval=interval):
-    #             logger.info(f'{appear_button} -> {CLOSE}')
-    #             self.device.click(CLOSE)
-    #             return True
-    #
-    #     return False
 
     def handle_promote_pack(self):
         if self.appear_then_click(CLOSE_PROMOTE_PACK):
@@ -281,3 +151,13 @@ class PopupHandler(ModuleBase):
                 return True
 
         return False
+
+    def handle_begging_thanks(self):
+
+        if self.appear_then_click(CLUB_BEGGING_THANKS_CHECK):
+            logger.info("Give thanks to someone gave you fragments")
+            return True
+
+        if self.appear_then_click(CLUB_BEGGING_THANKS_CLOSE):
+            logger.info("Close thanks page")
+            return True

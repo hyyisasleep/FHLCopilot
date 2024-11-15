@@ -1,12 +1,11 @@
-from pickle import FALSE
 
 from module.base.timer import Timer
 from module.logger import logger
 from module.ocr.ocr import Digit
 from tasks.PVP.assets.assets_pvp_ShaPanLunYi import *
-from tasks.base.page import page_jingeguan, page_jingeyanwu
+from tasks.base.assets.assets_base_page import SHAPANLUNYI_CLOSE_CHECK, JINGEGUAN_GOTO_SHAPANLUNYI
+from tasks.base.page import page_jingeguan, page_shapanlunyi
 from tasks.base.ui import UI
-# from tasks.office.assets.assets_office_affair import REWARD_UNLOCK
 
 class BuyFlagException(Exception):
 
@@ -18,13 +17,29 @@ class ShaPanLunYi(UI):
     def run(self):
 
         logger.hr('Clear sha pan flag', level=1)
+        # 新号在首页点金戈馆能点进履职书......算了都这进度了也别用自动化了
+        # 沙盘没开或者用户没加雅社 先去金戈馆判断一下牌子是不是灰的
+        #TODO: 周四周日23：10点以后看看牌子是不是灰的？
 
+        self.ui_ensure(page_jingeguan)
+        timeout = Timer(10).start()
+        skip_first_screenshot = True
         while 1:
-            # self.device.screenshot()
-
-            # logger.info("?")
-            # self.device.screenshot()
-            # self.ui_ensure(page_shapanlunyi)
+            if skip_first_screenshot:
+                skip_first_screenshot = False
+            else:
+                self.device.screenshot()
+            if timeout.reached():
+                logger.info("Get timeout when check sha pan is open or not, return")
+                return
+            if self.appear(SHAPANLUNYI_CLOSE_CHECK):
+                logger.info("Sha pan lun yi isn't open, return")
+                return
+            if self.appear(JINGEGUAN_GOTO_SHAPANLUNYI):
+                logger.info("Sha pan lun yi is open, continue")
+                break
+        self.ui_ensure(page_shapanlunyi)
+        while 1:
 
             logger.hr("Start one sha pan combat", level=2)
 
@@ -79,7 +94,7 @@ class ShaPanLunYi(UI):
                 continue
             if self.handle_reward():
                 continue
-
+            # 避免OCR抽风- -用尽了之后会提示买旗子，出现购买界面关掉就算打完
             if self.appear_then_click(FLAG_CLEAR_NOTICE) or self.appear_then_click(BUY_FLAG):
                 raise BuyFlagException("Flag has been used up,don't buy flag and stop")
 
@@ -143,84 +158,10 @@ class ShaPanLunYi(UI):
                 continue
 
 
-
-    #TODO:加了该死的is_continue变量之后又开始一次刷俩旗了，不加还能运行
-    # 0个旗的时候用查探领取会跳转到买旗界面，尼玛
-    def _run_shapan(self, interval=5, skip_first_screenshot=False):
-        finish = False
-        has_start = False
-        need_fresh = False
-        is_continue = False
-        while 1:
-
-            if skip_first_screenshot:
-                skip_first_screenshot = False
-            else:
-                self.device.screenshot()
-
-            timeout = Timer(20).start()
-
-            if timeout.reached():
-                logger.info("Get sha pan timeout")
-                break
-            if finish:
-                break
-            if self.appear_then_click(REFRESH_CONFIRM):
-                logger.info("Refresh")
-                finish = True
-                continue
-
-            if need_fresh and self.appear(REWARD_CHECK):
-                need_fresh = False
-                continue
-            if self.appear_then_click(GET_REWARD_CONFIRM):
-                # 第一次查探，确认获取六胜奖励
-                continue
-
-            if self.appear(COMBAT_CHECK, interval=1):
-                logger.info("JIAN JUN continue")
-                self.device.stuck_record_clear()
-                timeout.reset()
-                is_continue = True
-                continue
-
-            if need_fresh and self.appear_then_click(REFRESH):
-                logger.info("Click refresh")
-                continue
-            if has_start and not is_continue and  self.appear_then_click(REFRESH):
-                # self.handle_popup()
-                logger.info("Click get reward")
-                continue
-            if not has_start and self.appear(REWARD_LOCK,interval,similarity=0.9):
-                logger.info("Have got last round's reward,need refresh")
-                need_fresh = True
-                continue
-
-            if is_continue and has_start and self.appear(COMBAT_PREPARE, interval):
-                logger.info("Combat is end")
-                is_continue =  False
-                continue
-
-            if not has_start and self.appear_then_click(COMBAT_PREPARE, interval):
-                logger.info("E BA JIAN JUN prepare")
-                continue
-            if self.appear_then_click(COMBAT_START, interval):
-                logger.info("Start JIAN JUN combat")
-                has_start = True
-                continue
-
-            if self.handle_reward(interval):
-                logger.info("Get pvp reward")
-
-                continue
-
-
-
-
 if __name__ == '__main__':
     ui = ShaPanLunYi('fhlc')
     ui.device.screenshot()
     ui.run()
 
-    # ui.image_file = r"C:\Users\huixi\Documents\MuMu共享文件夹\Screenshots\MuMu12-20241019-151413.png"
-    # print(ui.appear(REWARD_CHECKED,similarity=0.95))
+    # ui.image_file = r"C:\Users\huixi\Documents\MuMu共享文件夹\Screenshots\MuMu12-20241103-130656.png"
+    # print(ui.appear(SHAPANLUNYI_CLOSE_CHECK))

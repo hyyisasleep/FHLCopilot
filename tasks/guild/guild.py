@@ -5,8 +5,6 @@ from tasks.base.page import page_guild, page_guild_begging
 from tasks.base.ui import UI
 from tasks.guild.assets.assets_guild import *
 
-#TODO: 送礼中途升级
-# TODO: 怎么判断结束。。。。
 class Guild(UI):
     """
     雅社：
@@ -27,7 +25,7 @@ class Guild(UI):
 
         if self._check_join_guild():
             self._sign_in()
-            # self._float_river_lantern()
+            self._float_river_lantern()
         self.ui_goto_main()
 
 
@@ -90,6 +88,31 @@ class Guild(UI):
     def _float_river_lantern(self):
         self.ui_ensure(page_guild_begging)
 
+        skip_first_screenshot = True
+        timeout = Timer(15).start()
+        while 1:
+            if skip_first_screenshot:
+                skip_first_screenshot = False
+            else:
+                self.device.screenshot()
+            if self.appear(BEGGING_LOCKED):
+                logger.info("Begging finish")
+                break
+            if timeout.reached():
+                logger.warning("Get put lantern timeout")
+                break
+            if self.appear_then_click(BEGGING_UNLOCK):
+                continue
+            if self.appear_then_click(BEGGING_PUT_LANTERN_1):
+                logger.info("Put guild lantern")
+                continue
+            if self.appear_then_click(BEGGING_PUT_LANTERN_2):
+                logger.info("Put friend lantern")
+                continue
+            if self.appear_then_click(BEGGING_PUT_LANTERN_CONFIRM):
+                continue
+
+
         self.ui_ensure(page_guild)
 
         pass
@@ -99,5 +122,5 @@ if __name__ == '__main__':
     ui = Guild('fhlc')
     ui.device.screenshot()
     ui.run()
-    # ui.image_file = r'C:\Users\huixi\Documents\MuMu共享文件夹\Screenshots\MuMu12-20241017-132438.png'
-    # print(ui.appear(YASHE_CHECK))
+    # ui.image_file = r'C:\Users\huixi\Documents\MuMu共享文件夹\Screenshots\MuMu12-20241017-135408.png'
+    # print(ui.appear(BEGGING_LOCKED))

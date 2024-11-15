@@ -1,10 +1,20 @@
 from module.base.timer import Timer
 from module.logger import logger
-from module.ocr.ocr import Digit
+from module.ocr.ocr import Ocr,Digit
 from tasks.PVP.assets.assets_pvp_JinGeYanWu import *
 from tasks.base.page import page_jingeyanwu
 from tasks.base.ui import UI
 
+class JinGeLevelOCR(Ocr):
+
+    Char2Num = {'十':10,'九':9,'八':8,'七':7,'六':6,'五':5,'四':4,'三':3,'二':2,'一':1}
+    def after_process(self, result):
+        result = super().after_process(result)
+        for key in self.Char2Num:
+            if key in result:
+                value = self.Char2Num[key]
+                return value
+        return 0
 
 class JinGeYanWu(UI):
 
@@ -23,6 +33,16 @@ class JinGeYanWu(UI):
             self.device.screenshot()
             self.ui_ensure(page_jingeyanwu)
             talisman_num, soul_num = self.pvp_ocr()
+
+
+            level = self.jin_ge_level_ocr()
+
+            logger.info(f"Now level is {level}")
+            if level == 9:
+                logger.info("Level is in 9, stop to buy shop's item")
+                # TODO:写配置。。。
+                break
+
             if talisman_num == 0:
                 logger.info("No need pvp")
                 break
@@ -90,6 +110,17 @@ class JinGeYanWu(UI):
             return True
         return False
 
+    def jin_ge_level_ocr(self)->str:
+        retry = 0
+        while retry < 3:
+            level_ocr = JinGeLevelOCR(OCR_JINGE_LEVEL,lang=self.config.LANG)
+            res = level_ocr.ocr_single_line(self.device.screenshot())
+            if res != 0:
+                return res
+            else:
+                logger.info("Level OCR fail, try it again")
+                retry+=1
+        return res
     def pvp_ocr(self) -> [int, int]:
         talisman_ocr = Digit(TALISMAN_OCR, lang=self.config.LANG)
         num = talisman_ocr.ocr_single_line(self.device.image)
@@ -134,4 +165,5 @@ if __name__ == '__main__':
     ui.device.screenshot()
 
     ui.run()
+
 

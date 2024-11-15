@@ -79,7 +79,7 @@ class DailyShop(ShopUI):
             else:
                 self.device.screenshot()
             if timeout.reached():
-                logger.warning("Get monthly card(30) timeout")
+                logger.warning("Get monthly card(68) timeout")
                 break
             if self.appear(NOT_BUY_MONTHLY_CARD_68_CHECK):
                 logger.info("User didn't buy 68's monthly card, or expired")
@@ -88,6 +88,9 @@ class DailyShop(ShopUI):
             if self.appear(MONTHLY_CARD_68_LOCKED):
                 logger.info("Finish")
                 break
+            if self.handle_reward():
+                logger.info("Get monthly card(68) reward")
+                continue
             if self.appear_then_click(MONTHLY_CARD_68_UNLOCK):
                 logger.info("Get 68 monthly card")
                 continue

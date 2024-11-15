@@ -403,6 +403,11 @@ class UI(PopupHandler):
         if self.handle_week_jinge():
             # 每周段位结算
             return True
+        # 雅社感谢信物奖励
+        if self.handle_begging_thanks():
+            return True
+        if self.handle_jingezhizun_rewards():
+            return True
         # if self.handle_update_notification():
         #     return True
         # if self.handle_battle_pass_notification():

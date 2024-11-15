@@ -120,6 +120,13 @@ page_main.link(MAIN_GOTO_GUSHIFENGYUN, destination=page_gushifengyun)
 page_office = Page(TAOYUAN_CHECK)
 page_office.link(BACK, destination=page_main)
 page_main.link(MAIN_GOTO_TAOYUAN, destination=page_office)
+
+# 知交圈
+page_moments = Page(MOMENTS_CHECK)
+page_moments.link(BACK,destination=page_main)
+page_main.link(MAIN_GOTO_MOMENTS, destination=page_moments)
+
+# ====================================
 # 雅社
 page_guild = Page(GUILD_CHECK)
 page_guild.link(BACK,destination=page_main)
@@ -138,6 +145,10 @@ page_guild.link(GUILD_GOTO_MISSION, destination=page_guild_mission)
 page_jingeyanwu = Page(JINGEYANWU_CHECK)
 page_jingeyanwu.link(BACK,destination=page_jingeguan)
 page_jingeguan.link(JINGEGUAN_GOTO_JINGEYANWU,destination=page_jingeyanwu)
+
+page_shapanlunyi = Page(SHAPANLUNYI_CHECK)
+page_shapanlunyi.link(BACK,destination=page_jingeguan)
+page_jingeguan.link(JINGEGUAN_GOTO_SHAPANLUNYI,destination=page_shapanlunyi)
 # =============桃源居================
 # 桃源事务
 page_office_affair = Page(TAOYUAN_AFFAIR_CHECK)

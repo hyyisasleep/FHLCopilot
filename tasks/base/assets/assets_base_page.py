@@ -294,6 +294,16 @@ MAIN_GOTO_MIJING = ButtonWrapper(
         button=(533, 82, 562, 159),
     ),
 )
+MAIN_GOTO_MOMENTS = ButtonWrapper(
+    name='MAIN_GOTO_MOMENTS',
+    share=Button(
+        file='./assets/share/base/page/MAIN_GOTO_MOMENTS.png',
+        area=(1029, 19, 1054, 44),
+        search=(1009, 0, 1074, 64),
+        color=(194, 176, 140),
+        button=(1029, 19, 1054, 44),
+    ),
+)
 MAIN_GOTO_SHOP = ButtonWrapper(
     name='MAIN_GOTO_SHOP',
     share=Button(
@@ -324,6 +334,16 @@ MIJING_CHECK = ButtonWrapper(
         button=(99, 17, 159, 47),
     ),
 )
+MOMENTS_CHECK = ButtonWrapper(
+    name='MOMENTS_CHECK',
+    share=Button(
+        file='./assets/share/base/page/MOMENTS_CHECK.png',
+        area=(87, 16, 170, 47),
+        search=(67, 0, 190, 67),
+        color=(125, 94, 60),
+        button=(87, 16, 170, 47),
+    ),
+)
 SHAPANLUNYI_CHECK = ButtonWrapper(
     name='SHAPANLUNYI_CHECK',
     share=Button(
@@ -332,6 +352,16 @@ SHAPANLUNYI_CHECK = ButtonWrapper(
         search=(54, 0, 202, 65),
         color=(140, 100, 73),
         button=(74, 18, 182, 45),
+    ),
+)
+SHAPANLUNYI_CLOSE_CHECK = ButtonWrapper(
+    name='SHAPANLUNYI_CLOSE_CHECK',
+    share=Button(
+        file='./assets/share/base/page/SHAPANLUNYI_CLOSE_CHECK.png',
+        area=(1189, 133, 1227, 217),
+        search=(1169, 113, 1247, 237),
+        color=(157, 150, 148),
+        button=(1189, 133, 1227, 217),
     ),
 )
 SHOP_CHECK = ButtonWrapper(

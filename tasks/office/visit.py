@@ -25,21 +25,29 @@ class Visit(UI):
         first_visit = False
         second_visit = False
         third_visit = False
+        timeout = Timer(10).start()
         while 1:
             if skip_first_screenshot:
                 skip_first_screenshot = False
             else:
                 self.device.screenshot()
-            # 跳转到我的拜访界面
+
+            if timeout.reached():
+                logger.warning("Get visit other timeout")
+                break
             if first_visit and second_visit and third_visit:
                 break
             if retry > 3:
-                logger.info("Some error happens, break")
+                logger.warning("Retry visit other times get 3, break")
                 break
+
+            #TODO: 我草到了还在点啊！
             if self.appear_then_click(VISIT_GOTO_MY_VISIT_LIST):
                 logger.info("Goto my visit list")
+                timeout.reset()
                 continue
             if self.appear(MY_VISIT_LIST_CHECK):
+
                 if not first_visit:
                     first_visit = self._click_like_in_other_office(VISIT_FIRST)
                     logger.info("Visit first office")
@@ -62,6 +70,7 @@ class Visit(UI):
                         third_visit = True
                         first_visit = False
                         retry += 1
+                timeout.reset()
                 continue
         pass
 

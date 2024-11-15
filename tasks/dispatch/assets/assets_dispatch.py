@@ -3,16 +3,6 @@ from module.base.button import Button, ButtonWrapper
 # This file was auto-generated, do not modify it manually. To generate:
 # ``` python -m dev_tools.button_extract ```
 
-BEGGING_UNLOCK = ButtonWrapper(
-    name='BEGGING_UNLOCK',
-    share=Button(
-        file='./assets/share/dispatch/BEGGING_UNLOCK.png',
-        area=(17, 535, 117, 561),
-        search=(0, 515, 137, 581),
-        color=(225, 218, 193),
-        button=(258, 502, 363, 549),
-    ),
-)
 CAT_ALTAR_LOCKED = ButtonWrapper(
     name='CAT_ALTAR_LOCKED',
     share=Button(
@@ -83,6 +73,16 @@ GIVE_RECEIVE_FRIENDSHIP_POINT = ButtonWrapper(
         button=(162, 648, 333, 694),
     ),
 )
+GOTO_BEGGING_UNLOCK = ButtonWrapper(
+    name='GOTO_BEGGING_UNLOCK',
+    share=Button(
+        file='./assets/share/dispatch/GOTO_BEGGING_UNLOCK.png',
+        area=(17, 535, 117, 561),
+        search=(0, 515, 137, 581),
+        color=(225, 218, 193),
+        button=(258, 502, 363, 549),
+    ),
+)
 GOTO_FRIEND_PAGE = ButtonWrapper(
     name='GOTO_FRIEND_PAGE',
     share=Button(
@@ -103,6 +103,16 @@ GOTO_FRIEND_PAGE_NO_REWARD = ButtonWrapper(
         button=(1086, 7, 1125, 49),
     ),
 )
+GOTO_FRIEND_SUB_PAGE = ButtonWrapper(
+    name='GOTO_FRIEND_SUB_PAGE',
+    share=Button(
+        file='./assets/share/dispatch/GOTO_FRIEND_SUB_PAGE.png',
+        area=(162, 17, 234, 51),
+        search=(142, 0, 254, 71),
+        color=(224, 196, 155),
+        button=(162, 17, 234, 51),
+    ),
+)
 GOTO_KYLIN_PAGE = ButtonWrapper(
     name='GOTO_KYLIN_PAGE',
     share=Button(
@@ -121,16 +131,6 @@ GOTO_KYLIN_PAGE_NO_REWARD = ButtonWrapper(
         search=(16, 319, 108, 418),
         color=(217, 185, 147),
         button=(36, 339, 88, 398),
-    ),
-)
-GOTO_MOMENTS_PAGE = ButtonWrapper(
-    name='GOTO_MOMENTS_PAGE',
-    share=Button(
-        file='./assets/share/dispatch/GOTO_MOMENTS_PAGE.png',
-        area=(1029, 19, 1054, 44),
-        search=(1009, 0, 1074, 64),
-        color=(194, 176, 140),
-        button=(1029, 19, 1054, 44),
     ),
 )
 POWER_AFK_REWARD_LOCKED = ButtonWrapper(

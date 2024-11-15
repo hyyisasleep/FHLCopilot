@@ -1,10 +1,11 @@
 from module.base.timer import Timer
 from module.logger import logger
-from tasks.base.page import page_main
+from tasks.base.page import page_main, page_moments
 
 from tasks.base.ui import UI
 from tasks.dispatch.assets.assets_dispatch import *
 from tasks.dispatch.interact import Interact
+from tasks.dispatch.moments import Moments
 
 
 class Dispatch(UI):
@@ -28,28 +29,23 @@ class Dispatch(UI):
         logger.hr('Kylin‘s dispatch', level=1)
         self.ui_ensure(page_main)
 
-        # 知交圈点赞三次
 
         # 送好友友情点
         self.get_friendship_point()
-        # 打开麒麟头
 
-        # 领供台奖励
-        # 领虾球
+        # 打开麒麟头+领供台奖励+领虾球+关闭麒麟头
         self._kylin_affair()
         # 赠礼
         Interact(self.config, self.device).run()
-        # 放河灯（跳转到河灯界面-> 到雅社界面 -> 回主界面 麒麟头自己关闭
-
-        # 关闭麒麟头
-
+        # 知交圈点赞三次
+        Moments(self.config, self.device).run()
         self.config.task_delay(server_update=True)
 
     def _kylin_affair(self, skip_first_screenshot=True):
         """
         目前是把领虾球和供台奖励写了
         """
-        timeout = Timer(5).start()
+        timeout = Timer(10).start()
         finish = False
         while 1:
             if skip_first_screenshot:
@@ -96,6 +92,7 @@ class Dispatch(UI):
             if timeout.reached():
                 logger.info("Get friendship point timeout")
                 break
+
             # 关闭后会弹出麒麟头
             if finish and (self.appear(GOTO_KYLIN_PAGE) or self.appear(GOTO_KYLIN_PAGE_NO_REWARD)):
                 logger.info("Close friendship page")
@@ -104,7 +101,9 @@ class Dispatch(UI):
                 self.appear_then_click(CLOSE_FRIEND_PAGE, interval=2)
                 # timeout.reset()
                 continue
-
+            if self.appear_then_click(GOTO_FRIEND_SUB_PAGE):
+                logger.info("Has stranger's message,turn to friend page")
+                continue
             if self.appear_then_click(GIVE_RECEIVE_FRIENDSHIP_POINT):
                 logger.info("Give and receive friend ship point")
                 timeout.reset()

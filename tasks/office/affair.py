@@ -17,9 +17,9 @@ class Affair(UI):
         self.ui_ensure(page_office_affair, skip_first_screenshot)
         has_reward = self._deal_with_affairs()
         #
-        if has_reward:
-            # logger.info("Has impression reward to get")
-            self._get_affairs_impression_reward()
+        # if has_reward:
+        #     # logger.info("Has impression reward to get")
+        #     self._get_affairs_impression_reward()
         self.ui_ensure(page_office)
 
         self.config.task_delay(server_update=True)
