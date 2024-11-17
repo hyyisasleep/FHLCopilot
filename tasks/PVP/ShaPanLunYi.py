@@ -2,7 +2,7 @@
 from module.base.timer import Timer
 from module.logger import logger
 from module.ocr.ocr import Digit
-from tasks.PVP.assets.assets_pvp_ShaPanLunYi import *
+from tasks.PVP.assets.assets_pvp_sha_pan_lun_yi import *
 from tasks.base.assets.assets_base_page import SHAPANLUNYI_CLOSE_CHECK, JINGEGUAN_GOTO_SHAPANLUNYI
 from tasks.base.page import page_jingeguan, page_shapanlunyi
 from tasks.base.ui import UI

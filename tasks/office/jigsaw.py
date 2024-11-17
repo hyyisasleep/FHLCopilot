@@ -82,7 +82,7 @@ class Jigsaw(UI):
                 timeout.reset()
                 continue
 
-            if self.appear_then_click(CONVERT_CHECK):
+            if self.appear(CONVERT_CHECK):
                 timeout.reset()
                 continue
 

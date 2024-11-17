@@ -1,17 +1,12 @@
 
 from typing import Callable
 
-
-
 from module.base.base import ModuleBase
-from module.base.timer import Timer
+
 
 from module.logger import logger
-from tasks.PVP.assets.assets_pvp_JinGeYanWu import SKIP_LAST_WEEK_LEVEL, SKIP_LAST_WEEK_LEVEL_2
-# tasks.PVP.assets.assets_PVP_JinGeYanWu import SKIP_LAST_WEEK_LEVEL_2, SKIP_LAST_WEEK_LEVEL
 from tasks.base.assets.assets_base_page import BACK  # , CLOSE
 from tasks.base.assets.assets_base_popup import *
-# from tasks.taoyuanju.assets.assets_taoyuanju import GET_BLESSING, GET_BLESSING_CONFIRM
 
 
 # 解决弹出窗口？
