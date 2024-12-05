@@ -1,0 +1,27 @@
+{
+  "JinGeTalisman": {
+    "name": "JinGeTalisman",
+    "path": "JinGeYanWu.JinGeStorage.JinGeTalisman",
+    "i18n": "JinGeStorage.JinGeTalisman.name",
+    "stored": "StoredJinGeTalisman",
+    "attrs": {
+      "time": "2020-01-01 00:00:00",
+      "value": 0
+    },
+    "order": 0,
+    "color": "#777777"
+  },
+  "BuySuperCatBall": {
+    "name": "BuySuperCatBall",
+    "path": "JinGeYanWu.JinGeStorage.BuySuperCatBall",
+    "i18n": "JinGeStorage.BuySuperCatBall.name",
+    "stored": "StoredBuySuperCatBallWhenArriveRankNine",
+    "attrs": {
+      "time": "2020-01-01 00:00:00",
+      "total": 1,
+      "value": 0
+    },
+    "order": 0,
+    "color": "#777777"
+  }
+}

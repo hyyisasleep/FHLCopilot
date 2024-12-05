@@ -1,0 +1,103 @@
+{
+  "Alas": {
+    "Emulator": {
+      "Serial": "auto",
+      "GameClient": "android",
+      "PackageName": "auto",
+      "GameLanguage": "cn",
+      "ScreenshotMethod": "scrcpy",
+      "ControlMethod": "MaaTouch",
+      "AdbRestart": false
+    },
+    "EmulatorInfo": {
+      "Emulator": "auto",
+      "name": null,
+      "path": null
+    },
+    "Error": {
+      "Restart": "game",
+      "SaveError": true,
+      "ScreenshotLength": 1,
+      "OnePushConfig": "provider: null"
+    },
+    "Optimization": {
+      "ScreenshotInterval": 0.2,
+      "CombatScreenshotInterval": 1.0,
+      "WhenTaskQueueEmpty": "stay_there"
+    }
+  },
+  "Restart": {
+    "Scheduler": {
+      "Enable": true,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "Restart",
+      "ServerUpdate": "04:00"
+    }
+  },
+  "DailyShop": {
+    "Scheduler": {
+      "Enable": true,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "DailyShop",
+      "ServerUpdate": "04:00"
+    },
+    "DailyShop": {
+      "SignInGift": 1,
+      "MonthlyCard30": 0,
+      "MonthlyCard68": 0,
+      "CopperBuyCommonCatPuppet": 1
+    }
+  },
+  "Office": {
+    "Scheduler": {
+      "Enable": true,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "Office",
+      "ServerUpdate": "04:00"
+    },
+    "Office": {
+      "UseTongBaoBuyExpiredPower": 0,
+      "TransKaoGongTicket": 1,
+      "VisitOthersForClivia": 1
+    }
+  },
+  "Cattery": {
+    "Scheduler": {
+      "Enable": true,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "Cattery",
+      "ServerUpdate": "04:00"
+    }
+  },
+  "Dispatch": {
+    "Scheduler": {
+      "Enable": true,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "Dispatch",
+      "ServerUpdate": "04:00"
+    },
+    "Dispatch": {
+      "AutoHideAndSeek": 1
+    }
+  },
+  "Guild": {
+    "Scheduler": {
+      "Enable": true,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "Guild",
+      "ServerUpdate": "04:00"
+    }
+  },
+  "JinGeYanWu": {
+    "Scheduler": {
+      "Enable": false,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "JinGeYanWu",
+      "ServerUpdate": "04:00"
+    },
+    "JinGeStorage": {
+      "JinGeTalisman": {},
+      "BuySuperCatBall": {}
+    }
+  }
+}

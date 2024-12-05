@@ -1,0 +1,51 @@
+# --------------------
+# Define argument group of tasks.
+# --------------------
+
+# ==================== Alas ====================
+
+Alas:
+  menu: 'list'
+  page: 'setting'
+  tasks:
+    Alas:
+      - Emulator
+      - EmulatorInfo
+      - Error
+      - Optimization
+    Restart:
+      - Scheduler
+
+# ==================== Daily ====================
+
+Daily:
+  menu: 'list'
+  page: 'setting'
+  tasks:
+    DailyShop:
+      - Scheduler
+      - DailyShop
+    Office:
+      - Scheduler
+      - Office
+      - Visit
+      - Meal
+      - Affair
+      - Jigsaw
+    Cattery:
+      - Scheduler
+      - Cattery
+    Dispatch:
+      - Scheduler
+      - Dispatch
+      - Interact
+      - FriendPoint
+      - Moments
+      - HideAndSeek
+    Guild:
+      - Scheduler
+
+    JinGeYanWu:
+      - Scheduler
+      - JinGeStorage
+

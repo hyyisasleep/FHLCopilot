@@ -1,0 +1,136 @@
+# --------------------
+# Define arguments.
+# --------------------
+
+# ==================== Alas ====================
+
+Scheduler:
+  Enable:
+    type: checkbox
+    value: false
+    option: [ true, false ]
+  NextRun: 2020-01-01 00:00:00
+  Command: Alas
+  ServerUpdate:
+    value: 04:00
+    display: hide
+Emulator:
+  Serial:
+    value: auto
+    valuetype: str
+  GameClient:
+    value: android
+    option: [ android, cloud_android ]
+  PackageName:
+    value: auto
+    option: [ auto, ]
+  GameLanguage:
+    value: cn
+    option: [ auto, cn, en ]
+  ScreenshotMethod:
+    value: auto
+    option: [
+      auto,
+      ADB,
+      ADB_nc,
+      uiautomator2,
+      aScreenCap,
+      aScreenCap_nc,
+      DroidCast,
+      DroidCast_raw,
+      scrcpy,
+      nemu_ipc,
+    ]
+  ControlMethod:
+    value: MaaTouch
+    option: [ minitouch, MaaTouch ]
+  AdbRestart: false
+EmulatorInfo:
+  Emulator:
+    value: auto
+    option: [
+      auto,
+      NoxPlayer,
+      NoxPlayer64,
+      BlueStacks4,
+      BlueStacks5,
+      BlueStacks4HyperV,
+      BlueStacks5HyperV,
+      LDPlayer3,
+      LDPlayer4,
+      LDPlayer9,
+      MuMuPlayer,
+      MuMuPlayerX,
+      MuMuPlayer12,
+      MEmuPlayer,
+    ]
+  name:
+    value: null
+    type: textarea
+  path:
+    value: null
+    type: textarea
+Error:
+  Restart:
+    value: game
+    option: [ game, game_emulator ]
+  SaveError: true
+  ScreenshotLength: 1
+  OnePushConfig:
+    type: textarea
+    mode: yaml
+    value: 'provider: null'
+Optimization:
+  ScreenshotInterval: 0.3
+  CombatScreenshotInterval: 1.0
+  WhenTaskQueueEmpty:
+    value: stay_there
+    option: [ stay_there, goto_main, close_game ]
+
+# ==================== Daily ====================
+DailyShop:
+  SignInGift:
+    type: checkbox
+    value: 1
+  MonthlyCard30:
+    type: checkbox
+    value: 0
+  MonthlyCard68:
+    type: checkbox
+    value: 0
+  CopperBuyCommonCatPuppet:
+    type: checkbox
+    value: 1
+
+Office:
+  UseTongBaoBuyExpiredPower:
+    type: checkbox
+    value: 0
+  TransKaoGongTicket:
+    type: checkbox
+    value: 1
+  VisitOthersForClivia:
+    type: checkbox
+    value: 1
+
+
+
+Dispatch:
+  AutoHideAndSeek:
+    type: checkbox
+    value: 1
+
+JinGeYanWu:
+  BuySuperCatBallWhenArriveRankNineEveryWeek:
+    type: checkbox
+    value: 1
+  EndWhenSoulIsClear:
+    type: checkbox
+    value: 1
+
+JinGeStorage:
+  JinGeTalisman:
+    stored: StoredJinGeTalisman
+
+  BuySuperCatBall:
+    stored: StoredBuySuperCatBallWhenArriveRankNine
