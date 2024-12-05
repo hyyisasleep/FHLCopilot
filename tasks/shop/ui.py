@@ -222,6 +222,7 @@ class ShopUI(UI):
         """
         timeout = Timer(10).start()
         finish = False
+        has_open_details = False
         while 1:
             if skip_first_screenshot:
                 skip_first_screenshot = False
@@ -254,8 +255,9 @@ class ShopUI(UI):
                 continue
             if self.handle_choose_gift_num(interval):
                 timeout.reset()
+                has_open_details = True
                 continue
-            if self.appear_then_click(goods_button,interval):
+            if not has_open_details and self.appear_then_click(goods_button,interval):
                 continue
         return True
 

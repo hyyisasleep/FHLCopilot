@@ -4,6 +4,7 @@ from tasks.base.page import page_main, page_moments
 
 from tasks.base.ui import UI
 from tasks.dispatch.assets.assets_dispatch import *
+from tasks.dispatch.channel import Channel
 from tasks.dispatch.interact import Interact
 from tasks.dispatch.moments import Moments
 
@@ -39,6 +40,9 @@ class Dispatch(UI):
         Interact(self.config, self.device).run()
         # 知交圈点赞三次
         Moments(self.config, self.device).run()
+        # 世界频道发言两次 本来该在bp里写的但我懒得写bp
+        Channel(self.config, self.device).run()
+        
         self.config.task_delay(server_update=True)
 
     def _kylin_affair(self, skip_first_screenshot=True):
