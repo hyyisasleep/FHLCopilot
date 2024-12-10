@@ -45,6 +45,11 @@ Daily:
     Guild:
       - Scheduler
 
+    DailyPassword:
+      - Scheduler
+      - DailyPassword
+      # - DailyPasswordStorage
+
     JinGeYanWu:
       - Scheduler
       - JinGeStorage

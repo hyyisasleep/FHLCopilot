@@ -12,14 +12,29 @@ class DailyPassword(UI):
         """
         """
         logger.hr('Open wechat to sign in', level=1)
+
+        if self.config.stored.OneWeekPasswordList.is_expired():
+            logger.info('Clear last week password')
+            self.config.stored.OneWeekPasswordList.clear()
+
         # 跳转到互动界面
         from tasks.daily.getpsw import wechat_sign_in_and_get_password
         psw = wechat_sign_in_and_get_password()
+        psw = "泽世天工"
         if psw == "" or psw is None:
             logger.warning("Can't get today's password,break")
             return
         else:
             logger.info(f"Get password:{psw}")
+        import datetime
+
+        today = datetime.datetime.now().weekday()
+
+
+
+        # 更新到config里
+        # logger.info(self.config.stored.OneWeekPasswordList.p2)
+        self.config.stored.OneWeekPasswordList.write_daily_password(today+1,psw)
 
         logger.hr('Fill password', level=1)
         self.ui_ensure(page_profile)

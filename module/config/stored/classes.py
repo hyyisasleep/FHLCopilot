@@ -250,8 +250,60 @@ class StoredBuySuperCatBallWhenArriveRankNine(StoredCounter, StoredExpiredAtMond
 class StoredJinGeTalisman(StoredInt):
     pass
 
-#
-#
+class StoredWeeklyPassword(StoredCounter, StoredExpiredAtMonday0400):
+    # 自己新加的变量不要用全大写……
+    p1 = ''
+    p2 = ''
+    p3 = ''
+    p4 = ''
+    p5 = ''
+    p6 = ''
+    p7 = ''
+
+    FIXED_TOTAL = 7
+
+    def write_daily_password(self, day, value):
+        with self._config.multi_set():
+            if day == 1:
+                if self.p1 == '':
+                    self.value += 1
+                self.p1 = value
+            elif day == 2:
+                if self.p2 == '':
+                    self.value += 1
+                self.p2 = value
+            elif day == 3:
+                if self.p3 == '':
+                    self.value += 1
+                self.p3 = value
+            elif day == 4:
+                if self.p4 == '':
+                    self.value += 1
+                self.p4 = value
+            elif day == 5:
+                if self.p5 == '':
+                    self.value += 1
+                self.p5 = value
+            elif day == 6:
+                if self.p6 == '':
+                    self.value += 1
+                self.p6 = value
+            elif day == 7:
+                if self.p7 == '':
+                    self.value += 1
+                self.p7 = value
+
+    def clear(self):
+        with self._config.multi_set():
+            self.p1 = ''
+            self.p2 = ''
+            self.p3 = ''
+            self.p4 = ''
+            self.p5 = ''
+            self.p6 = ''
+            self.p7 = ''
+            self.value = 0
+
 
 # class StoredResersed(StoredCounter):
 #     FIXED_TOTAL = 2400

@@ -88,6 +88,17 @@
       "ServerUpdate": "04:00"
     }
   },
+  "DailyPassword": {
+    "Scheduler": {
+      "Enable": false,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "DailyPassword",
+      "ServerUpdate": "04:00"
+    },
+    "DailyPassword": {
+      "OneWeekPasswordList": {}
+    }
+  },
   "JinGeYanWu": {
     "Scheduler": {
       "Enable": false,

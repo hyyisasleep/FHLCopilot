@@ -9,7 +9,7 @@ from module.base.decorator import cached_property, del_cached_property
 from module.base.filter import Filter
 from module.config.config_generated import GeneratedConfig
 from module.config.config_manual import ManualConfig, OutputConfig
-from module.config.config_updater_src import ConfigUpdater
+from module.config.config_updater import ConfigUpdater
 from module.config.stored.classes import iter_attribute
 from module.config.stored.stored_generated import StoredGenerated
 from module.config.utils import *

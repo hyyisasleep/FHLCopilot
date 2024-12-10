@@ -55,9 +55,12 @@ class GeneratedConfig:
     Dispatch_AutoHideAndSeek = 1
 
     # Group `JinGeYanWu`
-    JinGeYanWu_BuySuperCatBallWhenArriveRankNineEveryWeek = 'type:checkbox value:1'
-    JinGeYanWu_EndWhenSoulIsClear = 'type:checkbox value:1'
+    JinGeYanWu_BuySuperCatBallWhenArriveRankNineEveryWeek = 1
+    JinGeYanWu_EndWhenSoulIsClear = 1
 
     # Group `JinGeStorage`
     JinGeStorage_JinGeTalisman = {}
     JinGeStorage_BuySuperCatBall = {}
+
+    # Group `DailyPassword`
+    DailyPassword_OneWeekPasswordList = {}

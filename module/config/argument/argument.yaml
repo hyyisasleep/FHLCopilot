@@ -134,3 +134,7 @@ JinGeStorage:
 
   BuySuperCatBall:
     stored: StoredBuySuperCatBallWhenArriveRankNine
+
+DailyPassword:
+  OneWeekPasswordList:
+    stored: StoredWeeklyPassword

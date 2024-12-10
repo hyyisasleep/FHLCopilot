@@ -12,6 +12,7 @@ from module.config.stored.classes import (
     StoredMonthlyCard30,
     StoredMonthlyCard68,
     StoredPower,
+    StoredWeeklyPassword,
 )
 
 
@@ -19,5 +20,6 @@ from module.config.stored.classes import (
 # ``` python -m module/config/config_updater.py ```
 
 class StoredGenerated:
+    OneWeekPasswordList = StoredWeeklyPassword("DailyPassword.DailyPassword.OneWeekPasswordList")
     JinGeTalisman = StoredJinGeTalisman("JinGeYanWu.JinGeStorage.JinGeTalisman")
     BuySuperCatBall = StoredBuySuperCatBallWhenArriveRankNine("JinGeYanWu.JinGeStorage.BuySuperCatBall")
