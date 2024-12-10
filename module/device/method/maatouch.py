@@ -309,6 +309,7 @@ class MaaTouch(Connection):
         builder.send()
 
 
+
 if __name__ == '__main__':
     self = MaaTouch('fhlc')
     self.maatouch_uninstall()

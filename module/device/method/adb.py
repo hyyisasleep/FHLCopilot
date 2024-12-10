@@ -192,6 +192,11 @@ class Adb(Connection):
         self.adb_shell(['input', 'swipe', *p1, *p2, duration])
 
     @retry
+    def input_text_adb(self, input:str):
+        # duration = int(duration * 1000)
+        self.adb_shell(['input', 'text', input])
+
+    @retry
     def app_current_adb(self):
         """
         Copied from uiautomator2

@@ -344,6 +344,16 @@ MAIN_GOTO_MOMENTS = ButtonWrapper(
         button=(1029, 19, 1054, 44),
     ),
 )
+MAIN_GOTO_PROFILE = ButtonWrapper(
+    name='MAIN_GOTO_PROFILE',
+    share=Button(
+        file='./assets/share/base/page/MAIN_GOTO_PROFILE.png',
+        area=(20, 12, 49, 31),
+        search=(0, 0, 69, 51),
+        color=(140, 116, 84),
+        button=(7, 6, 121, 122),
+    ),
+)
 MAIN_GOTO_SHOP = ButtonWrapper(
     name='MAIN_GOTO_SHOP',
     share=Button(
@@ -382,6 +392,16 @@ MOMENTS_CHECK = ButtonWrapper(
         search=(67, 0, 190, 67),
         color=(125, 94, 60),
         button=(87, 16, 170, 47),
+    ),
+)
+PROFILE_CHECK = ButtonWrapper(
+    name='PROFILE_CHECK',
+    share=Button(
+        file='./assets/share/base/page/PROFILE_CHECK.png',
+        area=(22, 674, 73, 714),
+        search=(2, 654, 93, 720),
+        color=(141, 110, 81),
+        button=(22, 674, 73, 714),
     ),
 )
 SHAPANLUNYI_CHECK = ButtonWrapper(

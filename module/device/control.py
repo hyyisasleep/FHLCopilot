@@ -172,3 +172,25 @@ class Control(Hermit, Minitouch, Scrcpy, MaaTouch, NemuIpc):
                            f'falling back to ADB swipe may cause unexpected behaviour')
             self.swipe_adb(p1, p2, duration=ensure_time(swipe_duration * 2))
             self.click(ClickButton(area=area_offset(point_random, p2), name=name))
+
+    def input_text(self,input:str,name='INPUT_TEXT'):
+
+        self.handle_control_check(name)
+
+        method = self.config.Emulator_ControlMethod
+        logger.info(f"[{method}] Input str: {input}")
+        # if method == 'minitouch':
+        #     self.long_click_minitouch(input)
+        # elif method == 'uiautomator2':
+        #     self.long_click_uiautomator2(input)
+        # elif method == 'scrcpy':
+        #     self.long_click_scrcpy(input)
+        # elif method == 'MaaTouch':
+        #     self.long_click_maatouch(input)
+        # el
+        if method == 'nemu_ipc':
+
+
+            self.input_text_nemu_ipc(input)
+        else:
+            self.input_text_adb(input)

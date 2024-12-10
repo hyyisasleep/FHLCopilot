@@ -1,6 +1,5 @@
 from module.base.timer import Timer
 from module.logger import logger
-from tasks.base.page import page_main
 
 from tasks.base.ui import UI
 from tasks.dispatch.assets.assets_dispatch import GOTO_KYLIN_PAGE, GOTO_KYLIN_PAGE_NO_REWARD

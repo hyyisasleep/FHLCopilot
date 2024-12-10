@@ -128,6 +128,10 @@ page_moments = Page(MOMENTS_CHECK)
 page_moments.link(BACK,destination=page_main)
 page_main.link(MAIN_GOTO_MOMENTS, destination=page_moments)
 
+#个人资料
+page_profile = Page(PROFILE_CHECK)
+page_profile.link(BACK,destination=page_main)
+page_main.link(MAIN_GOTO_PROFILE, destination=page_profile)
 # ====================================
 # 雅社
 page_guild = Page(GUILD_CHECK)

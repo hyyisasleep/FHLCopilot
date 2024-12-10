@@ -47,7 +47,7 @@ class FHLCopilot(AzurLaneAutoScript):
         Guild(config=self.config, device=self.device).run()
 
 if __name__ == '__main__':
-    src = FHLCopilot('fhlc')
+    src = FHLCopilot('tqyb')
     src.loop()
 
 
