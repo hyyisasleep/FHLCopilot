@@ -18,9 +18,8 @@ class DailyPassword(UI):
             self.config.stored.OneWeekPasswordList.clear()
 
         # 跳转到互动界面
-        from tasks.daily.getpsw import wechat_sign_in_and_get_password
+        from tasks.daily.get_password import wechat_sign_in_and_get_password
         psw = wechat_sign_in_and_get_password()
-        psw = "泽世天工"
         if psw == "" or psw is None:
             logger.warning("Can't get today's password,break")
             return

@@ -1,14 +1,13 @@
 
 import time
-
-
-
 from module.logger import logger
 import os
 import psutil
 from pywinauto import Application, findwindows, WindowSpecification
 import win32api
 import win32con
+
+
 def click_window(parent_window:WindowSpecification,title_re:str,control_type="",interval=2):
     dst = search_window(parent_window,title_re,control_type,interval)
     if dst is None:
@@ -18,13 +17,13 @@ def click_window(parent_window:WindowSpecification,title_re:str,control_type="",
         dst.click_input()
         logger.info(f"Find and click window {title_re}")
 
-def search_window(father_window:WindowSpecification,title_re:str,control_type="",interval=2)->WindowSpecification:
+def search_window(parent_window:WindowSpecification, title_re:str, control_type="", interval=2)-> WindowSpecification | None:
     """
     A foolish function- -
-    find child window with father_window,sleep 2 second and retry 3 times if failed
+    find child window with parent_window,sleep 2 second and retry 3 times if failed
     because sometimes window is not loaded
     Args:
-        father_window (WindowSpecification):
+        parent_window (WindowSpecification):
         title_re (str):
         control_type (str):optional, not use if ""
         interval (int):optional
@@ -36,15 +35,20 @@ def search_window(father_window:WindowSpecification,title_re:str,control_type=""
     retry = 0
     while retry < 3:
         if control_type == "":
-            child = father_window.child_window(title_re=title_re)
+            child = (parent_window.child_window(title_re=title_re))
+            child.wait('visible',timeout=10)
         else:
-            child = father_window.child_window(title_re=title_re, control_type=control_type)
+            child = (parent_window.child_window(title_re=title_re, control_type=control_type))
+            child.wait('visible',timeout=10)
         if child is None:
             time.sleep(interval)
             retry += 1
+            logger.warning(f"Can't find window:{title_re} from {parent_window.Window.__name__},retry")
         else:
+            # 画个绿框
+            child.draw_outline()
             return child
-    logger.warning(f"Can't find window:{title_re} from {father_window.Window.__name__} after retry 3 times")
+    logger.warning(f"Can't find window:{title_re} from {parent_window.Window.__name__} after retry 3 times")
     return None
 
 def wechat_sign_in_and_get_password()->str:
@@ -59,66 +63,49 @@ def wechat_sign_in_and_get_password()->str:
 
         logger.info("Search wechat widget...")
         wechat_window = find_wechat_window()
+        wechat_window.wait("visible",timeout=10)
         if wechat_window is None:
             logger.warning("WeChat widget not found, please check if it started successfully or if the path is correct.")
             return ""
 
         logger.info("Successfully find wechat widget")
         wechat_window.set_focus()
+        logger.info("Set focus to wechat window")
 
-        # navi = wechat_window.child_window(title_re="导航")
-        # if navi is None:
-        #     logger.info("Can't find navi button,retry")
         navi = search_window(wechat_window,title_re="导航")
 
 
         click_window(navi,title_re="通讯录",control_type="Button")
-        # address_book = search_window(navi,title_re="通讯录",control_type="Button")
-        # address_book.click_input()
-        # logger.info("Click address book button")
 
         gzh = search_window(wechat_window,title_re="公众号",control_type="ListItem")
-        # gzh = wechat_window.child_window()
-        # if gzh is None:
-        #     print("找不到公众号")
 
         click_window(gzh,title_re="ContactListItem")
-        # gzh = gzh.child_window()
-        # gzh.click_input()
-        # print("切换到公众号界面")
 
         click_window(wechat_window,title_re="忘川风华录手游",control_type="ListItem")
-        # fhl = wechat_window.child_window(title_re="忘川风华录手游",control_type="ListItem")
-        # if fhl is None:
-        #     print("没找到手游公众号")
-        # fhl.click_input()
-        # print("进入风华录公众号")
 
-        time.sleep(2)
-        # 进入公众号消息界面
+
 
         gzh_info = find_wechat_app().window(title_re="公众号")
+        time.sleep(2)
         click_window(gzh_info,title_re="发消息")
 
-        print("打开公众号消息界面")
+
         find_gzh = findwindows.find_window(title_re="忘川风华录手游")
         app = Application('uia').connect(handle=find_gzh)
         gzh = app.window(handle=find_gzh)
 
         click_window(gzh,title_re="福利上门")
-        # but = gzh.child_window()
-        # but.click_input()
-        # print("点击福利上门按钮")
-        click_window(gzh,title_re="每日签到", control_type="MenuItem")
-        # print("打开每日签到界面")
 
-        time.sleep(1)
+        click_window(gzh,title_re="每日签到", control_type="MenuItem")
+
+
         dialogList = gzh.child_window(title="消息", control_type="List")
         # 获取最后一条消息
         item = dialogList.children(control_type="ListItem")[-1]
         text = item.window_text()
         # 返回消息文本
         return handle_password_content(text)
+
     except Exception as e:
         print(e)
         return ""
@@ -174,11 +161,12 @@ def start_wechat():
     # dlg.print_control_identifiers()
 
     # 查找并返回标题为“进入微信”的按钮并点击
-    but = dlg.child_window(title="进入微信", control_type="Button")
-    but.click_input()
+    but = click_window(dlg,title_re="进入微信", control_type="Button")
+    # but = dlg.child_window()
+    # but.click_input()
 
     # 等待登录加载
-    time.sleep(5)
+
 
 
     return app
@@ -199,3 +187,5 @@ def find_wechat_window():
     except Exception as e:
         return None
 
+if __name__ == "__main__":
+    wechat_sign_in_and_get_password()
