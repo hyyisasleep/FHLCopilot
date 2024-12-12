@@ -7,7 +7,7 @@ from tasks.cattery.assets.assets_cattery import (
     NEED_FEED_CAT,
     FEED_CAT_REWARD,
     PLAY_WITH_CAT,
-    SKIP_BUTTON,
+    SKIP_BUTTON, NO_NEED_FEED_CAT,
 )
 
 
@@ -37,8 +37,8 @@ class Cattery(UI):
                 """
         logger.hr('One-click feed cat', level=3)
         has_feed = False
-        empty = Timer(1, count=1).start()
-        timeout = Timer(5).start()
+        # empty = Timer(1, count=1).start()
+        timeout = Timer(10).start()
         while 1:
             if skip_first_screenshot:
                 skip_first_screenshot = False
@@ -61,13 +61,13 @@ class Cattery(UI):
             if timeout.reached():
                 logger.warning('Get feed cat timeout')
                 break
-            # if not has_feed and empty.reached():
-            #     logger.info('No need feed cat.')
-            #     break
+            if self.appear(NO_NEED_FEED_CAT):
+                logger.info('No need feed cat.')
+                break
             if self.handle_reward():
                 logger.info('Get feed cat reward')
                 has_feed = True
-                timeout.reset()
+                # timeout.reset()
                 continue
             # if hasFeed and self.handle_reward():
             #     logger.info('Got [play with cat] reward')
@@ -87,7 +87,7 @@ class Cattery(UI):
         logger.hr('One-click play with cat', level=3)
 
         empty = Timer(1, count=1).start()
-        timeout = Timer(5).start()
+        timeout = Timer(10).start()
         # 判断是不是在动画里，
         in_flash = False
         # 领完奖再走，遵循wiki的不要把click写在break上

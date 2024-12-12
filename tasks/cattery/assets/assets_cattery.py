@@ -23,6 +23,16 @@ NEED_FEED_CAT = ButtonWrapper(
         button=(189, 159, 236, 188),
     ),
 )
+NO_NEED_FEED_CAT = ButtonWrapper(
+    name='NO_NEED_FEED_CAT',
+    share=Button(
+        file='./assets/share/cattery/NO_NEED_FEED_CAT.png',
+        area=(205, 160, 224, 193),
+        search=(185, 140, 244, 213),
+        color=(241, 228, 196),
+        button=(205, 160, 224, 193),
+    ),
+)
 PLAY_WITH_CAT = ButtonWrapper(
     name='PLAY_WITH_CAT',
     share=Button(
