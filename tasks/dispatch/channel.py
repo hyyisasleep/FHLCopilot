@@ -54,19 +54,21 @@ class Channel(UI):
                     continue
 
             else:
-                if self.appear(SEND_UNLOCK) and self.appear_then_click(SEND_ICON_GANBEI):
-                    logger.info("Send ganbei icon")
-                    count += 1
-                    timeout.reset()
-                    continue
+                if self.appear(SEND_UNLOCK):
+                    self.interval_reset(SEND_UNLOCK)
+                    if self.appear_then_click(SEND_ICON_GANBEI):
+                        logger.info("Send ganbei icon")
+                        count += 1
+                        timeout.reset()
+                        continue
 
-                if self.appear_then_click(GOTO_ICON_GANBEI_PAGE):
-                    logger.info("Switch to shijun's icon page")
-                    continue
+                    if self.appear_then_click(GOTO_ICON_GANBEI_PAGE):
+                        logger.info("Switch to shijun's icon page")
+                        continue
 
-                if self.appear_then_click(OPEN_ICON):
-                    logger.info("Open icon menu")
-                    continue
+                    if self.appear_then_click(OPEN_ICON):
+                        logger.info("Open icon menu")
+                        continue
 
 
 

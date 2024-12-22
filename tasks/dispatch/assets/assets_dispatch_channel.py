@@ -76,9 +76,9 @@ SEND_UNLOCK = ButtonWrapper(
     name='SEND_UNLOCK',
     share=Button(
         file='./assets/share/dispatch/channel/SEND_UNLOCK.png',
-        area=(552, 659, 658, 704),
-        search=(532, 639, 678, 720),
-        color=(226, 122, 87),
-        button=(552, 659, 658, 704),
+        area=(578, 667, 633, 694),
+        search=(558, 647, 653, 714),
+        color=(229, 143, 114),
+        button=(578, 667, 633, 694),
     ),
 )

@@ -4,7 +4,7 @@ from multiprocessing.managers import SyncManager
 from typing import TYPE_CHECKING, Callable, Generic, TypeVar
 
 if TYPE_CHECKING:
-    from module.config.config_updater_src import ConfigUpdater
+    from module.config.config_updater import ConfigUpdater
     from module.webui.config import DeployConfig
 
 T = TypeVar("T")
@@ -86,6 +86,6 @@ class State:
         Returns:
             ConfigUpdater：
         """
-        from module.config.config_updater_src import ConfigUpdater
+        from module.config.config_updater import ConfigUpdater
 
         return ConfigUpdater()

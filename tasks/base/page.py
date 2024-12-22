@@ -98,26 +98,48 @@ page_fuliwangchuan = Page(FULI_AND_CHANGPING_CHECK)
 page_fuliwangchuan.link(BACK, destination=page_main)
 page_main.link(MAIN_GOTO_FULIWANGCHUAN, destination=page_fuliwangchuan)
 
-# 故世风云，见鬼了这个也能从秘境进
-page_gushi = Page(GUSHIFENGYUN_CHECK)
-page_gushi.link(BACK,destination=page_main)
-page_main.link(MAIN_GOTO_GUSHIFENGYUN, destination=page_gushi)
+
 # 互动
 page_interact = Page(INTERACT_CHECK)
 page_interact.link(BACK,destination=page_main)
 page_main.link(MAIN_GOTO_INTERACT, destination=page_interact)
+
+#==========================
 # 秘境
 page_mijing = Page(MIJING_CHECK)
 page_mijing.link(BACK,destination=page_main)
 page_main.link(MAIN_GOTO_MIJING, destination=page_mijing)
+# 宝墟
+page_baoxu = Page(BAOXU_CHECK)
+page_baoxu.link(BACK,destination=page_mijing)
+page_mijing.link(MIJING_GOTO_BAOXU,destination=page_baoxu)
+
+# 宝墟编队
+page_baoxu_prepare = Page(BAOXU_PREPARE_CHECK)
+page_baoxu_prepare.link(BACK,destination=page_baoxu)
+page_baoxu.link(BAOXU_JINGYUAN_GOTO_PREPARE,destination=page_baoxu_prepare)
+# 镜渊
+page_jingyuan = Page(JINGYUAN_CHECK)
+page_jingyuan.link(BACK,destination=page_mijing)
+page_mijing.link(MIJING_GOTO_JINGYUAN,destination=page_jingyuan)
+# 镜渊编队
+page_jingyuan_prepare = Page(JINGYUAN_PREPARE_CHECK)
+page_jingyuan_prepare.link(BACK,destination=page_jingyuan)
+page_jingyuan.link(BAOXU_JINGYUAN_GOTO_PREPARE,destination=page_jingyuan_prepare)
+
+#故世风云
+page_gushifengyun = Page(GUSHIFENGYUN_CHECK)
+page_gushifengyun.link(BACK,destination=page_main)
+page_main.link(MAIN_GOTO_GUSHIFENGYUN, destination=page_gushifengyun)
+
+
+#===========================
+
 # 金戈馆
 page_jingeguan = Page(JINGEGUAN_CHECK)
 page_jingeguan.link(BACK,destination=page_main)
 page_main.link(MAIN_GOTO_JINGEGUAN, destination=page_jingeguan)
-#商铺
-page_gushifengyun = Page(GUSHIFENGYUN_CHECK)
-page_gushifengyun.link(BACK,destination=page_main)
-page_main.link(MAIN_GOTO_GUSHIFENGYUN, destination=page_gushifengyun)
+
 # 桃源居
 page_office = Page(TAOYUAN_CHECK)
 page_office.link(BACK, destination=page_main)

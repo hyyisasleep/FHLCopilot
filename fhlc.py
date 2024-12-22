@@ -46,9 +46,14 @@ class FHLCopilot(AzurLaneAutoScript):
         from tasks.guild.guild import Guild
         Guild(config=self.config, device=self.device).run()
 
-    def dailyPassword(self):
+    def daily_password(self):
         from tasks.daily.daily_password import DailyPassword
         DailyPassword(config=self.config, device=self.device).run()
+
+    def daily_combat(self):
+        from tasks.combat.DailyCombat import DailyCombat
+        DailyCombat(config=self.config, device=self.device).run()
+
 
 if __name__ == '__main__':
     src = FHLCopilot('fhlc')

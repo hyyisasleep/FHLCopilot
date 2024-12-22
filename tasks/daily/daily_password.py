@@ -18,7 +18,7 @@ class DailyPassword(UI):
             self.config.stored.OneWeekPasswordList.clear()
 
         # 跳转到互动界面
-        from tasks.daily.get_password import wechat_sign_in_and_get_password
+        from tasks.daily.wechat_get_password import wechat_sign_in_and_get_password
         psw = wechat_sign_in_and_get_password()
         if psw == "" or psw is None:
             logger.warning("Can't get today's password,break")
@@ -72,8 +72,9 @@ class DailyPassword(UI):
 
     def _fill_password(self,psw,skip_first_screenshot=True):
         timeout = Timer(10).start()
-        # 填密令
-        input_text = False
+        # 填密令,
+        # input_text = False
+        has_filled_text = False
         while 1:
             if skip_first_screenshot:
                 skip_first_screenshot = False
@@ -82,7 +83,10 @@ class DailyPassword(UI):
             if timeout.reached():
                 logger.warning("Get fill password timeout")
                 return False
-
+            # 用确定框由橙变灰判定是否填完密令
+            if has_filled_text and self.appear(FILL_CONFIRM_LOCKED):
+                logger.info("Sign in completed")
+                return True
             if self.appear(FILL_PSW_FAILED):
                 logger.info("Sign in failed, maybe because password is incorrect?")
                 return True
@@ -92,12 +96,12 @@ class DailyPassword(UI):
             if self.handle_reward():
                 continue
             if self.appear_then_click(FILL_CONFIRM_UNLOCK):
+                has_filled_text = True
                 continue
-            if input_text and self.appear_then_click(PSW_INPUT_BOX_CONFIRM):
+            if self.appear_then_click(PSW_INPUT_BOX_CONFIRM):
                 continue
             if self.appear(PSW_INPUT_BOX_CHECK):
                 self.device.input_text(psw)
-                input_text = True
                 timeout.reset()
                 continue
             if self.appear_then_click(OPEN_PSW_INPUT_BOX):

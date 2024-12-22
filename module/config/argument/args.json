@@ -12,7 +12,8 @@
         "option": [
           "android",
           "cloud_android"
-        ]
+        ],
+        "display": "hide"
       },
       "PackageName": {
         "type": "select",
@@ -20,7 +21,8 @@
         "option": [
           "auto",
           "CN-Official"
-        ]
+        ],
+        "display": "hide"
       },
       "GameLanguage": {
         "type": "select",
@@ -29,7 +31,8 @@
           "auto",
           "cn",
           "en"
-        ]
+        ],
+        "display": "hide"
       },
       "ScreenshotMethod": {
         "type": "select",
@@ -412,6 +415,33 @@
         "value": {},
         "display": "hide",
         "stored": "StoredBuySuperCatBallWhenArriveRankNine"
+      }
+    }
+  },
+  "DailyCombat": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": true,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "DailyCombat",
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "04:00",
+        "display": "hide"
       }
     }
   }

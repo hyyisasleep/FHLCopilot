@@ -3,170 +3,83 @@ from module.base.button import Button, ButtonWrapper
 # This file was auto-generated, do not modify it manually. To generate:
 # ``` python -m dev_tools.button_extract ```
 
-CLOSE_CHOOSE_GIFT = ButtonWrapper(
-    name='CLOSE_CHOOSE_GIFT',
+BATTLE_PASS_PAGE_CHECK = ButtonWrapper(
+    name='BATTLE_PASS_PAGE_CHECK',
     share=Button(
-        file='./assets/share/battle_pass/CLOSE_CHOOSE_GIFT.png',
-        area=(387, 634, 412, 658),
-        search=(367, 614, 432, 678),
-        color=(104, 99, 86),
-        button=(387, 634, 412, 658),
+        file='./assets/share/battle_pass/BATTLE_PASS_PAGE_CHECK.png',
+        area=(15, 74, 191, 133),
+        search=(0, 54, 211, 153),
+        color=(241, 207, 124),
+        button=(15, 74, 191, 133),
     ),
 )
-EXP_CLAIM_ALL = ButtonWrapper(
-    name='EXP_CLAIM_ALL',
+BP_REWARD_LOCKED = ButtonWrapper(
+    name='BP_REWARD_LOCKED',
     share=Button(
-        file='./assets/share/battle_pass/EXP_CLAIM_ALL.png',
-        area=(1016, 664, 1036, 686),
-        search=(996, 644, 1056, 706),
-        color=(118, 98, 58),
-        button=(1016, 664, 1036, 686),
+        file='./assets/share/battle_pass/BP_REWARD_LOCKED.png',
+        area=(1142, 579, 1238, 671),
+        search=(1122, 559, 1258, 691),
+        color=(250, 209, 160),
+        button=(1142, 579, 1238, 671),
     ),
 )
-MISSIONS_CHECK = ButtonWrapper(
-    name='MISSIONS_CHECK',
+BP_REWARD_UNLOCK = ButtonWrapper(
+    name='BP_REWARD_UNLOCK',
     share=Button(
-        file='./assets/share/battle_pass/MISSIONS_CHECK.png',
-        area=(44, 210, 74, 230),
-        search=(24, 190, 94, 250),
-        color=(68, 69, 68),
-        button=(44, 210, 74, 230),
+        file='./assets/share/battle_pass/BP_REWARD_UNLOCK.png',
+        area=(1142, 579, 1238, 671),
+        search=(1122, 559, 1258, 691),
+        color=(232, 181, 132),
+        button=(1142, 579, 1238, 671),
     ),
 )
-MISSIONS_CLICK = ButtonWrapper(
-    name='MISSIONS_CLICK',
+MISSION_CLICK = ButtonWrapper(
+    name='MISSION_CLICK',
     share=Button(
-        file='./assets/share/battle_pass/MISSIONS_CLICK.png',
-        area=(44, 211, 74, 230),
-        search=(24, 191, 94, 250),
-        color=(145, 143, 139),
-        button=(44, 211, 74, 230),
+        file='./assets/share/battle_pass/MISSION_CLICK.png',
+        area=(1005, 123, 1110, 155),
+        search=(985, 103, 1130, 175),
+        color=(240, 176, 120),
+        button=(1005, 123, 1110, 155),
     ),
 )
-MISSIONS_LOADED = ButtonWrapper(
-    name='MISSIONS_LOADED',
+MISSION_CLOSE = ButtonWrapper(
+    name='MISSION_CLOSE',
     share=Button(
-        file='./assets/share/battle_pass/MISSIONS_LOADED.png',
-        area=(1155, 572, 1171, 588),
-        search=(1135, 552, 1191, 608),
-        color=(186, 183, 170),
-        button=(1155, 572, 1171, 588),
-    ),
-)
-MISSION_PAGE_SCROLL = ButtonWrapper(
-    name='MISSION_PAGE_SCROLL',
-    share=Button(
-        file='./assets/share/battle_pass/MISSION_PAGE_SCROLL.png',
-        area=(1186, 215, 1190, 601),
-        search=(1166, 195, 1210, 621),
-        color=(140, 140, 140),
-        button=(1186, 215, 1190, 601),
-    ),
-)
-OCR_BATTLE_PASS_QUEST = ButtonWrapper(
-    name='OCR_BATTLE_PASS_QUEST',
-    share=Button(
-        file='./assets/share/battle_pass/OCR_BATTLE_PASS_QUEST.png',
-        area=(372, 216, 1173, 591),
-        search=(352, 196, 1193, 611),
-        color=(185, 184, 180),
-        button=(372, 216, 1173, 591),
+        file='./assets/share/battle_pass/MISSION_CLOSE.png',
+        area=(1164, 140, 1220, 199),
+        search=(1144, 120, 1240, 219),
+        color=(201, 136, 82),
+        button=(1164, 140, 1220, 199),
     ),
 )
 OCR_LEVEL = ButtonWrapper(
     name='OCR_LEVEL',
     share=Button(
         file='./assets/share/battle_pass/OCR_LEVEL.png',
-        area=(167, 103, 249, 143),
-        search=(147, 83, 269, 163),
-        color=(134, 119, 94),
-        button=(167, 103, 249, 143),
+        area=(453, 118, 504, 158),
+        search=(433, 98, 524, 178),
+        color=(246, 229, 199),
+        button=(453, 118, 504, 158),
     ),
 )
-OCR_REMAINING_TIME = ButtonWrapper(
-    name='OCR_REMAINING_TIME',
+TODAY_MISSION_CHECK = ButtonWrapper(
+    name='TODAY_MISSION_CHECK',
     share=Button(
-        file='./assets/share/battle_pass/OCR_REMAINING_TIME.png',
-        area=(289, 89, 630, 132),
-        search=(269, 69, 650, 152),
-        color=(66, 63, 57),
-        button=(289, 89, 630, 132),
+        file='./assets/share/battle_pass/TODAY_MISSION_CHECK.png',
+        area=(1169, 232, 1214, 362),
+        search=(1149, 212, 1234, 382),
+        color=(235, 129, 93),
+        button=(1169, 232, 1214, 362),
     ),
 )
-PERIOD_MISSION_CLICK = ButtonWrapper(
-    name='PERIOD_MISSION_CLICK',
+WEEKLY_MISSION_CLICK = ButtonWrapper(
+    name='WEEKLY_MISSION_CLICK',
     share=Button(
-        file='./assets/share/battle_pass/PERIOD_MISSION_CLICK.png',
-        area=(128, 412, 303, 561),
-        search=(108, 392, 323, 581),
-        color=(75, 67, 50),
-        button=(128, 412, 303, 561),
-    ),
-)
-REWARDS_CHECK = ButtonWrapper(
-    name='REWARDS_CHECK',
-    share=Button(
-        file='./assets/share/battle_pass/REWARDS_CHECK.png',
-        area=(39, 119, 78, 140),
-        search=(19, 99, 98, 160),
-        color=(131, 133, 133),
-        button=(39, 119, 78, 140),
-    ),
-)
-REWARDS_CLAIM_ALL = ButtonWrapper(
-    name='REWARDS_CLAIM_ALL',
-    cn=Button(
-        file='./assets/cn/battle_pass/REWARDS_CLAIM_ALL.png',
-        area=(827, 665, 907, 684),
-        search=(807, 645, 927, 704),
-        color=(172, 136, 69),
-        button=(827, 665, 907, 684),
-    ),
-    en=Button(
-        file='./assets/en/battle_pass/REWARDS_CLAIM_ALL.png',
-        area=(822, 666, 910, 682),
-        search=(802, 646, 930, 702),
-        color=(178, 140, 66),
-        button=(822, 666, 910, 682),
-    ),
-)
-REWARDS_CLICK = ButtonWrapper(
-    name='REWARDS_CLICK',
-    share=Button(
-        file='./assets/share/battle_pass/REWARDS_CLICK.png',
-        area=(44, 118, 73, 132),
-        search=(24, 98, 93, 152),
-        color=(119, 119, 114),
-        button=(44, 118, 73, 132),
-    ),
-)
-REWARDS_LOADED = ButtonWrapper(
-    name='REWARDS_LOADED',
-    share=Button(
-        file='./assets/share/battle_pass/REWARDS_LOADED.png',
-        area=(187, 252, 222, 280),
-        search=(167, 232, 242, 300),
-        color=(134, 135, 134),
-        button=(187, 252, 222, 280),
-    ),
-)
-TODAY_MISSION_CLICK = ButtonWrapper(
-    name='TODAY_MISSION_CLICK',
-    share=Button(
-        file='./assets/share/battle_pass/TODAY_MISSION_CLICK.png',
-        area=(128, 192, 323, 334),
-        search=(108, 172, 343, 354),
-        color=(65, 59, 40),
-        button=(128, 192, 323, 334),
-    ),
-)
-WEEK_MISSION_CLICK = ButtonWrapper(
-    name='WEEK_MISSION_CLICK',
-    share=Button(
-        file='./assets/share/battle_pass/WEEK_MISSION_CLICK.png',
-        area=(128, 197, 302, 344),
-        search=(108, 177, 322, 364),
-        color=(76, 68, 51),
-        button=(128, 197, 302, 344),
+        file='./assets/share/battle_pass/WEEKLY_MISSION_CLICK.png',
+        area=(1167, 414, 1216, 543),
+        search=(1147, 394, 1236, 563),
+        color=(224, 206, 177),
+        button=(1167, 414, 1216, 543),
     ),
 )

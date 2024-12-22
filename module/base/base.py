@@ -170,6 +170,7 @@ class ModuleBase:
         Args:
             button (Button, ButtonWrapper, HierarchyButton, str):
             interval (int, float): interval between two active events.
+            # ↑ it is 0 before???
 
         Returns:
             bool:

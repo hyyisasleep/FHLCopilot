@@ -1,7 +1,7 @@
 
 import time
 
-from pywinauto.findwindows import WindowNotFoundError
+
 
 from module.logger import logger
 import os
@@ -9,6 +9,8 @@ import psutil
 from pywinauto import Application, findwindows, WindowSpecification,timings,Desktop
 import win32api
 import win32con
+
+
 
 
 def click_window(parent_window:WindowSpecification,title_re:str,control_type="",interval=2):
@@ -97,14 +99,14 @@ def wechat_sign_in_and_get_password()->str:
         # 点击福利上门
         click_window(gzh_chat,title_re="福利上门")
         # 点击每日签到
-        # click_window(gzh_chat,title_re="每日签到", control_type="MenuItem")
-        # # 获取消息列表最后一条
-        # dialog_list = search_window(gzh_chat,title_re="消息", control_type="List")
-        # # 获取最后一条消息
-        # item = dialog_list.children(control_type="ListItem")[-1]
-        # text = item.window_text()
-        # # 返回筛选后的密令
-        # return handle_password_content(text)
+        click_window(gzh_chat,title_re="每日签到", control_type="MenuItem")
+        # 获取消息列表最后一条
+        dialog_list = search_window(gzh_chat,title_re="消息", control_type="List")
+        # 获取最后一条消息
+        item = dialog_list.children(control_type="ListItem")[-1]
+        text = item.window_text()
+        # 返回筛选后的密令
+        return handle_password_content(text)
 
     except Exception as e:
         print(e)

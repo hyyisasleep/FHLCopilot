@@ -50,8 +50,8 @@ def handle_sensitive_info(image):
 
 _ = EmptyConnection()
 name = input(
-    '输入src配置文件名称，或者模拟器serial，或者模拟器端口号: (默认输入 "fhlc"):\n'
-    '例如："src", "127.0.0.1:16384", "7555"\n'
+    '输入fhlc配置文件名称，或者模拟器serial，或者模拟器端口号: (默认输入 "fhlc"):\n'
+    '例如："fhlc", "127.0.0.1:16384", "7555"\n'
 )
 name = name.strip().strip('"').strip()
 if not name:

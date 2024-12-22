@@ -110,5 +110,13 @@
       "JinGeTalisman": {},
       "BuySuperCatBall": {}
     }
+  },
+  "DailyCombat": {
+    "Scheduler": {
+      "Enable": true,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "DailyCombat",
+      "ServerUpdate": "04:00"
+    }
   }
 }

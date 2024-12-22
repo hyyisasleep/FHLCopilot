@@ -22,6 +22,9 @@ Dispatch:
 Guild:
   Scheduler:
     Enable: true
+DailyCombat:
+  Scheduler:
+    Enable: true
 #Dungeon:
 #  Scheduler:
 #    Enable: true

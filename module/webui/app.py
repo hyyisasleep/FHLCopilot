@@ -1073,7 +1073,7 @@ class AlasGUI(Frame):
                     name="AddAlas_copyfrom",
                     label=t("Gui.AddAlas.CopyFrom"),
                     options=alas_template() + alas_instance(),
-                    value=origin or "template-src",
+                    value=origin or "template-fhlc",
                     scope=s,
                 ),
                 put_button(label=t("Gui.AddAlas.Confirm"), onclick=add, scope=s)
@@ -1100,17 +1100,17 @@ class AlasGUI(Frame):
             run_js("location.reload()")
 
         with use_scope("content"):
-            put_text("Select your language / 选择语言").style("text-align: center")
-            put_buttons(
-                [
-                    {"label": "简体中文", "value": "zh-CN"},
-                    {"label": "繁體中文", "value": "zh-TW"},
-                    {"label": "English", "value": "en-US"},
-                    {"label": "日本語", "value": "ja-JP"},
-                    {"label": "Español", "value": "es-ES"},
-                ],
-                onclick=lambda l: set_language(l),
-            ).style("text-align: center")
+            # put_text("Select your language / 选择语言").style("text-align: center")
+            # put_buttons(
+            #     [
+            #         {"label": "简体中文", "value": "zh-CN"},
+            #         {"label": "繁體中文", "value": "zh-TW"},
+            #         {"label": "English", "value": "en-US"},
+            #         {"label": "日本語", "value": "ja-JP"},
+            #         {"label": "Español", "value": "es-ES"},
+            #     ],
+            #     onclick=lambda l: set_language(l),
+            # ).style("text-align: center")
             put_text("Change theme / 更改主题").style("text-align: center")
             put_buttons(
                 [
@@ -1123,9 +1123,11 @@ class AlasGUI(Frame):
             # show something
             put_markdown(
                 """
-            SRC is a free open source software, if you paid for SRC from any channel, please refund.
-            SRC 是一款免费开源软件，如果你在任何渠道付费购买了SRC，请退款。
-            Project repository 项目地址：`https://github.com/LmeSzinc/StarRailCopilot`
+            FHLC:忘川风华录日常挂机脚本，魔改自SRC:`https://github.com/LmeSzinc/StarRailCopilot`  
+            
+            FHLC is a free open source software, if you paid for FHLC from any channel, please refund.
+            FHLC 是一款免费开源软件，如果你在任何渠道付费购买了FHLC，请退款。
+            Project repository 项目地址：`https://github.com/hyyisasleep/FHLCopilot`
             """
             ).style("text-align: center")
 
@@ -1145,7 +1147,7 @@ class AlasGUI(Frame):
 
     def run(self) -> None:
         # setup gui
-        set_env(title="SRC", output_animation=False)
+        set_env(title="FHLC", output_animation=False)
         add_css(filepath_css("alas"))
         if self.is_mobile:
             add_css(filepath_css("alas-mobile"))

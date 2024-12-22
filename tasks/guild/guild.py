@@ -1,7 +1,5 @@
 from module.base.timer import Timer
 from module.logger import logger
-from tasks.base.assets.assets_base_popup import CLUB_BEGGING_THANKS_CHECK, CLUB_BEGGING_THANKS_CLOSE
-# from tasks.base.assets.assets_base_popup import CLUB_BEGGING_THANKS_CHECK
 
 from tasks.base.page import page_guild, page_guild_begging
 from tasks.base.ui import UI

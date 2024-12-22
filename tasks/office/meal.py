@@ -76,7 +76,7 @@ class Meal(UI):
                 logger.info(f"Now time is {current_hour} h,no need get power")
                 break
 
-
+    # TODO: 试了一下非饭点这个会发癫
     def handle_get_power_back(self, state='lunch', need_get_back=False):
         #
         if state == 'lunch' and self.appear(LUNCH_GETBACK):
@@ -85,7 +85,7 @@ class Meal(UI):
                 logger.info("Use tongbao to exchange lunch stamina")
             return True
         if state == 'dinner' and self.appear(DINNER_GETBACK):
-            logger.info("Still have unclaimed lunch stamina")
+            logger.info("Still have unclaimed dinner stamina")
             if need_get_back and self.device.click(DINNER_GETBACK):
                 logger.info("Use tongbao to exchange lunch stamina")
             return True

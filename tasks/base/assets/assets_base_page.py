@@ -36,6 +36,36 @@ BACK = ButtonWrapper(
         ),
     ],
 )
+BAOXU_CHECK = ButtonWrapper(
+    name='BAOXU_CHECK',
+    share=Button(
+        file='./assets/share/base/page/BAOXU_CHECK.png',
+        area=(852, 89, 887, 118),
+        search=(832, 69, 907, 138),
+        color=(169, 147, 122),
+        button=(852, 89, 887, 118),
+    ),
+)
+BAOXU_JINGYUAN_GOTO_PREPARE = ButtonWrapper(
+    name='BAOXU_JINGYUAN_GOTO_PREPARE',
+    share=Button(
+        file='./assets/share/base/page/BAOXU_JINGYUAN_GOTO_PREPARE.png',
+        area=(1045, 628, 1191, 669),
+        search=(1025, 608, 1211, 689),
+        color=(225, 129, 96),
+        button=(1045, 628, 1191, 669),
+    ),
+)
+BAOXU_PREPARE_CHECK = ButtonWrapper(
+    name='BAOXU_PREPARE_CHECK',
+    share=Button(
+        file='./assets/share/base/page/BAOXU_PREPARE_CHECK.png',
+        area=(91, 14, 166, 50),
+        search=(71, 0, 186, 70),
+        color=(128, 128, 136),
+        button=(91, 14, 166, 50),
+    ),
+)
 CATTERY_CHECK = ButtonWrapper(
     name='CATTERY_CHECK',
     share=Button(
@@ -244,6 +274,26 @@ JINGEYANWU_PREPARE_CHECK = ButtonWrapper(
         button=(94, 16, 167, 48),
     ),
 )
+JINGYUAN_CHECK = ButtonWrapper(
+    name='JINGYUAN_CHECK',
+    share=Button(
+        file='./assets/share/base/page/JINGYUAN_CHECK.png',
+        area=(87, 14, 173, 50),
+        search=(67, 0, 193, 70),
+        color=(110, 90, 80),
+        button=(87, 14, 173, 50),
+    ),
+)
+JINGYUAN_PREPARE_CHECK = ButtonWrapper(
+    name='JINGYUAN_PREPARE_CHECK',
+    share=Button(
+        file='./assets/share/base/page/JINGYUAN_PREPARE_CHECK.png',
+        area=(90, 14, 174, 51),
+        search=(70, 0, 194, 71),
+        color=(176, 100, 86),
+        button=(90, 14, 174, 51),
+    ),
+)
 MAIN_GOTO_CATTERY = ButtonWrapper(
     name='MAIN_GOTO_CATTERY',
     share=Button(
@@ -382,6 +432,26 @@ MIJING_CHECK = ButtonWrapper(
         search=(79, 0, 179, 67),
         color=(178, 100, 75),
         button=(99, 17, 159, 47),
+    ),
+)
+MIJING_GOTO_BAOXU = ButtonWrapper(
+    name='MIJING_GOTO_BAOXU',
+    share=Button(
+        file='./assets/share/base/page/MIJING_GOTO_BAOXU.png',
+        area=(434, 254, 473, 346),
+        search=(414, 234, 493, 366),
+        color=(213, 144, 117),
+        button=(434, 254, 473, 346),
+    ),
+)
+MIJING_GOTO_JINGYUAN = ButtonWrapper(
+    name='MIJING_GOTO_JINGYUAN',
+    share=Button(
+        file='./assets/share/base/page/MIJING_GOTO_JINGYUAN.png',
+        area=(163, 221, 203, 318),
+        search=(143, 201, 223, 338),
+        color=(211, 138, 111),
+        button=(163, 221, 203, 318),
     ),
 )
 MOMENTS_CHECK = ButtonWrapper(

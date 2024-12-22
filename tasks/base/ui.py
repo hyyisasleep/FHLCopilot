@@ -4,7 +4,7 @@ from module.base.decorator import run_once
 from module.base.timer import Timer
 from module.exception import GameNotRunningError, GamePageUnknownError
 from module.logger import logger
-from module.ocr.ocr import Ocr
+from module.ocr.ocr import Ocr, DigitCounter
 
 from tasks.base.popup import PopupHandler
 
@@ -250,10 +250,13 @@ class UI(PopupHandler):
             else:
                 self.device.screenshot()
 
-            if isinstance(letter, Ocr):
+            if isinstance(letter, DigitCounter):
+                current,_,_ = letter.ocr_single_line(self.device.image)
+            elif isinstance(letter, Ocr):
                 current = letter.ocr_single_line(self.device.image)
             else:
-                current = letter(self.device.image)
+                # src里这里是 current = letter(self.device.image),没有对digitcounter的判定就不会标黄，但是加了digitcounter就会，，，
+                current = letter
 
             logger.attr("Index", current)
             diff = index - current
