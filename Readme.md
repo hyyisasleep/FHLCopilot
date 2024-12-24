@@ -1,12 +1,16 @@
-# FHLCopilot(正在施工中)
+# FHLCopilot(还在施工中)
 
 忘川风华录 自动化日常脚本
 
 基于[SRC](https://github.com/LmeSzinc/StarRailCopilot/)/ [AzurLaneAutoScript](https://github.com/LmeSzinc/AzurLaneAutoScript)框架开发
 
+↓刚改的gui，任务太多了等优化
 
+![gui](doc/README.assets/gui_cn.png)
 
 ## 1.已完成功能
+
+没整理
 
 
 
@@ -24,46 +28,20 @@
 
 ### 2.2 商店领礼包 tasks\Shop
 
-目前做到了每天自动买铜币喵偶、喵居小玩具和碎片，签到礼包和领月卡 
+目前每天自动买铜币喵偶、喵居小玩具和碎片，签到礼包和领月卡 
 
 
-图标命名是：一级菜单\_二级菜单\_GOODS_物品名
+图标命名：一级菜单\_二级菜单\_GOODS_物品名
 
 TODO:每日每周一起买，设定个优先级 每日> 每周，道具不够了就优先买每日
 
-菜单栏：
+部分翻译：
 
-SHOP
-
--PICK 精选
-
--GIFT
-
--DAILY
-
-每日签到礼包
-
--MONTHLYCARD
-
-单独写，
-
-TODO:加两个配置选项检测有没有月卡
-
--RESOURCE
-
--COPPER
+PICK 精选
 
 普通喵偶 >>> 混沌灵元（CHAOS SPIRIT） > 莹明石（LIGHT STONE) > 琼霓染料 （DYE)
 
--PVP
-
--PVE
-
--APPEARANCE
-
--LEISURE
-
--FRIENDSHIP 友情
+FRIENDSHIP 友情
 
 羁绊宝匣（FRIENDSHIP_GIFT)（100） >>> 普通喵偶（3x100） > 莹明石 （ 5x100）> 天品信物宝匣（500）
 
@@ -81,27 +59,17 @@ TODO:加两个配置选项检测有没有月卡
 
 是否拜访他人领君子兰（）
 
-
-
 * ~~首次登陆领祝福~~
-
-  
 
 * 领体力（中午11-15点 领第一个体力 下午17-22 领第二个体
 
   **错过的体力没写怎么领**
 
-  
-
 * ~~百工图转换~~
-
-  
 
 * ~~做事件~~
 
   **领印象奖励没写**
-
-  
 
 * ~~拜访~~
 
@@ -109,23 +77,16 @@ TODO:加两个配置选项检测有没有月卡
 
   #TODO: **没测列表里不够三个时怎么办**
 
-  
-
 * ~~打随机家具~~
 
-  
 
 ### 2.4 喵居 tasks\Cattery
 
 - ~~可能有冒出来的领猫界面背刺~~
 
-  有的时候可能会出现让你捏脸的猫，直接默认了。。。
-
-  
+  有的时候可能会出现让捏脸的猫，直接默认了。。。
 
 - ~~每日吸猫  DAILY_PLAY_WITH_CAT~~
-
-  
 
 - ~~幸福值喂食领奖 DAILY_FEED_CAT~~
 
@@ -213,7 +174,10 @@ TODO:加两个配置选项检测有没有月卡
 
 ~~差不多了~~
 
-### 2.9 每日战斗 
+### 2.9 每日副本 Dungeon
+
+在Combat写了编队打镜渊宝墟，固定队伍5，写完发现src有
+
 
 编队：
 
