@@ -418,7 +418,7 @@
       }
     }
   },
-  "DailyCombat": {
+  "Dungeon": {
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
@@ -435,7 +435,7 @@
       },
       "Command": {
         "type": "input",
-        "value": "DailyCombat",
+        "value": "Dungeon",
         "display": "hide"
       },
       "ServerUpdate": {

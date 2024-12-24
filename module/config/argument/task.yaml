@@ -54,6 +54,6 @@ Daily:
       - Scheduler
       - JinGeStorage
 
-    DailyCombat:
+    Dungeon:
       - Scheduler
       - DailyCombat

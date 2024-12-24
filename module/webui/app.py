@@ -1033,8 +1033,8 @@ class AlasGUI(Frame):
             def get_unused_name():
                 all_name = alas_instance()
                 for i in range(2, 100):
-                    if f"src{i}" not in all_name:
-                        return f"src{i}"
+                    if f"fhlc{i}" not in all_name:
+                        return f"fhlc{i}"
                 else:
                     return ""
 
@@ -1121,14 +1121,12 @@ class AlasGUI(Frame):
             ).style("text-align: center")
 
             # show something
-            put_markdown(
-                """
-            FHLC:忘川风华录日常挂机脚本，魔改自SRC:`https://github.com/LmeSzinc/StarRailCopilot`  
+            put_text('FHLC:忘川风华录日常挂机脚本，魔改自SRC:https://github.com/LmeSzinc/StarRailCopilot\n\n',
             
-            FHLC is a free open source software, if you paid for FHLC from any channel, please refund.
-            FHLC 是一款免费开源软件，如果你在任何渠道付费购买了FHLC，请退款。
-            Project repository 项目地址：`https://github.com/hyyisasleep/FHLCopilot`
-            """
+            'FHLC is a free open source software, if you paid for FHLC from any channel, please refund.\n',
+            'FHLC 是一款免费开源软件，如果你在任何渠道付费购买了FHLC，请退款。\n',
+            'Project repository 项目地址：https://github.com/hyyisasleep/FHLCopilot\n\n'
+
             ).style("text-align: center")
 
         if lang.TRANSLATE_MODE:
