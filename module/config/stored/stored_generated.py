@@ -20,6 +20,7 @@ from module.config.stored.classes import (
 # ``` python -m module/config/config_updater.py ```
 
 class StoredGenerated:
-    OneWeekPasswordList = StoredWeeklyPassword("DailyPassword.DailyPassword.OneWeekPasswordList")
+    DailyActivity = StoredDailyActivity("DailyQuest.DailyStorage.DailyActivity")
     JinGeTalisman = StoredJinGeTalisman("JinGeYanWu.JinGeStorage.JinGeTalisman")
     BuySuperCatBall = StoredBuySuperCatBallWhenArriveRankNine("JinGeYanWu.JinGeStorage.BuySuperCatBall")
+    OneWeekPasswordList = StoredWeeklyPassword("Password.DailyPassword.OneWeekPasswordList")

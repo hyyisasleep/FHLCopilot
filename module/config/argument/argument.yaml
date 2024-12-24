@@ -91,24 +91,15 @@ Optimization:
     option: [ stay_there, goto_main, close_game ]
 
 # ==================== Daily ====================
-DailyShop:
-  SignInGift:
-    type: checkbox
-    value: 1
-  MonthlyCard30:
-    type: checkbox
-    value: 0
-  MonthlyCard68:
-    type: checkbox
-    value: 0
-  CopperBuyCommonCatPuppet:
-    type: checkbox
-    value: 1
+
+DailyStorage:
+  DailyActivity:
+    stored: StoredDailyActivity
+    order: 2
+    color: "#ffcf70"
+    display: display
 
 Office:
-  UseTongBaoBuyExpiredPower:
-    type: checkbox
-    value: 0
   TransKaoGongTicket:
     type: checkbox
     value: 1
@@ -116,14 +107,29 @@ Office:
     type: checkbox
     value: 1
 
+Interact:
+  CurrentCelebrity:
+    value: 0
+  CurrentAffectionLevel:
+    value: 0
 
-
-Dispatch:
-  AutoHideAndSeek:
-    type: checkbox
+Dungeon:
+  Team:
     value: 1
+    option: [1,2,3,4,5]
 
-JinGeYanWu:
+
+
+MealPower:
+  UseTongBaoBuyExpiredPower:
+    type: checkbox
+    value: 0
+
+GuildQuest:
+  DailyGuildQuest:
+    value: 0
+
+ClearJinGeTalisman:
   BuySuperCatBallWhenArriveRankNineEveryWeek:
     type: checkbox
     value: 1
@@ -134,7 +140,6 @@ JinGeYanWu:
 JinGeStorage:
   JinGeTalisman:
     stored: StoredJinGeTalisman
-
   BuySuperCatBall:
     stored: StoredBuySuperCatBallWhenArriveRankNine
 

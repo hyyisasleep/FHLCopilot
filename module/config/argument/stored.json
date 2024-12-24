@@ -1,23 +1,16 @@
 {
-  "OneWeekPasswordList": {
-    "name": "OneWeekPasswordList",
-    "path": "DailyPassword.DailyPassword.OneWeekPasswordList",
-    "i18n": "DailyPassword.OneWeekPasswordList.name",
-    "stored": "StoredWeeklyPassword",
+  "DailyActivity": {
+    "name": "DailyActivity",
+    "path": "DailyQuest.DailyStorage.DailyActivity",
+    "i18n": "DailyStorage.DailyActivity.name",
+    "stored": "StoredDailyActivity",
     "attrs": {
       "time": "2020-01-01 00:00:00",
-      "p1": "",
-      "p2": "",
-      "p3": "",
-      "p4": "",
-      "p5": "",
-      "p6": "",
-      "p7": "",
-      "total": 7,
+      "total": 100,
       "value": 0
     },
-    "order": 0,
-    "color": "#777777"
+    "order": 2,
+    "color": "#ffcf70"
   },
   "JinGeTalisman": {
     "name": "JinGeTalisman",
@@ -39,6 +32,26 @@
     "attrs": {
       "time": "2020-01-01 00:00:00",
       "total": 1,
+      "value": 0
+    },
+    "order": 0,
+    "color": "#777777"
+  },
+  "OneWeekPasswordList": {
+    "name": "OneWeekPasswordList",
+    "path": "Password.DailyPassword.OneWeekPasswordList",
+    "i18n": "DailyPassword.OneWeekPasswordList.name",
+    "stored": "StoredWeeklyPassword",
+    "attrs": {
+      "time": "2020-01-01 00:00:00",
+      "p1": "",
+      "p2": "",
+      "p3": "",
+      "p4": "",
+      "p5": "",
+      "p6": "",
+      "p7": "",
+      "total": 7,
       "value": 0
     },
     "order": 0,

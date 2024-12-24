@@ -169,11 +169,11 @@
       }
     }
   },
-  "DailyShop": {
+  "DailyQuest": {
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": true,
+        "value": false,
         "option": [
           true,
           false
@@ -186,7 +186,7 @@
       },
       "Command": {
         "type": "input",
-        "value": "DailyShop",
+        "value": "DailyQuest",
         "display": "hide"
       },
       "ServerUpdate": {
@@ -195,56 +195,17 @@
         "display": "hide"
       }
     },
-    "DailyShop": {
-      "SignInGift": {
-        "type": "checkbox",
-        "value": 1
-      },
-      "MonthlyCard30": {
-        "type": "checkbox",
-        "value": 0
-      },
-      "MonthlyCard68": {
-        "type": "checkbox",
-        "value": 0
-      },
-      "CopperBuyCommonCatPuppet": {
-        "type": "checkbox",
-        "value": 1
-      }
-    }
-  },
-  "Office": {
-    "Scheduler": {
-      "Enable": {
-        "type": "checkbox",
-        "value": true,
-        "option": [
-          true,
-          false
-        ]
-      },
-      "NextRun": {
-        "type": "datetime",
-        "value": "2020-01-01 00:00:00",
-        "validate": "datetime"
-      },
-      "Command": {
-        "type": "input",
-        "value": "Office",
-        "display": "hide"
-      },
-      "ServerUpdate": {
-        "type": "input",
-        "value": "04:00",
-        "display": "hide"
+    "DailyStorage": {
+      "DailyActivity": {
+        "type": "stored",
+        "value": {},
+        "display": "display",
+        "stored": "StoredDailyActivity",
+        "order": 2,
+        "color": "#ffcf70"
       }
     },
     "Office": {
-      "UseTongBaoBuyExpiredPower": {
-        "type": "checkbox",
-        "value": 0
-      },
       "TransKaoGongTicket": {
         "type": "checkbox",
         "value": 1
@@ -253,40 +214,36 @@
         "type": "checkbox",
         "value": 1
       }
-    }
-  },
-  "Cattery": {
-    "Scheduler": {
-      "Enable": {
-        "type": "checkbox",
-        "value": true,
+    },
+    "Interact": {
+      "CurrentCelebrity": {
+        "type": "input",
+        "value": 0
+      },
+      "CurrentAffectionLevel": {
+        "type": "input",
+        "value": 0
+      }
+    },
+    "Dungeon": {
+      "Team": {
+        "type": "select",
+        "value": 1,
         "option": [
-          true,
-          false
+          1,
+          2,
+          3,
+          4,
+          5
         ]
-      },
-      "NextRun": {
-        "type": "datetime",
-        "value": "2020-01-01 00:00:00",
-        "validate": "datetime"
-      },
-      "Command": {
-        "type": "input",
-        "value": "Cattery",
-        "display": "hide"
-      },
-      "ServerUpdate": {
-        "type": "input",
-        "value": "04:00",
-        "display": "hide"
       }
     }
   },
-  "Dispatch": {
+  "MealPower": {
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": true,
+        "value": false,
         "option": [
           true,
           false
@@ -299,7 +256,7 @@
       },
       "Command": {
         "type": "input",
-        "value": "Dispatch",
+        "value": "MealPower",
         "display": "hide"
       },
       "ServerUpdate": {
@@ -308,10 +265,10 @@
         "display": "hide"
       }
     },
-    "Dispatch": {
-      "AutoHideAndSeek": {
+    "MealPower": {
+      "UseTongBaoBuyExpiredPower": {
         "type": "checkbox",
-        "value": 1
+        "value": 0
       }
     }
   },
@@ -342,7 +299,7 @@
       }
     }
   },
-  "DailyPassword": {
+  "Shop": {
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
@@ -359,7 +316,7 @@
       },
       "Command": {
         "type": "input",
-        "value": "DailyPassword",
+        "value": "Shop",
         "display": "hide"
       },
       "ServerUpdate": {
@@ -367,40 +324,71 @@
         "value": "04:00",
         "display": "hide"
       }
-    },
-    "DailyPassword": {
-      "OneWeekPasswordList": {
-        "type": "stored",
-        "value": {},
-        "display": "hide",
-        "stored": "StoredWeeklyPassword"
+    }
+  },
+  "BattlePass": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "BattlePass",
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "04:00",
+        "display": "hide"
+      }
+    }
+  },
+  "DataUpDate": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "DataUpDate",
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "04:00",
+        "display": "hide"
       }
     }
   },
   "JinGeYanWu": {
-    "Scheduler": {
-      "Enable": {
+    "ClearJinGeTalisman": {
+      "BuySuperCatBallWhenArriveRankNineEveryWeek": {
         "type": "checkbox",
-        "value": false,
-        "option": [
-          true,
-          false
-        ]
+        "value": 1
       },
-      "NextRun": {
-        "type": "datetime",
-        "value": "2020-01-01 00:00:00",
-        "validate": "datetime"
-      },
-      "Command": {
-        "type": "input",
-        "value": "JinGeYanWu",
-        "display": "hide"
-      },
-      "ServerUpdate": {
-        "type": "input",
-        "value": "04:00",
-        "display": "hide"
+      "EndWhenSoulIsClear": {
+        "type": "checkbox",
+        "value": 1
       }
     },
     "JinGeStorage": {
@@ -418,30 +406,13 @@
       }
     }
   },
-  "Dungeon": {
-    "Scheduler": {
-      "Enable": {
-        "type": "checkbox",
-        "value": true,
-        "option": [
-          true,
-          false
-        ]
-      },
-      "NextRun": {
-        "type": "datetime",
-        "value": "2020-01-01 00:00:00",
-        "validate": "datetime"
-      },
-      "Command": {
-        "type": "input",
-        "value": "Dungeon",
-        "display": "hide"
-      },
-      "ServerUpdate": {
-        "type": "input",
-        "value": "04:00",
-        "display": "hide"
+  "Password": {
+    "DailyPassword": {
+      "OneWeekPasswordList": {
+        "type": "stored",
+        "value": {},
+        "display": "hide",
+        "stored": "StoredWeeklyPassword"
       }
     }
   }

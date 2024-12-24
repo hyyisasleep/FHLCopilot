@@ -22,38 +22,41 @@ Daily:
   menu: 'list'
   page: 'setting'
   tasks:
-    DailyShop:
+    DailyQuest:
       - Scheduler
-      - DailyShop
-    Office:
-      - Scheduler
+      - DailyStorage
       - Office
-      - Visit
-      - Meal
-      - Affair
-      - Jigsaw
-    Cattery:
-      - Scheduler
-      - Cattery
-    Dispatch:
-      - Scheduler
-      - Dispatch
       - Interact
-      - FriendPoint
-      - Moments
-      - HideAndSeek
+      - Dungeon
+
+    MealPower:
+      - Scheduler
+      - MealPower
     Guild:
       - Scheduler
 
-    DailyPassword:
-      - Scheduler
-      - DailyPassword
-      # - DailyPasswordStorage
 
+    Shop:
+      - Scheduler
+
+    BattlePass:
+      - Scheduler
+
+    DataUpDate:
+      - Scheduler
+
+
+
+  # ==========================Tool====================
+
+Tool:
+  menu: 'list'
+  page: 'tool'
+  tasks:
     JinGeYanWu:
-      - Scheduler
+      - ClearJinGeTalisman
       - JinGeStorage
-
-    Dungeon:
-      - Scheduler
-      - DailyCombat
+    ShaPanLunYi:
+      - ClearShaPanFlag
+    Password:
+      - DailyPassword

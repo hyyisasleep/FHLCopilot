@@ -11,14 +11,21 @@
     "menu": "list",
     "page": "setting",
     "tasks": [
-      "DailyShop",
-      "Office",
-      "Cattery",
-      "Dispatch",
+      "DailyQuest",
+      "MealPower",
       "Guild",
-      "DailyPassword",
+      "Shop",
+      "BattlePass",
+      "DataUpDate"
+    ]
+  },
+  "Tool": {
+    "menu": "list",
+    "page": "tool",
+    "tasks": [
       "JinGeYanWu",
-      "Dungeon"
+      "ShaPanLunYi",
+      "Password"
     ]
   }
 }

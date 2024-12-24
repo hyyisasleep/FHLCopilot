@@ -54,7 +54,7 @@ class FHLCopilot(AzurLaneAutoScript):
         from tasks.combat.DailyCombat import DailyCombat
         DailyCombat(config=self.config, device=self.device).run()
 
-
+    def sha
 if __name__ == '__main__':
     src = FHLCopilot('fhlc')
     src.loop()

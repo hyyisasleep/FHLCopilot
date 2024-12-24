@@ -40,23 +40,29 @@ class GeneratedConfig:
     Optimization_CombatScreenshotInterval = 1.0
     Optimization_WhenTaskQueueEmpty = 'stay_there'  # stay_there, goto_main, close_game
 
-    # Group `DailyShop`
-    DailyShop_SignInGift = 1
-    DailyShop_MonthlyCard30 = 0
-    DailyShop_MonthlyCard68 = 0
-    DailyShop_CopperBuyCommonCatPuppet = 1
+    # Group `DailyStorage`
+    DailyStorage_DailyActivity = {}
 
     # Group `Office`
-    Office_UseTongBaoBuyExpiredPower = 0
     Office_TransKaoGongTicket = 1
     Office_VisitOthersForClivia = 1
 
-    # Group `Dispatch`
-    Dispatch_AutoHideAndSeek = 1
+    # Group `Interact`
+    Interact_CurrentCelebrity = 0
+    Interact_CurrentAffectionLevel = 0
 
-    # Group `JinGeYanWu`
-    JinGeYanWu_BuySuperCatBallWhenArriveRankNineEveryWeek = 1
-    JinGeYanWu_EndWhenSoulIsClear = 1
+    # Group `Dungeon`
+    Dungeon_Team = 1  # 1, 2, 3, 4, 5
+
+    # Group `MealPower`
+    MealPower_UseTongBaoBuyExpiredPower = 0
+
+    # Group `GuildQuest`
+    GuildQuest_DailyGuildQuest = 0
+
+    # Group `ClearJinGeTalisman`
+    ClearJinGeTalisman_BuySuperCatBallWhenArriveRankNineEveryWeek = 1
+    ClearJinGeTalisman_EndWhenSoulIsClear = 1
 
     # Group `JinGeStorage`
     JinGeStorage_JinGeTalisman = {}
