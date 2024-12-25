@@ -2,16 +2,18 @@ from module.config.stored.classes import (
     StoredBase,
     StoredBuySuperCatBallWhenArriveRankNine,
     StoredCounter,
-    StoredDailyActivity,
+    StoredDailyLiveness,
     StoredExpiredAt0400,
     StoredExpiredAtMonday0400,
-    StoredGuildWeeklyActivity,
+    StoredGuildWeeklyLiveness,
     StoredInt,
-    StoredJinGeTalisman,
+    StoredJinGeLevel,
     StoredMonthlyCard,
     StoredMonthlyCard30,
     StoredMonthlyCard68,
     StoredPower,
+    StoredTalisman,
+    StoredTalismanToClean,
     StoredWeeklyPassword,
 )
 
@@ -20,7 +22,8 @@ from module.config.stored.classes import (
 # ``` python -m module/config/config_updater.py ```
 
 class StoredGenerated:
-    DailyActivity = StoredDailyActivity("DailyQuest.DailyStorage.DailyActivity")
-    JinGeTalisman = StoredJinGeTalisman("JinGeYanWu.JinGeStorage.JinGeTalisman")
-    BuySuperCatBall = StoredBuySuperCatBallWhenArriveRankNine("JinGeYanWu.JinGeStorage.BuySuperCatBall")
-    OneWeekPasswordList = StoredWeeklyPassword("Password.DailyPassword.OneWeekPasswordList")
+    DailyLiveness = StoredDailyLiveness("DailyQuest.DailyStorage.DailyLiveness")
+    TalismanToClean = StoredTalismanToClean("ClearJinGeTalisman.JinGeStorage.TalismanToClean")
+    JinGeLevel = StoredJinGeLevel("ClearJinGeTalisman.JinGeStorage.JinGeLevel")
+    BuySuperCatBall = StoredBuySuperCatBallWhenArriveRankNine("ClearJinGeTalisman.JinGeStorage.BuySuperCatBall")
+    OneWeekPasswordList = StoredWeeklyPassword("DailyPassword.DailyPassword.OneWeekPasswordList")

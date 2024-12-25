@@ -26,35 +26,40 @@ class FHLCopilot(AzurLaneAutoScript):
             Login(self.config, device=self.device).app_start()
             UI(self.config, device=self.device).ui_goto_main()
 
-    def cattery(self):
-        from tasks.cattery.cattery import Cattery
-        Cattery(config=self.config, device=self.device).run()
+    def meal_power(self):
+        from tasks.office.meal import Meal
+        Meal(config=self.config, device=self.device).run()
 
-    def daily_shop(self):
+    def shop(self):
         from tasks.shop.shop import DailyShop
         DailyShop(config=self.config, device=self.device).run()
-
-    def office(self):
-        from tasks.office.office import Office
-        Office(config=self.config, device=self.device).run()
-
-    def dispatch(self):
-        from tasks.dispatch.dispatch import Dispatch
-        Dispatch(config=self.config, device=self.device).run()
 
     def guild(self):
         from tasks.guild.guild import Guild
         Guild(config=self.config, device=self.device).run()
 
+    def daily_quest(self):
+        from tasks.daily.daily_quest import DailyQuest
+        DailyQuest(config=self.config, device=self.device).run()
+
+    def battle_pass(self):
+        from tasks.office.office import Office
+        Office(config=self.config, device=self.device).run()
+
+    def data_update(self):
+        pass
+        # from tasks.item.data_update import DataUpdate
+        # DataUpdate(config=self.config, device=self.device).run()
+
     def daily_password(self):
         from tasks.daily.daily_password import DailyPassword
         DailyPassword(config=self.config, device=self.device).run()
 
-    def daily_combat(self):
-        from tasks.combat.DailyCombat import DailyCombat
-        DailyCombat(config=self.config, device=self.device).run()
+    def clear_jin_ge_talisman(self):
+        from tasks.PVP.JinGeYanWu import JinGeYanWu
+        JinGeYanWu(config=self.config, device=self.device).run()
 
-    def sha
+
 if __name__ == '__main__':
     src = FHLCopilot('fhlc')
     src.loop()

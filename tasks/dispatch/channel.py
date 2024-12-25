@@ -15,7 +15,7 @@ class Channel(UI):
         # 跳转到互动界面
         self.send_message()
 
-        self.config.task_delay(server_update=True)
+        # self.config.task_delay(server_update=True)
 
     def send_message(self, interval=2, skip_first_screenshot=True):
 

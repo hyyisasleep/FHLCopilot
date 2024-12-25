@@ -32,9 +32,11 @@ Daily:
     MealPower:
       - Scheduler
       - MealPower
+
     Guild:
       - Scheduler
-
+      - GuildActivity
+      - GuildQuest
 
     Shop:
       - Scheduler
@@ -53,10 +55,10 @@ Tool:
   menu: 'list'
   page: 'tool'
   tasks:
-    JinGeYanWu:
+    ClearJinGeTalisman:
       - ClearJinGeTalisman
       - JinGeStorage
-    ShaPanLunYi:
-      - ClearShaPanFlag
-    Password:
+
+
+    DailyPassword:
       - DailyPassword

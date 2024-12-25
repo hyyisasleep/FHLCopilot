@@ -178,11 +178,11 @@ class StoredCounter(StoredBase):
             stored['total'] = self.FIXED_TOTAL
         return stored
 
-class StoredDailyActivity(StoredCounter, StoredExpiredAt0400):
+class StoredDailyLiveness(StoredCounter, StoredExpiredAt0400):
     FIXED_TOTAL = 100
 
 
-class StoredGuildWeeklyActivity(StoredCounter, StoredExpiredAtMonday0400):
+class StoredGuildWeeklyLiveness(StoredCounter, StoredExpiredAtMonday0400):
     FIXED_TOTAL = 8000
 
 class StoredMonthlyCard(StoredInt):
@@ -247,7 +247,13 @@ class StoredPower(StoredCounter):
 class StoredBuySuperCatBallWhenArriveRankNine(StoredCounter, StoredExpiredAtMonday0400):
     FIXED_TOTAL = 1
 
-class StoredJinGeTalisman(StoredInt):
+class StoredTalismanToClean(StoredInt):
+    pass
+
+class StoredTalisman(StoredInt):
+    pass
+
+class StoredJinGeLevel(StoredInt,StoredExpiredAtMonday0400):
     pass
 
 class StoredWeeklyPassword(StoredCounter, StoredExpiredAtMonday0400):

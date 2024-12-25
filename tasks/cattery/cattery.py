@@ -26,7 +26,7 @@ class Cattery(UI):
         self._hide_and_seek()
         self.ui_goto_main()
 
-        self.config.task_delay(server_update=True)
+        # self.config.task_delay(server_update=True)
 
 
     def _feed_cats(self, skip_first_screenshot=True):

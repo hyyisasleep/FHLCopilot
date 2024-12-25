@@ -31,18 +31,18 @@
       "Enable": true,
       "NextRun": "2020-01-01 00:00:00",
       "Command": "Restart",
-      "ServerUpdate": "04:00"
+      "ServerUpdate": "06:00"
     }
   },
   "DailyQuest": {
     "Scheduler": {
-      "Enable": false,
+      "Enable": true,
       "NextRun": "2020-01-01 00:00:00",
       "Command": "DailyQuest",
-      "ServerUpdate": "04:00"
+      "ServerUpdate": "06:00"
     },
     "DailyStorage": {
-      "DailyActivity": {}
+      "DailyLiveness": {}
     },
     "Office": {
       "TransKaoGongTicket": 1,
@@ -58,10 +58,10 @@
   },
   "MealPower": {
     "Scheduler": {
-      "Enable": false,
+      "Enable": true,
       "NextRun": "2020-01-01 00:00:00",
       "Command": "MealPower",
-      "ServerUpdate": "04:00"
+      "ServerUpdate": "06:00"
     },
     "MealPower": {
       "UseTongBaoBuyExpiredPower": 0
@@ -72,23 +72,31 @@
       "Enable": true,
       "NextRun": "2020-01-01 00:00:00",
       "Command": "Guild",
-      "ServerUpdate": "04:00"
+      "ServerUpdate": "06:00"
+    },
+    "GuildActivity": {
+      "OpenActivityList": 0,
+      "ClearShaPanFlag": 0
+    },
+    "GuildQuest": {
+      "DailyGuildQuest": 0,
+      "WeeklyLiveness": 0
     }
   },
   "Shop": {
     "Scheduler": {
-      "Enable": false,
+      "Enable": true,
       "NextRun": "2020-01-01 00:00:00",
       "Command": "Shop",
-      "ServerUpdate": "04:00"
+      "ServerUpdate": "06:00"
     }
   },
   "BattlePass": {
     "Scheduler": {
-      "Enable": false,
+      "Enable": true,
       "NextRun": "2020-01-01 00:00:00",
       "Command": "BattlePass",
-      "ServerUpdate": "04:00"
+      "ServerUpdate": "06:00"
     }
   },
   "DataUpDate": {
@@ -96,20 +104,21 @@
       "Enable": false,
       "NextRun": "2020-01-01 00:00:00",
       "Command": "DataUpDate",
-      "ServerUpdate": "04:00"
+      "ServerUpdate": "06:00"
     }
   },
-  "JinGeYanWu": {
+  "ClearJinGeTalisman": {
     "ClearJinGeTalisman": {
       "BuySuperCatBallWhenArriveRankNineEveryWeek": 1,
-      "EndWhenSoulIsClear": 1
+      "EndWhenTalismanIsClear": 1
     },
     "JinGeStorage": {
-      "JinGeTalisman": {},
+      "TalismanToClean": {},
+      "JinGeLevel": {},
       "BuySuperCatBall": {}
     }
   },
-  "Password": {
+  "DailyPassword": {
     "DailyPassword": {
       "OneWeekPasswordList": {}
     }

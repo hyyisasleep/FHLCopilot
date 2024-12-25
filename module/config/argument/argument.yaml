@@ -12,7 +12,7 @@ Scheduler:
   NextRun: 2020-01-01 00:00:00
   Command: Alas
   ServerUpdate:
-    value: 04:00
+    value: 06:00
     display: hide
 Emulator:
   Serial:
@@ -93,11 +93,12 @@ Optimization:
 # ==================== Daily ====================
 
 DailyStorage:
-  DailyActivity:
-    stored: StoredDailyActivity
+  DailyLiveness:
+    stored: StoredDailyLiveness
     order: 2
     color: "#ffcf70"
     display: display
+
 
 Office:
   TransKaoGongTicket:
@@ -110,8 +111,10 @@ Office:
 Interact:
   CurrentCelebrity:
     value: 0
+    display: hide
   CurrentAffectionLevel:
     value: 0
+    display: hide
 
 Dungeon:
   Team:
@@ -125,24 +128,45 @@ MealPower:
     type: checkbox
     value: 0
 
+GuildActivity:
+  OpenActivityList:
+    value: 0
+  ClearShaPanFlag:
+    type: checkbox
+    value: 0
+
 GuildQuest:
   DailyGuildQuest:
+    value: 0
+  WeeklyLiveness:
     value: 0
 
 ClearJinGeTalisman:
   BuySuperCatBallWhenArriveRankNineEveryWeek:
     type: checkbox
     value: 1
-  EndWhenSoulIsClear:
+  EndWhenTalismanIsClear:
     type: checkbox
     value: 1
 
 JinGeStorage:
-  JinGeTalisman:
-    stored: StoredJinGeTalisman
+#  Talisman:
+#    stored: StoredTalisman
+#    display: disabled
+  TalismanToClean:
+    stored: StoredTalismanToClean
+    display: disabled
+  JinGeLevel:
+    stored: StoredJinGeLevel
+    display: disabled
   BuySuperCatBall:
     stored: StoredBuySuperCatBallWhenArriveRankNine
+    display: disabled
+
+
+
 
 DailyPassword:
   OneWeekPasswordList:
     stored: StoredWeeklyPassword
+    display: disabled

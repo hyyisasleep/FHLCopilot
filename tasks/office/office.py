@@ -40,7 +40,7 @@ class Office(UI):
 
         self.ui_goto_main()
 
-        self.config.task_delay(server_update=True)
+        # self.config.task_delay(server_update=True)
 
     def _build_random_furniture(self):
 

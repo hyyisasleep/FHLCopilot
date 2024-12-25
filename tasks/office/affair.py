@@ -22,7 +22,7 @@ class Affair(UI):
         #     self._get_affairs_impression_reward()
         self.ui_ensure(page_office)
 
-        self.config.task_delay(server_update=True)
+        # self.config.task_delay(server_update=True)
 
     def _deal_with_affairs(self, interval=2, skip_first_screenshot=True) -> bool:
         """

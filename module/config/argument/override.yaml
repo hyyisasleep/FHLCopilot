@@ -19,42 +19,38 @@ Restart:
       value: true
       option: [ true, ]
       option_bold: [ true, ]
-    ServerUpdate: 04:00
+    ServerUpdate: 06:00
 
 # ==================== Daily ====================
 #
 
-#Dungeon:
+DailyQuest:
+  Scheduler:
+    Enable:
+      type: state
+      value: true
+      option: [ true, ]
+      option_bold: [ true, ]
+
+BattlePass:
+  Scheduler:
+    Enable:
+      type: state
+      value: true
+      option: [ true, ]
+      option_bold: [ true, ]
+
+Guild:
+  Scheduler:
+    Enable:
+      type: state
+      value: true
+      option: [ true, ]
+      option_bold: [ true, ]
+
+#MealPower:
 #  Scheduler:
-#    Enable:
-#      type: state
-#      value: true
-#      option: [ true, ]
-#      option_bold: [ true, ]
-#  DungeonSupport:
-#    Use:
-#      option: [ when_daily, always_use ]
-#DailyQuest:
-#  Scheduler:
-#    Enable:
-#      type: state
-#      value: true
-#      option: [ true, ]
-#      option_bold: [ true, ]
-#BattlePass:
-#  Scheduler:
-#    Enable:
-#      type: state
-#      value: true
-#      option: [ true, ]
-#      option_bold: [ true, ]
-#Assignment:
-#  Scheduler:
-#    Enable:
-#      type: state
-#      value: true
-#      option: [ true, ]
-#      option_bold: [ true, ]
+#    ServerUpdate: 10:00
 #DataUpdate:
 #  Scheduler:
 #    Enable:

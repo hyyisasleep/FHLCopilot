@@ -7,39 +7,26 @@
 
 # ==================== Daily ====================
 #
-Office:
+DailyQuest:
   Scheduler:
     Enable: true
-DailyShop:
-  Scheduler:
-    Enable: true
-Cattery:
-  Scheduler:
-    Enable: true
-Dispatch:
+MealPower:
   Scheduler:
     Enable: true
 Guild:
   Scheduler:
     Enable: true
-Dungeon:
+Shop:
   Scheduler:
     Enable: true
-#Dungeon:
-#  Scheduler:
-#    Enable: true
-#DailyQuest:
-#  Scheduler:
-#    Enable: true
-#BattlePass:
-#  Scheduler:
-#    Enable: true
-#Assignment:
-#  Scheduler:
-#    Enable: true
-#Freebies:
-#  Scheduler:
-#    Enable: true
+
+BattlePass:
+  Scheduler:
+    Enable: true
+
+DataUpDate:
+  Scheduler:
+    Enable: false
 
 # ==================== Weekly ====================
 

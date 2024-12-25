@@ -9,7 +9,7 @@ class ManualConfig:
         return server.lang
 
     SCHEDULER_PRIORITY = """
-    Restart > Dispatch > DailyShop > Office > Cattery > Guild > DailyCombat > JinGeYanWu > DailyPassword
+    Restart > MealPower > Shop > Guild > DailyQuest > BattlePass > DataUpDate 
     """
 
 
@@ -20,13 +20,7 @@ class ManualConfig:
     # > Dungeon > DataUpdate
     # """
 
-    # """
-    # Restart
-    # > Weekly > Ornament > Dungeon > Assignment
-    # > BattlePass > DailyQuest
-    # > Freebies > DataUpdate
-    # > Rogue
-    # """
+
 
     """
     module.assets

@@ -17,7 +17,7 @@ class Visit(UI):
         self._visit_other()
         self.ui_ensure(page_office)
 
-        self.config.task_delay(server_update=True)
+        # self.config.task_delay(server_update=True)
 
     def _visit_other(self, interval=2, skip_first_screenshot=True):
 

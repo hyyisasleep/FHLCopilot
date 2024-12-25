@@ -164,7 +164,7 @@
       },
       "ServerUpdate": {
         "type": "input",
-        "value": "04:00",
+        "value": "06:00",
         "display": "hide"
       }
     }
@@ -172,11 +172,13 @@
   "DailyQuest": {
     "Scheduler": {
       "Enable": {
-        "type": "checkbox",
-        "value": false,
+        "type": "state",
+        "value": true,
         "option": [
-          true,
-          false
+          true
+        ],
+        "option_bold": [
+          true
         ]
       },
       "NextRun": {
@@ -191,16 +193,16 @@
       },
       "ServerUpdate": {
         "type": "input",
-        "value": "04:00",
+        "value": "06:00",
         "display": "hide"
       }
     },
     "DailyStorage": {
-      "DailyActivity": {
+      "DailyLiveness": {
         "type": "stored",
         "value": {},
         "display": "display",
-        "stored": "StoredDailyActivity",
+        "stored": "StoredDailyLiveness",
         "order": 2,
         "color": "#ffcf70"
       }
@@ -218,11 +220,13 @@
     "Interact": {
       "CurrentCelebrity": {
         "type": "input",
-        "value": 0
+        "value": 0,
+        "display": "hide"
       },
       "CurrentAffectionLevel": {
         "type": "input",
-        "value": 0
+        "value": 0,
+        "display": "hide"
       }
     },
     "Dungeon": {
@@ -243,7 +247,7 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false,
+        "value": true,
         "option": [
           true,
           false
@@ -261,7 +265,7 @@
       },
       "ServerUpdate": {
         "type": "input",
-        "value": "04:00",
+        "value": "06:00",
         "display": "hide"
       }
     },
@@ -275,11 +279,13 @@
   "Guild": {
     "Scheduler": {
       "Enable": {
-        "type": "checkbox",
+        "type": "state",
         "value": true,
         "option": [
-          true,
-          false
+          true
+        ],
+        "option_bold": [
+          true
         ]
       },
       "NextRun": {
@@ -294,8 +300,28 @@
       },
       "ServerUpdate": {
         "type": "input",
-        "value": "04:00",
+        "value": "06:00",
         "display": "hide"
+      }
+    },
+    "GuildActivity": {
+      "OpenActivityList": {
+        "type": "input",
+        "value": 0
+      },
+      "ClearShaPanFlag": {
+        "type": "checkbox",
+        "value": 0
+      }
+    },
+    "GuildQuest": {
+      "DailyGuildQuest": {
+        "type": "input",
+        "value": 0
+      },
+      "WeeklyLiveness": {
+        "type": "input",
+        "value": 0
       }
     }
   },
@@ -303,7 +329,7 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false,
+        "value": true,
         "option": [
           true,
           false
@@ -321,7 +347,7 @@
       },
       "ServerUpdate": {
         "type": "input",
-        "value": "04:00",
+        "value": "06:00",
         "display": "hide"
       }
     }
@@ -329,11 +355,13 @@
   "BattlePass": {
     "Scheduler": {
       "Enable": {
-        "type": "checkbox",
-        "value": false,
+        "type": "state",
+        "value": true,
         "option": [
-          true,
-          false
+          true
+        ],
+        "option_bold": [
+          true
         ]
       },
       "NextRun": {
@@ -348,7 +376,7 @@
       },
       "ServerUpdate": {
         "type": "input",
-        "value": "04:00",
+        "value": "06:00",
         "display": "hide"
       }
     }
@@ -375,43 +403,49 @@
       },
       "ServerUpdate": {
         "type": "input",
-        "value": "04:00",
+        "value": "06:00",
         "display": "hide"
       }
     }
   },
-  "JinGeYanWu": {
+  "ClearJinGeTalisman": {
     "ClearJinGeTalisman": {
       "BuySuperCatBallWhenArriveRankNineEveryWeek": {
         "type": "checkbox",
         "value": 1
       },
-      "EndWhenSoulIsClear": {
+      "EndWhenTalismanIsClear": {
         "type": "checkbox",
         "value": 1
       }
     },
     "JinGeStorage": {
-      "JinGeTalisman": {
+      "TalismanToClean": {
         "type": "stored",
         "value": {},
-        "display": "hide",
-        "stored": "StoredJinGeTalisman"
+        "display": "disabled",
+        "stored": "StoredTalismanToClean"
+      },
+      "JinGeLevel": {
+        "type": "stored",
+        "value": {},
+        "display": "disabled",
+        "stored": "StoredJinGeLevel"
       },
       "BuySuperCatBall": {
         "type": "stored",
         "value": {},
-        "display": "hide",
+        "display": "disabled",
         "stored": "StoredBuySuperCatBallWhenArriveRankNine"
       }
     }
   },
-  "Password": {
+  "DailyPassword": {
     "DailyPassword": {
       "OneWeekPasswordList": {
         "type": "stored",
         "value": {},
-        "display": "hide",
+        "display": "disabled",
         "stored": "StoredWeeklyPassword"
       }
     }

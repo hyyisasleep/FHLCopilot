@@ -43,7 +43,7 @@ class Dispatch(UI):
         # 世界频道发言两次 本来该在bp里写的但我懒得写bp
         Channel(self.config, self.device).run()
         
-        self.config.task_delay(server_update=True)
+        # self.config.task_delay(server_update=True)
 
     def _kylin_affair(self, skip_first_screenshot=True):
         """

@@ -13,7 +13,7 @@ class GeneratedConfig:
     Scheduler_Enable = False  # True, False
     Scheduler_NextRun = datetime.datetime(2020, 1, 1, 0, 0)
     Scheduler_Command = 'Alas'
-    Scheduler_ServerUpdate = '04:00'
+    Scheduler_ServerUpdate = '06:00'
 
     # Group `Emulator`
     Emulator_Serial = 'auto'
@@ -41,7 +41,7 @@ class GeneratedConfig:
     Optimization_WhenTaskQueueEmpty = 'stay_there'  # stay_there, goto_main, close_game
 
     # Group `DailyStorage`
-    DailyStorage_DailyActivity = {}
+    DailyStorage_DailyLiveness = {}
 
     # Group `Office`
     Office_TransKaoGongTicket = 1
@@ -57,15 +57,21 @@ class GeneratedConfig:
     # Group `MealPower`
     MealPower_UseTongBaoBuyExpiredPower = 0
 
+    # Group `GuildActivity`
+    GuildActivity_OpenActivityList = 0
+    GuildActivity_ClearShaPanFlag = 0
+
     # Group `GuildQuest`
     GuildQuest_DailyGuildQuest = 0
+    GuildQuest_WeeklyLiveness = 0
 
     # Group `ClearJinGeTalisman`
     ClearJinGeTalisman_BuySuperCatBallWhenArriveRankNineEveryWeek = 1
-    ClearJinGeTalisman_EndWhenSoulIsClear = 1
+    ClearJinGeTalisman_EndWhenTalismanIsClear = 1
 
     # Group `JinGeStorage`
-    JinGeStorage_JinGeTalisman = {}
+    JinGeStorage_TalismanToClean = {}
+    JinGeStorage_JinGeLevel = {}
     JinGeStorage_BuySuperCatBall = {}
 
     # Group `DailyPassword`

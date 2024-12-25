@@ -1,9 +1,9 @@
 {
-  "DailyActivity": {
-    "name": "DailyActivity",
-    "path": "DailyQuest.DailyStorage.DailyActivity",
-    "i18n": "DailyStorage.DailyActivity.name",
-    "stored": "StoredDailyActivity",
+  "DailyLiveness": {
+    "name": "DailyLiveness",
+    "path": "DailyQuest.DailyStorage.DailyLiveness",
+    "i18n": "DailyStorage.DailyLiveness.name",
+    "stored": "StoredDailyLiveness",
     "attrs": {
       "time": "2020-01-01 00:00:00",
       "total": 100,
@@ -12,11 +12,23 @@
     "order": 2,
     "color": "#ffcf70"
   },
-  "JinGeTalisman": {
-    "name": "JinGeTalisman",
-    "path": "JinGeYanWu.JinGeStorage.JinGeTalisman",
-    "i18n": "JinGeStorage.JinGeTalisman.name",
-    "stored": "StoredJinGeTalisman",
+  "TalismanToClean": {
+    "name": "TalismanToClean",
+    "path": "ClearJinGeTalisman.JinGeStorage.TalismanToClean",
+    "i18n": "JinGeStorage.TalismanToClean.name",
+    "stored": "StoredTalismanToClean",
+    "attrs": {
+      "time": "2020-01-01 00:00:00",
+      "value": 0
+    },
+    "order": 0,
+    "color": "#777777"
+  },
+  "JinGeLevel": {
+    "name": "JinGeLevel",
+    "path": "ClearJinGeTalisman.JinGeStorage.JinGeLevel",
+    "i18n": "JinGeStorage.JinGeLevel.name",
+    "stored": "StoredJinGeLevel",
     "attrs": {
       "time": "2020-01-01 00:00:00",
       "value": 0
@@ -26,7 +38,7 @@
   },
   "BuySuperCatBall": {
     "name": "BuySuperCatBall",
-    "path": "JinGeYanWu.JinGeStorage.BuySuperCatBall",
+    "path": "ClearJinGeTalisman.JinGeStorage.BuySuperCatBall",
     "i18n": "JinGeStorage.BuySuperCatBall.name",
     "stored": "StoredBuySuperCatBallWhenArriveRankNine",
     "attrs": {
@@ -39,7 +51,7 @@
   },
   "OneWeekPasswordList": {
     "name": "OneWeekPasswordList",
-    "path": "Password.DailyPassword.OneWeekPasswordList",
+    "path": "DailyPassword.DailyPassword.OneWeekPasswordList",
     "i18n": "DailyPassword.OneWeekPasswordList.name",
     "stored": "StoredWeeklyPassword",
     "attrs": {

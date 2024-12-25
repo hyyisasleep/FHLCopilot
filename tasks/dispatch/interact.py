@@ -19,7 +19,7 @@ class Interact(UI):
 
 
 
-        self.config.task_delay(server_update=True)
+        # self.config.task_delay(server_update=True)
 
     def _give_gift(self, interval=2, skip_first_screenshot=True):
 
