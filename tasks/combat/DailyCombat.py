@@ -1,11 +1,10 @@
-from sympy.plotting.intervalmath import interval
 
 from module.base.timer import Timer
 from module.exception import RequestHumanTakeover
 from module.logger import logger
 from module.ocr.ocr import DigitCounter
 
-from tasks.base.page import page_jingyuan, page_jingyuan_prepare, page_baoxu_prepare, page_gushifengyun, page_main
+from tasks.base.page import page_jingyuan_prepare, page_baoxu_prepare, page_main
 from tasks.base.ui import UI
 from tasks.combat.assets.assets_combat import *
 
@@ -37,7 +36,7 @@ class DailyCombat(UI):
         self._run_combat(times)
         self.ui_ensure(page_main)
 
-    def run_jingyuan(self,times,skip_first_screenshot=True):
+    def run_jingyuan(self,times):
         self.ui_ensure(page_jingyuan_prepare)
         self._run_combat(times)
         self.ui_ensure(page_main)
@@ -76,12 +75,59 @@ class DailyCombat(UI):
                 continue
             # TODO:用背景颜色变化检测关没关
 
+    def handle_select_team(self,team,skip_first_screenshot=True):
+
+        timeout = Timer(10).start()
+        while 1:
+            if skip_first_screenshot:
+                skip_first_screenshot = False
+            else:
+                self.device.screenshot()
+            if timeout.reached():
+                logger.warning(f"Get timeout, can't find team {team},use current team")
+                break
+            if team == 1:
+                if self.appear(TEAM_ONE_CHECK):
+                    logger.info("Switch to team 1")
+                    return 1
+                if self.appear_then_click(TEAM_ONE_CLICK):
+                    continue
+            elif team == 2:
+                if self.appear(TEAM_TWO_CHECK):
+                    logger.info("Switch to team 2")
+                    return 2
+                if self.appear_then_click(TEAM_TWO_CLICK):
+                    continue
+            elif team == 3:
+                if self.appear(TEAM_THREE_CHECK):
+                    logger.info("Switch to team 3")
+                    return 3
+                if self.appear_then_click(TEAM_THREE_CLICK):
+                    continue
+            elif team == 4:
+                if self.appear(TEAM_FOUR_CHECK):
+                    logger.info("Switch to team 4")
+                    return 4
+                if self.appear_then_click(TEAM_FOUR_CLICK):
+                    continue
+            elif team == 5:
+                if self.appear(TEAM_FIVE_CHECK):
+                    logger.info("Switch to team 5")
+                    return 5
+                if self.appear_then_click(TEAM_FIVE_CLICK):
+                    continue
+            else:
+                logger.warning(f"Can't find team {team},use current team")
+                break
+        return 0
+
 
     def combat_prepare(self,skip_first_screenshot=True):
         """
         在编队界面切换队伍+打开自动挂机弹窗设置
         """
         timeout = Timer(15).start()
+        current_team = 0
         while 1:
             if skip_first_screenshot:
                 skip_first_screenshot = False
@@ -96,10 +142,16 @@ class DailyCombat(UI):
                 logger.warning("Can't start auto combat,because team is empty or not set cat assistant")
                 raise RequestHumanTakeover
                 # return False
-            if self.appear_then_click(TEAM_FIVE_CLICK):
-                logger.info("Switch to team 5")
-                continue
 
+            if current_team != self.config.Dungeon_Team:
+                logger.info(f"Config need team {self.config.Dungeon_Team}")
+                current_team = self.handle_select_team(self.config.Dungeon_Team)
+                continue
+            # if self.appear_then_click(TEAM_FIVE_CLICK):
+            #     logger.info("Switch to team 5")
+            #     continue
+            if self.appear_then_click(SKIP_BONUS):
+                continue
             if self.appear_then_click(OPEN_SET_AUTO_COMBAT):
                 continue
         return True
@@ -121,6 +173,7 @@ class DailyCombat(UI):
             if start_combat and self.appear(TEAM_FIVE_CHECK):
                 logger.info("Auto combat end")
                 break
+
             if self.appear_then_click(START_AUTO_COMBAT):
                 continue
             if self.appear(COMBAT_CONTINUE_CHECK, interval=5):
@@ -131,7 +184,7 @@ class DailyCombat(UI):
                 continue
             if self.appear(AUTO_COMBAT_WAIT_BEFORE_START_CHECK,interval=5):
                 logger.info("Wait countdown before start")
-
+                timeout.reset()
                 continue
             if self.appear_then_click(AUTO_COMBAT_END_CHECK):
                 logger.info("Get auto combat reward")
@@ -139,7 +192,7 @@ class DailyCombat(UI):
                 continue
 
 
-    def set_auto_combat_times(self,times=1,skip_first_screenshot=True):
+    def set_auto_combat_times(self,times=1):
 
 
         combat_times_ocr = CombatTimesOCR(OCR_AUTO_TIMES, lang=self.config.LANG)
@@ -160,7 +213,4 @@ class DailyCombat(UI):
 
 if __name__ == '__main__':
     ui = DailyCombat('fhlc')
-    ui.run()
-    # ui.ui_ensure(page_jingyuan_prepare)
-    # ui.ui_ensure(page_baoxu_prepare)
-    # ui.ui_ensure(page_gushifengyun)
+    ui.run_jingyuan(1)

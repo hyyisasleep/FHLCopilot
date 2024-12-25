@@ -181,7 +181,6 @@ class StoredCounter(StoredBase):
 class StoredDailyLiveness(StoredCounter, StoredExpiredAt0400):
     FIXED_TOTAL = 100
 
-
 class StoredGuildWeeklyLiveness(StoredCounter, StoredExpiredAtMonday0400):
     FIXED_TOTAL = 8000
 

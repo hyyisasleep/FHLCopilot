@@ -181,8 +181,8 @@ page_jingeguan.link(JINGEGUAN_GOTO_SHAPANLUNYI,destination=page_shapanlunyi)
 page_jinge_prepare = Page(JINGEYANWU_PREPARE_CHECK)
 page_jinge_prepare.link(BACK,destination=page_jingeyanwu)
 page_jingeyanwu.link(JINGEYANWU_GOTO_PREPARE,destination=page_jinge_prepare)
-# 七段以上的没奖励人机模式？
-page_jingeyanwu.link(JINGEYANWU_GOTO_NO_REWARD_PREPARE,destination=page_jinge_prepare)
+# 七段以上的没奖励人机模式？加了下面这行之后就算点的是prepare也显示点no reward prepare- -
+# page_jingeyanwu.link(JINGEYANWU_GOTO_NO_REWARD_PREPARE,destination=page_jinge_prepare)
 
 # page_jingeyanwu.link(JINGEYANWU_GOTO_SHOP,destination=page_shop)
 # page_shop.link(BACK,destination=page_jingeyanwu)

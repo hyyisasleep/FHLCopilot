@@ -1,4 +1,5 @@
 from module.base.timer import Timer
+from module.config.utils import get_server_weekday
 from module.logger import logger
 from tasks.base.page import page_main, page_profile
 
@@ -27,9 +28,7 @@ class DailyPassword(UI):
             logger.info(f"Get password:{psw}")
         import datetime
 
-        today = datetime.datetime.now().weekday()
-
-
+        today = get_server_weekday()
 
         # 更新到config里
         # logger.info(self.config.stored.OneWeekPasswordList.p2)
@@ -95,7 +94,7 @@ class DailyPassword(UI):
                 return True
             if self.handle_reward():
                 continue
-            if self.appear_then_click(FILL_CONFIRM_UNLOCK):
+            if self.appear_then_click(FILL_CONFIRM_UNLOCK,similarity=0.95):
                 has_filled_text = True
                 continue
             if self.appear_then_click(PSW_INPUT_BOX_CONFIRM):

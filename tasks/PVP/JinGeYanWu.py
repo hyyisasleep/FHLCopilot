@@ -1,4 +1,5 @@
 from module.base.timer import Timer
+from module.config.utils import get_server_datetime
 from module.logger import logger
 from module.ocr.ocr import Ocr,Digit
 from tasks.PVP.assets.assets_pvp_jin_ge_yan_wu import *
@@ -7,7 +8,8 @@ from tasks.base.assets.assets_base_page import JINGEYANWU_CHECK,JINGEYANWU_GOTO_
 from tasks.base.page import page_jingeyanwu, page_jinge_prepare
 from tasks.base.ui import UI
 
-
+import time
+from datetime import datetime, timedelta
 
 class JinGeLevelOCR(Ocr):
 
@@ -19,6 +21,48 @@ class JinGeLevelOCR(Ocr):
                 value = self.Char2Num[key]
                 return value
         return 0
+
+
+def wait_for_start():
+    """
+    七段以上等金戈启动的
+    """
+
+    logger.info("Wait JinGe Start")
+    # 金戈开启时间段
+    morning_window = (11, 14)  # 11:00 - 14:00
+    evening_window = (19, 21)  # 19:00 - 21:00
+
+    # 获取当前时间
+    now = get_server_datetime()
+    current_hour = now.hour
+
+    # 检查当前时间是否在指定的时间段内
+    if (morning_window[0] <= current_hour < morning_window[1]) or (
+            evening_window[0] <= current_hour < evening_window[1]):
+        return True
+
+    # 计算离下一个时间段最近的时间
+    if current_hour < morning_window[0]:
+        next_time = datetime(now.year, now.month, now.day, morning_window[0], 0)
+    elif morning_window[1] <= current_hour < evening_window[0]:
+        next_time = datetime(now.year, now.month, now.day, evening_window[0], 0)
+    elif current_hour >= evening_window[1]:
+        next_time = datetime(now.year, now.month, now.day + 1, morning_window[0], 0)  # 明天的11点
+    else:
+        return True
+    # 计算剩余时间并每分钟输出一次
+    while True:
+        remaining_time = next_time - datetime.now()
+        remaining_hours, remaining_minutes = divmod(remaining_time.seconds // 60, 60)
+
+        logger.info(f"Remaining waiting time: {remaining_hours:02}:{remaining_minutes:02}")
+        # 到了
+        if remaining_time <= timedelta(minutes=1):
+            return True
+
+        time.sleep(60)
+
 
 class JinGeYanWu(UI):
 
@@ -40,16 +84,24 @@ class JinGeYanWu(UI):
             talisman_num, soul_num = self.pvp_ocr()
 
             # 获取金戈段位
-            level = self.jin_ge_level_ocr()
+            level = int(self.jin_ge_level_ocr())
             logger.info(f"Now level is {level}")
+            # 写到config方便查看
+            self.config.stored.JinGeLevel.value = level
+            self.config.stored.TalismanToClean.value = talisman_num
+            if level > 7:
+                # 七段以上限时打金戈，
+                wait_for_start()
             if level == 9:
                 self.handle_buy_super_cat_ball_when_arrive_level_nine()
 
+
+
             if self.appear(JINGEYANWU_GOTO_NO_REWARD_PREPARE):
-                logger.info("JinGe is not open this time, break")
+                logger.info("JinGe is not open this time, stop")
                 break
-            if talisman_num == 0 and self.config.JinGeYanWu_EndWhenSoulIsClear:
-                logger.info("No need pvp")
+            if talisman_num == 0 and self.config.ClearJinGeTalisman_EndWhenTalismanIsClear:
+                logger.info("No need Ge, stop")
                 break
             #
             # current_time = datetime.now().hour
@@ -64,7 +116,7 @@ class JinGeYanWu(UI):
         self.ui_goto_main()
 
     def handle_buy_super_cat_ball_when_arrive_level_nine(self):
-        if self.config.JinGeYanWu_BuySuperCatBallWhenArriveRankNineEveryWeek:
+        if self.config.ClearJinGeTalisman_BuySuperCatBallWhenArriveRankNineEveryWeek:
             # 每周一清空
             if self.config.stored.BuySuperCatBall.is_expired():
                 logger.info('JinGe BuySuperCatBall When arrive rank nine expired')
@@ -83,6 +135,8 @@ class JinGeYanWu(UI):
                 self.ui_ensure(page_jingeyanwu)
             else:
                 logger.info("Check cat Ball has been sold, continue")
+
+
 
     def handle_use_xiaowu_soul(self, use_soul=False, interval=5):
         if use_soul:

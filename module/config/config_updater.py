@@ -564,29 +564,30 @@ class ConfigUpdater:
             str: Key path to set config json, such as "Main.Emotion.Fleet1Record"
             any: Value to set, such as "2020-01-01 00:00:00"
         """
-
-        if key == 'Rogue.RogueWorld.UseImmersifier' and value is False:
-            yield 'Rogue.RogueWorld.UseStamina', False
-        if key == 'Rogue.RogueWorld.UseStamina' and value is True:
-            yield 'Rogue.RogueWorld.UseImmersifier', True
-        if key == 'Rogue.RogueWorld.DoubleEvent' and value is True:
-            yield 'Rogue.RogueWorld.UseImmersifier', True
+        if key == 'DailyQuest.Dungeon.Team':
+            yield 'DailyQuest.Dungeon.Team',value
+        # if key == 'Rogue.RogueWorld.UseImmersifier' and value is False:
+        #     yield 'Rogue.RogueWorld.UseStamina', False
+        # if key == 'Rogue.RogueWorld.UseStamina' and value is True:
+        #     yield 'Rogue.RogueWorld.UseImmersifier', True
+        # if key == 'Rogue.RogueWorld.DoubleEvent' and value is True:
+        #     yield 'Rogue.RogueWorld.UseImmersifier', True
         if key == 'Alas.Emulator.GameClient' and value == 'cloud_android':
             yield 'Alas.Emulator.PackageName', 'CN-Official'
             yield 'Alas.Optimization.WhenTaskQueueEmpty', 'close_game'
         # Sync Dungeon.TrailblazePower and Ornament.TrailblazePower
-        if key == 'Dungeon.TrailblazePower.ExtractReservedTrailblazePower':
-            yield 'Ornament.TrailblazePower.ExtractReservedTrailblazePower', value
-        if key == 'Dungeon.TrailblazePower.UseFuel':
-            yield 'Ornament.TrailblazePower.UseFuel', value
-        if key == 'Dungeon.TrailblazePower.FuelReserve':
-            yield 'Ornament.TrailblazePower.FuelReserve', value
-        if key == 'Ornament.TrailblazePower.ExtractReservedTrailblazePower':
-            yield 'Dungeon.TrailblazePower.ExtractReservedTrailblazePower', value
-        if key == 'Ornament.TrailblazePower.UseFuel':
-            yield 'Dungeon.TrailblazePower.UseFuel', value
-        if key == 'Ornament.TrailblazePower.FuelReserve':
-            yield 'Dungeon.TrailblazePower.FuelReserve', value
+        # if key == 'Dungeon.TrailblazePower.ExtractReservedTrailblazePower':
+        #     yield 'Ornament.TrailblazePower.ExtractReservedTrailblazePower', value
+        # if key == 'Dungeon.TrailblazePower.UseFuel':
+        #     yield 'Ornament.TrailblazePower.UseFuel', value
+        # if key == 'Dungeon.TrailblazePower.FuelReserve':
+        #     yield 'Ornament.TrailblazePower.FuelReserve', value
+        # if key == 'Ornament.TrailblazePower.ExtractReservedTrailblazePower':
+        #     yield 'Dungeon.TrailblazePower.ExtractReservedTrailblazePower', value
+        # if key == 'Ornament.TrailblazePower.UseFuel':
+        #     yield 'Dungeon.TrailblazePower.UseFuel', value
+        # if key == 'Ornament.TrailblazePower.FuelReserve':
+        #     yield 'Dungeon.TrailblazePower.FuelReserve', value
 
     def iter_hidden_args(self, data) -> t.Iterator[str]:
         """

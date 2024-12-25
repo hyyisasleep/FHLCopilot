@@ -75,13 +75,22 @@ OPEN_PSW_POPUP = ButtonWrapper(
 )
 PSW_INPUT_BOX_CHECK = ButtonWrapper(
     name='PSW_INPUT_BOX_CHECK',
-    share=Button(
-        file='./assets/share/daily/password/PSW_INPUT_BOX_CHECK.png',
-        area=(8, 623, 179, 708),
-        search=(0, 603, 199, 720),
-        color=(253, 241, 229),
-        button=(8, 623, 179, 708),
-    ),
+    share=[
+        Button(
+            file='./assets/share/daily/password/PSW_INPUT_BOX_CHECK.png',
+            area=(8, 623, 179, 708),
+            search=(0, 603, 199, 720),
+            color=(253, 241, 229),
+            button=(8, 623, 179, 708),
+        ),
+        Button(
+            file='./assets/share/daily/password/PSW_INPUT_BOX_CHECK.2.png',
+            area=(6, 621, 84, 711),
+            search=(0, 601, 104, 720),
+            color=(253, 242, 229),
+            button=(6, 621, 84, 711),
+        ),
+    ],
 )
 PSW_INPUT_BOX_CONFIRM = ButtonWrapper(
     name='PSW_INPUT_BOX_CONFIRM',

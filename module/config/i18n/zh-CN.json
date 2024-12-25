@@ -326,8 +326,8 @@
       "help": "避免打着打着又掉段了"
     },
     "EndWhenTalismanIsClear": {
-      "name": "金戈符清空后自动停止调度",
-      "help": ""
+      "name": "枕戈符清空后自动停止调度",
+      "help": "取消勾选会一直打到14点或者21点金戈时间结束"
     }
   },
   "JinGeStorage": {

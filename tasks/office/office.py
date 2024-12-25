@@ -21,26 +21,23 @@ class Office(UI):
         Run get support reward task
         """
         logger.hr('Taoyuan Office', level=1)
-        # self.ui_ensure(page_cattery)
-        # 主页去桃源居，有祝福就领\
-        # self.ui_ensure(page_office)
+
         self.device.screenshot()
         self.ui_ensure(page_office)
-        # 领午晚饭体力
-        Meal(self.config, self.device).run()
         # 处理事务
         Affair(self.config, self.device).run()
-        # 拜访拿花
-        Visit(self.config, self.device).run()
-        # 五天一回转化满的考工冶图道具
-        if self.config.Office_TransKaoGongTicket:
-            Jigsaw(self.config, self.device).run()
         # 打造随机家具 太简单了不放单独类写了。。。
         self._build_random_furniture()
+        # 拜访拿花
+        if self.config.Office_VisitOthersForClivia:
+            Visit(self.config, self.device).run()
+        # 转化考工图道具
+        if self.config.Office_TransKaoGongTicket:
+            Jigsaw(self.config, self.device).run()
+
 
         self.ui_goto_main()
 
-        # self.config.task_delay(server_update=True)
 
     def _build_random_furniture(self):
 

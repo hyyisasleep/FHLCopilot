@@ -142,6 +142,16 @@ SET_AUTO_COMBAT_CHECK = ButtonWrapper(
         button=(556, 183, 676, 217),
     ),
 )
+SKIP_BONUS = ButtonWrapper(
+    name='SKIP_BONUS',
+    share=Button(
+        file='./assets/share/combat/SKIP_BONUS.png',
+        area=(443, 453, 556, 487),
+        search=(423, 433, 576, 507),
+        color=(234, 180, 120),
+        button=(443, 453, 556, 487),
+    ),
+)
 START_AUTO_COMBAT = ButtonWrapper(
     name='START_AUTO_COMBAT',
     share=Button(
@@ -200,4 +210,84 @@ TEAM_FIVE_CLICK = ButtonWrapper(
             button=(31, 477, 71, 505),
         ),
     ],
+)
+TEAM_FOUR_CHECK = ButtonWrapper(
+    name='TEAM_FOUR_CHECK',
+    share=Button(
+        file='./assets/share/combat/TEAM_FOUR_CHECK.png',
+        area=(22, 404, 59, 431),
+        search=(2, 384, 79, 451),
+        color=(237, 150, 120),
+        button=(22, 404, 59, 431),
+    ),
+)
+TEAM_FOUR_CLICK = ButtonWrapper(
+    name='TEAM_FOUR_CLICK',
+    share=Button(
+        file='./assets/share/combat/TEAM_FOUR_CLICK.png',
+        area=(20, 407, 59, 431),
+        search=(0, 387, 79, 451),
+        color=(178, 174, 168),
+        button=(20, 407, 59, 431),
+    ),
+)
+TEAM_ONE_CHECK = ButtonWrapper(
+    name='TEAM_ONE_CHECK',
+    share=Button(
+        file='./assets/share/combat/TEAM_ONE_CHECK.png',
+        area=(30, 188, 70, 217),
+        search=(10, 168, 90, 237),
+        color=(232, 125, 88),
+        button=(30, 188, 70, 217),
+    ),
+)
+TEAM_ONE_CLICK = ButtonWrapper(
+    name='TEAM_ONE_CLICK',
+    share=Button(
+        file='./assets/share/combat/TEAM_ONE_CLICK.png',
+        area=(31, 193, 70, 217),
+        search=(11, 173, 90, 237),
+        color=(182, 182, 177),
+        button=(31, 193, 70, 217),
+    ),
+)
+TEAM_THREE_CHECK = ButtonWrapper(
+    name='TEAM_THREE_CHECK',
+    share=Button(
+        file='./assets/share/combat/TEAM_THREE_CHECK.png',
+        area=(11, 331, 51, 360),
+        search=(0, 311, 71, 380),
+        color=(233, 133, 99),
+        button=(11, 331, 51, 360),
+    ),
+)
+TEAM_THREE_CLICK = ButtonWrapper(
+    name='TEAM_THREE_CLICK',
+    share=Button(
+        file='./assets/share/combat/TEAM_THREE_CLICK.png',
+        area=(14, 338, 48, 361),
+        search=(0, 318, 68, 381),
+        color=(175, 172, 166),
+        button=(14, 338, 48, 361),
+    ),
+)
+TEAM_TWO_CHECK = ButtonWrapper(
+    name='TEAM_TWO_CHECK',
+    share=Button(
+        file='./assets/share/combat/TEAM_TWO_CHECK.png',
+        area=(20, 261, 62, 288),
+        search=(0, 241, 82, 308),
+        color=(233, 130, 94),
+        button=(20, 261, 62, 288),
+    ),
+)
+TEAM_TWO_CLICK = ButtonWrapper(
+    name='TEAM_TWO_CLICK',
+    share=Button(
+        file='./assets/share/combat/TEAM_TWO_CLICK.png',
+        area=(21, 262, 61, 290),
+        search=(1, 242, 81, 310),
+        color=(180, 180, 175),
+        button=(21, 262, 61, 290),
+    ),
 )

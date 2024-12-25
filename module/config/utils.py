@@ -610,6 +610,18 @@ def get_nearest_weekday_date(target):
     local_reset = server_reset + diff
     return local_reset
 
+def get_server_datetime():
+    """
+    fhlc add
+    Returns:
+        The server's current hour
+    """
+    diff = server_time_offset()
+    server_now = datetime.now() - diff
+
+    return server_now
+
+
 
 def get_server_weekday():
     """
