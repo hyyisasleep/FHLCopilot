@@ -1,5 +1,7 @@
 from module.base.timer import Timer
+from module.config.utils import get_server_weekday
 from module.logger import logger
+from tasks.PVP.ShaPanLunYi import ShaPanLunYi
 
 from tasks.base.page import page_guild, page_guild_begging
 from tasks.base.ui import UI
@@ -26,6 +28,11 @@ class Guild(UI):
         if self._check_join_guild():
             self._sign_in()
             self._float_river_lantern()
+
+        week = get_server_weekday()
+        if (week == 3 or week == 6) and self.config.GuildActivity_ClearShaPanFlag:
+            logger.info("Today is Thursday or Sunday, run sha pan lun yi")
+            ShaPanLunYi(self.config,self.device).run()
         self.ui_goto_main()
 
 

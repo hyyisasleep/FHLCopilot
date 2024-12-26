@@ -106,6 +106,16 @@ FULI_AND_CHANGPING_CHECK = ButtonWrapper(
         button=(54, 95, 152, 120),
     ),
 )
+GACHA_CHECK = ButtonWrapper(
+    name='GACHA_CHECK',
+    share=Button(
+        file='./assets/share/base/page/GACHA_CHECK.png',
+        area=(103, 19, 155, 45),
+        search=(83, 0, 175, 65),
+        color=(156, 136, 119),
+        button=(103, 19, 155, 45),
+    ),
+)
 GUILD_BEGGING_CHECK = ButtonWrapper(
     name='GUILD_BEGGING_CHECK',
     share=Button(
@@ -334,6 +344,16 @@ MAIN_GOTO_FULIWANGCHUAN = ButtonWrapper(
         button=(1206, 83, 1246, 167),
     ),
 )
+MAIN_GOTO_GACHA = ButtonWrapper(
+    name='MAIN_GOTO_GACHA',
+    share=Button(
+        file='./assets/share/base/page/MAIN_GOTO_GACHA.png',
+        area=(1012, 457, 1041, 517),
+        search=(992, 437, 1061, 537),
+        color=(239, 132, 87),
+        button=(1012, 457, 1041, 517),
+    ),
+)
 MAIN_GOTO_GUILD = ButtonWrapper(
     name='MAIN_GOTO_GUILD',
     share=Button(
@@ -376,13 +396,22 @@ MAIN_GOTO_JINGEGUAN = ButtonWrapper(
 )
 MAIN_GOTO_MIJING = ButtonWrapper(
     name='MAIN_GOTO_MIJING',
-    share=Button(
-        file='./assets/share/base/page/MAIN_GOTO_MIJING.png',
-        area=(533, 82, 562, 159),
-        search=(513, 62, 582, 179),
-        color=(225, 215, 187),
-        button=(533, 82, 562, 159),
-    ),
+    share=[
+        Button(
+            file='./assets/share/base/page/MAIN_GOTO_MIJING.png',
+            area=(533, 82, 562, 159),
+            search=(513, 62, 582, 179),
+            color=(225, 215, 187),
+            button=(533, 82, 562, 159),
+        ),
+        Button(
+            file='./assets/share/base/page/MAIN_GOTO_MIJING.2.png',
+            area=(533, 89, 562, 146),
+            search=(513, 69, 582, 166),
+            color=(224, 212, 183),
+            button=(533, 89, 562, 146),
+        ),
+    ],
 )
 MAIN_GOTO_MOMENTS = ButtonWrapper(
     name='MAIN_GOTO_MOMENTS',

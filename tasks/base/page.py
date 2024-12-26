@@ -91,7 +91,7 @@ page_main.link(MAIN_GOTO_CHARACTER, destination=page_character)
 # 每日必做
 page_daily_quest = Page(DAILY_QUEST_CHECK)
 page_daily_quest.link(BACK, destination=page_main)
-page_main.link(MAIN_GOTO_CHARACTER, destination=page_daily_quest)
+page_main.link(MAIN_GOTO_DAILY_QUEST, destination=page_daily_quest)
 
 # 福利忘川
 page_fuliwangchuan = Page(FULI_AND_CHANGPING_CHECK)

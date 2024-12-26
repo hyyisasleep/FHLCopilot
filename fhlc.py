@@ -1,5 +1,6 @@
 from module.alas import AzurLaneAutoScript
 from module.logger import logger
+from tasks.battle_pass.battle_pass import BattlePass
 
 
 class FHLCopilot(AzurLaneAutoScript):
@@ -43,8 +44,8 @@ class FHLCopilot(AzurLaneAutoScript):
         DailyQuest(config=self.config, device=self.device).run()
 
     def battle_pass(self):
-        from tasks.office.office import Office
-        Office(config=self.config, device=self.device).run()
+        from tasks.battle_pass.battle_pass import BattlePass
+        BattlePass(config=self.config, device=self.device).run()
 
     def data_update(self):
         pass

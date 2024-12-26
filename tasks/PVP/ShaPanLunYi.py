@@ -151,7 +151,7 @@ class ShaPanLunYi(UI):
                 logger.info("Attack finish and reward unlock")
                 # attack_finish = True
                 continue
-            if self.appear(ATTACKING_CHECK,interval):
+            if self.appear(ATTACKING_CHECK,interval=5):
                 logger.info("Attack continue")
                 self.device.stuck_record_clear()
                 timeout.reset()
