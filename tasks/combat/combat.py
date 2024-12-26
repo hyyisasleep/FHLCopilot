@@ -12,7 +12,7 @@ from tasks.combat.assets.assets_combat import *
 class CombatTimesOCR(DigitCounter):
     pass
 
-class DailyCombat(UI):
+class Combat(UI):
     """
         根据雅社任务、每日活跃度缺失和体力补战斗
         活跃度上限：
@@ -21,31 +21,45 @@ class DailyCombat(UI):
         3次故世
     """
 
-    def run(self):
-        """
-        """
-        logger.hr('Daily Combat', level=1)
-        self.run_baoxu(times=4)
+    # def run(self):
+    #     """
+    #     """
+    #     logger.hr('Daily Combat', level=1)
+    #     self.run_baoxu(times=4)
+    #
+    #
+    #     self.config.task_delay(server_update=True)
 
 
-        self.config.task_delay(server_update=True)
-
-
-    def run_baoxu(self,times):
-        self.ui_ensure(page_baoxu_prepare)
-        self._run_combat(times)
-        self.ui_ensure(page_main)
-
-    def run_jingyuan(self,times):
-        self.ui_ensure(page_jingyuan_prepare)
-        self._run_combat(times)
-        self.ui_ensure(page_main)
-
-    def _run_combat(self,times):
+    def run_baoxu(self,times)->int:
         """
         Returns:
-            bool: If able to run a combat
+            int:  success run times
+        """
+        if times == 0:
+            return 0
+        self.ui_ensure(page_baoxu_prepare)
+        return self._run_combat(times)
+        # self.ui_ensure(page_main)
 
+    def run_jingyuan(self,times)->int:
+        """
+        Returns:
+            int:  success run times
+        """
+        if times == 0:
+            return 0
+        self.ui_ensure(page_jingyuan_prepare)
+        return self._run_combat(times)
+        # self.ui_ensure(page_main)
+
+    def run_gushifengyun(self,times)->int:
+        return 0
+    def _run_combat(self,times)->int:
+        """
+        Returns:
+            int: run times
+            TODO: 处理中途失败或者中断的情况。。。就结束弹窗那里可以ocr？
         Pages:
             in: COMBAT_PREPARE
             out: COMBAT_PREPARE
@@ -56,10 +70,12 @@ class DailyCombat(UI):
             # 体力不够了或者其他什么bug，关弹窗
             if actual_times == 0:
                 self.close_buy_details_popup()
-                return False
+                return 0
             # 开始挂机
             else:
-                return self.run_auto_combat()
+                self._run_auto_combat()
+
+                return actual_times
 
     def close_set_auto_combat_popup(self,skip_first_screenshot=True):
         timeout = Timer(5).start()
@@ -139,7 +155,7 @@ class DailyCombat(UI):
             if self.appear(SET_AUTO_COMBAT_CHECK):
                 break
             if self.appear(OPEN_SET_AUTO_COMBAT_FAILED):
-                logger.warning("Can't start auto combat,because team is empty or not set cat assistant")
+                logger.warning("Can't start auto combat,because team is empty / not set cat assistant/ current level not cleared yet")
                 raise RequestHumanTakeover
                 # return False
 
@@ -156,7 +172,7 @@ class DailyCombat(UI):
                 continue
         return True
 
-    def run_auto_combat(self,skip_first_screenshot=True):
+    def _run_auto_combat(self,skip_first_screenshot=True):
         """
         开始挂机→挂机结束
         """
@@ -212,5 +228,5 @@ class DailyCombat(UI):
 
 
 if __name__ == '__main__':
-    ui = DailyCombat('fhlc')
+    ui = Combat('fhlc')
     ui.run_jingyuan(1)

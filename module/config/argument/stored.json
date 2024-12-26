@@ -12,6 +12,58 @@
     "order": 2,
     "color": "#ffcf70"
   },
+  "DailyBaoXuPlan": {
+    "name": "DailyBaoXuPlan",
+    "path": "DailyQuest.Dungeon.DailyBaoXuPlan",
+    "i18n": "Dungeon.DailyBaoXuPlan.name",
+    "stored": "StoredDailyBaoXu",
+    "attrs": {
+      "time": "2020-01-01 00:00:00",
+      "total": 0,
+      "value": 0
+    },
+    "order": 0,
+    "color": "#777777"
+  },
+  "DailyJingYuanPlan": {
+    "name": "DailyJingYuanPlan",
+    "path": "DailyQuest.Dungeon.DailyJingYuanPlan",
+    "i18n": "Dungeon.DailyJingYuanPlan.name",
+    "stored": "StoredDailyBaoXu",
+    "attrs": {
+      "time": "2020-01-01 00:00:00",
+      "total": 0,
+      "value": 0
+    },
+    "order": 0,
+    "color": "#777777"
+  },
+  "DailyGuShiFengYunPlan": {
+    "name": "DailyGuShiFengYunPlan",
+    "path": "DailyQuest.Dungeon.DailyGuShiFengYunPlan",
+    "i18n": "Dungeon.DailyGuShiFengYunPlan.name",
+    "stored": "StoredDailyBaoXu",
+    "attrs": {
+      "time": "2020-01-01 00:00:00",
+      "total": 0,
+      "value": 0
+    },
+    "order": 0,
+    "color": "#777777"
+  },
+  "DailyJinGePlan": {
+    "name": "DailyJinGePlan",
+    "path": "DailyQuest.Dungeon.DailyJinGePlan",
+    "i18n": "Dungeon.DailyJinGePlan.name",
+    "stored": "StoredDailyBaoXu",
+    "attrs": {
+      "time": "2020-01-01 00:00:00",
+      "total": 0,
+      "value": 0
+    },
+    "order": 0,
+    "color": "#777777"
+  },
   "TalismanToClean": {
     "name": "TalismanToClean",
     "path": "ClearJinGeTalisman.JinGeStorage.TalismanToClean",

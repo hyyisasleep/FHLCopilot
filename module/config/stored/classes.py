@@ -111,20 +111,20 @@ class StoredBase:
         logger.attr(self._name, self._stored)
 
 
-class StoredExpiredAt0400(StoredBase):
+class StoredExpiredAt0600(StoredBase):
     def is_expired(self):
         from module.logger import logger
         self.show()
-        expired = self.time < get_server_last_update('04:00')
+        expired = self.time < get_server_last_update('06:00')
         logger.attr(f'{self._name} expired', expired)
         return expired
 
 
-class StoredExpiredAtMonday0400(StoredBase):
+class StoredExpiredAtMonday0600(StoredBase):
     def is_expired(self):
         from module.logger import logger
         self.show()
-        expired = self.time < get_server_last_monday_update('04:00')
+        expired = self.time < get_server_last_monday_update('06:00')
         logger.attr(f'{self._name} expired', expired)
         return expired
 
@@ -152,6 +152,10 @@ class StoredCounter(StoredBase):
     def clear(self):
         self.value = 0
 
+    def clear_total(self):
+        self.value = 0
+        self.total = 0
+
     def to_counter(self) -> str:
         return f'{self.value}/{self.total}'
 
@@ -178,10 +182,10 @@ class StoredCounter(StoredBase):
             stored['total'] = self.FIXED_TOTAL
         return stored
 
-class StoredDailyLiveness(StoredCounter, StoredExpiredAt0400):
+class StoredDailyLiveness(StoredCounter, StoredExpiredAt0600):
     FIXED_TOTAL = 100
 
-class StoredGuildWeeklyLiveness(StoredCounter, StoredExpiredAtMonday0400):
+class StoredGuildWeeklyLiveness(StoredCounter, StoredExpiredAtMonday0600):
     FIXED_TOTAL = 8000
 
 class StoredMonthlyCard(StoredInt):
@@ -243,7 +247,21 @@ class StoredPower(StoredCounter):
         value += int(diff // 360)
         return value
 
-class StoredBuySuperCatBallWhenArriveRankNine(StoredCounter, StoredExpiredAtMonday0400):
+# =============副本===============
+class StoredDailyBaoXu(StoredCounter,StoredExpiredAt0600):
+    pass
+
+class StoredDailyJingYuan(StoredCounter,StoredExpiredAt0600):
+    pass
+
+class StoredDailyGuShiFengYun(StoredCounter,StoredExpiredAt0600):
+    pass
+
+class StoredDailyJinGe(StoredCounter,StoredExpiredAt0600):
+    pass
+
+# =============金戈===============
+class StoredBuySuperCatBallWhenArriveRankNine(StoredCounter, StoredExpiredAtMonday0600):
     FIXED_TOTAL = 1
 
 class StoredTalismanToClean(StoredInt):
@@ -252,10 +270,11 @@ class StoredTalismanToClean(StoredInt):
 class StoredTalisman(StoredInt):
     pass
 
-class StoredJinGeLevel(StoredInt,StoredExpiredAtMonday0400):
+class StoredJinGeLevel(StoredInt, StoredExpiredAtMonday0600):
     pass
 
-class StoredWeeklyPassword(StoredCounter, StoredExpiredAtMonday0400):
+#=============每日密令============
+class StoredWeeklyPassword(StoredCounter, StoredExpiredAtMonday0600):
     # 自己新加的变量不要用全大写……
     p1 = ''
     p2 = ''
@@ -318,11 +337,11 @@ class StoredWeeklyPassword(StoredCounter, StoredExpiredAtMonday0400):
 #     FIXED_TOTAL = 8
 #
 #
-# class StoredSimulatedUniverse(StoredCounter, StoredExpiredAtMonday0400):
+# class StoredSimulatedUniverse(StoredCounter, StoredExpiredAtMonday0600):
 #     pass
 #
 #
-# class StoredSimulatedUniverseElite(StoredCounter, StoredExpiredAtMonday0400):
+# class StoredSimulatedUniverseElite(StoredCounter, StoredExpiredAtMonday0600):
 #     # These variables are used in Rogue Farming feature.
 #
 #     # FIXED_TOTAL --- Times of boss drop chance per week. In current version of StarRail, this value is 100.
@@ -335,7 +354,7 @@ class StoredWeeklyPassword(StoredCounter, StoredExpiredAtMonday0400):
 #     pass
 #
 #
-# class StoredDaily(StoredCounter, StoredExpiredAt0400):
+# class StoredDaily(StoredCounter, StoredExpiredAt0600):
 #     quest1 = ''
 #     quest2 = ''
 #     quest3 = ''
@@ -420,7 +439,7 @@ class StoredWeeklyPassword(StoredCounter, StoredExpiredAtMonday0400):
 #             self.quest8 = ''
 #
 #
-# class StoredDungeonDouble(StoredExpiredAt0400):
+# class StoredDungeonDouble(StoredExpiredAt0600):
 #     calyx = 0
 #     relic = 0
 #     rogue = 0
@@ -433,7 +452,7 @@ class StoredWeeklyPassword(StoredCounter, StoredExpiredAtMonday0400):
 #     FIXED_TOTAL = 70
 #
 #
-# class StoredBattlePassWeeklyQuest(StoredCounter, StoredExpiredAtMonday0400):
+# class StoredBattlePassWeeklyQuest(StoredCounter, StoredExpiredAtMonday0600):
 #     quest1 = ''
 #     quest2 = ''
 #     quest3 = ''

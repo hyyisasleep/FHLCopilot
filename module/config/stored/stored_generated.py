@@ -2,9 +2,13 @@ from module.config.stored.classes import (
     StoredBase,
     StoredBuySuperCatBallWhenArriveRankNine,
     StoredCounter,
+    StoredDailyBaoXu,
+    StoredDailyGuShiFengYun,
+    StoredDailyJinGe,
+    StoredDailyJingYuan,
     StoredDailyLiveness,
-    StoredExpiredAt0400,
-    StoredExpiredAtMonday0400,
+    StoredExpiredAt0600,
+    StoredExpiredAtMonday0600,
     StoredGuildWeeklyLiveness,
     StoredInt,
     StoredJinGeLevel,
@@ -23,6 +27,10 @@ from module.config.stored.classes import (
 
 class StoredGenerated:
     DailyLiveness = StoredDailyLiveness("DailyQuest.DailyStorage.DailyLiveness")
+    DailyBaoXuPlan = StoredDailyBaoXu("DailyQuest.Dungeon.DailyBaoXuPlan")
+    DailyJingYuanPlan = StoredDailyBaoXu("DailyQuest.Dungeon.DailyJingYuanPlan")
+    DailyGuShiFengYunPlan = StoredDailyBaoXu("DailyQuest.Dungeon.DailyGuShiFengYunPlan")
+    DailyJinGePlan = StoredDailyBaoXu("DailyQuest.Dungeon.DailyJinGePlan")
     TalismanToClean = StoredTalismanToClean("ClearJinGeTalisman.JinGeStorage.TalismanToClean")
     JinGeLevel = StoredJinGeLevel("ClearJinGeTalisman.JinGeStorage.JinGeLevel")
     BuySuperCatBall = StoredBuySuperCatBallWhenArriveRankNine("ClearJinGeTalisman.JinGeStorage.BuySuperCatBall")

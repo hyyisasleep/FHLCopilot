@@ -69,8 +69,8 @@ class DailyQuestUI(UI):
                         break
 
         logger.attr('Daily Liveness', actual_point)
-        with self.config.multi_set():
-            self.config.stored.DailyLiveness.set(point)
+
+        self.config.stored.DailyLiveness.set(actual_point)
         return actual_point
 
     def get_active_point_reward(self, skip_first_screenshot=True):

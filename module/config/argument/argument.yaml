@@ -120,6 +120,18 @@ Dungeon:
   Team:
     value: 1
     option: [1,2,3,4,5]
+  DailyBaoXuPlan:
+    stored: StoredDailyBaoXu
+    display: hide
+  DailyJingYuanPlan:
+    stored: StoredDailyBaoXu
+    display: hide
+  DailyGuShiFengYunPlan:
+    stored: StoredDailyBaoXu
+    display: hide
+  DailyJinGePlan:
+    stored: StoredDailyBaoXu
+    display: hide
 
 
 

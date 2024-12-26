@@ -53,7 +53,11 @@
       "CurrentAffectionLevel": 0
     },
     "Dungeon": {
-      "Team": 1
+      "Team": 1,
+      "DailyBaoXuPlan": {},
+      "DailyJingYuanPlan": {},
+      "DailyGuShiFengYunPlan": {},
+      "DailyJinGePlan": {}
     }
   },
   "MealPower": {
