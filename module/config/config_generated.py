@@ -69,6 +69,10 @@ class GeneratedConfig:
     GuildQuest_DailyGuildQuest = 0
     GuildQuest_WeeklyLiveness = 0
 
+    # Group `MonthlyCard`
+    MonthlyCard_MonthlyCard30 = {}
+    MonthlyCard_MonthlyCard68 = {}
+
     # Group `ClearJinGeTalisman`
     ClearJinGeTalisman_BuySuperCatBallWhenArriveRankNineEveryWeek = 1
     ClearJinGeTalisman_EndWhenTalismanIsClear = 1

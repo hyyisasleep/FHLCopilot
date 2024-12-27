@@ -64,6 +64,30 @@
     "order": 0,
     "color": "#777777"
   },
+  "MonthlyCard30": {
+    "name": "MonthlyCard30",
+    "path": "Shop.MonthlyCard.MonthlyCard30",
+    "i18n": "MonthlyCard.MonthlyCard30.name",
+    "stored": "StoredInt",
+    "attrs": {
+      "time": "2020-01-01 00:00:00",
+      "value": 0
+    },
+    "order": 0,
+    "color": "#777777"
+  },
+  "MonthlyCard68": {
+    "name": "MonthlyCard68",
+    "path": "Shop.MonthlyCard.MonthlyCard68",
+    "i18n": "MonthlyCard.MonthlyCard68.name",
+    "stored": "StoredInt",
+    "attrs": {
+      "time": "2020-01-01 00:00:00",
+      "value": 0
+    },
+    "order": 0,
+    "color": "#777777"
+  },
   "TalismanToClean": {
     "name": "TalismanToClean",
     "path": "ClearJinGeTalisman.JinGeStorage.TalismanToClean",

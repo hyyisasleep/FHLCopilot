@@ -1,5 +1,6 @@
 
 from module.logger import logger
+from tasks.base.page import page_main
 
 from tasks.base.ui import UI
 from tasks.combat.combat import Combat
@@ -26,7 +27,9 @@ class Dungeon(Combat):
         actual_times = self.run_jingyuan(self.config.stored.DailyJingYuanPlan.get_remain())
         if actual_times:
             self.config.stored.DailyJingYuanPlan.add(actual_times)
-        # # TODO: 故世
+
+        self.ui_ensure(page_main)
+        #
         # actual_times = self.run_gushifengyun(self.config.stored.DailyGuShiFengYunPlan.get_remain())
         # if actual_times:
         #     self.config.stored.DailyGuShiFengYunPlan.add(actual_times)

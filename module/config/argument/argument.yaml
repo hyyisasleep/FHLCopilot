@@ -153,6 +153,19 @@ GuildQuest:
   WeeklyLiveness:
     value: 0
 
+MonthlyCard:
+  MonthlyCard30:
+    stored: StoredInt
+    display: display
+
+
+  MonthlyCard68:
+    stored: StoredInt
+    display: display
+
+
+
+
 ClearJinGeTalisman:
   BuySuperCatBallWhenArriveRankNineEveryWeek:
     type: checkbox

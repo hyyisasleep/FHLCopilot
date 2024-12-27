@@ -40,7 +40,7 @@ AUTO_COMBAT_END_CHECK = ButtonWrapper(
         area=(388, 491, 601, 535),
         search=(368, 471, 621, 555),
         color=(123, 80, 58),
-        button=(388, 491, 601, 535),
+        button=(967, 473, 1081, 553),
     ),
 )
 AUTO_COMBAT_WAIT_BEFORE_START_CHECK = ButtonWrapper(
@@ -130,6 +130,13 @@ OPEN_SET_AUTO_COMBAT_FAILED = ButtonWrapper(
             color=(133, 102, 97),
             button=(473, 150, 566, 178),
         ),
+        Button(
+            file='./assets/share/combat/OPEN_SET_AUTO_COMBAT_FAILED.3.png',
+            area=(529, 157, 625, 174),
+            search=(509, 137, 645, 194),
+            color=(133, 130, 129),
+            button=(529, 157, 625, 174),
+        ),
     ],
 )
 SET_AUTO_COMBAT_CHECK = ButtonWrapper(
@@ -150,6 +157,16 @@ SKIP_BONUS = ButtonWrapper(
         search=(423, 433, 576, 507),
         color=(234, 180, 120),
         button=(443, 453, 556, 487),
+    ),
+)
+SKIP_MAO_CHE = ButtonWrapper(
+    name='SKIP_MAO_CHE',
+    share=Button(
+        file='./assets/share/combat/SKIP_MAO_CHE.png',
+        area=(409, 497, 514, 533),
+        search=(389, 477, 534, 553),
+        color=(237, 184, 126),
+        button=(409, 497, 514, 533),
     ),
 )
 START_AUTO_COMBAT = ButtonWrapper(

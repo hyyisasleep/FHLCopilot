@@ -31,6 +31,8 @@ class StoredGenerated:
     DailyJingYuanPlan = StoredDailyBaoXu("DailyQuest.Dungeon.DailyJingYuanPlan")
     DailyGuShiFengYunPlan = StoredDailyBaoXu("DailyQuest.Dungeon.DailyGuShiFengYunPlan")
     DailyJinGePlan = StoredDailyBaoXu("DailyQuest.Dungeon.DailyJinGePlan")
+    MonthlyCard30 = StoredInt("Shop.MonthlyCard.MonthlyCard30")
+    MonthlyCard68 = StoredInt("Shop.MonthlyCard.MonthlyCard68")
     TalismanToClean = StoredTalismanToClean("ClearJinGeTalisman.JinGeStorage.TalismanToClean")
     JinGeLevel = StoredJinGeLevel("ClearJinGeTalisman.JinGeStorage.JinGeLevel")
     BuySuperCatBall = StoredBuySuperCatBallWhenArriveRankNine("ClearJinGeTalisman.JinGeStorage.BuySuperCatBall")

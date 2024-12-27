@@ -14,22 +14,9 @@ class CombatTimesOCR(DigitCounter):
 
 class Combat(UI):
     """
-        根据雅社任务、每日活跃度缺失和体力补战斗
-        活跃度上限：
-        4次宝墟
-        1次镜渊
-        3次故世
+        目前支持打宝墟和镜渊
+        故世风云因为要切章每章还不一样懒得搞，而且一般刷完镜渊宝墟活跃度也满了，不写了
     """
-
-    # def run(self):
-    #     """
-    #     """
-    #     logger.hr('Daily Combat', level=1)
-    #     self.run_baoxu(times=4)
-    #
-    #
-    #     self.config.task_delay(server_update=True)
-
 
     def run_baoxu(self,times)->int:
         """
@@ -53,20 +40,19 @@ class Combat(UI):
         return self._run_combat(times)
         # self.ui_ensure(page_main)
 
-    def run_gushifengyun(self,times)->int:
-        return 0
+
     def _run_combat(self,times)->int:
         """
         Returns:
             int: run times
-            TODO: 处理中途失败或者中断的情况。。。就结束弹窗那里可以ocr？
+            中途中断是使用者的问题不是我的问题，溜了
         Pages:
             in: COMBAT_PREPARE
             out: COMBAT_PREPARE
         """
-        if self.combat_prepare():
+        if self._combat_prepare():
             # 设置次数
-            actual_times = self.set_auto_combat_times(times)
+            actual_times = self._set_auto_combat_times(times)
             # 体力不够了或者其他什么bug，关弹窗
             if actual_times == 0:
                 self.close_buy_details_popup()
@@ -77,7 +63,7 @@ class Combat(UI):
 
                 return actual_times
 
-    def close_set_auto_combat_popup(self,skip_first_screenshot=True):
+    def _close_set_auto_combat_popup(self, skip_first_screenshot=True):
         timeout = Timer(5).start()
         while 1:
             if skip_first_screenshot:
@@ -91,7 +77,7 @@ class Combat(UI):
                 continue
             # TODO:用背景颜色变化检测关没关
 
-    def handle_select_team(self,team,skip_first_screenshot=True):
+    def _select_team(self,team,skip_first_screenshot=True):
 
         timeout = Timer(10).start()
         while 1:
@@ -138,7 +124,7 @@ class Combat(UI):
         return 0
 
 
-    def combat_prepare(self,skip_first_screenshot=True):
+    def _combat_prepare(self, skip_first_screenshot=True):
         """
         在编队界面切换队伍+打开自动挂机弹窗设置
         """
@@ -161,7 +147,7 @@ class Combat(UI):
 
             if current_team != self.config.Dungeon_Team:
                 logger.info(f"Config need team {self.config.Dungeon_Team}")
-                current_team = self.handle_select_team(self.config.Dungeon_Team)
+                current_team = self._select_team(self.config.Dungeon_Team)
                 continue
             # if self.appear_then_click(TEAM_FIVE_CLICK):
             #     logger.info("Switch to team 5")
@@ -202,13 +188,17 @@ class Combat(UI):
                 logger.info("Wait countdown before start")
                 timeout.reset()
                 continue
+            if self.appear_then_click(SKIP_MAO_CHE):
+                logger.info("Check mao che, skip")
+                timeout.reset()
+                continue
             if self.appear_then_click(AUTO_COMBAT_END_CHECK):
                 logger.info("Get auto combat reward")
                 timeout.reset()
                 continue
 
 
-    def set_auto_combat_times(self,times=1):
+    def _set_auto_combat_times(self, times=1):
 
 
         combat_times_ocr = CombatTimesOCR(OCR_AUTO_TIMES, lang=self.config.LANG)

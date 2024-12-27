@@ -316,6 +316,26 @@
       "help": "记一下已经领了哪档奖励"
     }
   },
+  "MonthlyCard": {
+    "_info": {
+      "name": "月卡设置",
+      "help": ""
+    },
+    "MonthlyCard30": {
+      "name": "小月卡剩余天数",
+      "help": "",
+      "-1": "无数据",
+      "0": "否",
+      "1": "是"
+    },
+    "MonthlyCard68": {
+      "name": "大月卡剩余天数",
+      "help": "",
+      "-1": "无数据",
+      "0": "否",
+      "1": "是"
+    }
+  },
   "ClearJinGeTalisman": {
     "_info": {
       "name": "金戈清符设置",

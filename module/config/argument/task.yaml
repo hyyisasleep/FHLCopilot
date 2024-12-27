@@ -40,6 +40,7 @@ Daily:
 
     Shop:
       - Scheduler
+      - MonthlyCard
 
     BattlePass:
       - Scheduler

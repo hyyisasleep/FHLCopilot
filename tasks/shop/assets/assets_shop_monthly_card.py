@@ -85,19 +85,19 @@ OCR_BUY_MONTHLY_CARD_30 = ButtonWrapper(
     name='OCR_BUY_MONTHLY_CARD_30',
     share=Button(
         file='./assets/share/shop/monthly_card/OCR_BUY_MONTHLY_CARD_30.png',
-        area=(305, 608, 486, 636),
-        search=(285, 588, 506, 656),
-        color=(228, 220, 231),
-        button=(305, 608, 486, 636),
+        area=(350, 610, 515, 635),
+        search=(330, 590, 535, 655),
+        color=(227, 218, 230),
+        button=(350, 610, 515, 635),
     ),
 )
 OCR_BUY_MONTHLY_CARD_68 = ButtonWrapper(
     name='OCR_BUY_MONTHLY_CARD_68',
     share=Button(
         file='./assets/share/shop/monthly_card/OCR_BUY_MONTHLY_CARD_68.png',
-        area=(611, 611, 793, 635),
-        search=(591, 591, 813, 655),
-        color=(237, 219, 191),
-        button=(611, 611, 793, 635),
+        area=(658, 609, 815, 638),
+        search=(638, 589, 835, 658),
+        color=(239, 221, 194),
+        button=(658, 609, 815, 638),
     ),
 )

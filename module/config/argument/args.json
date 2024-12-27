@@ -374,6 +374,20 @@
         "value": "06:00",
         "display": "hide"
       }
+    },
+    "MonthlyCard": {
+      "MonthlyCard30": {
+        "type": "stored",
+        "value": {},
+        "display": "display",
+        "stored": "StoredInt"
+      },
+      "MonthlyCard68": {
+        "type": "stored",
+        "value": {},
+        "display": "display",
+        "stored": "StoredInt"
+      }
     }
   },
   "BattlePass": {
