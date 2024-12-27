@@ -38,7 +38,7 @@ class DailyPassword(UI):
         self.ui_ensure(page_profile)
         self.fill_password(psw)
         self.ui_ensure(page_main)
-        self.config.task_delay(server_update=True)
+        # self.config.task_delay(server_update=True)
 
     def fill_password(self,psw, interval=2, skip_first_screenshot=True):
         if self._open_psw_popup():
@@ -97,11 +97,12 @@ class DailyPassword(UI):
             if self.appear_then_click(FILL_CONFIRM_UNLOCK,similarity=0.95):
                 has_filled_text = True
                 continue
-            if self.appear_then_click(PSW_INPUT_BOX_CONFIRM):
-                continue
+
             if self.appear(PSW_INPUT_BOX_CHECK):
                 self.device.input_text(psw)
                 timeout.reset()
+                continue
+            if self.appear_then_click(PSW_INPUT_BOX_CONFIRM):
                 continue
             if self.appear_then_click(OPEN_PSW_INPUT_BOX):
                 continue

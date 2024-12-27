@@ -4,6 +4,7 @@ from module.config.stored.classes import (
     StoredCounter,
     StoredDailyBaoXu,
     StoredDailyGuShiFengYun,
+    StoredDailyGuildMission,
     StoredDailyJinGe,
     StoredDailyJingYuan,
     StoredDailyLiveness,
@@ -31,6 +32,7 @@ class StoredGenerated:
     DailyJingYuanPlan = StoredDailyBaoXu("DailyQuest.Dungeon.DailyJingYuanPlan")
     DailyGuShiFengYunPlan = StoredDailyBaoXu("DailyQuest.Dungeon.DailyGuShiFengYunPlan")
     DailyJinGePlan = StoredDailyBaoXu("DailyQuest.Dungeon.DailyJinGePlan")
+    DailyGuildMission = StoredDailyGuildMission("Guild.GuildMission.DailyGuildMission")
     MonthlyCard30 = StoredInt("Shop.MonthlyCard.MonthlyCard30")
     MonthlyCard68 = StoredInt("Shop.MonthlyCard.MonthlyCard68")
     TalismanToClean = StoredTalismanToClean("ClearJinGeTalisman.JinGeStorage.TalismanToClean")

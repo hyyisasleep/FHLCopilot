@@ -64,6 +64,22 @@
     "order": 0,
     "color": "#777777"
   },
+  "DailyGuildMission": {
+    "name": "DailyGuildMission",
+    "path": "Guild.GuildMission.DailyGuildMission",
+    "i18n": "GuildMission.DailyGuildMission.name",
+    "stored": "StoredDailyGuildMission",
+    "attrs": {
+      "time": "2020-01-01 00:00:00",
+      "mission1": "",
+      "mission2": "",
+      "mission3": "",
+      "total": 3,
+      "value": 0
+    },
+    "order": 0,
+    "color": "#777777"
+  },
   "MonthlyCard30": {
     "name": "MonthlyCard30",
     "path": "Shop.MonthlyCard.MonthlyCard30",

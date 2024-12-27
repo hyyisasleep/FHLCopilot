@@ -65,9 +65,9 @@ class GeneratedConfig:
     GuildActivity_OpenActivityList = 0
     GuildActivity_ClearShaPanFlag = 0
 
-    # Group `GuildQuest`
-    GuildQuest_DailyGuildQuest = 0
-    GuildQuest_WeeklyLiveness = 0
+    # Group `GuildMission`
+    GuildMission_DailyGuildMission = {}
+    GuildMission_WeeklyLiveness = 0
 
     # Group `MonthlyCard`
     MonthlyCard_MonthlyCard30 = {}

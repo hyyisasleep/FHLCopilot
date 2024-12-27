@@ -48,7 +48,7 @@
     },
     "BattlePass": {
       "name": "昌平文引",
-      "help": ""
+      "help": "摆在这里意思是我不打算做了\n等ch什么时候想起来学别的游戏给BP减负吧，谁家每日任务还要耗资源的"
     },
 
     "ClearJinGeTalisman": {
@@ -290,30 +290,30 @@
   },
   "GuildActivity": {
     "_info": {
-      "name": "本周雅社活动",
+      "name": "本周活动",
       "help": ""
     },
     "OpenActivityList": {
       "name": "本周开放活动",
-      "help": ""
+      "help": "开发中，未来应该能显示本周是否开了紫薇沙盘征星什么的"
     },
     "ClearShaPanFlag": {
       "name": "沙盘论义自动清旗",
       "help": "勾选后周四、周日运行，请保证练度稳定六胜后再使用\n游戏里的自动清理不太好用所以写了这个"
     }
   },
-  "GuildQuest": {
+  "GuildMission": {
     "_info": {
-      "name": "雅社悬赏",
+      "name": "悬赏任务",
       "help": ""
     },
-    "DailyGuildQuest": {
-      "name": "每日任务列表",
-      "help": ""
+    "DailyGuildMission": {
+      "name": "每日悬赏任务列表",
+      "help": "目前没写自动领奖（等第二天发吧"
     },
     "WeeklyLiveness": {
-      "name": "周活跃度领奖",
-      "help": "记一下已经领了哪档奖励"
+      "name": "周活跃度领奖情况",
+      "help": "跟每日悬赏领取一样还在开发中，占个位"
     }
   },
   "MonthlyCard": {

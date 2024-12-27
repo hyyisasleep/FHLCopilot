@@ -147,9 +147,10 @@ GuildActivity:
     type: checkbox
     value: 0
 
-GuildQuest:
-  DailyGuildQuest:
-    value: 0
+GuildMission:
+  DailyGuildMission:
+    stored: StoredDailyGuildMission
+    display: display
   WeeklyLiveness:
     value: 0
 

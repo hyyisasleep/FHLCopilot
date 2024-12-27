@@ -328,6 +328,61 @@ class StoredWeeklyPassword(StoredCounter, StoredExpiredAtMonday0600):
             self.p7 = ''
             self.value = 0
 
+#=============雅社==============
+class StoredDailyGuildMission(StoredCounter, StoredExpiredAt0600):
+    mission1 = ''
+    mission2 = ''
+    mission3 = ''
+    FIXED_TOTAL = 3
+
+
+    def load_missions(self):
+        """
+        Returns:
+            list[DailyMission]: Note that must check if quests are expired
+        """
+        # DailyQuest should be lazy loaded
+        # from tasks.daily.keywords import DailyQuest
+        missions = []
+        for name in [self.mission1, self.mission2, self.mission3]:
+            if not name:
+                continue
+            try:
+                # quest = DailyQuest.find(name)
+                missions.append(name)
+            except ScriptError:
+                pass
+        return missions
+
+    def write_missions(self, missions):
+        """
+        Args:
+            missions (list[DailyMission, str]):
+        """
+        # from tasks.daily.keywords import DailyQuest
+        missions = [m for m in missions]
+        with self._config.multi_set():
+            self.set(value=max(self.FIXED_TOTAL - len(missions), 0))
+            try:
+                self.mission1 = missions[0]
+            except IndexError:
+                self.mission1 = ''
+            try:
+                self.mission2 = missions[1]
+            except IndexError:
+                self.mission2 = ''
+            try:
+                self.mission3 = missions[2]
+            except IndexError:
+                self.mission3 = ''
+
+
+    def clear(self):
+        with self._config.multi_set():
+            self.mission1 = ''
+            self.mission2 = ''
+            self.mission3 = ''
+
 
 # class StoredResersed(StoredCounter):
 #     FIXED_TOTAL = 2400

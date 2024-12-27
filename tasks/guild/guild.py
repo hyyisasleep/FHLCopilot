@@ -4,10 +4,12 @@ from module.logger import logger
 from tasks.PVP.ShaPanLunYi import ShaPanLunYi
 
 from tasks.base.page import page_guild, page_guild_begging
-from tasks.base.ui import UI
-from tasks.guild.assets.assets_guild import *
 
-class Guild(UI):
+from tasks.guild.assets.assets_guild import *
+from tasks.guild.mission import GuildMission
+
+
+class Guild(GuildMission):
     """
     雅社：
     签到 fin
@@ -21,18 +23,31 @@ class Guild(UI):
     def run(self):
         """
         """
-        logger.hr('Guild sign in', level=1)
+        logger.hr('Guild', level=1)
         # 跳转到互动界面
         self.ui_ensure(page_guild)
-
+        # 先确定有没有雅社
         if self._check_join_guild():
-            self._sign_in()
-            self._float_river_lantern()
 
-        week = get_server_weekday()
-        if (week == 3 or week == 6) and self.config.GuildActivity_ClearShaPanFlag:
-            logger.info("Today is Thursday or Sunday, run sha pan lun yi")
-            ShaPanLunYi(self.config,self.device).run()
+            # 重置昨天的悬赏
+
+            if self.config.stored.DailyGuildMission.is_expired():
+                self.config.stored.DailyGuildMission.clear()
+
+            # 签到
+            self._sign_in()
+            # 放河灯
+            self._float_river_lantern()
+            # 识别悬赏内容
+            self.write_dungeon_plan()
+            # 如果需要的话打沙盘
+            if self.config.GuildActivity_ClearShaPanFlag:
+                week = get_server_weekday()
+                if week == 3 or week == 6:
+                    logger.info("Today is Thursday or Sunday, run sha pan lun yi")
+                    ShaPanLunYi(self.config,self.device).run()
+
+
         self.ui_goto_main()
 
 

@@ -82,8 +82,8 @@
       "OpenActivityList": 0,
       "ClearShaPanFlag": 0
     },
-    "GuildQuest": {
-      "DailyGuildQuest": 0,
+    "GuildMission": {
+      "DailyGuildMission": {},
       "WeeklyLiveness": 0
     }
   },

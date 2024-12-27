@@ -338,10 +338,12 @@
         "value": 0
       }
     },
-    "GuildQuest": {
-      "DailyGuildQuest": {
-        "type": "input",
-        "value": 0
+    "GuildMission": {
+      "DailyGuildMission": {
+        "type": "stored",
+        "value": {},
+        "display": "display",
+        "stored": "StoredDailyGuildMission"
       },
       "WeeklyLiveness": {
         "type": "input",
