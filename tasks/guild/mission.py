@@ -49,7 +49,7 @@ class GuildMission(UI):
                    [OCR_MISSION_2,OCR_MISSION_2_MULTI_1,OCR_MISSION_2_MULTI_2],
                     [OCR_MISSION_3,OCR_MISSION_3_MULTI_1,OCR_MISSION_3_MULTI_2]]
     # 拿关键词判断第一次识别的对不对，对了就不用当两行重新识别了
-    ocr_dict = ["镜之心魔","镜渊","蚌精","宝墟","信物","消耗","签到","活跃度","羁绊值","故世","知交圈","合影"]
+    ocr_dict = ["镜之心魔","镜渊","蚌精","宝墟","信物","消耗","签到","活跃度","羁绊值","故世","知交圈","合影","寻英"]
 
     def _scan_one_mission(self, buttons:list[ButtonWrapper]):
         """
@@ -108,6 +108,13 @@ class GuildMission(UI):
         如果有要打宝墟镜渊的就写到dungon plan里
 
         """
+
+        # 清空
+        with self.config.multi_set():
+            if self.config.stored.DailyBaoXuPlan.is_expired():
+                self.config.stored.DailyBaoXuPlan.clear_total()
+            if self.config.stored.DailyJingYuanPlan.is_expired():
+                self.config.stored.DailyJingYuanPlan.clear_total()
         # 跳转到悬赏界面
         self.ui_ensure(page_guild_mission)
         self._wait_until_mission_page_stable()
