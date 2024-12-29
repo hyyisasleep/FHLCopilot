@@ -59,7 +59,7 @@ class GeneratedConfig:
     Dungeon_DailyJinGePlan = {}
 
     # Group `MealPower`
-    MealPower_UseTongBaoBuyExpiredPower = 0
+    MealPower_UseTongBaoBuyExpiredPower = 1
 
     # Group `GuildActivity`
     GuildActivity_OpenActivityList = 0

@@ -21,12 +21,27 @@ class Dungeon(Combat):
         logger.hr('Dungeon', level=1)
         # 打宝墟，不用打的话actual_times会置0
         actual_times = self.run_baoxu(self.config.stored.DailyBaoXuPlan.get_remain())
-        if actual_times:
+        cnt = 0
+        while actual_times:
+
             self.config.stored.DailyBaoXuPlan.add(actual_times)
+            if cnt > 3:
+                logger.warning("Try to achieve bao xu plan after retrying 3 times, stop")
+                break
+            actual_times = self.run_baoxu(self.config.stored.DailyBaoXuPlan.get_remain())
+            cnt += 1
+
         # 打镜渊
+        cnt = 0
         actual_times = self.run_jingyuan(self.config.stored.DailyJingYuanPlan.get_remain())
-        if actual_times:
+        while actual_times:
+
+            if cnt > 3:
+                logger.warning("Try to achieve jing yuan plan after retrying 3 times, stop")
+                break
             self.config.stored.DailyJingYuanPlan.add(actual_times)
+            actual_times = self.run_jingyuan(self.config.stored.DailyJingYuanPlan.get_remain())
+            cnt += 1
 
         self.ui_ensure(page_main)
         #

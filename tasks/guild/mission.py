@@ -15,6 +15,10 @@ class GuildMissionOCR(Ocr):
     def after_process(self, result):
         result = re.sub(r'[，。：]', '', result)
         # result = result.replace("赛社","雅社")
+        if "蛙精" or "蚌" in result:
+            result = '击退4只蚌精'
+        elif "心鹿" in result:
+            result = '击退5个镜之心魔'
         if '信物' in result:
             result = '完成1次雅社信物许愿'
         elif '故世' in result and '与' not in result:
@@ -26,9 +30,10 @@ class GuildMissionOCR(Ocr):
             # result = result.replace('贡站', '贡献')
             result = result.replace('登到','签到')
             result = result.replace('羁伴','羁绊')
-            result = result.replace('蚌格','蚌精')
+            # result = result.replace('蚌格','蚌精')
         return super().after_process(result)
     pass
+
 
 
 # 剑荡风云：与xxx(任意一位至契名士)在故世风云困难战斗胜利3次

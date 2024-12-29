@@ -113,7 +113,7 @@ class JinGeYanWu(UI):
             self.ui_ensure(page_jinge_prepare)
             self._run_pvp(soul_num == 500)
 
-        self.ui_goto_main()
+        # self.ui_goto_main()
 
     def handle_buy_super_cat_ball_when_arrive_level_nine(self):
         if self.config.ClearJinGeTalisman_BuySuperCatBallWhenArriveRankNineEveryWeek:
