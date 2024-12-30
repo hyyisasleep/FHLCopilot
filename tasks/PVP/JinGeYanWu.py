@@ -22,8 +22,11 @@ class JinGeLevelOCR(Ocr):
                 return value
         return 0
 
+STATE_DAILY = 0
+STATE_CLEAR = 1
 
-def wait_for_start():
+
+def wait_for_start(state):
     """
     七段以上等金戈启动的
     """
@@ -31,7 +34,7 @@ def wait_for_start():
     logger.info("Wait JinGe Start")
     # 金戈开启时间段
     morning_window = (11, 14)  # 11:00 - 14:00
-    evening_window = (19, 21)  # 19:00 - 21:00
+    evening_window = (19, 22)  # 19:00 - 22:00
 
     # 获取当前时间
     now = get_server_datetime()
@@ -42,15 +45,21 @@ def wait_for_start():
             evening_window[0] <= current_hour < evening_window[1]):
         return True
 
+
     # 计算离下一个时间段最近的时间
     if current_hour < morning_window[0]:
-        next_time = datetime(now.year, now.month, now.day, morning_window[0], 0)
+        next_time = datetime(now.year, now.month, now.day, morning_window[0], 2)
     elif morning_window[1] <= current_hour < evening_window[0]:
-        next_time = datetime(now.year, now.month, now.day, evening_window[0], 0)
+        next_time = datetime(now.year, now.month, now.day, evening_window[0], 2)
     elif current_hour >= evening_window[1]:
-        next_time = datetime(now.year, now.month, now.day + 1, morning_window[0], 0)  # 明天的11点
+        if state == STATE_DAILY:
+            # 为了做每日任务就不等了- -
+            return  False
+        else:
+            next_time = datetime(now.year, now.month, now.day + 1, morning_window[0], 2)  # 明天的11点
     else:
         return True
+
     # 计算剩余时间并每分钟输出一次
     while True:
         remaining_time = next_time - datetime.now()
@@ -66,54 +75,98 @@ def wait_for_start():
 
 class JinGeYanWu(UI):
 
-    # todo:
-    # 七段以上按时间启动 每天只打三把，按时间上号打
-    # 骁武魂的绿字识别效率有点惨
+    def run_until_get_daily_reward(self,times=0):
+        """
+        打到拿每日奖励
+        如果有每日副本补活跃要求的话就一直打
+        """
+        actual_times = 0
+        win = False
+        logger.hr('Get JinGe daily reward',level=1)
+        while 1:
+            self.device.screenshot()
+            self.ui_ensure(page_jingeyanwu)
+            talisman_num,soul_num,level = self._jin_ge_prepare()
+
+            if level > 6:
+                if not wait_for_start(STATE_DAILY):
+                    logger.warning("Today's jin ge is close, stop" )
+                    break
+            if self.appear(JINGEYANWU_GOTO_NO_REWARD_PREPARE):
+                logger.info("JinGe is not open this time, stop")
+                break
+            # if talisman_num == 0 and self.config.ClearJinGeTalisman_EndWhenTalismanIsClear:
+            #     logger.info("Clear talisman finish")
+            #     break
+
+            logger.hr("Start one pvp game", level=2)
+
+            self.ui_ensure(page_jinge_prepare)
+            win |= self._run_pvp(soul_num == 500)
+
+            actual_times += 1
+            if win:
+                if actual_times >= times:
+                    break
+        return actual_times
+
 
     def run(self):
-        # self.wait_until_11()
-        logger.hr('Clear jin ge talisman', level=1)
-        # from datetime import datetime
 
+        logger.hr('Clear jin ge talisman', level=1)
         while 1:
+
             self.device.screenshot()
             self.ui_ensure(page_jingeyanwu)
             # 七段以上限时打金戈
 
+            talisman_num,soul_num,level = self._jin_ge_prepare()
 
-            talisman_num, soul_num = self.pvp_ocr()
-
-            # 获取金戈段位
-            level = int(self.jin_ge_level_ocr())
-            logger.info(f"Now level is {level}")
-            # 写到config方便查看
-            self.config.stored.JinGeLevel.value = level
-            self.config.stored.TalismanToClean.value = talisman_num
-            if level > 7:
+            if level > 6:
                 # 七段以上限时打金戈，
-                wait_for_start()
-            if level == 9:
-                self.handle_buy_super_cat_ball_when_arrive_level_nine()
-
-
+                wait_for_start(STATE_CLEAR)
 
             if self.appear(JINGEYANWU_GOTO_NO_REWARD_PREPARE):
                 logger.info("JinGe is not open this time, stop")
                 break
             if talisman_num == 0 and self.config.ClearJinGeTalisman_EndWhenTalismanIsClear:
-                logger.info("No need Ge, stop")
+                logger.info("Clear talisman finish")
                 break
-            #
-            # current_time = datetime.now().hour
-            # # current_hour = current_time.hour
-            # if current_time > 21:
-            #     break
+
             logger.hr("Start one pvp game", level=2)
 
             self.ui_ensure(page_jinge_prepare)
             self._run_pvp(soul_num == 500)
 
         # self.ui_goto_main()
+
+    def _jin_ge_prepare(self):
+        """
+            识别当前待清枕戈符，骁武魂和段位，处理精养喵球，如果要等就等
+        Returns:
+            talisman_num:int 待清枕戈符数量
+            soul_num:int 骁武魂，这个OCR经常抽风说没数字，不过不重要
+            level:int 金戈段位
+
+        """
+        talisman_num = Digit(TALISMAN_OCR, lang=self.config.LANG).ocr_single_line(self.device.image)
+
+        soul_num  = Digit(SOUL_OCR, lang=self.config.LANG).ocr_single_line(self.device.image)
+
+
+        # 获取金戈段位
+        level = int(self.jin_ge_level_ocr())
+        logger.info(f"Now level is {level}")
+        # 写到config方便查看
+        with self.config.multi_set():
+            self.config.stored.JinGeLevel.value = level
+            self.config.stored.TalismanToClean.value = talisman_num
+
+
+        if level >= 9:
+            self.handle_buy_super_cat_ball_when_arrive_level_nine()
+
+        return talisman_num, soul_num, level
 
     def handle_buy_super_cat_ball_when_arrive_level_nine(self):
         if self.config.ClearJinGeTalisman_BuySuperCatBallWhenArriveRankNineEveryWeek:
@@ -163,17 +216,17 @@ class JinGeYanWu(UI):
             return True
         return False
 
-    def handle_result_win_or_fail(self,interval=5)->bool:
-        if self.appear(WIN_CHECK, interval):
-            logger.info("Get win")
-            return True
-        if self.appear(FAIL_CHECK, interval):
-            logger.info("Get fail")
-            return True
-        return False
+    # def handle_result_win_or_fail(self,interval=5)->bool:
+    #     if self.appear(WIN_CHECK, interval):
+    #         logger.info("Get win")
+    #         return True
+    #     if self.appear(FAIL_CHECK, interval):
+    #         logger.info("Get fail")
+    #         return True
+    #     return False
 
     def handle_pvp_combat(self, interval=5) -> bool:
-        if self.appear_then_click(FINISH_CONFIRM, interval):
+        if self.appear_then_click(FINISH_CONFIRM, interval=2):
             return True
 
         if self.appear(FORMATION_CHECK, interval):
@@ -213,6 +266,7 @@ class JinGeYanWu(UI):
 
     def jin_ge_level_ocr(self)->str:
         retry = 0
+        res = 0
         while retry < 3:
             level_ocr = JinGeLevelOCR(OCR_JINGE_LEVEL,lang=self.config.LANG)
             res = level_ocr.ocr_single_line(self.device.screenshot())
@@ -232,32 +286,15 @@ class JinGeYanWu(UI):
 
 
 
-    def wait_until_11(self):
-        # 获取当前时间
-        import time
-        from datetime import datetime, timedelta
-        now = datetime.now()
-
-        # 计算距离 11 点还有多少时间
-        target_time = now.replace(hour=11, minute=2, second=0, microsecond=0)
-
-        # 如果当前时间已经超过了 11 点，则设置为明天的 11 点
-        if now > target_time:
-            target_time += timedelta(days=1)
-
-        # 计算剩余时间
-        remaining_time = (target_time - now).total_seconds()
-
-        # 等待直到 11 点
-        print(f"等待 {remaining_time} 秒，直到 11 点...")
-        time.sleep(remaining_time)
-
-        print("到了 11 点，结束函数。")
-
-
 
     def _run_pvp(self, use_soul=False, interval=5, skip_first_screenshot=True):
+        """
+        Returns:
+            bool: win or fail,timeout seem as fail
+
+        """
         finish_pvp = False
+        win = False
         while 1:
 
             if skip_first_screenshot:
@@ -280,11 +317,19 @@ class JinGeYanWu(UI):
                 logger.info("Get pvp reward")
                 finish_pvp = True
                 continue
-            # 两个finish没事吧。。。
-            if self.handle_result_win_or_fail(interval):
+            # # 两个finish没事吧。。。
+            # if self.handle_result_win_or_fail(interval):
+            #     finish_pvp = True
+            #     continue
+            if self.appear(WIN_CHECK, interval):
+                logger.info("Get win")
+                finish_pvp = True
+                win = True
+                continue
+            if self.appear(FAIL_CHECK, interval):
+                logger.info("Get fail")
                 finish_pvp = True
                 continue
-
             if self.handle_rank_ten_mode_prepare(interval):
                 timeout.reset()
                 continue
@@ -294,6 +339,7 @@ class JinGeYanWu(UI):
             if self.handle_use_xiaowu_soul(use_soul, interval):
                 timeout.reset()
                 continue
+        return win
 
 
 if __name__ == '__main__':

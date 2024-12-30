@@ -60,9 +60,10 @@ class DailyQuest(DailyQuestUI):
         # 计算雅社任务打满够不够100，雅社只有故世镜渊宝墟
         bao_xu = min(self.config.stored.DailyBaoXuPlan.total,4)
         jing_yuan = min(self.config.stored.DailyJingYuanPlan.total,1)
-        gu_shi = min(self.config.stored.DailyGuShiFengYunPlan.total,3)
-        jin_ge = min(self.config.stored.DailyJinGePlan.total,3)
-        if (bao_xu + jing_yuan + gu_shi)>= remains:
+        # gu_shi = min(self.config.stored.DailyGuShiFengYunPlan.total,3)
+
+        jin_ge = 0
+        if (bao_xu + jing_yuan)>= remains:
             return True
         while remains > 0:
             if bao_xu < 4:
@@ -71,16 +72,23 @@ class DailyQuest(DailyQuestUI):
                 jing_yuan += 1
             elif jin_ge < 3:
                 jin_ge += 1
-            elif gu_shi < 3:
-                gu_shi += 1
+            # elif gu_shi < 3:
+            #     gu_shi += 1
 
             remains -= 1
-        logger.info(f"Today's plan: Bao Xu: {bao_xu} times, Jing Yuan: {jing_yuan} times, Gu Shi: {gu_shi} times, Jin Ge: {jin_ge} times")
+        # 没启用选项的话置0
+        if not self.config.Dungeon_DailyJinGe:
+            jin_ge = 0
+        logger.info(f"Today's plan: Bao Xu: {bao_xu} times, Jing Yuan: {jing_yuan} times, Jin Ge: {jin_ge} times")
         with self.config.multi_set():
             self.config.stored.DailyBaoXuPlan.set(value=0,total=bao_xu)
             self.config.stored.DailyJingYuanPlan.set(value=0,total=jing_yuan)
-            self.config.stored.DailyGuShiFengYunPlan.set(value=0,total=gu_shi)
-            self.config.stored.DailyJinGePlan.set(value=0,total=jin_ge)
+            # self.config.stored.DailyGuShiFengYunPlan.set(value=0,total=gu_shi)
+            if self.config.Dungeon_DailyJinGe:
+                self.config.stored.DailyJinGePlan.set(value=0,total=jin_ge)
+
+
+
 
 if __name__ == '__main__':
     ui = DailyQuest('fhlc')

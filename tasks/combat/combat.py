@@ -178,7 +178,7 @@ class Combat(UI):
                 logger.warning("Get daily combat timeout, assume not run auto combat")
                 break
             if finish and (self.appear(TEAM_FIVE_CHECK) or self.appear(TEAM_FIVE_CLICK)):
-                logger.info("Auto combat end")
+                # logger.info("Auto combat end")
                 break
 
             if self.appear_then_click(START_AUTO_COMBAT):
@@ -201,7 +201,8 @@ class Combat(UI):
             if self.appear(AUTO_COMBAT_END_CHECK):
                 finish = True
                 logger.info("Get auto combat reward")
-                actual_times = Digit(OCR_AUTO_TIMES).ocr_single_line(self.device.image)
+                actual_times = Digit(OCR_ACTUAL_AUTO_TIMES).ocr_single_line(self.device.image)
+
                 self.appear_then_click(AUTO_COMBAT_END_CHECK)
                 timeout.reset()
                 continue
@@ -216,7 +217,7 @@ class Combat(UI):
             if self.appear_then_click(WIN_CHECK):
                 logger.info("Get combat win, click to skip")
                 continue
-
+        logger.info(f"Auto combat end with run {actual_times} times")
         return actual_times
 
 

@@ -1,7 +1,6 @@
-from websockets.legacy.async_timeout import timeout
 
 from module.base.timer import Timer
-from module.base.utils import get_color
+
 from module.logger import logger
 from module.ui.switch import Switch
 from tasks.base.page import page_shop

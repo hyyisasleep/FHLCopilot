@@ -24,9 +24,9 @@ BattlePass:
   Scheduler:
     Enable: true
 
-DataUpDate:
+DataUpdate:
   Scheduler:
-    Enable: false
+    Enable: true
 
 # ==================== Weekly ====================
 

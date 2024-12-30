@@ -1,8 +1,6 @@
 
 import time
-
-
-
+from module.exception import RequestHumanTakeover
 from module.logger import logger
 import os
 import psutil
@@ -63,7 +61,7 @@ def search_window(parent_window:WindowSpecification, title_re:str, control_type=
     logger.warning(f"Can't find window:{title_re} from {parent_window.Window.__name__} after retry 3 times")
     return None
 
-def wechat_sign_in_and_get_password()->str:
+def wechat_sign_in_and_get_password(config_wechat_path=r'D:\WeChat\WeChat.exe')->str:
     """
     在电脑上登录微信
     Return:今日密令，没获取到的话返回""
@@ -72,7 +70,7 @@ def wechat_sign_in_and_get_password()->str:
     try:
         timings.Timings.fast()
         # 包括启动和在后台找微信主界面
-        wechat_window = find_wechat_window()
+        wechat_window = find_wechat_window(config_wechat_path)
 
         if wechat_window is None:
             return ""
@@ -140,6 +138,7 @@ def getWxInstallPath()->str:
         return value
     except Exception as ex:
         logger.warning(str(ex))
+        return ""
 
 # 检查微信进程是否已经运行
 def is_wechat_running():
@@ -152,9 +151,19 @@ def is_wechat_running():
 
 
 # 启动微信
-def start_wechat(wechat_path):
+def start_wechat(wechat_path_list):
+
+    """
+    Args:
+        wechat_path_list (list):  [register_path,config_path(manual)]
+    """
+    wechat_path = wechat_path_list[0]
     if not os.path.exists(wechat_path):
-        raise FileNotFoundError(f"WeChat not found at {wechat_path}")
+        if os.path.exists(wechat_path_list[1]):
+            wechat_path = wechat_path_list[1]
+        else:
+            logger.warning(f"Can't find wechat automatically or by config path: {wechat_path}, please modify config path")
+            raise RequestHumanTakeover
     app = Application('uia').start(wechat_path)
 
     # 查找并返回标题为“微信”的窗口
@@ -184,9 +193,9 @@ def find_wechat_app():
         print(e)
         return None
 # 获取微信窗口
-def find_wechat_window()->WindowSpecification | None:
+def find_wechat_window(config_wechat_path)->WindowSpecification | None:
     try:
-        wechat_path = getWxInstallPath()
+        wechat_path = [getWxInstallPath(),config_wechat_path]
         # 启动微信
 
         wechat_pid = is_wechat_running()
@@ -203,7 +212,7 @@ def find_wechat_window()->WindowSpecification | None:
         #     findwindows.find_window(title_re="微信")
         # except WindowNotFoundError as e:
         #     logger.info("Detect WeChat widget is not open, try to open it")
-        #     app = Application('uia').start(wechat_path)
+        #     app = Application('uia').start(wechat_path_list)
 
         # 获取微信窗口
         # wechat_window = Desktop(backend="uia").window(title="微信")

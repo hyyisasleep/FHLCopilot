@@ -33,16 +33,6 @@ MAILBOX_CHECK = ButtonWrapper(
         button=(70, 577, 138, 633),
     ),
 )
-ONE_SWEEP_GET_MAIL = ButtonWrapper(
-    name='ONE_SWEEP_GET_MAIL',
-    share=Button(
-        file='./assets/share/dispatch/mailbox/ONE_SWEEP_GET_MAIL.png',
-        area=(206, 554, 255, 592),
-        search=(186, 534, 275, 612),
-        color=(222, 199, 167),
-        button=(206, 554, 255, 592),
-    ),
-)
 OPEN_MAILBOX = ButtonWrapper(
     name='OPEN_MAILBOX',
     share=Button(
@@ -80,6 +70,6 @@ PRESENT_MAIL_UNLOCK = ButtonWrapper(
         area=(164, 119, 197, 149),
         search=(144, 99, 217, 169),
         color=(241, 200, 170),
-        button=(164, 119, 197, 149),
+        button=(206, 554, 255, 592),
     ),
 )

@@ -118,7 +118,7 @@ class Ocr:
         # pre process
         start_time = time.time()
         if not direct_ocr:
-            image = crop(image, self.button.area)
+            image = crop(image,self.button.area)
         image = self.pre_process(image)
         # ocr
         result, _ = self.model.ocr_single_line(image)

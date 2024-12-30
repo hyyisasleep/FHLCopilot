@@ -54,6 +54,7 @@
     },
     "Dungeon": {
       "Team": 1,
+      "DailyJinGe": 0,
       "DailyBaoXuPlan": {},
       "DailyJingYuanPlan": {},
       "DailyGuShiFengYunPlan": {},
@@ -107,12 +108,17 @@
       "ServerUpdate": "06:00"
     }
   },
-  "DataUpDate": {
+  "DataUpdate": {
     "Scheduler": {
-      "Enable": false,
+      "Enable": true,
       "NextRun": "2020-01-01 00:00:00",
-      "Command": "DataUpDate",
+      "Command": "DataUpdate",
       "ServerUpdate": "06:00"
+    },
+    "ItemStorage": {
+      "Copper": {},
+      "TongBao": {},
+      "Power": {}
     }
   },
   "ClearJinGeTalisman": {
@@ -128,6 +134,7 @@
   },
   "DailyPassword": {
     "DailyPassword": {
+      "WechatInstallPath": "D:\\WeChat\\WeChat.exe",
       "OneWeekPasswordList": {}
     }
   }

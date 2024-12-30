@@ -48,9 +48,8 @@ class FHLCopilot(AzurLaneAutoScript):
         BattlePass(config=self.config, device=self.device).run()
 
     def data_update(self):
-        pass
-        # from tasks.item.data_update import DataUpdate
-        # DataUpdate(config=self.config, device=self.device).run()
+        from tasks.item.data_update import DataUpdate
+        DataUpdate(config=self.config, device=self.device).run()
 
     def daily_password(self):
         from tasks.daily.daily_password import DailyPassword

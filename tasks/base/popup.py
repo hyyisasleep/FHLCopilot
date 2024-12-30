@@ -78,7 +78,7 @@ class PopupHandler(ModuleBase):
 
             if clicked:
                 cur = np.mean(get_color(self.device.image, background_button.area))
-                if cur - prev > 30:
+                if abs(cur - prev) > 30:
                     logger.info("Get color change, suggest popup is close")
                     self.interval_reset(close_button)
                     return True

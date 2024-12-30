@@ -47,9 +47,9 @@ class Mailbox(UI):
             if self.appear(PRESENT_MAIL_LOCKED):
                 logger.info("No mail with present")
                 break
-            if self.appear(PRESENT_MAIL_UNLOCK):
+            if self.appear_then_click(PRESENT_MAIL_UNLOCK):
                 logger.info("Has mail to get present")
-                self.appear_then_click(ONE_SWEEP_GET_MAIL)
+                # self.appear_then_click(ONE_SWEEP_GET_MAIL)
                 continue
 
         if self.appear(MAILBOX_CHECK):

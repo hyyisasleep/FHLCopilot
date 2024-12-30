@@ -37,9 +37,9 @@ AUTO_COMBAT_END_CHECK = ButtonWrapper(
     name='AUTO_COMBAT_END_CHECK',
     share=Button(
         file='./assets/share/combat/AUTO_COMBAT_END_CHECK.png',
-        area=(388, 491, 601, 535),
-        search=(368, 471, 621, 555),
-        color=(123, 80, 58),
+        area=(405, 536, 430, 561),
+        search=(385, 516, 450, 581),
+        color=(171, 143, 129),
         button=(967, 473, 1081, 553),
     ),
 )
@@ -101,6 +101,16 @@ FAIL_CHECK = ButtonWrapper(
         search=(543, 523, 737, 588),
         color=(93, 102, 92),
         button=(563, 543, 717, 568),
+    ),
+)
+OCR_ACTUAL_AUTO_TIMES = ButtonWrapper(
+    name='OCR_ACTUAL_AUTO_TIMES',
+    share=Button(
+        file='./assets/share/combat/OCR_ACTUAL_AUTO_TIMES.png',
+        area=(435, 535, 586, 565),
+        search=(415, 515, 606, 585),
+        color=(108, 59, 36),
+        button=(435, 535, 586, 565),
     ),
 )
 OCR_AUTO_TIMES = ButtonWrapper(

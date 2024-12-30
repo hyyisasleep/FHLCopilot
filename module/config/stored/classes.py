@@ -219,21 +219,21 @@ class StoredMonthlyCard30(StoredMonthlyCard):
 
 # 体力
 class StoredPower(StoredCounter):
-    FIXED_TOTAL = 150
+
 
     def predict_current(self) -> int:
         """
         Predict current stamina from records
         """
         # 修改上限，有月卡是250没有是150
-        if StoredMonthlyCard30.value > 0 or StoredMonthlyCard68.value > 0:
-            self.FIXED_TOTAL = 250
-        else:
-            self.FIXED_TOTAL = 150
+        # if StoredMonthlyCard30.value > 0 or StoredMonthlyCard68.value > 0:
+        #     self.FIXED_TOTAL = 250
+        # else:
+        #     self.FIXED_TOTAL = 150
         # Overflowed
 
         value = self.value
-        if value >= self.FIXED_TOTAL:
+        if value >= self.total:
             return value
         # Invalid time, record in the future
         record = self.time
@@ -242,7 +242,7 @@ class StoredPower(StoredCounter):
             return value
         # Calculate
         # ?
-        # Recover 1 trailbaze power each 6 minutes
+        # Recover 1 power each 6 minutes(?
         diff = (now - record).total_seconds()
         value += int(diff // 360)
         return value

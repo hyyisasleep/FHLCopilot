@@ -18,11 +18,11 @@ class Meal(UI):
         self._get_lunch_and_dinner()
         self.ui_ensure(page_office)
 
-        self.config.task_delay(target=self._get_delay_target(self))
+        self.config.task_delay(target=self._get_delay_target())
 
 
     @staticmethod
-    def _get_delay_target(self):
+    def _get_delay_target():
         """
         懒得在SRC找怎么写延迟的了直接自己写了一个（对不起
         领完之后推迟到下一次午晚饭或第二天的午饭，但是目前没考虑失败
@@ -45,7 +45,9 @@ class Meal(UI):
             logger.info("Time is not up yet, no need to have a meal")
             return
         self._get_meal_power("lunch",LUNCH_UNLOCK,LUNCH_FINISH,LUNCH_GETBACK)
-        self._get_meal_power("dinner", DINNER_UNLOCK,DINNER_FINISH,DINNER_GETBACK)
+
+        if now.hour >= 17:
+            self._get_meal_power("dinner", DINNER_UNLOCK,DINNER_FINISH,DINNER_GETBACK)
 
     def _get_meal_power(self,state:str,unlock_button:ButtonWrapper,finish_button:ButtonWrapper,get_back_button:ButtonWrapper,skip_first_screenshot=True):
         """

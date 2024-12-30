@@ -18,15 +18,15 @@ class DailyPassword(UI):
             logger.info('Clear last week password')
             self.config.stored.OneWeekPasswordList.clear()
 
-        # 跳转到互动界面
+
         from tasks.daily.wechat_get_password import wechat_sign_in_and_get_password
-        psw = wechat_sign_in_and_get_password()
+        psw = wechat_sign_in_and_get_password(self.config.DailyPassword_WechatInstallPath)
         if psw == "" or psw is None:
             logger.warning("Can't get today's password,break")
             return
         else:
             logger.info(f"Get password:{psw}")
-        import datetime
+
 
         today = get_server_weekday()
 
@@ -96,6 +96,7 @@ class DailyPassword(UI):
                 continue
             if self.appear_then_click(FILL_CONFIRM_UNLOCK,similarity=0.95):
                 has_filled_text = True
+                timeout.reset()
                 continue
 
             if self.appear(PSW_INPUT_BOX_CHECK):

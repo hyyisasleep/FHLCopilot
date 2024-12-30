@@ -18,6 +18,6 @@ class BattlePass(UI):
         """
         logger.hr('BattlePass', level=1)
         # self.run_baoxu(times=4)
-
+        self.config.task_call("DataUpdate")
 
         self.config.task_delay(server_update=True)
