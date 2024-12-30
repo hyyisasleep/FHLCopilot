@@ -217,6 +217,9 @@ class StoredMonthlyCard68(StoredMonthlyCard):
 class StoredMonthlyCard30(StoredMonthlyCard):
     pass
 
+class StoredBattlePassLevel(StoredCounter):
+    FIXED_TOTAL = 60
+
 # 体力
 class StoredPower(StoredCounter):
 
@@ -503,8 +506,7 @@ class StoredDailyGuildMission(StoredCounter, StoredExpiredAt0600):
 
 #
 #
-# class StoredBattlePassLevel(StoredCounter):
-#     FIXED_TOTAL = 70
+
 #
 #
 # class StoredBattlePassWeeklyQuest(StoredCounter, StoredExpiredAtMonday0600):

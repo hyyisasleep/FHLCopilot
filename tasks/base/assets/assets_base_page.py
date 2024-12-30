@@ -96,15 +96,31 @@ DAILY_QUEST_CHECK = ButtonWrapper(
         button=(87, 19, 335, 45),
     ),
 )
-FULI_AND_CHANGPING_CHECK = ButtonWrapper(
-    name='FULI_AND_CHANGPING_CHECK',
-    share=Button(
-        file='./assets/share/base/page/FULI_AND_CHANGPING_CHECK.png',
-        area=(54, 95, 152, 120),
-        search=(34, 75, 172, 140),
-        color=(224, 183, 111),
-        button=(54, 95, 152, 120),
-    ),
+FULIWANGCHUAN_CHECK = ButtonWrapper(
+    name='FULIWANGCHUAN_CHECK',
+    share=[
+        Button(
+            file='./assets/share/base/page/FULIWANGCHUAN_CHECK.png',
+            area=(54, 95, 152, 120),
+            search=(32, 75, 177, 691),
+            color=(224, 183, 111),
+            button=(54, 95, 152, 120),
+        ),
+        Button(
+            file='./assets/share/base/page/FULIWANGCHUAN_CHECK.2.png',
+            area=(58, 180, 75, 201),
+            search=(32, 75, 177, 691),
+            color=(182, 197, 176),
+            button=(58, 180, 75, 201),
+        ),
+        Button(
+            file='./assets/share/base/page/FULIWANGCHUAN_CHECK.3.png',
+            area=(58, 180, 75, 201),
+            search=(32, 75, 177, 691),
+            color=(210, 176, 139),
+            button=(58, 180, 75, 201),
+        ),
+    ],
 )
 GACHA_CHECK = ButtonWrapper(
     name='GACHA_CHECK',

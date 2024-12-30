@@ -423,6 +423,16 @@
         "value": "06:00",
         "display": "hide"
       }
+    },
+    "BattlePassStorage": {
+      "BattlePassLevel": {
+        "type": "stored",
+        "value": {},
+        "display": "display",
+        "stored": "StoredBattlePassLevel",
+        "order": 5,
+        "color": "#cbe45b"
+      }
     }
   },
   "DataUpdate": {

@@ -36,7 +36,9 @@ class PowerOCR(DigitCounter):
         result = re.sub(r'15$', '150', result)
 
         result = result.replace('/1501', '/150')
-
+        result = result.replace('1.150$', '/150')
+        # 12801:250  -> 1280/250
+        result = result.replace('1:150$', '/150')
 
         # 15541250 -> 1554/250
         result = re.sub(r'1250$', '/250', result)
@@ -46,6 +48,8 @@ class PowerOCR(DigitCounter):
         result = result.replace('/2501', '/250')
         # 15541.250 -> 1554/250
         result = result.replace('1.250$', '/250')
+        # 12801:250  -> 1280/250
+        result = result.replace('1:250$', '/250')
         return result
 
 class DataUpdate(UI):

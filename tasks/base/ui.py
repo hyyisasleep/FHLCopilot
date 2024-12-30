@@ -409,6 +409,8 @@ class UI(PopupHandler):
         # 雅社感谢信物奖励
         if self.handle_begging_thanks():
             return True
+        if self.handle_bp_level_up():
+            return True
         # if self.handle_open_item_pack():
         #     return True
         # if self.handle_jingezhizun_rewards():

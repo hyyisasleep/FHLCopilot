@@ -74,6 +74,9 @@ class GeneratedConfig:
     MonthlyCard_MonthlyCard30 = {}
     MonthlyCard_MonthlyCard68 = {}
 
+    # Group `BattlePassStorage`
+    BattlePassStorage_BattlePassLevel = {}
+
     # Group `ItemStorage`
     ItemStorage_Copper = {}
     ItemStorage_TongBao = {}

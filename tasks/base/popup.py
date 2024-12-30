@@ -149,7 +149,19 @@ class PopupHandler(ModuleBase):
             logger.info("Get blessing")
             return True
         return False
+    def handle_bp_level_up(self,interval=5)->bool:
+        """
+        Popup bp level up
 
+        Args:
+            interval:
+
+        Returns:
+            If handled.
+        """
+        if self.appear_then_click(BP_LEVEL_UP,interval):
+            logger.info("Skip bp level up")
+            return True
     def handle_cattery_get_cat(self, interval=5) -> bool:
         """
         Popup new cat
@@ -160,6 +172,7 @@ class PopupHandler(ModuleBase):
         Returns:
             If handled.
         """
+
         # 有时候会冒出一些标准猫让你捏脸，但是随机和完成键是同时出现的，避免抽风直接不随机了
         if self.appear_then_click(CATTERY_SHAPE_CAT_CONFIRM, interval):
             logger.info("Skip shape the cat")
