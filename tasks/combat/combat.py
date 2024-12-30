@@ -2,7 +2,8 @@
 from module.base.timer import Timer
 from module.exception import RequestHumanTakeover
 from module.logger import logger
-from module.ocr.ocr import DigitCounter
+from module.ocr.ocr import DigitCounter, Digit
+from tasks.base.assets.assets_base_page import BAOXU_JINGYUAN_GOTO_PREPARE
 
 from tasks.base.page import page_jingyuan_prepare, page_baoxu_prepare, page_main
 from tasks.base.ui import UI
@@ -55,27 +56,27 @@ class Combat(UI):
             actual_times = self._set_auto_combat_times(times)
             # 体力不够了或者其他什么bug，关弹窗
             if actual_times == 0:
-                self.close_buy_details_popup()
+                self.close_popup(CLOSE_SET_AUTO_COMBAT,CLOSE_SET_AUTO_COMBAT_BACKGROUND)
                 return 0
             # 开始挂机
             else:
-                self._run_auto_combat()
+                return self._run_auto_combat()
 
-                return actual_times
+                # return actual_times
 
-    def _close_set_auto_combat_popup(self, skip_first_screenshot=True):
-        timeout = Timer(5).start()
-        while 1:
-            if skip_first_screenshot:
-                skip_first_screenshot = False
-            else:
-                self.device.screenshot()
-            if timeout.reached():
-                logger.warning("Get Close set auto combat popup timeout")
-                break
-            if self.appear_then_click(CLOSE_SET_AUTO_COMBAT, interval=2):
-                continue
-            # TODO:用背景颜色变化检测关没关
+    # def _close_set_auto_combat_popup(self, skip_first_screenshot=True):
+    #     timeout = Timer(10).start()
+    #     while 1:
+    #         if skip_first_screenshot:
+    #             skip_first_screenshot = False
+    #         else:
+    #             self.device.screenshot()
+    #         if timeout.reached():
+    #             logger.warning("Get Close set auto combat popup timeout")
+    #             break
+    #         if self.appear_then_click(CLOSE_SET_AUTO_COMBAT, interval=2):
+    #             continue
+
 
     def _select_team(self,team,skip_first_screenshot=True):
 
@@ -152,34 +153,39 @@ class Combat(UI):
             # if self.appear_then_click(TEAM_FIVE_CLICK):
             #     logger.info("Switch to team 5")
             #     continue
+            # 跳过加成提示弹窗，真的懒得写了
             if self.appear_then_click(SKIP_BONUS):
                 continue
             if self.appear_then_click(OPEN_SET_AUTO_COMBAT):
                 continue
         return True
 
-    def _run_auto_combat(self,skip_first_screenshot=True):
+    def _run_auto_combat(self,skip_first_screenshot=True)->int:
         """
         开始挂机→挂机结束
+        Returns:
+            int: 实际战斗的次数，用OCR检测挂机界面
         """
-        start_combat = False
+        finish = False
         timeout = Timer(20).start()
+        actual_times = 0
         while 1:
             if skip_first_screenshot:
                 skip_first_screenshot = False
             else:
                 self.device.screenshot()
             if timeout.reached():
-                logger.warning("Get daily combat timeout")
+                logger.warning("Get daily combat timeout, assume not run auto combat")
                 break
-            if start_combat and self.appear(TEAM_FIVE_CHECK):
-                logger.info("Auto combat end")
+            if finish and (self.appear(TEAM_FIVE_CHECK) or self.appear(TEAM_FIVE_CLICK)):
+                # logger.info("Auto combat end")
                 break
 
             if self.appear_then_click(START_AUTO_COMBAT):
+                timeout.reset()
                 continue
             if self.appear(COMBAT_CONTINUE_CHECK, interval=5):
-                start_combat = True
+                # start_combat = True
                 logger.info("Combat continue")
                 timeout.reset()
                 self.device.stuck_record_clear()
@@ -192,10 +198,27 @@ class Combat(UI):
                 logger.info("Check mao che, skip")
                 timeout.reset()
                 continue
-            if self.appear_then_click(AUTO_COMBAT_END_CHECK):
+            if self.appear(AUTO_COMBAT_END_CHECK):
+                finish = True
                 logger.info("Get auto combat reward")
+                actual_times = Digit(OCR_ACTUAL_AUTO_TIMES).ocr_single_line(self.device.image)
+
+                self.appear_then_click(AUTO_COMBAT_END_CHECK)
                 timeout.reset()
                 continue
+
+            # 处理输了的特殊情况，还有个别情况下人工中断会停在胜利界面
+            if self.appear(BAOXU_JINGYUAN_GOTO_PREPARE):
+                logger.warning("Combat incorrectly return to prepare page, stop")
+                break
+            if self.appear_then_click(FAIL_CHECK):
+                logger.warning("Get combat fail, stop auto combat")
+                continue
+            if self.appear_then_click(WIN_CHECK):
+                logger.info("Get combat win, click to skip")
+                continue
+        logger.info(f"Auto combat end with run {actual_times} times")
+        return actual_times
 
 
     def _set_auto_combat_times(self, times=1):

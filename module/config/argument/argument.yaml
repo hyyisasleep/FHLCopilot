@@ -95,7 +95,7 @@ Optimization:
 DailyStorage:
   DailyLiveness:
     stored: StoredDailyLiveness
-    order: 2
+    order: 1
     color: "#ffcf70"
     display: display
 
@@ -120,6 +120,9 @@ Dungeon:
   Team:
     value: 1
     option: [1,2,3,4,5]
+  DailyJinGe:
+    type: checkbox
+    value: 0
   DailyBaoXuPlan:
     stored: StoredDailyBaoXu
     display: hide
@@ -158,14 +161,34 @@ MonthlyCard:
   MonthlyCard30:
     stored: StoredInt
     display: display
-
-
   MonthlyCard68:
     stored: StoredInt
     display: display
 
 
+BattlePassStorage:
+  BattlePassLevel:
+    stored: StoredBattlePassLevel
+    order: 5
+    color: "#cbe45b"
+    display: display
 
+ItemStorage:
+  Copper:
+    stored: StoredInt
+    order: 2
+    color: "#6D412E"
+    display: display
+  TongBao:
+    stored: StoredInt
+    order: 3
+    color: "#9CD4B8"
+    display: display
+  Power:
+    stored: StoredPower
+    order: 4
+    color: "#e3a596"
+    display: display
 
 ClearJinGeTalisman:
   BuySuperCatBallWhenArriveRankNineEveryWeek:
@@ -190,9 +213,10 @@ JinGeStorage:
     display: disabled
 
 
-
-
 DailyPassword:
+  WechatInstallPath:
+    type: textarea
+    value: 'D:\WeChat\WeChat.exe'
   OneWeekPasswordList:
     stored: StoredWeeklyPassword
     display: disabled

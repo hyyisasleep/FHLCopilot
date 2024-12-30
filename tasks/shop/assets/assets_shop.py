@@ -43,6 +43,16 @@ GOODS_SOLD_CHECK = ButtonWrapper(
         button=(578, 574, 707, 638),
     ),
 )
+HOLD_ITEM_OCR = ButtonWrapper(
+    name='HOLD_ITEM_OCR',
+    share=Button(
+        file='./assets/share/shop/HOLD_ITEM_OCR.png',
+        area=(591, 646, 710, 670),
+        search=(571, 626, 730, 690),
+        color=(204, 188, 159),
+        button=(591, 646, 710, 670),
+    ),
+)
 MENU_GIFT_DAILY_TODO = ButtonWrapper(
     name='MENU_GIFT_DAILY_TODO',
     share=Button(
@@ -124,5 +134,15 @@ SIGN_IN_PACK_SOLD_CHECK = ButtonWrapper(
         search=(468, 132, 803, 196),
         color=(139, 123, 111),
         button=(488, 152, 783, 176),
+    ),
+)
+TOTAL_PRICE_OCR = ButtonWrapper(
+    name='TOTAL_PRICE_OCR',
+    share=Button(
+        file='./assets/share/shop/TOTAL_PRICE_OCR.png',
+        area=(542, 588, 742, 623),
+        search=(522, 568, 762, 643),
+        color=(226, 125, 92),
+        button=(542, 588, 742, 623),
     ),
 )

@@ -30,6 +30,7 @@ class DailyShop(ShopUI):
         self.device.screenshot()
         self.ui_goto_main()
 
+
         self.ui_ensure(page_shop)
 
         self.get_monthly_card()
@@ -115,4 +116,4 @@ class DailyShop(ShopUI):
 if __name__ == "__main__":
     ui = DailyShop("fhlc")
     ui.device.screenshot()
-    ui.get_monthly_card()
+    ui.run()

@@ -20,7 +20,7 @@ DINNER_GETBACK = ButtonWrapper(
         area=(773, 597, 870, 623),
         search=(753, 577, 890, 643),
         color=(185, 134, 114),
-        button=(773, 597, 870, 623),
+        button=(811, 436, 961, 551),
     ),
 )
 DINNER_UNLOCK = ButtonWrapper(
@@ -33,25 +33,34 @@ DINNER_UNLOCK = ButtonWrapper(
         button=(811, 436, 961, 551),
     ),
 )
-LUNCH_FINISH = ButtonWrapper(
-    name='LUNCH_FINISH',
+GET_BACK_CONFIRM = ButtonWrapper(
+    name='GET_BACK_CONFIRM',
     share=Button(
-        file='./assets/share/office/meal/LUNCH_FINISH.png',
-        area=(365, 596, 460, 621),
-        search=(345, 576, 480, 641),
-        color=(135, 124, 119),
-        button=(365, 596, 460, 621),
+        file='./assets/share/office/meal/GET_BACK_CONFIRM.png',
+        area=(506, 317, 761, 342),
+        search=(486, 297, 781, 362),
+        color=(208, 197, 174),
+        button=(750, 453, 811, 491),
     ),
 )
-LUNCH_FINISH_OFFSET = ButtonWrapper(
-    name='LUNCH_FINISH_OFFSET',
-    share=Button(
-        file='./assets/share/office/meal/LUNCH_FINISH_OFFSET.png',
-        area=(366, 596, 827, 620),
-        search=(346, 576, 847, 640),
-        color=(183, 112, 85),
-        button=(366, 596, 827, 620),
-    ),
+LUNCH_FINISH = ButtonWrapper(
+    name='LUNCH_FINISH',
+    share=[
+        Button(
+            file='./assets/share/office/meal/LUNCH_FINISH.png',
+            area=(365, 596, 460, 621),
+            search=(345, 576, 480, 641),
+            color=(135, 124, 119),
+            button=(365, 596, 460, 621),
+        ),
+        Button(
+            file='./assets/share/office/meal/LUNCH_FINISH.2.png',
+            area=(366, 596, 459, 621),
+            search=(346, 576, 479, 641),
+            color=(170, 155, 150),
+            button=(366, 596, 459, 621),
+        ),
+    ],
 )
 LUNCH_GETBACK = ButtonWrapper(
     name='LUNCH_GETBACK',
@@ -60,7 +69,7 @@ LUNCH_GETBACK = ButtonWrapper(
         area=(311, 598, 409, 621),
         search=(291, 578, 429, 641),
         color=(185, 162, 148),
-        button=(311, 598, 409, 621),
+        button=(311, 469, 528, 573),
     ),
 )
 LUNCH_UNLOCK = ButtonWrapper(

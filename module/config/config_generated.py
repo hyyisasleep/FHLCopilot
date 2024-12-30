@@ -53,6 +53,7 @@ class GeneratedConfig:
 
     # Group `Dungeon`
     Dungeon_Team = 1  # 1, 2, 3, 4, 5
+    Dungeon_DailyJinGe = 0
     Dungeon_DailyBaoXuPlan = {}
     Dungeon_DailyJingYuanPlan = {}
     Dungeon_DailyGuShiFengYunPlan = {}
@@ -73,6 +74,14 @@ class GeneratedConfig:
     MonthlyCard_MonthlyCard30 = {}
     MonthlyCard_MonthlyCard68 = {}
 
+    # Group `BattlePassStorage`
+    BattlePassStorage_BattlePassLevel = {}
+
+    # Group `ItemStorage`
+    ItemStorage_Copper = {}
+    ItemStorage_TongBao = {}
+    ItemStorage_Power = {}
+
     # Group `ClearJinGeTalisman`
     ClearJinGeTalisman_BuySuperCatBallWhenArriveRankNineEveryWeek = 1
     ClearJinGeTalisman_EndWhenTalismanIsClear = 1
@@ -83,4 +92,5 @@ class GeneratedConfig:
     JinGeStorage_BuySuperCatBall = {}
 
     # Group `DailyPassword`
+    DailyPassword_WechatInstallPath = 'D:\\WeChat\\WeChat.exe'
     DailyPassword_OneWeekPasswordList = {}

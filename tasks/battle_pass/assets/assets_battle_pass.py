@@ -3,14 +3,24 @@ from module.base.button import Button, ButtonWrapper
 # This file was auto-generated, do not modify it manually. To generate:
 # ``` python -m dev_tools.button_extract ```
 
-BATTLE_PASS_PAGE_CHECK = ButtonWrapper(
-    name='BATTLE_PASS_PAGE_CHECK',
+BP_PAGE_CHECK = ButtonWrapper(
+    name='BP_PAGE_CHECK',
     share=Button(
-        file='./assets/share/battle_pass/BATTLE_PASS_PAGE_CHECK.png',
-        area=(15, 74, 191, 133),
-        search=(0, 54, 211, 153),
-        color=(241, 207, 124),
-        button=(15, 74, 191, 133),
+        file='./assets/share/battle_pass/BP_PAGE_CHECK.png',
+        area=(44, 88, 156, 123),
+        search=(32, 75, 177, 691),
+        color=(232, 195, 119),
+        button=(44, 88, 156, 123),
+    ),
+)
+BP_PAGE_STABLE_CHECK = ButtonWrapper(
+    name='BP_PAGE_STABLE_CHECK',
+    share=Button(
+        file='./assets/share/battle_pass/BP_PAGE_STABLE_CHECK.png',
+        area=(507, 125, 524, 154),
+        search=(487, 105, 544, 174),
+        color=(217, 168, 97),
+        button=(507, 125, 524, 154),
     ),
 )
 BP_REWARD_LOCKED = ButtonWrapper(
@@ -33,14 +43,43 @@ BP_REWARD_UNLOCK = ButtonWrapper(
         button=(1142, 579, 1238, 671),
     ),
 )
+GOTO_BP = ButtonWrapper(
+    name='GOTO_BP',
+    share=[
+        Button(
+            file='./assets/share/battle_pass/GOTO_BP.1.png',
+            area=(58, 180, 75, 201),
+            search=(38, 160, 95, 221),
+            color=(182, 197, 176),
+            button=(58, 180, 75, 201),
+        ),
+        Button(
+            file='./assets/share/battle_pass/GOTO_BP.2.png',
+            area=(58, 180, 75, 201),
+            search=(38, 160, 95, 221),
+            color=(210, 176, 139),
+            button=(58, 180, 75, 201),
+        ),
+    ],
+)
+LEVEL_REWARD_UNLOCK = ButtonWrapper(
+    name='LEVEL_REWARD_UNLOCK',
+    share=Button(
+        file='./assets/share/battle_pass/LEVEL_REWARD_UNLOCK.png',
+        area=(1110, 662, 1224, 700),
+        search=(1090, 642, 1244, 720),
+        color=(230, 179, 118),
+        button=(1110, 662, 1224, 700),
+    ),
+)
 MISSION_CLICK = ButtonWrapper(
     name='MISSION_CLICK',
     share=Button(
         file='./assets/share/battle_pass/MISSION_CLICK.png',
-        area=(1005, 123, 1110, 155),
-        search=(985, 103, 1130, 175),
-        color=(240, 176, 120),
-        button=(1005, 123, 1110, 155),
+        area=(1014, 134, 1104, 150),
+        search=(994, 114, 1124, 170),
+        color=(241, 191, 148),
+        button=(1014, 134, 1104, 150),
     ),
 )
 MISSION_CLOSE = ButtonWrapper(

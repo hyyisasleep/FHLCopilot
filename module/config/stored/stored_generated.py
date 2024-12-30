@@ -1,5 +1,6 @@
 from module.config.stored.classes import (
     StoredBase,
+    StoredBattlePassLevel,
     StoredBuySuperCatBallWhenArriveRankNine,
     StoredCounter,
     StoredDailyBaoXu,
@@ -35,6 +36,10 @@ class StoredGenerated:
     DailyGuildMission = StoredDailyGuildMission("Guild.GuildMission.DailyGuildMission")
     MonthlyCard30 = StoredInt("Shop.MonthlyCard.MonthlyCard30")
     MonthlyCard68 = StoredInt("Shop.MonthlyCard.MonthlyCard68")
+    BattlePassLevel = StoredBattlePassLevel("BattlePass.BattlePassStorage.BattlePassLevel")
+    Copper = StoredInt("DataUpdate.ItemStorage.Copper")
+    TongBao = StoredInt("DataUpdate.ItemStorage.TongBao")
+    Power = StoredPower("DataUpdate.ItemStorage.Power")
     TalismanToClean = StoredTalismanToClean("ClearJinGeTalisman.JinGeStorage.TalismanToClean")
     JinGeLevel = StoredJinGeLevel("ClearJinGeTalisman.JinGeStorage.JinGeLevel")
     BuySuperCatBall = StoredBuySuperCatBallWhenArriveRankNine("ClearJinGeTalisman.JinGeStorage.BuySuperCatBall")

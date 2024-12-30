@@ -9,8 +9,58 @@
       "total": 100,
       "value": 0
     },
-    "order": 2,
+    "order": 1,
     "color": "#ffcf70"
+  },
+  "Copper": {
+    "name": "Copper",
+    "path": "DataUpdate.ItemStorage.Copper",
+    "i18n": "ItemStorage.Copper.name",
+    "stored": "StoredInt",
+    "attrs": {
+      "time": "2020-01-01 00:00:00",
+      "value": 0
+    },
+    "order": 2,
+    "color": "#6D412E"
+  },
+  "TongBao": {
+    "name": "TongBao",
+    "path": "DataUpdate.ItemStorage.TongBao",
+    "i18n": "ItemStorage.TongBao.name",
+    "stored": "StoredInt",
+    "attrs": {
+      "time": "2020-01-01 00:00:00",
+      "value": 0
+    },
+    "order": 3,
+    "color": "#9CD4B8"
+  },
+  "Power": {
+    "name": "Power",
+    "path": "DataUpdate.ItemStorage.Power",
+    "i18n": "ItemStorage.Power.name",
+    "stored": "StoredPower",
+    "attrs": {
+      "time": "2020-01-01 00:00:00",
+      "total": 0,
+      "value": 0
+    },
+    "order": 4,
+    "color": "#e3a596"
+  },
+  "BattlePassLevel": {
+    "name": "BattlePassLevel",
+    "path": "BattlePass.BattlePassStorage.BattlePassLevel",
+    "i18n": "BattlePassStorage.BattlePassLevel.name",
+    "stored": "StoredBattlePassLevel",
+    "attrs": {
+      "time": "2020-01-01 00:00:00",
+      "total": 60,
+      "value": 0
+    },
+    "order": 5,
+    "color": "#cbe45b"
   },
   "DailyBaoXuPlan": {
     "name": "DailyBaoXuPlan",

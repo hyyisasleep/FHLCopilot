@@ -58,15 +58,14 @@ class PopupHandler(ModuleBase):
 
         return appear
 
+    def close_popup(self,close_button:ButtonWrapper,background_button:ButtonWrapper,skip_first_screenshot=True):
 
-
-    def close_buy_details_popup(self,skip_first_screenshot=True):
         """
-        Close goods details, used in shop and shapanlunyi,and use background from dark to light to check popup is close
+            Close popups, use background from dark to light to check popup is close
         """
         timeout = Timer(10).start()
         clicked = False
-        prev = np.mean(get_color(self.device.image, CLOSE_GOODS_DETAILS_BACKGROUND.area))
+        prev = np.mean(get_color(self.device.image, background_button.area))
         # print(prev)
         while 1:
             if skip_first_screenshot:
@@ -74,22 +73,28 @@ class PopupHandler(ModuleBase):
             else:
                 self.device.screenshot()
             if timeout.reached():
-                logger.warning("Get close buy details timeout,please check")
+                logger.warning("Get close popup timeout,please check")
                 return False
 
             if clicked:
-                cur = np.mean(get_color(self.device.image, CLOSE_GOODS_DETAILS_BACKGROUND.area))
-                if cur - prev > 30:
+                cur = np.mean(get_color(self.device.image, background_button.area))
+                if abs(cur - prev) > 30:
                     logger.info("Get color change, suggest popup is close")
-                    self.interval_reset(CLOSE_GOODS_DETAILS)
+                    self.interval_reset(close_button)
                     return True
 
-
-            if self.appear_then_click(CLOSE_GOODS_DETAILS):
+            if self.appear_then_click(close_button):
                 clicked = True
 
                 continue
         return False
+
+    def close_buy_details_popup(self,skip_first_screenshot=True):
+        """
+        Close goods details, used in shop and shapanlunyi,and use background from dark to light to check popup is close
+        """
+        return self.close_popup(CLOSE_GOODS_DETAILS, CLOSE_GOODS_DETAILS_BACKGROUND)
+
 
     def handle_week_jinge(self,interval=5) -> bool:
         if self.appear_then_click(SKIP_LAST_WEEK_LEVEL):
@@ -144,7 +149,19 @@ class PopupHandler(ModuleBase):
             logger.info("Get blessing")
             return True
         return False
+    def handle_bp_level_up(self,interval=5)->bool:
+        """
+        Popup bp level up
 
+        Args:
+            interval:
+
+        Returns:
+            If handled.
+        """
+        if self.appear_then_click(BP_LEVEL_UP,interval):
+            logger.info("Skip bp level up")
+            return True
     def handle_cattery_get_cat(self, interval=5) -> bool:
         """
         Popup new cat
@@ -155,6 +172,7 @@ class PopupHandler(ModuleBase):
         Returns:
             If handled.
         """
+
         # 有时候会冒出一些标准猫让你捏脸，但是随机和完成键是同时出现的，避免抽风直接不随机了
         if self.appear_then_click(CATTERY_SHAPE_CAT_CONFIRM, interval):
             logger.info("Skip shape the cat")

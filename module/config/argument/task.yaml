@@ -44,9 +44,11 @@ Daily:
 
     BattlePass:
       - Scheduler
+      - BattlePassStorage
 
-    DataUpDate:
+    DataUpdate:
       - Scheduler
+      - ItemStorage
 
 
 

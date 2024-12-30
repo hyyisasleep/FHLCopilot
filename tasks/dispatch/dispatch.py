@@ -1,11 +1,12 @@
 from module.base.timer import Timer
 from module.logger import logger
-from tasks.base.page import page_main, page_moments
+from tasks.base.page import page_main
 
 from tasks.base.ui import UI
 from tasks.dispatch.assets.assets_dispatch import *
 from tasks.dispatch.channel import Channel
 from tasks.dispatch.interact import Interact
+from tasks.dispatch.mailbox import Mailbox
 from tasks.dispatch.moments import Moments
 
 
@@ -42,8 +43,8 @@ class Dispatch(UI):
         Moments(self.config, self.device).run()
         # 世界频道发言两次 本来该在bp里写的但我懒得写bp
         Channel(self.config, self.device).run()
-        
-        # self.config.task_delay(server_update=True)
+        # 邮箱补领奖励
+        Mailbox(self.config, self.device).run()
 
     def _kylin_affair(self, skip_first_screenshot=True):
         """

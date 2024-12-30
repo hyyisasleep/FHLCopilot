@@ -37,9 +37,9 @@ AUTO_COMBAT_END_CHECK = ButtonWrapper(
     name='AUTO_COMBAT_END_CHECK',
     share=Button(
         file='./assets/share/combat/AUTO_COMBAT_END_CHECK.png',
-        area=(388, 491, 601, 535),
-        search=(368, 471, 621, 555),
-        color=(123, 80, 58),
+        area=(405, 536, 430, 561),
+        search=(385, 516, 450, 581),
+        color=(171, 143, 129),
         button=(967, 473, 1081, 553),
     ),
 )
@@ -73,6 +73,16 @@ CLOSE_SET_AUTO_COMBAT = ButtonWrapper(
         button=(902, 162, 940, 198),
     ),
 )
+CLOSE_SET_AUTO_COMBAT_BACKGROUND = ButtonWrapper(
+    name='CLOSE_SET_AUTO_COMBAT_BACKGROUND',
+    share=Button(
+        file='./assets/share/combat/CLOSE_SET_AUTO_COMBAT_BACKGROUND.png',
+        area=(402, 65, 528, 133),
+        search=(382, 45, 548, 153),
+        color=(28, 41, 54),
+        button=(402, 65, 528, 133),
+    ),
+)
 COMBAT_CONTINUE_CHECK = ButtonWrapper(
     name='COMBAT_CONTINUE_CHECK',
     share=Button(
@@ -87,10 +97,20 @@ FAIL_CHECK = ButtonWrapper(
     name='FAIL_CHECK',
     share=Button(
         file='./assets/share/combat/FAIL_CHECK.png',
-        area=(466, 54, 870, 144),
-        search=(446, 34, 890, 164),
-        color=(136, 128, 149),
-        button=(466, 54, 870, 144),
+        area=(563, 543, 717, 568),
+        search=(543, 523, 737, 588),
+        color=(93, 102, 92),
+        button=(563, 543, 717, 568),
+    ),
+)
+OCR_ACTUAL_AUTO_TIMES = ButtonWrapper(
+    name='OCR_ACTUAL_AUTO_TIMES',
+    share=Button(
+        file='./assets/share/combat/OCR_ACTUAL_AUTO_TIMES.png',
+        area=(435, 535, 586, 565),
+        search=(415, 515, 606, 585),
+        color=(108, 59, 36),
+        button=(435, 535, 586, 565),
     ),
 )
 OCR_AUTO_TIMES = ButtonWrapper(
@@ -306,5 +326,15 @@ TEAM_TWO_CLICK = ButtonWrapper(
         search=(1, 242, 81, 310),
         color=(180, 180, 175),
         button=(21, 262, 61, 290),
+    ),
+)
+WIN_CHECK = ButtonWrapper(
+    name='WIN_CHECK',
+    share=Button(
+        file='./assets/share/combat/WIN_CHECK.png',
+        area=(855, 28, 1048, 127),
+        search=(835, 8, 1068, 147),
+        color=(248, 221, 181),
+        button=(822, 589, 1037, 682),
     ),
 )

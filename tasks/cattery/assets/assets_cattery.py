@@ -37,11 +37,37 @@ PLAY_WITH_CAT = ButtonWrapper(
     name='PLAY_WITH_CAT',
     share=Button(
         file='./assets/share/cattery/PLAY_WITH_CAT.png',
-        area=(285, 123, 344, 159),
-        search=(265, 103, 364, 179),
-        color=(223, 190, 158),
-        button=(285, 123, 344, 159),
+        area=(288, 142, 342, 159),
+        search=(268, 122, 362, 179),
+        color=(189, 168, 149),
+        button=(288, 142, 342, 159),
     ),
+)
+PLAY_WITH_CAT_LOCKED = ButtonWrapper(
+    name='PLAY_WITH_CAT_LOCKED',
+    share=[
+        Button(
+            file='./assets/share/cattery/PLAY_WITH_CAT_LOCKED.png',
+            area=(281, 131, 350, 160),
+            search=(261, 111, 370, 180),
+            color=(252, 223, 220),
+            button=(281, 131, 350, 160),
+        ),
+        Button(
+            file='./assets/share/cattery/PLAY_WITH_CAT_LOCKED.2.png',
+            area=(281, 131, 350, 160),
+            search=(261, 111, 370, 180),
+            color=(215, 229, 225),
+            button=(281, 131, 350, 160),
+        ),
+        Button(
+            file='./assets/share/cattery/PLAY_WITH_CAT_LOCKED.3.png',
+            area=(281, 131, 350, 160),
+            search=(261, 111, 370, 180),
+            color=(68, 107, 187),
+            button=(281, 131, 350, 160),
+        ),
+    ],
 )
 SKIP_BUTTON = ButtonWrapper(
     name='SKIP_BUTTON',

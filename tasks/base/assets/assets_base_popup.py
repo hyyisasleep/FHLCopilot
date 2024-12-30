@@ -3,6 +3,16 @@ from module.base.button import Button, ButtonWrapper
 # This file was auto-generated, do not modify it manually. To generate:
 # ``` python -m dev_tools.button_extract ```
 
+BP_LEVEL_UP = ButtonWrapper(
+    name='BP_LEVEL_UP',
+    share=Button(
+        file='./assets/share/base/popup/BP_LEVEL_UP.png',
+        area=(558, 187, 723, 216),
+        search=(538, 167, 743, 236),
+        color=(172, 160, 123),
+        button=(927, 553, 1025, 653),
+    ),
+)
 CATTERY_GET_CAT = ButtonWrapper(
     name='CATTERY_GET_CAT',
     share=Button(

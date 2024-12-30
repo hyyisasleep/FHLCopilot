@@ -48,16 +48,14 @@ Guild:
       option: [ true, ]
       option_bold: [ true, ]
 
-#MealPower:
-#  Scheduler:
-#    ServerUpdate: 10:00
-#DataUpdate:
-#  Scheduler:
-#    Enable:
-#      type: state
-#      value: true
-#      option: [ true, ]
-#      option_bold: [ true, ]
+
+DataUpdate:
+  Scheduler:
+    Enable:
+      type: state
+      value: true
+      option: [ true, ]
+      option_bold: [ true, ]
 #
 ## ==================== Weekly ====================
 #

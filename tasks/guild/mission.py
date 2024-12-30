@@ -13,8 +13,12 @@ from tasks.guild.assets.assets_guild_mission import *
 class GuildMissionOCR(Ocr):
 
     def after_process(self, result):
-        result = re.sub(r'[，。：]', '', result)
+        result = re.sub(r'[，。："”“]', '', result)
         # result = result.replace("赛社","雅社")
+        if "蛙精"  in result or "蚌" in result:
+            result = '击退4只蚌精'
+        elif "心鹿" in result:
+            result = '击退5个镜之心魔'
         if '信物' in result:
             result = '完成1次雅社信物许愿'
         elif '故世' in result and '与' not in result:
@@ -26,9 +30,10 @@ class GuildMissionOCR(Ocr):
             # result = result.replace('贡站', '贡献')
             result = result.replace('登到','签到')
             result = result.replace('羁伴','羁绊')
-            result = result.replace('蚌格','蚌精')
+            # result = result.replace('蚌格','蚌精')
         return super().after_process(result)
     pass
+
 
 
 # 剑荡风云：与xxx(任意一位至契名士)在故世风云困难战斗胜利3次
@@ -49,7 +54,7 @@ class GuildMission(UI):
                    [OCR_MISSION_2,OCR_MISSION_2_MULTI_1,OCR_MISSION_2_MULTI_2],
                     [OCR_MISSION_3,OCR_MISSION_3_MULTI_1,OCR_MISSION_3_MULTI_2]]
     # 拿关键词判断第一次识别的对不对，对了就不用当两行重新识别了
-    ocr_dict = ["镜之心魔","镜渊","蚌精","宝墟","信物","消耗","签到","活跃度","羁绊值","故世","知交圈","合影"]
+    ocr_dict = ["镜之心魔","镜渊","蚌精","宝墟","信物","消耗","签到","活跃度","羁绊值","故世","知交圈","合影","寻英"]
 
     def _scan_one_mission(self, buttons:list[ButtonWrapper]):
         """
@@ -108,6 +113,13 @@ class GuildMission(UI):
         如果有要打宝墟镜渊的就写到dungon plan里
 
         """
+
+        # 清空
+        with self.config.multi_set():
+            if self.config.stored.DailyBaoXuPlan.is_expired():
+                self.config.stored.DailyBaoXuPlan.clear_total()
+            if self.config.stored.DailyJingYuanPlan.is_expired():
+                self.config.stored.DailyJingYuanPlan.clear_total()
         # 跳转到悬赏界面
         self.ui_ensure(page_guild_mission)
         self._wait_until_mission_page_stable()

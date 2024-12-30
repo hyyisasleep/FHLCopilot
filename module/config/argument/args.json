@@ -203,7 +203,7 @@
         "value": {},
         "display": "display",
         "stored": "StoredDailyLiveness",
-        "order": 2,
+        "order": 1,
         "color": "#ffcf70"
       }
     },
@@ -240,6 +240,10 @@
           4,
           5
         ]
+      },
+      "DailyJinGe": {
+        "type": "checkbox",
+        "value": 0
       },
       "DailyBaoXuPlan": {
         "type": "stored",
@@ -419,16 +423,28 @@
         "value": "06:00",
         "display": "hide"
       }
+    },
+    "BattlePassStorage": {
+      "BattlePassLevel": {
+        "type": "stored",
+        "value": {},
+        "display": "display",
+        "stored": "StoredBattlePassLevel",
+        "order": 5,
+        "color": "#cbe45b"
+      }
     }
   },
-  "DataUpDate": {
+  "DataUpdate": {
     "Scheduler": {
       "Enable": {
-        "type": "checkbox",
-        "value": false,
+        "type": "state",
+        "value": true,
         "option": [
-          true,
-          false
+          true
+        ],
+        "option_bold": [
+          true
         ]
       },
       "NextRun": {
@@ -438,13 +454,39 @@
       },
       "Command": {
         "type": "input",
-        "value": "DataUpDate",
+        "value": "DataUpdate",
         "display": "hide"
       },
       "ServerUpdate": {
         "type": "input",
         "value": "06:00",
         "display": "hide"
+      }
+    },
+    "ItemStorage": {
+      "Copper": {
+        "type": "stored",
+        "value": {},
+        "display": "display",
+        "stored": "StoredInt",
+        "order": 2,
+        "color": "#6D412E"
+      },
+      "TongBao": {
+        "type": "stored",
+        "value": {},
+        "display": "display",
+        "stored": "StoredInt",
+        "order": 3,
+        "color": "#9CD4B8"
+      },
+      "Power": {
+        "type": "stored",
+        "value": {},
+        "display": "display",
+        "stored": "StoredPower",
+        "order": 4,
+        "color": "#e3a596"
       }
     }
   },
@@ -482,6 +524,10 @@
   },
   "DailyPassword": {
     "DailyPassword": {
+      "WechatInstallPath": {
+        "type": "textarea",
+        "value": "D:\\WeChat\\WeChat.exe"
+      },
       "OneWeekPasswordList": {
         "type": "stored",
         "value": {},
