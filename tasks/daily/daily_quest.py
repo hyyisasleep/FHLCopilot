@@ -16,17 +16,17 @@ class DailyQuest(DailyQuestUI):
 
         """
         logger.hr('Daily Quest', level=1)
-        # self.clear_daily_liveness_and_plan()
-        #
-        # self.claimed_point_reward = False
-        #
-        # Office(config=self.config, device=self.device).run()
-        # Cattery(config=self.config, device=self.device).run()
-        # Dispatch(config=self.config, device=self.device).run()
-        #
-        # self.get_active_point_reward()
-        #
-        # self.set_daily_dungeon_plan()
+        self.clear_daily_liveness_and_plan()
+
+        self.claimed_point_reward = False
+
+        Office(config=self.config, device=self.device).run()
+        Cattery(config=self.config, device=self.device).run()
+        Dispatch(config=self.config, device=self.device).run()
+
+        self.get_active_point_reward()
+
+        self.set_daily_dungeon_plan()
         Dungeon(config=self.config, device=self.device).run()
 
         self.get_active_point_reward()
