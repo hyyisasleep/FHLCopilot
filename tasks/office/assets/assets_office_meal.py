@@ -17,9 +17,9 @@ DINNER_GETBACK = ButtonWrapper(
     name='DINNER_GETBACK',
     share=Button(
         file='./assets/share/office/meal/DINNER_GETBACK.png',
-        area=(773, 597, 870, 623),
-        search=(753, 577, 890, 643),
-        color=(185, 134, 114),
+        area=(362, 601, 379, 621),
+        search=(342, 581, 399, 641),
+        color=(171, 204, 172),
         button=(811, 436, 961, 551),
     ),
 )
@@ -66,9 +66,9 @@ LUNCH_GETBACK = ButtonWrapper(
     name='LUNCH_GETBACK',
     share=Button(
         file='./assets/share/office/meal/LUNCH_GETBACK.png',
-        area=(311, 598, 409, 621),
-        search=(291, 578, 429, 641),
-        color=(185, 162, 148),
+        area=(362, 601, 379, 621),
+        search=(342, 581, 399, 641),
+        color=(171, 204, 172),
         button=(311, 469, 528, 573),
     ),
 )

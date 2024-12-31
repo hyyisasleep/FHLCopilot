@@ -49,14 +49,14 @@ GOTO_BP = ButtonWrapper(
         Button(
             file='./assets/share/battle_pass/GOTO_BP.1.png',
             area=(58, 180, 75, 201),
-            search=(38, 160, 95, 221),
+            search=(32, 75, 177, 691),
             color=(182, 197, 176),
             button=(58, 180, 75, 201),
         ),
         Button(
             file='./assets/share/battle_pass/GOTO_BP.2.png',
             area=(58, 180, 75, 201),
-            search=(38, 160, 95, 221),
+            search=(32, 75, 177, 691),
             color=(210, 176, 139),
             button=(58, 180, 75, 201),
         ),

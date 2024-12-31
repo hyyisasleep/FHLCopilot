@@ -23,6 +23,15 @@ class Dungeon(Combat):
         """
         logger.hr('Dungeon', level=1)
         # 打宝墟，不用打的话actual_times会置0
+
+        if self.config.Dungeon_DailyJinGe:
+            logger.info("Run Jin Ge plan")
+            actual_times = (JinGeYanWu(config=self.config,device=self.device).
+                            run_until_get_daily_reward(self.config.stored.DailyJinGePlan.get_remain()))
+            if actual_times:
+                self.config.stored.DailyJinGePlan.add(actual_times)
+
+
         actual_times = self.run_baoxu(self.config.stored.DailyBaoXuPlan.get_remain())
 
         power = self.config.stored.Power.value
@@ -51,10 +60,6 @@ class Dungeon(Combat):
                 actual_times = self.run_jingyuan(self.config.stored.DailyJingYuanPlan.get_remain())
                 cnt += 1
 
-        if self.config.Dungeon_DailyJinGe:
-            actual_times = JinGeYanWu.run_until_get_daily_reward(self.config.stored.DailyJinGePlan.get_remain())
-            if actual_times:
-                self.config.stored.DailyJinGePlan.add(actual_times)
 
 
         self.ui_ensure(page_main)
