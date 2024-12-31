@@ -24,8 +24,10 @@ class Combat(UI):
         Returns:
             int:  success run times
         """
+
         if times == 0:
             return 0
+        logger.info("Run Bao Xu plan")
         self.ui_ensure(page_baoxu_prepare)
         return self._run_combat(times)
         # self.ui_ensure(page_main)
@@ -37,6 +39,7 @@ class Combat(UI):
         """
         if times == 0:
             return 0
+        logger.info("Run Jing yuan plan")
         self.ui_ensure(page_jingyuan_prepare)
         return self._run_combat(times)
         # self.ui_ensure(page_main)
@@ -177,6 +180,8 @@ class Combat(UI):
             if timeout.reached():
                 logger.warning("Get daily combat timeout, assume not run auto combat")
                 break
+
+
             if finish and (self.appear(TEAM_FIVE_CHECK) or self.appear(TEAM_FIVE_CLICK)):
                 # logger.info("Auto combat end")
                 break
@@ -201,7 +206,8 @@ class Combat(UI):
             if self.appear(AUTO_COMBAT_END_CHECK):
                 finish = True
                 logger.info("Get auto combat reward")
-                actual_times = Digit(OCR_ACTUAL_AUTO_TIMES).ocr_single_line(self.device.image)
+                if actual_times == 0:
+                    actual_times = Digit(OCR_ACTUAL_AUTO_TIMES).ocr_single_line(self.device.image)
 
                 self.appear_then_click(AUTO_COMBAT_END_CHECK)
                 timeout.reset()

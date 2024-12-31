@@ -44,7 +44,9 @@ def wait_for_start(state):
     if (morning_window[0] <= current_hour < morning_window[1]) or (
             evening_window[0] <= current_hour < evening_window[1]):
         return True
-
+    elif state == STATE_DAILY:
+        # 为了做每日任务就不等了- -
+        return False
 
     # 计算离下一个时间段最近的时间
     if current_hour < morning_window[0]:
@@ -52,13 +54,9 @@ def wait_for_start(state):
     elif morning_window[1] <= current_hour < evening_window[0]:
         next_time = datetime(now.year, now.month, now.day, evening_window[0], 2)
     elif current_hour >= evening_window[1]:
-        if state == STATE_DAILY:
-            # 为了做每日任务就不等了- -
-            return  False
-        else:
-            next = now + timedelta(days=1)
-            next_time = datetime(next.year, next.month, next.day, morning_window[0], 2)
-            # 明天的11点
+        next = now + timedelta(days=1)
+        next_time = datetime(next.year, next.month, next.day, morning_window[0], 2)
+        # 明天的11点
     else:
         return True
 
@@ -86,14 +84,20 @@ class JinGeYanWu(UI):
         win = False
         logger.hr('Get JinGe daily reward',level=1)
         while 1:
+
+
             self.device.screenshot()
             self.ui_ensure(page_jingeyanwu)
-            talisman_num,soul_num,level = self._jin_ge_prepare()
-
+            talisman_num,soul_num,level = self.jin_ge_prepare()
+            if level >= 9:
+                self.handle_buy_super_cat_ball_when_arrive_level_nine()
             if level > 6:
                 if not wait_for_start(STATE_DAILY):
                     logger.warning("Today's jin ge is close, stop" )
                     break
+
+
+
             if self.appear(JINGEYANWU_GOTO_NO_REWARD_PREPARE):
                 logger.info("JinGe is not open this time, stop")
                 break
@@ -122,11 +126,13 @@ class JinGeYanWu(UI):
             self.ui_ensure(page_jingeyanwu)
             # 七段以上限时打金戈
 
-            talisman_num,soul_num,level = self._jin_ge_prepare()
-
+            talisman_num,soul_num,level = self.jin_ge_prepare()
+            if level >= 9:
+                self.handle_buy_super_cat_ball_when_arrive_level_nine()
             if level > 6:
                 # 七段以上限时打金戈，
                 wait_for_start(STATE_CLEAR)
+
 
             if self.appear(JINGEYANWU_GOTO_NO_REWARD_PREPARE):
                 logger.info("JinGe is not open this time, stop")
@@ -142,7 +148,7 @@ class JinGeYanWu(UI):
 
         # self.ui_goto_main()
 
-    def _jin_ge_prepare(self):
+    def jin_ge_prepare(self):
         """
             识别当前待清枕戈符，骁武魂和段位，处理精养喵球，如果要等就等
         Returns:
@@ -151,6 +157,7 @@ class JinGeYanWu(UI):
             level:int 金戈段位
 
         """
+        self.ui_ensure(page_jingeyanwu)
         talisman_num = Digit(TALISMAN_OCR, lang=self.config.LANG).ocr_single_line(self.device.image)
 
         soul_num  = Digit(SOUL_OCR, lang=self.config.LANG).ocr_single_line(self.device.image)
@@ -165,8 +172,7 @@ class JinGeYanWu(UI):
             self.config.stored.TalismanToClean.value = talisman_num
 
 
-        if level >= 9:
-            self.handle_buy_super_cat_ball_when_arrive_level_nine()
+
 
         return talisman_num, soul_num, level
 

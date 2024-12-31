@@ -1,6 +1,6 @@
-
-
+from module.config.utils import get_server_datetime
 from module.logger import logger
+from tasks.PVP.JinGeYanWu import JinGeYanWu
 
 from tasks.cattery.cattery import Cattery
 from tasks.daily.daily_quest_state import DailyQuestUI
@@ -16,17 +16,17 @@ class DailyQuest(DailyQuestUI):
 
         """
         logger.hr('Daily Quest', level=1)
-        self.clear_daily_liveness_and_plan()
-
-        self.claimed_point_reward = False
-
-        Office(config=self.config, device=self.device).run()
-        Cattery(config=self.config, device=self.device).run()
-        Dispatch(config=self.config, device=self.device).run()
-
-        self.get_active_point_reward()
-
-        self.set_daily_dungeon_plan()
+        # self.clear_daily_liveness_and_plan()
+        #
+        # self.claimed_point_reward = False
+        #
+        # Office(config=self.config, device=self.device).run()
+        # Cattery(config=self.config, device=self.device).run()
+        # Dispatch(config=self.config, device=self.device).run()
+        #
+        # self.get_active_point_reward()
+        #
+        # self.set_daily_dungeon_plan()
         Dungeon(config=self.config, device=self.device).run()
 
         self.get_active_point_reward()
@@ -35,6 +35,7 @@ class DailyQuest(DailyQuestUI):
         #     self.config.task_call('DataUpdate')
 
         self.config.task_delay(server_update=True)
+
 
     def clear_daily_liveness_and_plan(self):
 
@@ -50,6 +51,21 @@ class DailyQuest(DailyQuestUI):
             if self.config.stored.DailyJinGePlan.is_expired():
                 self.config.stored.DailyJinGePlan.clear_total()
 
+    def jin_ge_has_priority(self):
+        """
+        判断今天是打宝墟还是打金戈，要是在金戈时间里就先打金戈，不然就先宝墟
+        。。。以防有人一点半或者九点半开错过金戈时间，把判断时间提前了一个小时
+        """
+        use_jin_ge = self.config.Dungeon_DailyJinGe
+        if use_jin_ge:
+            _, _, level = JinGeYanWu(config=self.config, device=self.device).jin_ge_prepare()
+            if level > 6:
+                now = get_server_datetime().hour
+                if 11 <= now < 13 or 19 <= now < 21:
+                    return True
+            else: # 六段以下随便打
+                return True
+        return False
     def set_daily_dungeon_plan(self):
         """
         根据当前活跃度算还要打什么
@@ -65,22 +81,18 @@ class DailyQuest(DailyQuestUI):
         jin_ge = 0
         if (bao_xu + jing_yuan)>= remains:
             return True
+
+        jin_ge_priority = self.jin_ge_has_priority()
+
         while remains > 0:
-            if jin_ge < 3:
+            if jin_ge_priority and jin_ge < 3:
                 jin_ge += 1
             elif bao_xu < 4:
                 bao_xu += 1
             elif jing_yuan < 1:
                 jing_yuan += 1
-            elif jin_ge < 3:
-                jin_ge += 1
-            # elif gu_shi < 3:
-            #     gu_shi += 1
 
-            remains -= 1
-        # 没启用选项的话置0
-        if not self.config.Dungeon_DailyJinGe:
-            jin_ge = 0
+
         logger.info(f"Today's plan: Bao Xu: {bao_xu} times, Jing Yuan: {jing_yuan} times, Jin Ge: {jin_ge} times")
         with self.config.multi_set():
             self.config.stored.DailyBaoXuPlan.set(value=0,total=bao_xu)

@@ -3,11 +3,10 @@ import re
 from module.base.timer import Timer
 from module.base.utils import crop
 from module.logger import logger
-from module.ocr.ocr import Digit, DigitCounter, Ocr
+from module.ocr.ocr import Digit, DigitCounter
 from tasks.base.page import page_main
 from tasks.base.ui import UI
 from tasks.item.assets.assets_item import *
-from webapp.toolkit.Lib.xmlrpc.client import FastParser
 
 
 class CopperOCR(Digit):
