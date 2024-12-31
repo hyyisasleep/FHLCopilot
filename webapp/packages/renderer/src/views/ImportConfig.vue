@@ -281,12 +281,26 @@ const onReimport = onCancel;
     text-align: right;
     transform: translateX(-250px);
   }
-
+  :deep(.arco-steps-item-finish) {
+    .arco-steps-item-node {
+      .arco-steps-icon {
+        background-color: rgb(var(--gray-3));
+        color: rgb(var(--primary-9));
+      }
+    }
+  }
+  :deep(.arco-steps-item-process) {
+    .arco-steps-item-node {
+      .arco-steps-icon {
+        background-color: rgb(var(--primary-9));
+      }
+    }
+  }
   :deep(.arco-steps-item-wait) {
     .arco-steps-item-node {
       .arco-steps-icon {
-        border: 2px solid rgb(var(--primary-6));
-        color: rgb(var(--primary-6));
+        border: 2px solid rgb(var(--primary-9));
+        color: rgb(var(--primary-9));
       }
     }
   }
