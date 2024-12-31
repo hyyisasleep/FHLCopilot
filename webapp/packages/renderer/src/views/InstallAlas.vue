@@ -158,7 +158,7 @@ const installAlas = async () => {
     border-left: none;
     border-right: none;
     border-top: none;
-    border-bottom: 2px solid rgb(var(--primary-6));
+    border-bottom: 2px solid rgb(var(--primary-9));
     border-radius: 0;
     display: flex;
     justify-content: center;
