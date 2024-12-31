@@ -188,9 +188,9 @@ class Control(Hermit, Minitouch, Scrcpy, MaaTouch, NemuIpc):
         # elif method == 'MaaTouch':
         #     self.long_click_maatouch(input)
         # el
-        if method == 'nemu_ipc':
-
-
-            self.input_text_nemu_ipc(input)
-        else:
-            self.input_text_adb(input)
+        # if method == 'nemu_ipc':
+        #
+        #
+        #     self.input_text_nemu_ipc(input)
+        # else:
+        self.input_text_adb(input)

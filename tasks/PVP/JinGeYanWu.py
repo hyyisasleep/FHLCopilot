@@ -56,7 +56,9 @@ def wait_for_start(state):
             # 为了做每日任务就不等了- -
             return  False
         else:
-            next_time = datetime(now.year, now.month, now.day + 1, morning_window[0], 2)  # 明天的11点
+            next = now + timedelta(days=1)
+            next_time = datetime(next.year, next.month, next.day, morning_window[0], 2)
+            # 明天的11点
     else:
         return True
 

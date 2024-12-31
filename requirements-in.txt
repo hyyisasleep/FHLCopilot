@@ -35,6 +35,9 @@ aiofiles
 # Game resources
 srcmap==2.3.20240701
 
+# wechat password
+pywinauto
+
 # For dev
 # pip-tools
 pynput

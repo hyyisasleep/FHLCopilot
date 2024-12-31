@@ -57,7 +57,7 @@ class ConfigModel:
     # Webui
     WebuiHost: str = "0.0.0.0"
     WebuiPort: int = 24590
-    Language: str = "en-US"
+    Language: str = "zh-CN"
     Theme: str = "default"
     DpiScaling: bool = True
     Password: Optional[str] = None
@@ -117,7 +117,7 @@ class DeployConfig(ConfigModel):
         # Don't write these into deploy.yaml
         super().__setattr__('GitOverCdn', self.Repository in ['cn'])
         if self.Repository in ['global', 'cn']:
-            super().__setattr__('Repository', 'https://github.com/hyyisasleep/FHLCopilot')
+            super().__setattr__('Repository', 'https://gitee.com/hyyisasleep/FHLCopilot')
 
     def filepath(self, path):
         """

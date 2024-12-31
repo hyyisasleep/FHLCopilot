@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from module.base.timer import Timer
 from module.logger import logger
@@ -36,7 +36,8 @@ class Meal(UI):
         if 11 <= hour < 17:
             next_time = datetime(now.year, now.month, now.day,17, 0)
         elif 17 <= hour < 24:
-            next_time = datetime(now.year, now.month, now.day + 1,11, 0)
+            next = now + timedelta(days=1)
+            next_time = datetime(next.year, next.month, next.day, 11, 0)
         return next_time
 
     def _get_lunch_and_dinner(self):

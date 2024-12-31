@@ -86,7 +86,5 @@ whichcraft==0.6.1         # via adbutils, uiautomator2
 wrapt==1.15.0             # via -r requirements-in.txt, deprecated
 xmltodict==0.13.0         # via apkutils2
 
-pywin32~=308
-pywinauto~=0.6.8
-pyperclip~=1.9.0
-qrcode~=8.0
+pywin32==308
+pywinauto==0.6.8
