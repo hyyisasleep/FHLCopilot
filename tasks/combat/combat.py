@@ -5,7 +5,7 @@ from module.logger import logger
 from module.ocr.ocr import DigitCounter, Digit
 from tasks.base.assets.assets_base_page import BAOXU_JINGYUAN_GOTO_PREPARE
 
-from tasks.base.page import page_jingyuan_prepare, page_baoxu_prepare, page_main
+from tasks.base.page import page_jingyuan_prepare, page_baoxu_prepare, page_main, page_baoxu, page_jingyuan
 from tasks.base.ui import UI
 from tasks.combat.assets.assets_combat import *
 
@@ -27,7 +27,12 @@ class Combat(UI):
 
         if times == 0:
             return 0
-        logger.info("Run Bao Xu plan")
+        logger.info(f"Run Bao Xu {times} times")
+        self.ui_ensure(page_baoxu)
+        # TODO: 体力不够的话点击准备挑战会弹出体力弹窗。我嘞个。
+        # if self.appear(BAOXU_JINGYUAN_GOTO_PREPARE_FAIL):
+        #     logger.warning("Power is not enough, stop")
+        #     return 0
         self.ui_ensure(page_baoxu_prepare)
         return self._run_combat(times)
         # self.ui_ensure(page_main)
@@ -39,7 +44,9 @@ class Combat(UI):
         """
         if times == 0:
             return 0
-        logger.info("Run Jing yuan plan")
+        logger.info(f"Run Jing yuan {times} times")
+        self.ui_ensure(page_jingyuan)
+
         self.ui_ensure(page_jingyuan_prepare)
         return self._run_combat(times)
         # self.ui_ensure(page_main)
@@ -185,7 +192,10 @@ class Combat(UI):
             if finish and (self.appear(TEAM_FIVE_CHECK) or self.appear(TEAM_FIVE_CLICK)):
                 # logger.info("Auto combat end")
                 break
-
+                # 处理输了的特殊情况，还有个别情况下人工中断会停在胜利界面
+            if self.appear(BAOXU_JINGYUAN_GOTO_PREPARE):
+                logger.warning("Combat incorrectly return to prepare page, stop")
+                break
             if self.appear_then_click(START_AUTO_COMBAT):
                 timeout.reset()
                 continue
@@ -213,10 +223,7 @@ class Combat(UI):
                 timeout.reset()
                 continue
 
-            # 处理输了的特殊情况，还有个别情况下人工中断会停在胜利界面
-            if self.appear(BAOXU_JINGYUAN_GOTO_PREPARE):
-                logger.warning("Combat incorrectly return to prepare page, stop")
-                break
+
             if self.appear_then_click(FAIL_CHECK):
                 logger.warning("Get combat fail, stop auto combat")
                 continue
@@ -232,12 +239,14 @@ class Combat(UI):
 
         combat_times_ocr = CombatTimesOCR(OCR_AUTO_TIMES, lang=self.config.LANG)
         cur_count, _, total_count = combat_times_ocr.ocr_single_line(self.device.image)
+        if total_count == 1 or total_count < times:
+            logger.warning("Power is not enough, stop")
+            return 0
         # 体力攒多了可能会出现300/300点到地老天荒的情况，先拉一下
         if cur_count == total_count:
             self.drag_button(AUTO_TIMES_DRAG_AREA,direction="left")
             # 体力不够
-        elif total_count == 1:
-            return 0
+
         # TODO:计算各种不够的情况。。。。先假设体力是够的
         # 感恩src的伟大api
         self.ui_ensure_index(times,letter=combat_times_ocr,next_button=ADD_AUTO_TIMES_UNLOCK,
@@ -248,4 +257,4 @@ class Combat(UI):
 
 if __name__ == '__main__':
     ui = Combat('fhlc')
-    ui.run_jingyuan(1)
+    ui.run_jingyuan(3)

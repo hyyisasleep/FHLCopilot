@@ -123,7 +123,6 @@ class Dispatch(UI):
 
 if __name__ == "__main__":
     ui = Dispatch("fhlc")
-    # ui.image_file = r'C:\Users\huixi\Documents\MuMu共享文件夹\Screenshots\MuMu12-20241011-163153.png'
     # print(ui.appear(GOTO_KYLIN_PAGE_NO_REWARD))
     # print(ui.appear(GET_SHRIMP_BALL_LOCKED))
     ui.device.screenshot()

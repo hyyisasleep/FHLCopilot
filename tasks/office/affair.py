@@ -125,7 +125,6 @@ class Affair(UI):
 
 if __name__ == '__main__':
     ui = Affair('fhlc')
-    # ui.image_file = r'C:\Users\huixi\Documents\MuMu共享文件夹\Screenshots\MuMu12-20241012-203428.png'
     # print(ui.appear(AFFAIR_HAS_REWARD))
     ui.device.screenshot()
     ui.run()

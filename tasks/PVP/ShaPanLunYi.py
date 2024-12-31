@@ -163,5 +163,3 @@ if __name__ == '__main__':
     ui.device.screenshot()
     ui.run()
 
-    # ui.image_file = r"C:\Users\huixi\Documents\MuMu共享文件夹\Screenshots\MuMu12-20241103-130656.png"
-    # print(ui.appear(SHAPANLUNYI_CLOSE_CHECK))

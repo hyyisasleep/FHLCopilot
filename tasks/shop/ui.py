@@ -334,11 +334,12 @@ class ShopUI(UI):
                 continue
         return False
 
+# 测图标能不能被找到用的
 def match_check(ui):
     import os
     ROOT = './testPicFolder/Shop/'
     sub_dir = "cattery"
-    folder_path = ROOT + sub_dir  # 替换为实际文件夹路径
+    folder_path = ROOT + sub_dir
     file_names = os.listdir(folder_path)
     for file_name in file_names:
         ui.image_file = folder_path + '/'+ file_name
@@ -349,7 +350,7 @@ def match_check(ui):
         print("GUBBIN:" + str(ui.goods_appear_in_cur_showcase(LEISURE_CATTERY_GOODS_GUBBINS)))
 
     sub_dir = "copper"
-    folder_path = ROOT + sub_dir  # 替换为实际文件夹路径
+    folder_path = ROOT + sub_dir
     file_names = os.listdir(folder_path)
     for file_name in file_names:
         ui.image_file = folder_path + '/' + file_name
@@ -360,7 +361,7 @@ def match_check(ui):
         print("STONE:" + str(ui.goods_appear_in_cur_showcase(RESOURCE_COPPER_GOODS_LIGHTSTONE)))
 
     sub_dir = "friendship"
-    folder_path = ROOT + sub_dir  # 替换为实际文件夹路径
+    folder_path = ROOT + sub_dir
     file_names = os.listdir(folder_path)
     for file_name in file_names:
         ui.image_file = folder_path + '/' + file_name
@@ -368,7 +369,7 @@ def match_check(ui):
         print("GIFT:" + str(ui.goods_appear_in_cur_showcase(LEISURE_FRIENDSHIP_GOODS_GIFT)))
 
     sub_dir = "sign_in_pack"
-    folder_path = ROOT + sub_dir  # 替换为实际文件夹路径
+    folder_path = ROOT + sub_dir
     file_names = os.listdir(folder_path)
     for file_name in file_names:
         ui.image_file = folder_path + '/' + file_name
@@ -377,10 +378,8 @@ def match_check(ui):
 
 if __name__ == "__main__":
     ui = ShopUI("fhlc")
-    # match_check(ui)
-    # ui.device.screenshot()
-    ui.image_file = r'C:\Users\huixi\Documents\MuMu共享文件夹\Screenshots\MuMu12-20241127-215136.png'
+
     print(ui.goods_appear_in_cur_showcase(SHOWCASE_BOTTOM_CHECK))
 
-# 已售罄也会被找到的：灵元 羁绊礼物 喵偶 我靠喵偶在多个地方出现了
+
 

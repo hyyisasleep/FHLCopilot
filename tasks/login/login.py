@@ -234,9 +234,3 @@ class Login(UI):  # , LoginAndroidCloud):
 if __name__ == "__main__":
     ui = Login('fhlc')
     ui.app_start()
-# ui.handle_activity_sign_in_gift()
-# ui.app_restart()
-# az = Login('fhlc')
-# az.image_file = r'C:\Users\huixi\Documents\MuMu共享文件夹\Screenshots\MuMu12-20241022-135513.png'
-#
-# print(az.appear(CLOSE_JINGEZHIZUN_NOTICE))

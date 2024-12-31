@@ -150,5 +150,3 @@ if __name__ == '__main__':
     ui = Guild('fhlc')
     ui.device.screenshot()
     ui.run()
-    # ui.image_file = r'C:\Users\huixi\Documents\MuMu共享文件夹\Screenshots\MuMu12-20241118-171812.png'
-    # print(ui.appear(CLUB_BEGGING_THANKS_CLOSE))

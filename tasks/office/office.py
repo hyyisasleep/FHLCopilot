@@ -41,38 +41,39 @@ class Office(UI):
 
     def _build_random_furniture(self):
 
-        timeout = Timer(5).start()
+        timeout = Timer(10).start()
         skip_first_screenshot = True
         self.ui_ensure(page_office_furniture)
-        logger.info('Going to build random furniture')
+        logger.hr('Build random furniture', level=1)
         has_build = False
+        bgt_num = 0
         while 1:
             if skip_first_screenshot:
                 skip_first_screenshot = False
             else:
                 self.device.screenshot()
-            if has_build:
-                logger.info("Success build furniture")
-                break
+
 
             if self.appear(BUILD_FURNITURE_FINISH):
-                logger.info("No need build furniture")
+                if has_build:
+                    logger.info("successfully build furniture")
+                else:
+                    logger.info("No need build furniture")
                 break
 
             if timeout.reached():
-                logger.info("Get build furniture timeout")
+                logger.warning("Get build furniture timeout")
                 break
 
-            # ocr看百工图数量
-            bgt_ocr = Digit(OCR_BAIGONGTU_NUM, lang=self.config.LANG)
-            num = bgt_ocr.ocr_single_line(self.device.image)
+            if bgt_num == 0:
+                # 有点风险但是目前还没见过OCR失败的
+                bgt_num = Digit(OCR_BAIGONGTU_NUM, lang=self.config.LANG).ocr_single_line(self.device.image)
 
-            if not has_build and num < 30:
-                logger.info("baigongtu is not enough, cancel build furniture")
+            if not has_build and bgt_num < 30:
+                logger.info("Bai-gong-tu is not enough, cancel building furniture")
                 break
             if self.appear_then_click(BUILD_FURNITURE_CHECK):
                 continue
-            # TODO:以后要是还有确定框就抽象成函数
             if self.appear_then_click(BUILD_FURNITURE_CONFIRM):
                 has_build = True
                 continue
@@ -84,23 +85,3 @@ if __name__ == "__main__":
     ui = Office('fhlc')
     ui.device.screenshot()
     ui.run()
-# path = r"C:\Users\huixi\Desktop\MuMu12-20240831-193937.png"
-# ui.image_file = r"C:\Users\huixi\Documents\MuMu共享文件夹\Screenshots\午晚饭素材\MuMu12-20240831-193937.png"
-# # import cv2
-# # _ = LUNCH_FINISH.match_template(cv2.imread(os.fspath(path)),similarity=0.9)
-# # print(LUNCH_FINISH.button_offset)
-# print(ui.appear(LUNCH_FINISH,similarity=0.6))
-
-# ui._convert_kaogong()
-# ui.image_file = r'C:\Users\huixi\Documents\MuMu共享文件夹\Screenshots\MuMu12-20240909-184813.png'
-# print(ui.appear(BAIGONGTU_CONVERT_CLOSE))
-# 测桃源居这仨字在不同背景下能不能被检测到，目前用了三张全检测到了
-# 王阳明那个洞天没图，等遇到bug再说吧
-# path = r'D:\myProject\FHLCopilot\testPicFolder'
-# for file in os.listdir(path):
-#     ui.image_file = os.path.join(path,file)
-#     print(f"{file}:{ui.appear(TAOYUAN_CHECK)}")
-
-# ui.image_file = r"C:\Users\huixi\Documents\MuMu共享文件夹\Screenshots\MuMu12-20240907-192155.png"
-#
-# print(ui.appear(GAME_BAIGONGTU_FULL_CHECK,similarity=0.6))

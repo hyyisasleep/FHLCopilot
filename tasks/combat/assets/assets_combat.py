@@ -63,6 +63,16 @@ AUTO_TIMES_DRAG_AREA = ButtonWrapper(
         button=(114, 317, 793, 340),
     ),
 )
+BAOXU_JINGYUAN_GOTO_PREPARE_FAIL = ButtonWrapper(
+    name='BAOXU_JINGYUAN_GOTO_PREPARE_FAIL',
+    share=Button(
+        file='./assets/share/combat/BAOXU_JINGYUAN_GOTO_PREPARE_FAIL.png',
+        area=(1176, 655, 1237, 680),
+        search=(1156, 635, 1257, 700),
+        color=(116, 103, 103),
+        button=(1176, 655, 1237, 680),
+    ),
+)
 CLOSE_SET_AUTO_COMBAT = ButtonWrapper(
     name='CLOSE_SET_AUTO_COMBAT',
     share=Button(

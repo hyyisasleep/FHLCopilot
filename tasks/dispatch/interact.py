@@ -56,8 +56,3 @@ if __name__ == "__main__":
     ui = Interact("fhlc")
     ui.device.screenshot()
     ui.run()
-    # ui.image_file = r"C:\Users\huixi\Documents\MuMu共享文件夹\Screenshots\MuMu12-20241012-200231.png"
-    # print(ui.appear(GIVE_MODE_UPGRADE_LOCKED))
-    #
-    # ui.image_file = r"C:\Users\huixi\Documents\MuMu共享文件夹\Screenshots\MuMu12-20241012-201006.png"
-    # print(ui.appear(GIVE_MODE_UPGRADE_LOCKED))
