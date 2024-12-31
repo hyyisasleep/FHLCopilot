@@ -1,12 +1,15 @@
 
 import time
+
+import win32api
+import win32con
+
 from module.exception import RequestHumanTakeover
 from module.logger import logger
 import os
 import psutil
-from pywinauto import Application, findwindows, WindowSpecification,timings,Desktop
-import win32api
-import win32con
+from pywinauto import Application, findwindows, WindowSpecification,timings
+
 
 
 
@@ -68,7 +71,7 @@ def wechat_sign_in_and_get_password(config_wechat_path=r'D:\WeChat\WeChat.exe')-
     """
 
     try:
-        timings.Timings.fast()
+        # timings.Timings.fast()
         # 包括启动和在后台找微信主界面
         wechat_window = find_wechat_window(config_wechat_path)
 
@@ -129,12 +132,12 @@ def getWxInstallPath()->str:
         # reserved: 必须为0
         # sam: 对打开的子项进行的操作,包括win32con.KEY_ALL_ACCESS、win32con.KEY_READ、win32con.KEY_WRITE等
         key = win32api.RegOpenKey(win32con.HKEY_CURRENT_USER, "SOFTWARE\Tencent\WeChat", 0, win32con.KEY_ALL_ACCESS)
-        # 这里的key表示键值，后面是具体的键名，读取出来是个tuple
+        # # 这里的key表示键值，后面是具体的键名，读取出来是个tuple
         value = win32api.RegQueryValueEx(key, "InstallPath")[0]
-        # 用完之后记得关闭
+        # # 用完之后记得关闭
         win32api.RegCloseKey(key)
         # 微信的路径
-        value += "\\" + "WeChat.exe"
+        value = "\\" + "WeChat.exe"
         return value
     except Exception as ex:
         logger.warning(str(ex))

@@ -66,7 +66,9 @@ class DailyQuest(DailyQuestUI):
         if (bao_xu + jing_yuan)>= remains:
             return True
         while remains > 0:
-            if bao_xu < 4:
+            if jin_ge < 3:
+                jin_ge += 1
+            elif bao_xu < 4:
                 bao_xu += 1
             elif jing_yuan < 1:
                 jing_yuan += 1

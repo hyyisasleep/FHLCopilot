@@ -6,7 +6,7 @@ from functools import partial, wraps
 
 import cv2
 import numpy as np
-import pyperclip  # 用于操作剪贴板
+# import pyclip  # nemu_ipc操作剪贴板？
 from module.base.decorator import cached_property, del_cached_property, has_cached_property
 from module.base.timer import Timer
 from module.base.utils import ensure_time
@@ -552,81 +552,81 @@ class NemuIpc(Platform):
         self.sleep(0.050)
 
 
-
-    def input_text_nemu_ipc(self, text: str):
-        """
-        Simulate text input (supports both ASCII and non-ASCII like Chinese) using NEMU_IPC.
-
-        Args:
-            text (str): The string to input.
-
-        Raises:
-            NemuIpcError: If input fails.
-        """
-        if not text:
-            raise ValueError("Input text cannot be empty.")
-
-        logger.info(f"Inputting text via NEMU_IPC: {text}")
-
-        # Copy text to clipboard
-        try:
-            pyperclip.copy(text)
-            logger.info(f"Text copied to clipboard: {text}")
-        except Exception as e:
-            raise RuntimeError(f"Failed to copy text to clipboard: {e}")
-
-        # Simulate Ctrl+V to paste text
-        ctrl_keycode = 162  # Key code for Ctrl
-        v_keycode = ord('V')  # Key code for 'V'
-
-        try:
-            # Press Ctrl key
-            ret_ctrl_down = self.nemu_ipc.ev_run_sync(
-                self.nemu_ipc.lib.nemu_input_event_key_down,
-                self.nemu_ipc.connect_id, self.nemu_ipc.display_id, ctrl_keycode
-            )
-            if ret_ctrl_down > 0:
-                raise NemuIpcError("Ctrl key down failed.")
-
-            # Press 'V' key
-            ret_v_down = self.nemu_ipc.ev_run_sync(
-                self.nemu_ipc.lib.nemu_input_event_key_down,
-                self.nemu_ipc.connect_id, self.nemu_ipc.display_id, v_keycode
-            )
-            if ret_v_down > 0:
-                raise NemuIpcError("'V' key down failed.")
-
-            # Release 'V' key
-            ret_v_up = self.nemu_ipc.ev_run_sync(
-                self.nemu_ipc.lib.nemu_input_event_key_up,
-                self.nemu_ipc.connect_id, self.nemu_ipc.display_id, v_keycode
-            )
-            if ret_v_up > 0:
-                raise NemuIpcError("'V' key up failed.")
-
-            # Release Ctrl key
-            ret_ctrl_up = self.nemu_ipc.ev_run_sync(
-                self.nemu_ipc.lib.nemu_input_event_key_up,
-                self.nemu_ipc.connect_id, self.nemu_ipc.display_id, ctrl_keycode
-            )
-            if ret_ctrl_up > 0:
-                raise NemuIpcError("Ctrl key up failed.")
-
-            # Optional: Press Enter to confirm input
-            enter_keycode = 13  # Key code for Enter
-            ret_enter = self.nemu_ipc.ev_run_sync(
-                self.nemu_ipc.lib.nemu_input_event_key_down,
-                self.nemu_ipc.connect_id, self.nemu_ipc.display_id, enter_keycode
-            )
-            self.nemu_ipc.ev_run_sync(
-                self.nemu_ipc.lib.nemu_input_event_key_up,
-                self.nemu_ipc.connect_id, self.nemu_ipc.display_id, enter_keycode
-            )
-            if ret_enter > 0:
-                logger.warning("Enter key press might have failed.")
-
-            self.sleep(0.1)  # Ensure final input settles
-            logger.info("Text input completed.")
-
-        except Exception as e:
-            raise NemuIpcError(f"Failed to simulate text input: {e}")
+    #
+    # def input_text_nemu_ipc(self, text: str):
+    #     """
+    #     Simulate text input (supports both ASCII and non-ASCII like Chinese) using NEMU_IPC.
+    #
+    #     Args:
+    #         text (str): The string to input.
+    #
+    #     Raises:
+    #         NemuIpcError: If input fails.
+    #     """
+    #     if not text:
+    #         raise ValueError("Input text cannot be empty.")
+    #
+    #     logger.info(f"Inputting text via NEMU_IPC: {text}")
+    #
+    #     # Copy text to clipboard
+    #     try:
+    #         pyclip.copy(text)
+    #         logger.info(f"Text copied to clipboard: {text}")
+    #     except Exception as e:
+    #         raise RuntimeError(f"Failed to copy text to clipboard: {e}")
+    #
+    #     # Simulate Ctrl+V to paste text
+    #     ctrl_keycode = 162  # Key code for Ctrl
+    #     v_keycode = ord('V')  # Key code for 'V'
+    #
+    #     try:
+    #         # Press Ctrl key
+    #         ret_ctrl_down = self.nemu_ipc.ev_run_sync(
+    #             self.nemu_ipc.lib.nemu_input_event_key_down,
+    #             self.nemu_ipc.connect_id, self.nemu_ipc.display_id, ctrl_keycode
+    #         )
+    #         if ret_ctrl_down > 0:
+    #             raise NemuIpcError("Ctrl key down failed.")
+    #
+    #         # Press 'V' key
+    #         ret_v_down = self.nemu_ipc.ev_run_sync(
+    #             self.nemu_ipc.lib.nemu_input_event_key_down,
+    #             self.nemu_ipc.connect_id, self.nemu_ipc.display_id, v_keycode
+    #         )
+    #         if ret_v_down > 0:
+    #             raise NemuIpcError("'V' key down failed.")
+    #
+    #         # Release 'V' key
+    #         ret_v_up = self.nemu_ipc.ev_run_sync(
+    #             self.nemu_ipc.lib.nemu_input_event_key_up,
+    #             self.nemu_ipc.connect_id, self.nemu_ipc.display_id, v_keycode
+    #         )
+    #         if ret_v_up > 0:
+    #             raise NemuIpcError("'V' key up failed.")
+    #
+    #         # Release Ctrl key
+    #         ret_ctrl_up = self.nemu_ipc.ev_run_sync(
+    #             self.nemu_ipc.lib.nemu_input_event_key_up,
+    #             self.nemu_ipc.connect_id, self.nemu_ipc.display_id, ctrl_keycode
+    #         )
+    #         if ret_ctrl_up > 0:
+    #             raise NemuIpcError("Ctrl key up failed.")
+    #
+    #         # Optional: Press Enter to confirm input
+    #         enter_keycode = 13  # Key code for Enter
+    #         ret_enter = self.nemu_ipc.ev_run_sync(
+    #             self.nemu_ipc.lib.nemu_input_event_key_down,
+    #             self.nemu_ipc.connect_id, self.nemu_ipc.display_id, enter_keycode
+    #         )
+    #         self.nemu_ipc.ev_run_sync(
+    #             self.nemu_ipc.lib.nemu_input_event_key_up,
+    #             self.nemu_ipc.connect_id, self.nemu_ipc.display_id, enter_keycode
+    #         )
+    #         if ret_enter > 0:
+    #             logger.warning("Enter key press might have failed.")
+    #
+    #         self.sleep(0.1)  # Ensure final input settles
+    #         logger.info("Text input completed.")
+    #
+    #     except Exception as e:
+    #         raise NemuIpcError(f"Failed to simulate text input: {e}")
