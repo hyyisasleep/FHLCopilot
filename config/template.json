@@ -55,6 +55,7 @@
     "Dungeon": {
       "Team": 1,
       "DailyJinGe": 0,
+      "UseSoonExpiredMeat": 0,
       "DailyBaoXuPlan": {},
       "DailyJingYuanPlan": {},
       "DailyGuShiFengYunPlan": {},

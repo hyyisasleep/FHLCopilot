@@ -245,6 +245,11 @@
         "type": "checkbox",
         "value": 0
       },
+      "UseSoonExpiredMeat": {
+        "type": "checkbox",
+        "value": 0,
+        "display": "hide"
+      },
       "DailyBaoXuPlan": {
         "type": "stored",
         "value": {},

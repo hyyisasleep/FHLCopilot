@@ -54,6 +54,7 @@ class GeneratedConfig:
     # Group `Dungeon`
     Dungeon_Team = 1  # 1, 2, 3, 4, 5
     Dungeon_DailyJinGe = 0
+    Dungeon_UseSoonExpiredMeat = 0
     Dungeon_DailyBaoXuPlan = {}
     Dungeon_DailyJingYuanPlan = {}
     Dungeon_DailyGuShiFengYunPlan = {}

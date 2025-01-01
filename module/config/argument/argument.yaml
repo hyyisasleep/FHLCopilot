@@ -123,6 +123,10 @@ Dungeon:
   DailyJinGe:
     type: checkbox
     value: 0
+  UseSoonExpiredMeat:
+    type: checkbox
+    value: 0
+    display: hide
   DailyBaoXuPlan:
     stored: StoredDailyBaoXu
     display: hide
@@ -135,6 +139,7 @@ Dungeon:
   DailyJinGePlan:
     stored: StoredDailyBaoXu
     display: hide
+
 
 
 
