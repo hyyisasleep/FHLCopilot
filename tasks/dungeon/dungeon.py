@@ -14,6 +14,7 @@ class Dungeon(Combat):
         4次宝墟
         1次镜渊
         3次故世，但是故世还要写切换界面，不想写 摆了
+        3次金戈
     """
     combat_power = 12
 
@@ -22,7 +23,7 @@ class Dungeon(Combat):
 
         """
         logger.hr('Dungeon', level=1)
-        # 打宝墟，不用打的话actual_times会置0
+
 
         if self.config.Dungeon_DailyJinGe:
             logger.info("Run Jin Ge plan")
@@ -31,7 +32,7 @@ class Dungeon(Combat):
             if actual_times:
                 self.config.stored.DailyJinGePlan.add(actual_times)
 
-
+        # 打宝墟，不用打的话actual_times会置0
         cnt = 0
         while 1:
             if cnt > 3:

@@ -146,6 +146,7 @@ MealPower:
 GuildActivity:
   OpenActivityList:
     value: 0
+    display: hide
   ClearShaPanFlag:
     type: checkbox
     value: 0
@@ -156,6 +157,7 @@ GuildMission:
     display: display
   WeeklyLiveness:
     value: 0
+    display: hide
 
 MonthlyCard:
   MonthlyCard30:

@@ -335,7 +335,8 @@
     "GuildActivity": {
       "OpenActivityList": {
         "type": "input",
-        "value": 0
+        "value": 0,
+        "display": "hide"
       },
       "ClearShaPanFlag": {
         "type": "checkbox",
@@ -351,7 +352,8 @@
       },
       "WeeklyLiveness": {
         "type": "input",
-        "value": 0
+        "value": 0,
+        "display": "hide"
       }
     }
   },
