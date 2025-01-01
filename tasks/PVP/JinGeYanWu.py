@@ -58,7 +58,7 @@ def wait_for_start(state):
         next_time = datetime(next.year, next.month, next.day, morning_window[0], 2)
         # 明天的11点
     else:
-        return True
+        return False
 
     # 计算剩余时间并每分钟输出一次
     while True:
@@ -88,9 +88,15 @@ class JinGeYanWu(UI):
 
             self.device.screenshot()
             self.ui_ensure(page_jingeyanwu)
+
             talisman_num,soul_num,level = self.jin_ge_prepare()
             if level >= 9:
                 self.handle_buy_super_cat_ball_when_arrive_level_nine()
+
+            if self.appear(JINGEYANWU_GOTO_NO_REWARD_PREPARE):
+                logger.info("JinGe is not open this time, stop")
+                break
+
             if level > 6:
                 if not wait_for_start(STATE_DAILY):
                     logger.warning("Today's jin ge is close, stop" )
@@ -98,9 +104,7 @@ class JinGeYanWu(UI):
 
 
 
-            if self.appear(JINGEYANWU_GOTO_NO_REWARD_PREPARE):
-                logger.info("JinGe is not open this time, stop")
-                break
+
             # if talisman_num == 0 and self.config.ClearJinGeTalisman_EndWhenTalismanIsClear:
             #     logger.info("Clear talisman finish")
             #     break
@@ -275,14 +279,20 @@ class JinGeYanWu(UI):
     def jin_ge_level_ocr(self)->str:
         retry = 0
         res = 0
+        interval = Timer(2).start()
         while retry < 3:
-            level_ocr = JinGeLevelOCR(OCR_JINGE_LEVEL,lang=self.config.LANG)
-            res = level_ocr.ocr_single_line(self.device.screenshot())
-            if res != 0:
-                return res
+            if not interval.reached():
+                continue
             else:
-                logger.info("Level OCR fail, try it again")
-                retry+=1
+
+                level_ocr = JinGeLevelOCR(OCR_JINGE_LEVEL,lang=self.config.LANG)
+                res = level_ocr.ocr_single_line(self.device.screenshot())
+                if res != 0:
+                    return res
+                else:
+                    logger.info("Level OCR fail, try it again")
+                    retry+=1
+                interval.reset()
         return res
 
     def pvp_ocr(self) -> [int, int]:
@@ -354,6 +364,6 @@ if __name__ == '__main__':
     ui = JinGeYanWu('fhlc')
     ui.device.screenshot()
 
-    ui.run()
+    ui.run_until_get_daily_reward()
 
 

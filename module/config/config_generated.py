@@ -45,7 +45,7 @@ class GeneratedConfig:
 
     # Group `Office`
     Office_TransKaoGongTicket = 1
-    Office_VisitOthersForClivia = 1
+    Office_VisitOthersForClivia = 0
 
     # Group `Interact`
     Interact_CurrentCelebrity = 0

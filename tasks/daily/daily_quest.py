@@ -18,11 +18,11 @@ class DailyQuest(DailyQuestUI):
         logger.hr('Daily Quest', level=1)
         self.clear_daily_liveness_and_plan()
 
-        self.claimed_point_reward = False
-
-        Office(config=self.config, device=self.device).run()
-        Cattery(config=self.config, device=self.device).run()
-        Dispatch(config=self.config, device=self.device).run()
+        # self.claimed_point_reward = False
+        #
+        # Office(config=self.config, device=self.device).run()
+        # Cattery(config=self.config, device=self.device).run()
+        # Dispatch(config=self.config, device=self.device).run()
 
         self.get_active_point_reward()
 
@@ -59,9 +59,11 @@ class DailyQuest(DailyQuestUI):
         use_jin_ge = self.config.Dungeon_DailyJinGe
         if use_jin_ge:
             _, _, level = JinGeYanWu(config=self.config, device=self.device).jin_ge_prepare()
+
             if level > 6:
                 now = get_server_datetime().hour
                 if 11 <= now < 13 or 19 <= now < 21:
+                    logger.info("Now jin ge is open(level > 6),")
                     return True
             else: # 六段以下随便打
                 return True
@@ -71,6 +73,7 @@ class DailyQuest(DailyQuestUI):
         根据当前活跃度算还要打什么
         我知道这样有坑，比如之前要是打过宝墟了还会傻呵呵的再刷4次宝墟。。。
         """
+        logger.hr("Dungeon Plan",level=1)
         remains = math.ceil((100 - self.config.stored.DailyLiveness.value)/ 10)
 
         # 计算雅社任务打满够不够100，雅社只有故世镜渊宝墟
@@ -81,7 +84,7 @@ class DailyQuest(DailyQuestUI):
         jin_ge = 0
         if (bao_xu + jing_yuan)>= remains:
             return True
-
+        logger.info("Check jin ge priority")
         jin_ge_priority = self.jin_ge_has_priority()
 
         while remains > 0:
@@ -91,6 +94,7 @@ class DailyQuest(DailyQuestUI):
                 bao_xu += 1
             elif jing_yuan < 1:
                 jing_yuan += 1
+            remains -= 1
 
 
         logger.info(f"Today's plan: Bao Xu: {bao_xu} times, Jing Yuan: {jing_yuan} times, Jin Ge: {jin_ge} times")

@@ -3,6 +3,16 @@ from module.base.button import Button, ButtonWrapper
 # This file was auto-generated, do not modify it manually. To generate:
 # ``` python -m dev_tools.button_extract ```
 
+LIKE_GET_LIMIT = ButtonWrapper(
+    name='LIKE_GET_LIMIT',
+    share=Button(
+        file='./assets/share/office/visit/LIKE_GET_LIMIT.png',
+        area=(642, 150, 737, 176),
+        search=(622, 130, 757, 196),
+        color=(91, 97, 93),
+        button=(642, 150, 737, 176),
+    ),
+)
 LIKE_LOCKED = ButtonWrapper(
     name='LIKE_LOCKED',
     share=Button(

@@ -46,7 +46,7 @@
     },
     "Office": {
       "TransKaoGongTicket": 1,
-      "VisitOthersForClivia": 1
+      "VisitOthersForClivia": 0
     },
     "Interact": {
       "CurrentCelebrity": 0,

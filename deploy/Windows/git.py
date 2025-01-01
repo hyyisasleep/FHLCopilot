@@ -131,7 +131,7 @@ class GitManager(DeployConfig):
     @property
     def goc_client(self):
         client = GitOverCdnClient(
-            url='https://gitee.com/hyyisasleep/FHLCopilot',
+            url='',
             folder=self.root_filepath,
             source='origin',
             branch='master',

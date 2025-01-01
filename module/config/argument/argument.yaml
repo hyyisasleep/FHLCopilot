@@ -106,7 +106,7 @@ Office:
     value: 1
   VisitOthersForClivia:
     type: checkbox
-    value: 1
+    value: 0
 
 Interact:
   CurrentCelebrity:

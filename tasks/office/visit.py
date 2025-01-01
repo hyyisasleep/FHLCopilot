@@ -38,13 +38,13 @@ class Visit(UI):
             if first_visit and second_visit and third_visit:
                 break
             if retry > 3:
-                logger.warning("Retry visit other times get 3, break")
+                logger.warning("Retry visit other times get 3, stop")
                 break
 
             #TODO: 我草到了还在点啊！
             if self.appear_then_click(VISIT_GOTO_MY_VISIT_LIST):
                 logger.info("Goto my visit list")
-                timeout.reset()
+                # timeout.reset()
                 continue
             if self.appear(MY_VISIT_LIST_CHECK):
 
@@ -94,14 +94,19 @@ class Visit(UI):
             if timeout.reached():
                 logger.info("Get timeout in other office page")
                 break
-            if self.appear_then_click(button):
+            if self.appear(LIKE_GET_LIMIT):
+                logger.warning("FHLC wrongly go to unknown one's office, sorry")
+                finish = True
+                break
+            if self.appear_then_click(button,interval=2):
                 logger.info("Turn to other office page")
-                timeout.reset()
                 continue
-            if self.appear_then_click(LIKE_UNLOCK):
+            if self.appear_then_click(LIKE_UNLOCK,interval=2):
                 logger.info("give a like")
-                timeout.reset()
+                # timeout.reset()
                 continue
+        return finish
+
 
 
 
