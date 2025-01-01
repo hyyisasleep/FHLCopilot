@@ -17,9 +17,9 @@ DINNER_GETBACK = ButtonWrapper(
     name='DINNER_GETBACK',
     share=Button(
         file='./assets/share/office/meal/DINNER_GETBACK.png',
-        area=(362, 601, 379, 621),
-        search=(342, 581, 399, 641),
-        color=(171, 204, 172),
+        area=(824, 602, 839, 620),
+        search=(804, 582, 859, 640),
+        color=(172, 211, 180),
         button=(811, 436, 961, 551),
     ),
 )

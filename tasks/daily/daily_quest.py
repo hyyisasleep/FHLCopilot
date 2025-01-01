@@ -20,9 +20,9 @@ class DailyQuest(DailyQuestUI):
 
         # self.claimed_point_reward = False
         #
-        # Office(config=self.config, device=self.device).run()
-        # Cattery(config=self.config, device=self.device).run()
-        # Dispatch(config=self.config, device=self.device).run()
+        Office(config=self.config, device=self.device).run()
+        Cattery(config=self.config, device=self.device).run()
+        Dispatch(config=self.config, device=self.device).run()
 
         self.get_active_point_reward()
 
@@ -77,8 +77,9 @@ class DailyQuest(DailyQuestUI):
         remains = math.ceil((100 - self.config.stored.DailyLiveness.value)/ 10)
 
         # 计算雅社任务打满够不够100，雅社只有故世镜渊宝墟
-        bao_xu = min(self.config.stored.DailyBaoXuPlan.total,4)
-        jing_yuan = min(self.config.stored.DailyJingYuanPlan.total,1)
+        bao_xu = max(self.config.stored.DailyBaoXuPlan.total,0)
+
+        jing_yuan = max(self.config.stored.DailyJingYuanPlan.total,0)
         # gu_shi = min(self.config.stored.DailyGuShiFengYunPlan.total,3)
 
         jin_ge = 0
