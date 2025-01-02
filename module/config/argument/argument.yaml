@@ -25,7 +25,6 @@ Emulator:
   PackageName:
     value: auto
     option: [ auto, ]
-    display: hide
   GameLanguage:
     value: cn
     option: [ auto, cn, en ]

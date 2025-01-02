@@ -20,9 +20,9 @@
         "value": "auto",
         "option": [
           "auto",
-          "CN-Official"
-        ],
-        "display": "hide"
+          "CN-Official",
+          "CN-Bilibili"
+        ]
       },
       "GameLanguage": {
         "type": "select",
