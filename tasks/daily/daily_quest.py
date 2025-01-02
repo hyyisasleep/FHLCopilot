@@ -83,19 +83,24 @@ class DailyQuest(DailyQuestUI):
         # gu_shi = min(self.config.stored.DailyGuShiFengYunPlan.total,3)
 
         jin_ge = 0
-        if (min(bao_xu,4) + min(jing_yuan,1))>= remains:
+
+        remains -= (min(bao_xu,4) + min(jing_yuan,1))
+        if remains <= 0:
             return True
         logger.info("Check jin ge priority")
         jin_ge_priority = self.jin_ge_has_priority()
 
         while remains > 0:
+            remains -= 1
             if jin_ge_priority and jin_ge < 3:
                 jin_ge += 1
             elif bao_xu < 4:
                 bao_xu += 1
             elif jing_yuan < 1:
                 jing_yuan += 1
-            remains -= 1
+            else:
+                logger.warning("dungeon plan can't finish today's daily liveness, need manual help")
+
 
 
         logger.info(f"Today's plan: Bao Xu: {bao_xu} times, Jing Yuan: {jing_yuan} times, Jin Ge: {jin_ge} times")
