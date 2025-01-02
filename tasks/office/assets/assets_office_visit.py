@@ -15,13 +15,22 @@ LIKE_GET_LIMIT = ButtonWrapper(
 )
 LIKE_LOCKED = ButtonWrapper(
     name='LIKE_LOCKED',
-    share=Button(
-        file='./assets/share/office/visit/LIKE_LOCKED.png',
-        area=(818, 624, 875, 686),
-        search=(798, 604, 895, 706),
-        color=(198, 152, 104),
-        button=(818, 624, 875, 686),
-    ),
+    share=[
+        Button(
+            file='./assets/share/office/visit/LIKE_LOCKED.png',
+            area=(818, 624, 875, 686),
+            search=(798, 604, 895, 706),
+            color=(198, 152, 104),
+            button=(818, 624, 875, 686),
+        ),
+        Button(
+            file='./assets/share/office/visit/LIKE_LOCKED.2.png',
+            area=(820, 667, 837, 685),
+            search=(800, 647, 857, 705),
+            color=(220, 191, 159),
+            button=(820, 667, 837, 685),
+        ),
+    ],
 )
 LIKE_UNLOCK = ButtonWrapper(
     name='LIKE_UNLOCK',

@@ -12,7 +12,7 @@ class Visit(UI):
         """
 
         """
-        logger.hr('Deal with taoyuan affair', level=1)
+        logger.hr('Visit other office', level=1)
         self.ui_ensure(page_office_visit, skip_first_screenshot)
         self._visit_other()
         self.ui_ensure(page_office)
@@ -53,6 +53,7 @@ class Visit(UI):
                     logger.info("Visit first office")
                     if not first_visit:
                         logger.info("Fail to visit first office")
+                        retry += 1
                 elif not second_visit:
                     logger.info("Visit second office")
                     second_visit = self._click_like_in_other_office(VISIT_SECOND)
@@ -105,18 +106,11 @@ class Visit(UI):
                 logger.info("give a like")
                 # timeout.reset()
                 continue
-        return finish
-
-
-
-
-
-
         self.ui_ensure(page_office_visit)
         return finish
 
 
-# if __name__ == 'main':
-# ui = Visit('fhlc')
-# ui.device.screenshot()
-# ui.run()
+if __name__ == '__main__':
+    ui = Visit('fhlc')
+    ui.device.screenshot()
+    ui.run()

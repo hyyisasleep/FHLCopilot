@@ -83,7 +83,7 @@ class DailyQuest(DailyQuestUI):
         # gu_shi = min(self.config.stored.DailyGuShiFengYunPlan.total,3)
 
         jin_ge = 0
-        if (bao_xu + jing_yuan)>= remains:
+        if (min(bao_xu,4) + min(jing_yuan,1))>= remains:
             return True
         logger.info("Check jin ge priority")
         jin_ge_priority = self.jin_ge_has_priority()
