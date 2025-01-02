@@ -9,7 +9,7 @@ VALID_LANG = ['cn', 'en']
 VALID_SERVER = {
     'CN-Official': 'com.netease.pm03',
     # ,
-    'CN-Bilibili': 'com.miHoYo.hkrpg.bilibili'
+    'CN-Bilibili': 'com.netease.pm03.bilibili'
     # 'OVERSEA-America': 'com.HoYoverse.hkrpgoversea',
     # 'OVERSEA-Asia': 'com.HoYoverse.hkrpgoversea',
     # 'OVERSEA-Europe': 'com.HoYoverse.hkrpgoversea',
