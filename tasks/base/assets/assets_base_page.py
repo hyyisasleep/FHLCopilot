@@ -68,13 +68,22 @@ BAOXU_PREPARE_CHECK = ButtonWrapper(
 )
 CATTERY_CHECK = ButtonWrapper(
     name='CATTERY_CHECK',
-    share=Button(
-        file='./assets/share/base/page/CATTERY_CHECK.png',
-        area=(103, 18, 155, 45),
-        search=(83, 0, 175, 65),
-        color=(169, 146, 147),
-        button=(103, 18, 155, 45),
-    ),
+    share=[
+        Button(
+            file='./assets/share/base/page/CATTERY_CHECK.png',
+            area=(103, 18, 155, 45),
+            search=(83, 0, 175, 65),
+            color=(169, 146, 147),
+            button=(103, 18, 155, 45),
+        ),
+        Button(
+            file='./assets/share/base/page/CATTERY_CHECK.2.png',
+            area=(101, 18, 156, 45),
+            search=(81, 0, 176, 65),
+            color=(124, 128, 134),
+            button=(101, 18, 156, 45),
+        ),
+    ],
 )
 CHARACTER_CHECK = ButtonWrapper(
     name='CHARACTER_CHECK',

@@ -30,7 +30,7 @@ class PowerOCR(DigitCounter):
 
         result = re.sub(r'1\.|[.]+', '/',result)
 
-        result = re.sub(r'1150', '/150', result)
+        result = re.sub(r'1150$', '/150', result)
 
         result = re.sub(r'15$', '150', result)
 

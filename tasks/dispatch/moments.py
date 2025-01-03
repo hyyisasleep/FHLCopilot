@@ -34,35 +34,30 @@ class Moments(UI):
 
         #bug: sometimes will click 2 heart in different location??
         CLICK_HEART.match_template(self.device.image)
-        CLICK_HEART_OK.load_offset(CLICK_HEART)
+        # CLICK_HEART_OK.load_offset(CLICK_HEART)
+        interval = Timer(0.5).start()
+        cur_count = 0
         while 1:
             if skip_first_screenshot:
                 skip_first_screenshot = False
             else:
                 self.device.screenshot()
             if timeout.reached():
-                logger.warning("Get interact timeout")
+                logger.warning("Get moments timeout")
                 break
             if self.appear(HEART_REWARD_DISAPPEAR):
-                logger.info("Get reward finish")
+                logger.info("Get moments reward finish")
                 break
-            moments_count_ocr = MomentsOCR(OCR_COUNT,lang=self.config.LANG)
-            cur_count,_,total_count = moments_count_ocr.ocr_single_line(self.device.image)
-
             if self.handle_reward():
                 continue
-
-            if cur_count == 3:
-                logger.info("Click finish")
+            if cur_count >= 3:
                 if self.appear_then_click(HEART_REWARD_UNLOCK):
-                    logger.info(".")
+                    logger.info("Click finish")
                 continue
-
-            else:
-                logger.info(CLICK_HEART.button_offset)
-                if self.appear_then_click(CLICK_HEART,interval=0.5):
-                    continue
-                if self.appear_then_click(CLICK_HEART_OK,interval=0.5):
+            if interval.reached():
+                interval.reset()
+                cur_count,_,total_count = MomentsOCR(OCR_COUNT,lang=self.config.LANG).ocr_single_line(self.device.image)
+                if self.device.click(CLICK_HEART):
                     continue
 
 
@@ -75,7 +70,7 @@ class Moments(UI):
             in: page_guide, Survival_Index
         """
         # Wait until moments page stabled
-        timeout = Timer(2, count=4).start()
+        timeout = Timer(5, count=3).start()
         while 1:
             if skip_first_screenshot:
                 skip_first_screenshot = False

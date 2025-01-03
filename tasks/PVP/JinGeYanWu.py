@@ -38,7 +38,7 @@ class JinGeYanWu(UI):
         """
         actual_times = 0
         win = False
-        logger.hr('Get JinGe daily reward',level=1)
+        logger.hr('Get jin-ge daily reward',level=1)
         while 1:
 
 
@@ -50,12 +50,12 @@ class JinGeYanWu(UI):
                 self.handle_buy_super_cat_ball_when_arrive_level_nine()
 
             if self.appear(JINGEYANWU_GOTO_NO_REWARD_PREPARE):
-                logger.info("JinGe is not open this time, stop")
+                logger.info("Jin-ge is not open this time, stop")
                 break
 
-            if level > 5:
+            if level > 6:
                 if not self.wait_for_start(STATE_DAILY):
-                    logger.warning("Today's jin ge is close, stop" )
+                    logger.info("Setting choose this time don't get jin-ge daily reward, stop" )
                     break
 
 
@@ -65,7 +65,7 @@ class JinGeYanWu(UI):
             #     logger.info("Clear talisman finish")
             #     break
 
-            logger.hr("Start one pvp game", level=2)
+            logger.hr("Jin-ge start", level=2)
 
             self.ui_ensure(page_jinge_prepare)
             win |= self._run_pvp(soul_num == 500)
@@ -79,7 +79,7 @@ class JinGeYanWu(UI):
 
     def run(self):
 
-        logger.hr('Clear jin ge talisman', level=1)
+        logger.hr('Clear zhen-ge-fu', level=1)
         while 1:
 
             self.device.screenshot()
@@ -95,10 +95,10 @@ class JinGeYanWu(UI):
 
 
             if self.appear(JINGEYANWU_GOTO_NO_REWARD_PREPARE):
-                logger.info("JinGe is not open this time, stop")
+                logger.info("Jin-ge is not open this time, stop")
                 break
             if talisman_num == 0 and self.config.ClearJinGeTalisman_EndWhenTalismanIsClear:
-                logger.info("Clear talisman finish")
+                logger.info("Clear zhen-ge-fu finish")
                 break
 
             logger.hr("Start one pvp game", level=2)
@@ -110,7 +110,7 @@ class JinGeYanWu(UI):
 
     def wait_for_start(self,state):
         """
-        七段以上等金戈启动的
+        七段及以上等金戈启动的
         """
 
         logger.info("Wait JinGe Start")

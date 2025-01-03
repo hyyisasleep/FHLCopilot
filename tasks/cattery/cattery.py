@@ -106,5 +106,6 @@ class Cattery(UI):
 
 
 if __name__ == '__main__':
-    self = Cattery('fhlc')
-    self.device.screenshot()
+    ui = Cattery('fhlc')
+    ui.device.screenshot()
+    ui.run()

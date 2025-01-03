@@ -60,7 +60,7 @@ class DailyQuest(DailyQuestUI):
         if use_jin_ge:
             _, _, level = JinGeYanWu(config=self.config, device=self.device).jin_ge_prepare()
 
-            if level > 6:
+            if level >= 6:
                 now = get_server_datetime().hour
                 if 11 <= now < 13 or 19 <= now < 21:
                     logger.info("Now jin ge is open(level > 6),")
