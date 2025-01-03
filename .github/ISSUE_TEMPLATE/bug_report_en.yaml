@@ -11,7 +11,7 @@ body:
         required: true
       - label: I spend at least 5 minutes for thinking and preparing
         required: true
-      - label: I am using the latest version of SRC
+      - label: I am using the latest version of FHLC
         required: true
   - type: textarea
     id: describe

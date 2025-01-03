@@ -13,7 +13,7 @@ from tasks.guild.assets.assets_guild_mission import *
 class GuildMissionOCR(Ocr):
 
     def after_process(self, result):
-        result = re.sub(r'[，。："”“]', '', result)
+        result = re.sub(r'[，。："”“—]', '', result)
         # result = result.replace("赛社","雅社")
         if "蛙精"  in result or "蚌" in result:
             result = '击退4只蚌精'

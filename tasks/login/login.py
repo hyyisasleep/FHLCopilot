@@ -171,7 +171,9 @@ class Login(UI):  # , LoginAndroidCloud):
             if self.appear_then_click(GET_LOST_MONTHLY_CARD_REWARD):
                 logger.info("Get unclaimed monthly card reward")
                 continue
-
+            # 处理签到+占卜
+            if self.handle_sign_in_reward():
+                continue
             # 活动签到啊啊啊啊啊
             if self.handle_activity_ticket_sign_in():
                 # if self.appear(ACTIVITY_SIGN_IN_GET_REWARD)
@@ -180,9 +182,7 @@ class Login(UI):  # , LoginAndroidCloud):
             if self.handle_time_limit_sign_in():
                 continue
 
-            # 处理签到+占卜
-            if self.handle_sign_in_reward():
-                continue
+
             # 处理活动签到礼物
 
             # if self.handle_popup_confirm():

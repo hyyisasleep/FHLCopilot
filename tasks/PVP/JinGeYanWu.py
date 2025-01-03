@@ -341,10 +341,7 @@ class JinGeYanWu(UI):
                 logger.info("Get pvp reward")
                 finish_pvp = True
                 continue
-            # # 两个finish没事吧。。。
-            # if self.handle_result_win_or_fail(interval):
-            #     finish_pvp = True
-            #     continue
+
             if self.appear(WIN_CHECK, interval):
                 logger.info("Get win")
                 finish_pvp = True

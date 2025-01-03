@@ -11,7 +11,7 @@ body:
         required: true
       - label: 我在提问题之前至少花费了 5 分钟来思考和准备
         required: true
-      - label: 我正在使用最新版的 SRC
+      - label: 我正在使用最新版的 FHLC
         required: true
   - type: textarea
     id: describe
