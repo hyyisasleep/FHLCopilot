@@ -22,7 +22,9 @@
           "auto",
           "CN-Official",
           "CN-Bilibili",
-          "CN-Vivo"
+          "CN-Vivo",
+          "CN-Oppo",
+          "CN-Huawei"
         ]
       },
       "GameLanguage": {
