@@ -42,16 +42,25 @@ class Mailbox(UI):
             else:
                 self.device.screenshot()
             if timeout.reached():
-                logger.warning("Get send message in world channel timeout")
+                logger.warning("Get mailbox reward timeout")
                 break
             if self.appear(PRESENT_MAIL_LOCKED):
                 logger.info("No mail with present")
                 break
+            if self.handle_reward():
+                continue
             if self.appear_then_click(PRESENT_MAIL_UNLOCK):
                 logger.info("Has mail to get present")
                 # self.appear_then_click(ONE_SWEEP_GET_MAIL)
                 continue
 
+
+
         if self.appear(MAILBOX_CHECK):
             self.close_popup(CLOSE_MAILBOX,BACKGROUND_CHECK)
 
+
+if __name__ == "__main__":
+    ui = Mailbox('fhlc')
+    ui.device.screenshot()
+    ui.run()

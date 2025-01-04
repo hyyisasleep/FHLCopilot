@@ -25,6 +25,7 @@ class Interact(UI):
 
         timeout = Timer(10).start()
         finish = False
+        show = False
         # skip_first_screenshot = False
         while 1:
             if skip_first_screenshot:
@@ -41,6 +42,9 @@ class Interact(UI):
                 logger.info("Get friendship upgrade reward")
                 continue
             if self.appear(GIVE_GIFT_CHECK):
+                if not show:
+                    logger.info("Today has fragment to get")
+                    show = True
                 if self.appear_then_click(GIVE_MODE_UPGRADE_UNLOCK, interval):
                     logger.info("Choose mode: give gift until friendship upgrade")
                     continue

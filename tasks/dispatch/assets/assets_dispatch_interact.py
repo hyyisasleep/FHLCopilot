@@ -35,22 +35,13 @@ GIVE_MODE_UPGRADE_LOCKED = ButtonWrapper(
 )
 GIVE_MODE_UPGRADE_UNLOCK = ButtonWrapper(
     name='GIVE_MODE_UPGRADE_UNLOCK',
-    share=[
-        Button(
-            file='./assets/share/dispatch/interact/GIVE_MODE_UPGRADE_UNLOCK.png',
-            area=(1073, 611, 1110, 645),
-            search=(1053, 591, 1130, 665),
-            color=(212, 198, 178),
-            button=(1073, 611, 1110, 645),
-        ),
-        Button(
-            file='./assets/share/dispatch/interact/GIVE_MODE_UPGRADE_UNLOCK.2.png',
-            area=(1073, 611, 1110, 645),
-            search=(1053, 591, 1130, 665),
-            color=(215, 200, 181),
-            button=(1073, 611, 1110, 645),
-        ),
-    ],
+    share=Button(
+        file='./assets/share/dispatch/interact/GIVE_MODE_UPGRADE_UNLOCK.png',
+        area=(1076, 615, 1108, 640),
+        search=(1056, 595, 1128, 660),
+        color=(218, 197, 179),
+        button=(1076, 615, 1108, 640),
+    ),
 )
 LEVEL_REWARD_LOCKED = ButtonWrapper(
     name='LEVEL_REWARD_LOCKED',

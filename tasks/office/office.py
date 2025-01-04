@@ -2,7 +2,7 @@ from module.base.timer import Timer
 from module.logger import logger
 from module.ocr.ocr import Digit
 
-from tasks.base.page import page_office, page_office_furniture
+from tasks.base.page import page_office, page_office_furniture, page_office_jigsaw
 from tasks.base.ui import UI
 
 from tasks.office.affair import Affair
@@ -83,5 +83,4 @@ class Office(UI):
 
 if __name__ == "__main__":
     ui = Office('fhlc')
-    ui.device.screenshot()
-    ui.run()
+

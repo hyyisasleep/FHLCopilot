@@ -75,7 +75,8 @@ class PopupHandler(ModuleBase):
             if timeout.reached():
                 logger.warning("Get close popup timeout,please check")
                 return False
-
+            if self.handle_reward():
+                continue
             if clicked:
                 cur = np.mean(get_color(self.device.image, background_button.area))
                 if abs(cur - prev) > 30:
@@ -83,9 +84,9 @@ class PopupHandler(ModuleBase):
                     self.interval_reset(close_button)
                     return True
 
+
             if self.appear_then_click(close_button):
                 clicked = True
-
                 continue
         return False
 

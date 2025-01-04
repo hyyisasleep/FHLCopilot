@@ -1,4 +1,4 @@
-from sympy.codegen.ast import continue_
+
 
 from module.base.timer import Timer
 from module.exception import GameNotRunningError
@@ -6,83 +6,18 @@ from module.logger import logger
 from tasks.base.assets.assets_base_page import  BACK
 
 from tasks.base.page import page_main
-from tasks.base.ui import UI
+
 from tasks.login.assets.assets_login import *
+from tasks.login.sign_in import SignInHandler
 
 
 # from tasks.login.cloud import LoginAndroidCloud
 
 
-class Login(UI):  # , LoginAndroidCloud):
-
-    def handle_activity_ticket_sign_in(self):
-        """
-        就开需要签到门票的活动的签到，时间特长我也不知道签到键会飞到哪
-        """
-
-        if self.appear_then_click(ACTIVITY_TICKET_SIGN_IN):
-            logger.info("Get activity sign in gift")
-            return True
-            # TODO: 判断补签
-        # 检测已领取，不然直接点back不确定会卡到哪
-        # appear = self.appear(ACTIVITY_TICKET_SIGN_IN_CLOSE,interval=5)
-        # if appear and self.appear_then_click(BACK):
-        #     logger.info("Close activity sign in gift page")
-        #     return True
-        if self.appear_then_click(ACTIVITY_TICKET_SIGN_IN_CLOSE):
-            logger.info("Close activity ticket sign in page")
-            return True
-        return False
-
-    def handle_time_limit_sign_in(self):
-        """
-        也是不知道什么时候冒出来的签到送十连，但是在昌平文引界面
-        """
-        if self.appear(TIME_LIMIT_SIGN_IN_CHECK):
-            logger.info("Get time limit sign in page, try to get reward")
-            timeout = Timer(10).start()
-            skip_first_screenshot = True
-            while 1:
-                if skip_first_screenshot:
-                    skip_first_screenshot = False
-                else:
-                    self.device.screenshot()
-                    if timeout.reached():
-                        logger.info("Get timeout, close sign in page")
-                        self.appear_then_click(BACK)
-                        break
-                    if self.handle_reward():
-                        logger.info("Get reward")
-                        continue
-                    # 这么写不对但是关了这界面下一个是啥。——。main？
-                    if self.appear_then_click(TIME_LIMIT_SIGN_IN):
-                        logger.info("Get time limit sign in gift")
-                        continue
-                    if self.appear_then_click(TIME_LIMIT_SIGN_IN_EDGE):
-                        logger.info("Get time limit sign in gift(day 8, the label is on edge)")
-                        continue
+class Login(SignInHandler):  # , LoginAndroidCloud):
 
 
-    def handle_sign_in_reward(self):
-        """
-         处理签到弹窗
-        """
-        if self.appear_then_click(DAILY_SIGN_IN):
-            logger.info("Sign in")
-            return True
-        if self.handle_reward():
-            logger.info("Get sign in reward")
-            # if self.handle_reward():
-            #     logger.info("Get 5-day sign in reward")
-            # 占卜吧
-            return True
 
-        if self.appear(DIVINE_CHECK):
-            self.appear_then_click(BACK, interval=2)
-            logger.info("Sign in finish")
-
-            return True
-        return False
     def _handle_app_login(self):
         """
         Pages:
@@ -171,13 +106,14 @@ class Login(UI):  # , LoginAndroidCloud):
             if self.appear_then_click(GET_LOST_MONTHLY_CARD_REWARD):
                 logger.info("Get unclaimed monthly card reward")
                 continue
+            if self.handle_daily_sign_in_reward():
+                continue
             # 处理签到+占卜
-            if self.handle_sign_in_reward():
+            if self.handle_guessing_celebrity_sign_in():
                 continue
-            # 活动签到啊啊啊啊啊
             if self.handle_activity_ticket_sign_in():
-                # if self.appear(ACTIVITY_SIGN_IN_GET_REWARD)
                 continue
+
             # TODO:处理活动十连签到
             if self.handle_time_limit_sign_in():
                 continue

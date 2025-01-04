@@ -3,26 +3,6 @@ from module.base.button import Button, ButtonWrapper
 # This file was auto-generated, do not modify it manually. To generate:
 # ``` python -m dev_tools.button_extract ```
 
-ACTIVITY_TICKET_SIGN_IN = ButtonWrapper(
-    name='ACTIVITY_TICKET_SIGN_IN',
-    share=Button(
-        file='./assets/share/login/ACTIVITY_TICKET_SIGN_IN.png',
-        area=(106, 629, 164, 665),
-        search=(76, 617, 1205, 685),
-        color=(255, 192, 143),
-        button=(106, 629, 164, 665),
-    ),
-)
-ACTIVITY_TICKET_SIGN_IN_CLOSE = ButtonWrapper(
-    name='ACTIVITY_TICKET_SIGN_IN_CLOSE',
-    share=Button(
-        file='./assets/share/login/ACTIVITY_TICKET_SIGN_IN_CLOSE.png',
-        area=(8, 1, 176, 55),
-        search=(0, 0, 196, 75),
-        color=(117, 89, 68),
-        button=(18, 1, 67, 51),
-    ),
-)
 CLOSE_JINGEZHIZUN_NOTICE = ButtonWrapper(
     name='CLOSE_JINGEZHIZUN_NOTICE',
     share=Button(
