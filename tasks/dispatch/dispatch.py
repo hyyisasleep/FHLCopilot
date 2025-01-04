@@ -39,10 +39,7 @@ class Dispatch(UI):
         self._kylin_affair()
         # 赠礼
         Interact(self.config, self.device).run()
-        # 知交圈点赞三次
-        Moments(self.config, self.device).run()
-        # 世界频道发言两次 本来该在bp里写的但我懒得写bp
-        Channel(self.config, self.device).run()
+
         # 邮箱补领奖励
         Mailbox(self.config, self.device).run()
 

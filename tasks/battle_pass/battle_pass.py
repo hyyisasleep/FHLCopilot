@@ -5,6 +5,8 @@ from tasks.base.page import page_fuliwangchuan, page_main
 
 from tasks.base.ui import UI
 from tasks.battle_pass.assets.assets_battle_pass import *
+from tasks.dispatch.channel import Channel
+from tasks.dispatch.moments import Moments
 
 
 class BattlePass(UI):
@@ -17,6 +19,14 @@ class BattlePass(UI):
         """
         logger.hr('BattlePass', level=1)
         # self.run_baoxu(times=4)
+
+        # 知交圈点赞三次
+        if self.config.BattlePassStorage_MomentsGiveLike:
+            Moments(self.config, self.device).run()
+        # 世界频道发言两次 本来该在bp里写的但我懒得写bp
+        if self.config.BattlePassStorage_ChannelSendIcon:
+            Channel(self.config, self.device).run()
+
         self.ui_ensure(page_fuliwangchuan)
         self._goto_bp_page()
         self._goto_mission_page()
@@ -82,6 +92,7 @@ class BattlePass(UI):
 
     def _get_reward_and_back(self,skip_first_screenshot=True):
         timeout = Timer(15).start()
+        show = False
         while 1:
             if skip_first_screenshot:
                 skip_first_screenshot = False
@@ -108,7 +119,9 @@ class BattlePass(UI):
 
             if self.appear(BP_REWARD_LOCKED):
                 self.appear_then_click(MISSION_CLOSE)
-                logger.info("No reward to get, go back")
+                if not show:
+                    logger.info("No reward to get, go back")
+                    show = True
                 continue
             if self.appear_then_click(BP_REWARD_UNLOCK):
                 continue

@@ -51,6 +51,14 @@
     "Interact": {
       "CurrentCelebrity": 0,
       "CurrentAffectionLevel": 0
+    }
+  },
+  "Dungeon": {
+    "Scheduler": {
+      "Enable": true,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "Dungeon",
+      "ServerUpdate": "06:00"
     },
     "Dungeon": {
       "Team": 1,
@@ -109,7 +117,9 @@
       "ServerUpdate": "06:00"
     },
     "BattlePassStorage": {
-      "BattlePassLevel": {}
+      "BattlePassLevel": {},
+      "MomentsGiveLike": 0,
+      "ChannelSendIcon": 0
     }
   },
   "DataUpdate": {

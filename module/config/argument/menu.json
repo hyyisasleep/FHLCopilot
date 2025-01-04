@@ -12,6 +12,7 @@
     "page": "setting",
     "tasks": [
       "DailyQuest",
+      "Dungeon",
       "MealPower",
       "Guild",
       "Shop",

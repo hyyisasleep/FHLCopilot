@@ -27,6 +27,9 @@ Daily:
       - DailyStorage
       - Office
       - Interact
+
+    Dungeon:
+      - Scheduler
       - Dungeon
 
     MealPower:

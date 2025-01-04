@@ -59,6 +59,10 @@ class FHLCopilot(AzurLaneAutoScript):
         from tasks.PVP.JinGeYanWu import JinGeYanWu
         JinGeYanWu(config=self.config, device=self.device).run()
 
+    def dungeon(self):
+        from tasks.dungeon.dungeon import Dungeon
+        Dungeon(config=self.config, device=self.device).run()
+
 
 if __name__ == '__main__':
     src = FHLCopilot('fhlc')

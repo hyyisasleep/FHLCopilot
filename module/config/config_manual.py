@@ -9,7 +9,7 @@ class ManualConfig:
         return server.lang
 
     SCHEDULER_PRIORITY = """
-    Restart  > DataUpdate > MealPower > Shop > Guild > DailyQuest > BattlePass 
+    Restart  > DataUpdate > MealPower > Shop > Guild > DailyQuest > Dungeon > BattlePass 
     """
 
 

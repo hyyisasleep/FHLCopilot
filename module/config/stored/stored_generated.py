@@ -29,10 +29,10 @@ from module.config.stored.classes import (
 
 class StoredGenerated:
     DailyLiveness = StoredDailyLiveness("DailyQuest.DailyStorage.DailyLiveness")
-    DailyBaoXuPlan = StoredDailyBaoXu("DailyQuest.Dungeon.DailyBaoXuPlan")
-    DailyJingYuanPlan = StoredDailyBaoXu("DailyQuest.Dungeon.DailyJingYuanPlan")
-    DailyGuShiFengYunPlan = StoredDailyBaoXu("DailyQuest.Dungeon.DailyGuShiFengYunPlan")
-    DailyJinGePlan = StoredDailyBaoXu("DailyQuest.Dungeon.DailyJinGePlan")
+    DailyBaoXuPlan = StoredDailyBaoXu("Dungeon.Dungeon.DailyBaoXuPlan")
+    DailyJingYuanPlan = StoredDailyBaoXu("Dungeon.Dungeon.DailyJingYuanPlan")
+    DailyGuShiFengYunPlan = StoredDailyBaoXu("Dungeon.Dungeon.DailyGuShiFengYunPlan")
+    DailyJinGePlan = StoredDailyBaoXu("Dungeon.Dungeon.DailyJinGePlan")
     DailyGuildMission = StoredDailyGuildMission("Guild.GuildMission.DailyGuildMission")
     MonthlyCard30 = StoredInt("Shop.MonthlyCard.MonthlyCard30")
     MonthlyCard68 = StoredInt("Shop.MonthlyCard.MonthlyCard68")

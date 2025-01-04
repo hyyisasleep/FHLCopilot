@@ -171,13 +171,18 @@ MonthlyCard:
     stored: StoredInt
     display: display
 
-
 BattlePassStorage:
   BattlePassLevel:
     stored: StoredBattlePassLevel
     order: 5
     color: "#cbe45b"
     display: display
+  MomentsGiveLike:
+    type: checkbox
+    value: 0
+  ChannelSendIcon:
+    type: checkbox
+    value: 0
 
 ItemStorage:
   Copper:

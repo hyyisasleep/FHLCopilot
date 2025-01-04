@@ -28,6 +28,11 @@ DataUpdate:
   Scheduler:
     Enable: true
 
+Dungeon:
+  Scheduler:
+    Enable: true
+
+
 # ==================== Weekly ====================
 
 #Weekly:

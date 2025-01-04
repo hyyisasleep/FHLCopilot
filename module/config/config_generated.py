@@ -77,6 +77,8 @@ class GeneratedConfig:
 
     # Group `BattlePassStorage`
     BattlePassStorage_BattlePassLevel = {}
+    BattlePassStorage_MomentsGiveLike = 0
+    BattlePassStorage_ChannelSendIcon = 0
 
     # Group `ItemStorage`
     ItemStorage_Copper = {}
