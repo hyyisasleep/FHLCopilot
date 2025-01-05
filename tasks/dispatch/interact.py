@@ -58,5 +58,5 @@ class Interact(UI):
 
 if __name__ == "__main__":
     ui = Interact("fhlc")
-    ui.device.screenshot()
-    ui.run()
+    ui.image_file = r'C:\Users\huixi\Documents\MuMu共享文件夹\Screenshots\MuMu12-20250104-203104.png'
+    print(ui.appear(GIVE_MODE_UPGRADE_UNLOCK))

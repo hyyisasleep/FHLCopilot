@@ -33,7 +33,7 @@ class Moments(UI):
         timeout = Timer(10).start()
 
         #bug: sometimes will click 2 heart in different location??
-        CLICK_HEART.match_template(self.device.image)
+        # CLICK_HEART.match_template(self.device.image)
         # CLICK_HEART_OK.load_offset(CLICK_HEART)
         interval = Timer(0.5).start()
         cur_count = 0
@@ -57,8 +57,12 @@ class Moments(UI):
             if interval.reached():
                 interval.reset()
                 cur_count,_,total_count = MomentsOCR(OCR_COUNT,lang=self.config.LANG).ocr_single_line(self.device.image)
-                if self.device.click(CLICK_HEART):
+                if self.appear_then_click(CLICK_HEART,interval=1):
                     continue
+                if self.appear_then_click(CLICK_HEART_OK,interval=1):
+                    continue
+                # if self.device.click(CLICK_HEART):
+                #     continue
 
 
     def _wait_until_moments_page_stabled(self, skip_first_screenshot=True):

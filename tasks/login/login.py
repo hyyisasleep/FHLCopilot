@@ -81,10 +81,13 @@ class Login(SignInHandler):  # , LoginAndroidCloud):
                 continue
 
             # Login
-            if self.is_in_login_confirm(interval=5):
-                self.device.click(LOGIN_CONFIRM)
+            if self.appear_then_click(LOGIN_CONFIRM):
                 login_success = True
                 continue
+            # if self.is_in_login_confirm(interval=5):
+            #     self.device.click(LOGIN_CONFIRM)
+            #     login_success = True
+            #     continue
 
             # Additional
 
@@ -102,7 +105,6 @@ class Login(SignInHandler):  # , LoginAndroidCloud):
                 continue
             # 翻截图看到的，大雪归鸿在登陆界面提示你拿未领取月卡奖励
             # 但是点完领取后会弹出reward弹窗，下面是能看到pagemain的检查标志的。。。
-            # TODO:哪天不登陆测试一下？
             if self.appear_then_click(GET_LOST_MONTHLY_CARD_REWARD):
                 logger.info("Get unclaimed monthly card reward")
                 continue

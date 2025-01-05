@@ -1,4 +1,5 @@
 from module.alas import AzurLaneAutoScript
+from module.exception import GameNotRunningError
 from module.logger import logger
 from tasks.battle_pass.battle_pass import BattlePass
 
@@ -53,11 +54,17 @@ class FHLCopilot(AzurLaneAutoScript):
 
     def daily_password(self):
         from tasks.daily.daily_password import DailyPassword
+        # auto start game
+        self.goto_main()
         DailyPassword(config=self.config, device=self.device).run()
+
 
     def clear_jin_ge_talisman(self):
         from tasks.PVP.JinGeYanWu import JinGeYanWu
+        self.goto_main()
         JinGeYanWu(config=self.config, device=self.device).run()
+
+
 
     def dungeon(self):
         from tasks.dungeon.dungeon import Dungeon

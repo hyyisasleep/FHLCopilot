@@ -2,7 +2,7 @@
 from module.base.button import ButtonWrapper
 from module.base.decorator import run_once
 from module.base.timer import Timer
-from module.exception import GameNotRunningError, GamePageUnknownError
+from module.exception import GameNotRunningError, GamePageUnknownError, HandledError
 from module.logger import logger
 from module.ocr.ocr import Ocr, DigitCounter
 
@@ -99,15 +99,20 @@ class UI(PopupHandler):
             if self.ui_additional():
                 timeout.reset()
                 continue
+
             # if self.handle_popup_single():
             #     timeout.reset()
             #     continue
             # if self.handle_popup_confirm():
             #     timeout.reset()
             #     continue
-            if self.is_in_login_confirm(interval=5):
-                self.device.click(LOGIN_CONFIRM)
-                timeout.reset()
+
+
+            # if self.is_in_login_confirm(interval=5):
+            #     self.device.click(LOGIN_CONFIRM)
+            #     timeout.reset()
+            #     continue
+            if self.handle_login_confirm():
                 continue
             # if self.appear(MAP_LOADING, interval=5):
             #     logger.info('Map loading')
@@ -529,7 +534,16 @@ class UI(PopupHandler):
             # if self.appear_then_click(ROGUE_LEAVE_FOR_NOW_OE, interval=2):
             #     clicked = True
             #     continue
-
+    def handle_login_confirm(self):
+        """
+        If LOGIN_CONFIRM appears, do as task `Restart` not just clicking it
+        """
+        if self.is_in_login_confirm(interval=0):
+            logger.warning('Login page appeared')
+            from tasks.login.login import Login
+            Login(self.config, device=self.device).handle_app_login()
+            return True
+        return False
 
 if __name__ == '__main__':
     ui = UI('fhlc')
