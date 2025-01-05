@@ -23,6 +23,16 @@ CLOSE_MAILBOX = ButtonWrapper(
         button=(1180, 64, 1217, 100),
     ),
 )
+GET_UPDATE_MAIL_REWARD = ButtonWrapper(
+    name='GET_UPDATE_MAIL_REWARD',
+    share=Button(
+        file='./assets/share/dispatch/mailbox/GET_UPDATE_MAIL_REWARD.png',
+        area=(763, 569, 891, 613),
+        search=(743, 549, 911, 633),
+        color=(228, 131, 98),
+        button=(763, 569, 891, 613),
+    ),
+)
 MAILBOX_CHECK = ButtonWrapper(
     name='MAILBOX_CHECK',
     share=Button(
@@ -55,13 +65,22 @@ OPEN_MAILBOX_NO_REWARD = ButtonWrapper(
 )
 PRESENT_MAIL_LOCKED = ButtonWrapper(
     name='PRESENT_MAIL_LOCKED',
-    share=Button(
-        file='./assets/share/dispatch/mailbox/PRESENT_MAIL_LOCKED.png',
-        area=(159, 118, 207, 176),
-        search=(139, 98, 227, 196),
-        color=(219, 205, 186),
-        button=(159, 118, 207, 176),
-    ),
+    share=[
+        Button(
+            file='./assets/share/dispatch/mailbox/PRESENT_MAIL_LOCKED.png',
+            area=(159, 118, 207, 176),
+            search=(139, 98, 227, 196),
+            color=(219, 205, 186),
+            button=(159, 118, 207, 176),
+        ),
+        Button(
+            file='./assets/share/dispatch/mailbox/PRESENT_MAIL_LOCKED.2.png',
+            area=(160, 118, 207, 172),
+            search=(140, 98, 227, 192),
+            color=(214, 194, 170),
+            button=(160, 118, 207, 172),
+        ),
+    ],
 )
 PRESENT_MAIL_UNLOCK = ButtonWrapper(
     name='PRESENT_MAIL_UNLOCK',
@@ -71,5 +90,15 @@ PRESENT_MAIL_UNLOCK = ButtonWrapper(
         search=(144, 99, 217, 169),
         color=(241, 200, 170),
         button=(206, 554, 255, 592),
+    ),
+)
+UPDATE_MAIL_UNLOCK = ButtonWrapper(
+    name='UPDATE_MAIL_UNLOCK',
+    share=Button(
+        file='./assets/share/dispatch/mailbox/UPDATE_MAIL_UNLOCK.png',
+        area=(187, 143, 213, 179),
+        search=(167, 123, 233, 199),
+        color=(213, 131, 110),
+        button=(187, 143, 213, 179),
     ),
 )

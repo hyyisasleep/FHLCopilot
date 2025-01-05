@@ -4,6 +4,7 @@ from module.logger import logger
 from tasks.base.ui import UI
 from tasks.dispatch.assets.assets_dispatch_mailbox import *
 
+
 #领邮箱奖励
 class Mailbox(UI):
 
@@ -48,6 +49,11 @@ class Mailbox(UI):
                 logger.info("No mail with present")
                 break
             if self.handle_reward():
+                continue
+            if self.appear_then_click(GET_UPDATE_MAIL_REWARD):
+                continue
+            if self.appear_then_click(UPDATE_MAIL_UNLOCK):
+                logger.info("Has update reward mail")
                 continue
             if self.appear_then_click(PRESENT_MAIL_UNLOCK):
                 logger.info("Has mail to get present")

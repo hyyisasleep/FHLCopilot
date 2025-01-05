@@ -67,6 +67,13 @@ PLAY_WITH_CAT_LOCKED = ButtonWrapper(
             color=(66, 116, 188),
             button=(304, 115, 326, 136),
         ),
+        Button(
+            file='./assets/share/cattery/PLAY_WITH_CAT_LOCKED.4.png',
+            area=(304, 115, 326, 136),
+            search=(284, 95, 346, 156),
+            color=(236, 225, 211),
+            button=(304, 115, 326, 136),
+        ),
     ],
 )
 SKIP_BUTTON = ButtonWrapper(
