@@ -61,7 +61,7 @@ class SignInHandler(UI):
                 self.device.screenshot()
 
                 if timeout.reached():
-                    logger.warning("Get timeout, close sign in page")
+                    logger.info("Get timeout, close sign in page")
                     break
                 if self.handle_reward():
                     continue
@@ -147,7 +147,7 @@ class SignInHandler(UI):
 
         if self.appear(DIVINE_CHECK):
             self.appear_then_click(BACK, interval=2)
-            logger.info("Sign in finish")
+            # logger.info("Sign in finish")
 
             return True
         return False

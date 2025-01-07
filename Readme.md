@@ -2,7 +2,7 @@
 
 忘川风华录 自动化日常脚本
 
-基于[StarRailCopilot](https://github.com/LmeSzinc/StarRailCopilot/)/ [AzurLaneAutoScript](https://github.com/LmeSzinc/AzurLaneAutoScript)框架开发
+基于 [StarRailCopilot](https://github.com/LmeSzinc/StarRailCopilot/) / [AzurLaneAutoScript](https://github.com/LmeSzinc/AzurLaneAutoScript) 框架开发
 
 
 
@@ -20,7 +20,7 @@
 
 ## 未来准备开发的功能
 
-每日副本任务独立，加开关
+名士演绎 每天发3-4条
 
 自动使用本周即将过期的八宝肉
 
@@ -40,6 +40,8 @@
 
 ## 已知bug
 
+初始屏幕方向不对，maatouch重置方向后也识别不到图像
+
 cdn用不了，直接gitee拉取了
 
 每日签到密令，微信在后台的时候脚本找不到
@@ -57,7 +59,7 @@ cdn用不了，直接gitee拉取了
 ### 用了会被封号吗
 FHLC的运行基于图像识别，就像你平时打游戏一样看到某个图标出现了才会去点，不涉及任何游戏本体代码数据的修改。
 
-不过还是那句老话用别怕怕别用
+不过还是那句老话用别怕怕别用。
 
 ### 一定要用模拟器吗
 是的。
@@ -69,7 +71,8 @@ FHLC的运行基于图像识别，就像你平时打游戏一样看到某个图�
 FHLC设置→模拟器设置→游戏服务器，把自动检测改成你的渠道服版本，如果渠道服版本不在列表内可以联系作者添加。
 
 ### 我想清多个账号的日常
-目前没写切换账号，需要手动增加一个配置文件，在游戏里切换账号后【关闭游戏】然后在新配置中开启调度器，让调度器自己运行。
+
+手动增加一个fhlc配置文件，在游戏里切换账号后在新配置中开启调度器，让调度器自己运行。
 
 
 ### ===================脚本内容相关==================
