@@ -155,6 +155,7 @@ GuildActivity:
     type: checkbox
     value: 0
 
+
 GuildMission:
   DailyGuildMission:
     stored: StoredDailyGuildMission
@@ -162,6 +163,14 @@ GuildMission:
   WeeklyLiveness:
     value: 0
     display: hide
+
+Cosplay:
+  SendCosplayStatus:
+    type: checkbox
+    value: 0
+  SendStatusTimes:
+    stored: StoredCosplaySendStatusTimes
+    display: display
 
 MonthlyCard:
   MonthlyCard30:

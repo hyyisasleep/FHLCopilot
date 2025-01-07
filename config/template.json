@@ -88,13 +88,17 @@
       "Command": "Guild",
       "ServerUpdate": "06:00"
     },
+    "GuildMission": {
+      "DailyGuildMission": {},
+      "WeeklyLiveness": 0
+    },
     "GuildActivity": {
       "OpenActivityList": 0,
       "ClearShaPanFlag": 0
     },
-    "GuildMission": {
-      "DailyGuildMission": {},
-      "WeeklyLiveness": 0
+    "Cosplay": {
+      "SendCosplayStatus": 0,
+      "SendStatusTimes": {}
     }
   },
   "Shop": {

@@ -130,6 +130,19 @@
     "order": 0,
     "color": "#777777"
   },
+  "SendStatusTimes": {
+    "name": "SendStatusTimes",
+    "path": "Guild.Cosplay.SendStatusTimes",
+    "i18n": "Cosplay.SendStatusTimes.name",
+    "stored": "StoredCosplaySendStatusTimes",
+    "attrs": {
+      "time": "2020-01-01 00:00:00",
+      "total": 4,
+      "value": 0
+    },
+    "order": 0,
+    "color": "#777777"
+  },
   "MonthlyCard30": {
     "name": "MonthlyCard30",
     "path": "Shop.MonthlyCard.MonthlyCard30",

@@ -386,7 +386,8 @@ class StoredDailyGuildMission(StoredCounter, StoredExpiredAt0600):
             self.mission2 = ''
             self.mission3 = ''
 
-
+class StoredCosplaySendStatusTimes(StoredCounter, StoredExpiredAt0600):
+    FIXED_TOTAL = 4
 # class StoredResersed(StoredCounter):
 #     FIXED_TOTAL = 2400
 #

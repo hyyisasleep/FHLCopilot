@@ -2,6 +2,7 @@ from module.config.stored.classes import (
     StoredBase,
     StoredBattlePassLevel,
     StoredBuySuperCatBallWhenArriveRankNine,
+    StoredCosplaySendStatusTimes,
     StoredCounter,
     StoredDailyBaoXu,
     StoredDailyGuShiFengYun,
@@ -34,6 +35,7 @@ class StoredGenerated:
     DailyGuShiFengYunPlan = StoredDailyBaoXu("Dungeon.Dungeon.DailyGuShiFengYunPlan")
     DailyJinGePlan = StoredDailyBaoXu("Dungeon.Dungeon.DailyJinGePlan")
     DailyGuildMission = StoredDailyGuildMission("Guild.GuildMission.DailyGuildMission")
+    SendStatusTimes = StoredCosplaySendStatusTimes("Guild.Cosplay.SendStatusTimes")
     MonthlyCard30 = StoredInt("Shop.MonthlyCard.MonthlyCard30")
     MonthlyCard68 = StoredInt("Shop.MonthlyCard.MonthlyCard68")
     BattlePassLevel = StoredBattlePassLevel("BattlePass.BattlePassStorage.BattlePassLevel")

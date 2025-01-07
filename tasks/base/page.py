@@ -168,6 +168,9 @@ page_guild_mission = Page(GUILD_MISSION_CHECK)
 page_guild_mission.link(BACK,destination=page_guild)
 page_guild.link(GUILD_GOTO_MISSION, destination=page_guild_mission)
 
+page_guild_cosplay = Page(GUILD_COSPLAY_CHECK)
+page_guild_cosplay.link(BACK,destination=page_guild)
+page_guild.link(GUILD_GOTO_COSPLAY, destination=page_guild_cosplay)
 
 # =============金戈馆================
 page_jingeyanwu = Page(JINGEYANWU_CHECK)

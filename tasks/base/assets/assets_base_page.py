@@ -170,6 +170,16 @@ GUILD_CHECK = ButtonWrapper(
         ),
     ],
 )
+GUILD_COSPLAY_CHECK = ButtonWrapper(
+    name='GUILD_COSPLAY_CHECK',
+    share=Button(
+        file='./assets/share/base/page/GUILD_COSPLAY_CHECK.png',
+        area=(74, 15, 183, 47),
+        search=(54, 0, 203, 67),
+        color=(139, 110, 85),
+        button=(74, 15, 183, 47),
+    ),
+)
 GUILD_GOTO_BEGGING = ButtonWrapper(
     name='GUILD_GOTO_BEGGING',
     share=Button(
@@ -178,6 +188,16 @@ GUILD_GOTO_BEGGING = ButtonWrapper(
         search=(835, 648, 941, 720),
         color=(208, 197, 175),
         button=(855, 668, 921, 701),
+    ),
+)
+GUILD_GOTO_COSPLAY = ButtonWrapper(
+    name='GUILD_GOTO_COSPLAY',
+    share=Button(
+        file='./assets/share/base/page/GUILD_GOTO_COSPLAY.png',
+        area=(1196, 232, 1222, 264),
+        search=(1176, 212, 1242, 284),
+        color=(232, 196, 147),
+        button=(1196, 232, 1222, 264),
     ),
 )
 GUILD_GOTO_MISSION = ButtonWrapper(
