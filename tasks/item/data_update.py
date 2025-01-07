@@ -28,16 +28,16 @@ class PowerOCR(DigitCounter):
         # from SRC
         # result = super().after_process(result)
 
-        result = re.sub(r'1\.|[.]+', '/',result)
+        result = re.sub(r'[.]+', '/',result)
 
         result = re.sub(r'1150$', '/150', result)
 
         result = re.sub(r'15$', '150', result)
 
         result = result.replace('/1501', '/150')
-        result = re.sub('1.150$', '/150',result)
+        result = re.sub('1[.:]150$', '/150',result)
         # 12801:250  -> 1280/250
-        result = re.sub('1:150$', '/150',result)
+        # result = re.sub('1:150$', '/150',result)
         #020191:150
         # 15541250 -> 1554/250
         result = re.sub(r'1250$', '/250', result)
@@ -46,9 +46,9 @@ class PowerOCR(DigitCounter):
 
         result = result.replace('/2501', '/250')
         # 15541.250 -> 1554/250
-        result = re.sub('1.250$', '/250',result)
+        result = re.sub('1[:.]250$', '/250',result)
         # 12801:250  -> 1280/250
-        result = re.sub('1:250$', '/250',result)
+        # result = re.sub('1:250$', '/250',result)
         return super().after_process(result)
 
 class DataUpdate(UI):
@@ -158,4 +158,4 @@ class DataUpdate(UI):
 if __name__ == '__main__':
     ui = DataUpdate('fhlc')
     ui.device.screenshot()
-    ui.get_copper_status()
+    ui.get_tong_bao_and_power_status(ui.device.image)

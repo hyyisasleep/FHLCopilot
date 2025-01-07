@@ -296,7 +296,7 @@
   },
   "GuildActivity": {
     "_info": {
-      "name": "本周活动",
+      "name": "周常活动",
       "help": ""
     },
     "OpenActivityList": {
@@ -307,6 +307,7 @@
       "name": "沙盘论义自动清旗",
       "help": "勾选后周四、周日运行，请保证练度稳定六胜后再使用\n游戏里的自动功能不太好用所以写了这个"
     }
+
   },
   "GuildMission": {
     "_info": {
@@ -315,11 +316,25 @@
     },
     "DailyGuildMission": {
       "name": "每日悬赏任务列表",
-      "help": "仅展示OCR内容，目前不做刷宝墟镜渊以外的任务\n也不会主动领奖（第二天会补发到邮箱）"
+      "help": "仅展示内容，目前不做刷宝墟镜渊以外的任务\n也不会主动领奖（第二天会补发到邮箱）"
     },
     "WeeklyLiveness": {
       "name": "周活跃度领奖情况",
       "help": "跟每日悬赏领取一样还在开发中，占个位"
+    }
+  },
+  "Cosplay": {
+    "_info": {
+      "name": "名士演绎",
+      "help": ""
+    },
+    "SendCosplayStatus": {
+      "name": "每日刷演绎经验值",
+      "help": "勾选后会使用【当前演绎名士】发演绎动态，上限4条\n默认在‘故人万千’分区发送‘咩咩咩咩’"
+    },
+    "SendStatusTimes": {
+      "name": "今日已发送动态数",
+      "help": "检查用"
     }
   },
   "MonthlyCard": {

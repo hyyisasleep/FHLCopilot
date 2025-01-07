@@ -1,7 +1,6 @@
 import re
 
 from module.base.timer import Timer
-from module.base.utils import crop
 from module.logger import logger
 from module.ocr.ocr import Ocr
 from tasks.base.page import page_guild_mission

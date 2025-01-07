@@ -367,17 +367,6 @@
         "display": "hide"
       }
     },
-    "GuildActivity": {
-      "OpenActivityList": {
-        "type": "input",
-        "value": 0,
-        "display": "hide"
-      },
-      "ClearShaPanFlag": {
-        "type": "checkbox",
-        "value": 0
-      }
-    },
     "GuildMission": {
       "DailyGuildMission": {
         "type": "stored",
@@ -389,6 +378,29 @@
         "type": "input",
         "value": 0,
         "display": "hide"
+      }
+    },
+    "GuildActivity": {
+      "OpenActivityList": {
+        "type": "input",
+        "value": 0,
+        "display": "hide"
+      },
+      "ClearShaPanFlag": {
+        "type": "checkbox",
+        "value": 0
+      }
+    },
+    "Cosplay": {
+      "SendCosplayStatus": {
+        "type": "checkbox",
+        "value": 0
+      },
+      "SendStatusTimes": {
+        "type": "stored",
+        "value": {},
+        "display": "display",
+        "stored": "StoredCosplaySendStatusTimes"
       }
     }
   },

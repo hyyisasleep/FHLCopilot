@@ -38,8 +38,10 @@ Daily:
 
     Guild:
       - Scheduler
-      - GuildActivity
       - GuildMission
+      - GuildActivity
+      - Cosplay
+
 
     Shop:
       - Scheduler

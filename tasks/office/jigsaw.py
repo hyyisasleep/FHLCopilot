@@ -69,7 +69,7 @@ class Jigsaw(UI):
 
             if self.appear(ITEM_AMOUNT_MAX):
                 self.appear_then_click(CONVERT_CONFIRM)
-                logger.info(f"Convert {amount} item")
+                # logger.info(f"Convert {amount} item")
                 continue
 
             if self.appear_then_click(ITEM_AMOUNT_PLUS, interval=0.5):

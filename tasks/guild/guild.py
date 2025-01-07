@@ -6,6 +6,7 @@ from tasks.PVP.ShaPanLunYi import ShaPanLunYi
 from tasks.base.page import page_guild, page_guild_begging
 
 from tasks.guild.assets.assets_guild import *
+from tasks.guild.cosplay import Cosplay
 from tasks.guild.mission import GuildMission
 
 
@@ -47,6 +48,8 @@ class Guild(GuildMission):
                     logger.info("Today is Thursday or Sunday, run sha pan lun yi")
                     ShaPanLunYi(self.config,self.device).run()
 
+            if self.config.Cosplay_SendCosplayStatus:
+                Cosplay(self.config, self.device).run()
 
         self.ui_goto_main()
 

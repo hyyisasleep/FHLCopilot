@@ -71,6 +71,10 @@ class GeneratedConfig:
     GuildMission_DailyGuildMission = {}
     GuildMission_WeeklyLiveness = 0
 
+    # Group `Cosplay`
+    Cosplay_SendCosplayStatus = 0
+    Cosplay_SendStatusTimes = {}
+
     # Group `MonthlyCard`
     MonthlyCard_MonthlyCard30 = {}
     MonthlyCard_MonthlyCard68 = {}
