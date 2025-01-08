@@ -57,6 +57,8 @@ class BattlePass(UI):
                 continue
             if self.appear_then_click(GOTO_BP):
                 continue
+            if self.handle_bp_level_up():
+                continue
 
 
     # def _goto_mission_page(self,skip):

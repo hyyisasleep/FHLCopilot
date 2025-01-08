@@ -77,7 +77,7 @@ class Visit(UI):
 
     def _click_like_in_other_office(self, button, skip_first_screenshot=True) -> bool:
         finish = False
-        timeout = Timer(15).start()
+        timeout = Timer(10).start()
         while 1:
             if skip_first_screenshot:
                 skip_first_screenshot = False
