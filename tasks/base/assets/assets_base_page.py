@@ -129,6 +129,20 @@ FULIWANGCHUAN_CHECK = ButtonWrapper(
             color=(210, 176, 139),
             button=(58, 180, 75, 201),
         ),
+        Button(
+            file='./assets/share/base/page/FULIWANGCHUAN_CHECK.4.png',
+            area=(55, 346, 78, 371),
+            search=(32, 75, 177, 691),
+            color=(223, 185, 118),
+            button=(55, 346, 78, 371),
+        ),
+        Button(
+            file='./assets/share/base/page/FULIWANGCHUAN_CHECK.5.png',
+            area=(53, 346, 79, 372),
+            search=(32, 75, 177, 691),
+            color=(136, 117, 108),
+            button=(53, 346, 79, 372),
+        ),
     ],
 )
 GACHA_CHECK = ButtonWrapper(

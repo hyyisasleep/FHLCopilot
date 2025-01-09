@@ -18,25 +18,29 @@ class BattlePass(UI):
         """
         """
         logger.hr('BattlePass', level=1)
-        # self.run_baoxu(times=4)
-
-        # 知交圈点赞三次
-        if self.config.BattlePassStorage_MomentsGiveLike:
-            Moments(self.config, self.device).run()
-        # 世界频道发言两次 本来该在bp里写的但我懒得写bp
-        if self.config.BattlePassStorage_ChannelSendIcon:
-            Channel(self.config, self.device).run()
 
         self.ui_ensure(page_fuliwangchuan)
-        self._goto_bp_page()
-        self._goto_mission_page()
-        self._get_reward_and_back()
-        self.ui_ensure(page_main)
+        if self._goto_bp_page():
+            self._goto_mission_page()
+            self._get_reward_and_back()
+            # 确定BP开了再做任务
+            # 知交圈点赞三次
+            if self.config.BattlePassStorage_MomentsGiveLike:
+                Moments(self.config, self.device).run()
+            # 世界频道发言两次 本来该在bp里写的但我懒得写bp
+            if self.config.BattlePassStorage_ChannelSendIcon:
+                Channel(self.config, self.device).run()
+
+        self.ui_goto_main()
         self.config.task_call("DataUpdate")
 
         self.config.task_delay(server_update=True)
 
-    def _goto_bp_page(self,skip_first_screenshot=True):
+    def _goto_bp_page(self,skip_first_screenshot=True)->bool:
+        """
+        Returns:
+            bool: if arrive chang-ping-wen-yin page successfully
+        """
         timeout = Timer(10).start()
         # level = -1
         while 1:
@@ -46,22 +50,20 @@ class BattlePass(UI):
                 self.device.screenshot()
 
             if timeout.reached():
-                logger.warning('Get go to battle pass page timeout')
-                break
+                logger.warning('Get search battle pass page timeout')
+                return False
             if self.appear(BP_PAGE_STABLE_CHECK):
-                # level = Digit(OCR_LEVEL).ocr_single_line(self.device.image)
-                # logger.info(f"Battle pass page stable, level:{level}")
                 logger.info("BattlePass page arrived")
-                break
+                return True
             if self.handle_reward():
-                continue
-            if self.appear_then_click(GOTO_BP):
                 continue
             if self.handle_bp_level_up():
                 continue
+            if self.appear_then_click(GOTO_BP):
+                timeout.reset()
+                continue
 
 
-    # def _goto_mission_page(self,skip):
     def _goto_mission_page(self, skip_first_screenshot=True):
 
         timeout = Timer(15).start()
@@ -86,10 +88,6 @@ class BattlePass(UI):
 
             if self.appear_then_click(MISSION_CLICK):
                 continue
-
-
-
-
 
 
     def _get_reward_and_back(self,skip_first_screenshot=True):
