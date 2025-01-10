@@ -30,6 +30,13 @@ LIKE_LOCKED = ButtonWrapper(
             color=(220, 191, 159),
             button=(820, 667, 837, 685),
         ),
+        Button(
+            file='./assets/share/office/visit/LIKE_LOCKED.3.png',
+            area=(905, 634, 947, 659),
+            search=(885, 614, 967, 679),
+            color=(223, 179, 108),
+            button=(905, 634, 947, 659),
+        ),
     ],
 )
 LIKE_UNLOCK = ButtonWrapper(
@@ -56,10 +63,10 @@ OTHER_OFFICE_CHECK = ButtonWrapper(
     name='OTHER_OFFICE_CHECK',
     share=Button(
         file='./assets/share/office/visit/OTHER_OFFICE_CHECK.png',
-        area=(741, 622, 791, 687),
-        search=(721, 602, 811, 707),
-        color=(202, 159, 122),
-        button=(741, 622, 791, 687),
+        area=(408, 649, 442, 680),
+        search=(388, 629, 462, 700),
+        color=(175, 134, 83),
+        button=(408, 649, 442, 680),
     ),
 )
 VISIT_FIRST = ButtonWrapper(

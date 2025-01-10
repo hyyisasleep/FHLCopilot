@@ -1,5 +1,6 @@
 from module.base.timer import Timer
 from module.logger import logger
+from tasks.base.assets.assets_base_page import TAOYUAN_VISIT_CHECK
 # from tasks.base.assets.assets_base_page import BACK
 from tasks.base.page import page_office_visit, page_office
 from tasks.base.ui import UI
@@ -41,12 +42,8 @@ class Visit(UI):
                 logger.warning("Retry visit other times get 3, stop")
                 break
 
-            #TODO: 我草到了还在点啊！
-            if self.appear_then_click(VISIT_GOTO_MY_VISIT_LIST):
-                logger.info("Goto my visit list")
-                # timeout.reset()
-                continue
-            if self.appear(MY_VISIT_LIST_CHECK):
+
+            if self.appear(MY_VISIT_LIST_CHECK,interval=1):
 
                 if not first_visit:
                     first_visit = self._click_like_in_other_office(VISIT_FIRST)
@@ -73,11 +70,35 @@ class Visit(UI):
                         retry += 1
                 timeout.reset()
                 continue
+            if self.appear_then_click(VISIT_GOTO_MY_VISIT_LIST):
+                logger.info("Goto my visit list")
+                # timeout.reset()
+                continue
         pass
 
     def _click_like_in_other_office(self, button, skip_first_screenshot=True) -> bool:
         finish = False
-        timeout = Timer(10).start()
+        timeout = Timer(5).start()
+
+        while 1:
+            if skip_first_screenshot:
+                skip_first_screenshot = False
+            else:
+                self.device.screenshot()
+
+            if timeout.reached():
+                logger.warning("Get timeout when turn to other office page")
+                break
+            if self.appear(OTHER_OFFICE_CHECK):
+                logger.info("Arrive at other office")
+                break
+            if self.appear_then_click(button, interval=2):
+                logger.info("Goto other office page")
+                continue
+
+        timeout.reset()
+
+        clicked = False
         while 1:
             if skip_first_screenshot:
                 skip_first_screenshot = False
@@ -86,31 +107,33 @@ class Visit(UI):
 
             if self.handle_reward():
                 logger.info("Get a flower")
+                timeout.reset()
                 continue
-            # 跳转到
             if self.appear(LIKE_LOCKED):
-                logger.info("Give like finish or no need give like")
+                if clicked:
+                    logger.info("Give like finish")
+                else:
+                    logger.info("No need give like")
                 finish = True
                 break
             if timeout.reached():
-                logger.info("Get timeout in other office page")
+                logger.warning("Get timeout in other office page")
                 break
             if self.appear(LIKE_GET_LIMIT):
-                logger.warning("FHLC wrongly go to unknown one's office, sorry")
+                logger.warning("No need give more like today, stop")
                 finish = True
                 break
-            if self.appear_then_click(button,interval=2):
-                logger.info("Turn to other office page")
-                continue
             if self.appear_then_click(LIKE_UNLOCK,interval=2):
                 logger.info("give a like")
-                # timeout.reset()
+                clicked = True
+                timeout.reset()
                 continue
+
         self.ui_ensure(page_office_visit)
         return finish
 
 
 if __name__ == '__main__':
     ui = Visit('fhlc')
-    ui.device.screenshot()
-    ui.run()
+    # ui.device.screenshot()
+    # ui.run()
