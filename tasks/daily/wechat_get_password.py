@@ -165,7 +165,7 @@ def start_wechat(wechat_path_list):
         if os.path.exists(wechat_path_list[1]):
             wechat_path = wechat_path_list[1]
         else:
-            logger.warning(f"Can't find wechat app automatically or by config path: {wechat_path}, please modify config path")
+            logger.warning(f"Can't open wechat app automatically or open by config path: {wechat_path_list[1]}, please modify config path")
             raise RequestHumanTakeover
     app = Application('uia').start(wechat_path)
 
