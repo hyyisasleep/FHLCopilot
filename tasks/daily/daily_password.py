@@ -1,5 +1,5 @@
 from module.base.timer import Timer
-from module.config.utils import get_server_weekday
+from module.config.utils import get_server_weekday, read_file, deep_get
 from module.logger import logger
 from tasks.base.page import page_main, page_profile
 
@@ -19,8 +19,13 @@ class DailyPassword(UI):
             self.config.stored.OneWeekPasswordList.clear()
 
 
+        # 老铁不这么干不能读字符串内容= =。。。。
+        config_path = deep_get(self.config.data,'DailyPassword.DailyPassword.WechatInstallPath')
+        logger.info(f'Config wechat path:{config_path}')
+
+
         from tasks.daily.wechat_get_password import wechat_sign_in_and_get_password
-        psw = wechat_sign_in_and_get_password(self.config.DailyPassword_WechatInstallPath)
+        psw = wechat_sign_in_and_get_password(config_path)
         if psw == "" or psw is None:
             logger.warning("Can't get today's password,break")
             return
