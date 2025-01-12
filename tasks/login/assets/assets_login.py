@@ -91,13 +91,22 @@ GET_LOST_MONTHLY_CARD_REWARD = ButtonWrapper(
 )
 LOGIN_CONFIRM = ButtonWrapper(
     name='LOGIN_CONFIRM',
-    share=Button(
-        file='./assets/share/login/LOGIN_CONFIRM.png',
-        area=(1192, 50, 1246, 103),
-        search=(1172, 30, 1266, 123),
-        color=(101, 82, 76),
-        button=(832, 300, 1113, 565),
-    ),
+    share=[
+        Button(
+            file='./assets/share/login/LOGIN_CONFIRM.png',
+            area=(1192, 50, 1246, 103),
+            search=(1172, 30, 1266, 123),
+            color=(101, 82, 76),
+            button=(832, 300, 1113, 565),
+        ),
+        Button(
+            file='./assets/share/login/LOGIN_CONFIRM.2.png',
+            area=(112, 140, 139, 206),
+            search=(92, 120, 159, 226),
+            color=(169, 97, 92),
+            button=(832, 300, 1113, 565),
+        ),
+    ],
 )
 LOGIN_DOWNLOADING = ButtonWrapper(
     name='LOGIN_DOWNLOADING',

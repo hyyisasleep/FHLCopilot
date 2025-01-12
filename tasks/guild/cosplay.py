@@ -131,6 +131,8 @@ class Cosplay(UI):
                 if abs(cur - prev) > 30:
                     logger.info("Background color is changed, send successfully")
                     return 1
+            if self.handle_level_up():
+                continue
             if self.appear(INPUT_TEXT_FINISH):
                 # 发送，理论上需要点两次，一次关
                 self.appear_then_click(SEND_STATUS, interval=1)
@@ -141,6 +143,11 @@ class Cosplay(UI):
                 continue
             if self.appear_then_click(OPEN_INPUT_BOX):
                 continue
+
+    def handle_level_up(self,interval=5):
+        if self.appear_then_click(LEVEL_UP_CHECK,interval):
+            logger.info("Find Level up page")
+            return True
 
     def _close_status_popup(self, skip_first_screenshot=True):
         timeout = Timer(10).start()
@@ -159,6 +166,8 @@ class Cosplay(UI):
                 if cur - prev > 50:
                     logger.info("Background color is changed, send successfully")
                     return True
+            if self.handle_level_up():
+                continue
             if self.appear_then_click(CLOSE_STATUS_POPUP_CONFIRM):
                 clicked = True
                 continue

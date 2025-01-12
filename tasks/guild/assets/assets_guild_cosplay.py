@@ -43,6 +43,16 @@ INPUT_TEXT_FINISH = ButtonWrapper(
         button=(566, 240, 590, 264),
     ),
 )
+LEVEL_UP_CHECK = ButtonWrapper(
+    name='LEVEL_UP_CHECK',
+    share=Button(
+        file='./assets/share/guild/cosplay/LEVEL_UP_CHECK.png',
+        area=(523, 481, 558, 513),
+        search=(503, 461, 578, 533),
+        color=(245, 199, 139),
+        button=(834, 599, 953, 664),
+    ),
+)
 NEED_SWITCH_REGION = ButtonWrapper(
     name='NEED_SWITCH_REGION',
     share=Button(
