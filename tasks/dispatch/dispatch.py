@@ -33,7 +33,9 @@ class Dispatch(UI):
 
 
         # 送好友友情点
-        self.get_friendship_point()
+        finish = self.get_friendship_point()
+        if finish:
+            self.config.stored.GetFriendshipPoint.set(finish)
 
         # 打开麒麟头+领供台奖励+领虾球+关闭麒麟头
         self._kylin_affair()
@@ -83,9 +85,10 @@ class Dispatch(UI):
                     finish = True
                 continue
 
-    def get_friendship_point(self, skip_first_screenshot=True):
+    def get_friendship_point(self, skip_first_screenshot=True)->bool:
+
         timeout = Timer(5).start()
-        finish = False
+        finish = 0
         while 1:
             if skip_first_screenshot:
                 skip_first_screenshot = False
@@ -110,13 +113,13 @@ class Dispatch(UI):
             if self.appear_then_click(GIVE_RECEIVE_FRIENDSHIP_POINT):
                 logger.info("Give and receive friend ship point")
                 timeout.reset()
-                finish = True
+                finish = 1
                 continue
             if self.appear_then_click(GOTO_FRIEND_PAGE):
                 logger.info("Open friend page")
                 timeout.reset()
                 continue
-
+        return finish
 
 if __name__ == "__main__":
     ui = Dispatch("fhlc")

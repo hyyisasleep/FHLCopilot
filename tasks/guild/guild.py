@@ -31,12 +31,17 @@ class Guild(GuildMission):
         if self._check_join_guild():
 
             # 重置昨天的悬赏
-
-            if self.config.stored.DailyGuildMission.is_expired():
-                self.config.stored.DailyGuildMission.clear()
+            with self.config.multi_set():
+                if self.config.stored.DailyGuildMission.is_expired():
+                    self.config.stored.DailyGuildMission.clear()
+                # 签到任务完成情况
+                if self.config.stored.GuildSignIn.is_expired():
+                    self.config.stored.GuildSignIn.clear()
 
             # 签到
-            self._sign_in()
+            finish_sign_in = self._sign_in()
+            if finish_sign_in:
+                self.config.stored.GuildSignIn.set(finish_sign_in)
             # 放河灯
             self._float_river_lantern()
             # 识别悬赏内容
@@ -59,7 +64,7 @@ class Guild(GuildMission):
 
     def _sign_in(self,skip_first_screenshot=True,interval=2):
         timeout = Timer(15).start()
-
+        finish = 0
         while 1:
             if skip_first_screenshot:
                 skip_first_screenshot = False
@@ -81,6 +86,7 @@ class Guild(GuildMission):
                     continue
                 if self.appear(SIGN_IN_LOCKED, interval):
                     logger.info("Sign in finish")
+                    finish = 1
                     break
         # 返回界面，单开一个循环吧要不
         skip_first_screenshot = True
@@ -95,6 +101,8 @@ class Guild(GuildMission):
             if self.appear_then_click(SIGN_IN_PAGE_CLOSE):
                 logger.info("Close sign in page")
                 continue
+
+        return finish
     # 判断有没有加入雅社
     def _check_join_guild(self)->bool:
         timeout=Timer(5,count=3).start()
@@ -146,7 +154,6 @@ class Guild(GuildMission):
 
         self.ui_ensure(page_guild)
 
-        pass
 
 
 if __name__ == '__main__':

@@ -91,53 +91,81 @@ Optimization:
 
 # ==================== Daily ====================
 
-DailyStorage:
-  DailyLiveness:
-    stored: StoredDailyLiveness
-    order: 1
-    color: "#ffcf70"
-    display: display
-
-
-Office:
+DailyQuestOptions:
   TransKaoGongTicket:
     type: checkbox
     value: 1
   VisitOthersForClivia:
     type: checkbox
     value: 0
+  DailyJinGeWinReward:
+    type: checkbox
+    value: 0
+  AutoDailyPassword:
+    type: checkbox
+    value: 0
 
-Interact:
-  CurrentCelebrity:
-    value: 0
-    display: hide
-  CurrentAffectionLevel:
-    value: 0
-    display: hide
+DailyStorage:
+  DailyLiveness:
+    stored: StoredDailyLiveness
+    order: 1
+    color: "#ffcf70"
+    display: display
+  JinGeDailyWinReward:
+    stored: StoredJinGeDailyWinReward
+    display: display
+  AutoDailyPassword:
+    stored: StoredAutoDailyPassword
+    display: display
+  CelebrityInteract:
+    stored: StoredCelebrityInteract
+    display: display
+  GuildSignIn:
+    stored: StoredGuildSignIn
+    display: display
+  OfficeAffair:
+    stored: StoredOfficeAffair
+    display: display
+  OfficeBuildFurniture:
+    stored: StoredOfficeBuildFurniture
+    display: display
+  CatteryPlayWithCat:
+    stored: StoredCatteryPlayWithCat
+    display: display
+  CatteryFeedCat:
+    stored: StoredCatteryFeedCat
+    display: display
+  GetFriendshipPoint:
+    stored: StoredGetFriendshipPoint
+    display: display
+
+
+
+
+
+
 
 Dungeon:
   Team:
     value: 1
     option: [1,2,3,4,5]
-  DailyJinGe:
-    type: checkbox
-    value: 0
+#  DailyJinGe:
+#    type: checkbox
+#    value: 0
   UseSoonExpiredMeat:
     type: checkbox
     value: 0
     display: hide
   DailyBaoXuPlan:
     stored: StoredDailyBaoXu
-    display: hide
+    display: display
   DailyJingYuanPlan:
-    stored: StoredDailyBaoXu
-    display: hide
+    stored: StoredDailyJingYuan
+    display: display
   DailyGuShiFengYunPlan:
     stored: StoredDailyBaoXu
     display: hide
-  DailyJinGePlan:
-    stored: StoredDailyBaoXu
-    display: hide
+
 
 
 
@@ -236,7 +264,8 @@ JinGeStorage:
 DailyPassword:
   WechatInstallPath:
     type: textarea
-    value: 'D:\WeChat\WeChat.exe'
+    value: |-
+      D:\WeChat\WeChat.exe
   OneWeekPasswordList:
     stored: StoredWeeklyPassword
     display: disabled

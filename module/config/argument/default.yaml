@@ -10,12 +10,15 @@
 DailyQuest:
   Scheduler:
     Enable: true
+
 MealPower:
   Scheduler:
     Enable: true
+
 Guild:
   Scheduler:
     Enable: true
+
 Shop:
   Scheduler:
     Enable: true

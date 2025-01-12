@@ -200,6 +200,24 @@
         "display": "hide"
       }
     },
+    "DailyQuestOptions": {
+      "TransKaoGongTicket": {
+        "type": "checkbox",
+        "value": 1
+      },
+      "VisitOthersForClivia": {
+        "type": "checkbox",
+        "value": 0
+      },
+      "DailyJinGeWinReward": {
+        "type": "checkbox",
+        "value": 0
+      },
+      "AutoDailyPassword": {
+        "type": "checkbox",
+        "value": 0
+      }
+    },
     "DailyStorage": {
       "DailyLiveness": {
         "type": "stored",
@@ -208,28 +226,60 @@
         "stored": "StoredDailyLiveness",
         "order": 1,
         "color": "#ffcf70"
-      }
-    },
-    "Office": {
-      "TransKaoGongTicket": {
-        "type": "checkbox",
-        "value": 1
       },
-      "VisitOthersForClivia": {
-        "type": "checkbox",
-        "value": 0
-      }
-    },
-    "Interact": {
-      "CurrentCelebrity": {
-        "type": "input",
-        "value": 0,
-        "display": "hide"
+      "JinGeDailyWinReward": {
+        "type": "stored",
+        "value": {},
+        "display": "display",
+        "stored": "StoredJinGeDailyWinReward"
       },
-      "CurrentAffectionLevel": {
-        "type": "input",
-        "value": 0,
-        "display": "hide"
+      "AutoDailyPassword": {
+        "type": "stored",
+        "value": {},
+        "display": "display",
+        "stored": "StoredAutoDailyPassword"
+      },
+      "CelebrityInteract": {
+        "type": "stored",
+        "value": {},
+        "display": "display",
+        "stored": "StoredCelebrityInteract"
+      },
+      "GuildSignIn": {
+        "type": "stored",
+        "value": {},
+        "display": "display",
+        "stored": "StoredGuildSignIn"
+      },
+      "OfficeAffair": {
+        "type": "stored",
+        "value": {},
+        "display": "display",
+        "stored": "StoredOfficeAffair"
+      },
+      "OfficeBuildFurniture": {
+        "type": "stored",
+        "value": {},
+        "display": "display",
+        "stored": "StoredOfficeBuildFurniture"
+      },
+      "CatteryPlayWithCat": {
+        "type": "stored",
+        "value": {},
+        "display": "display",
+        "stored": "StoredCatteryPlayWithCat"
+      },
+      "CatteryFeedCat": {
+        "type": "stored",
+        "value": {},
+        "display": "display",
+        "stored": "StoredCatteryFeedCat"
+      },
+      "GetFriendshipPoint": {
+        "type": "stored",
+        "value": {},
+        "display": "display",
+        "stored": "StoredGetFriendshipPoint"
       }
     }
   },
@@ -271,10 +321,6 @@
           5
         ]
       },
-      "DailyJinGe": {
-        "type": "checkbox",
-        "value": 0
-      },
       "UseSoonExpiredMeat": {
         "type": "checkbox",
         "value": 0,
@@ -283,22 +329,16 @@
       "DailyBaoXuPlan": {
         "type": "stored",
         "value": {},
-        "display": "hide",
+        "display": "display",
         "stored": "StoredDailyBaoXu"
       },
       "DailyJingYuanPlan": {
         "type": "stored",
         "value": {},
-        "display": "hide",
-        "stored": "StoredDailyBaoXu"
+        "display": "display",
+        "stored": "StoredDailyJingYuan"
       },
       "DailyGuShiFengYunPlan": {
-        "type": "stored",
-        "value": {},
-        "display": "hide",
-        "stored": "StoredDailyBaoXu"
-      },
-      "DailyJinGePlan": {
         "type": "stored",
         "value": {},
         "display": "hide",

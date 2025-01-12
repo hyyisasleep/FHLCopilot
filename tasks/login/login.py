@@ -58,6 +58,12 @@ class Login(SignInHandler):  # , LoginAndroidCloud):
                     logger.info('Login to main confirm')
                     break
 
+
+            if self.is_in_login_confirm(interval=5):
+                self.device.click(LOGIN_CONFIRM)
+                login_success = True
+                continue
+
             # Watch resource downloading and loading
             if self.appear(LOGIN_LOADING, interval=5):
                 logger.info('Game is loading')
@@ -81,13 +87,10 @@ class Login(SignInHandler):  # , LoginAndroidCloud):
                 continue
 
             # Login
-            if self.appear_then_click(LOGIN_CONFIRM):
-                login_success = True
-                continue
-            # if self.is_in_login_confirm(interval=5):
-            #     self.device.click(LOGIN_CONFIRM)
+            # if self.appear_then_click(LOGIN_CONFIRM):
             #     login_success = True
             #     continue
+
 
             # Additional
 

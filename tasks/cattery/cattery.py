@@ -18,17 +18,24 @@ class Cattery(UI):
         logger.hr('Cattery', level=1)
         self.ui_ensure(page_cattery)
 
-        self._feed_cats()
-        self._play_with_cats()
+        finish_feed_cat = self._feed_cats()
+        finish_play = self._play_with_cats()
         # TODO:躲猫猫 妈呀咋写啊
         # self._hide_and_seek()
+
+        with self.config.multi_set():
+            if finish_feed_cat:
+                self.config.stored.CatteryFeedCat.set(finish_feed_cat)
+            if finish_play:
+                self.config.stored.CatteryPlayWithCat.set(finish_play)
+
         self.ui_goto_main()
 
 
 
 
-    def _feed_cats(self, skip_first_screenshot=True):
-
+    def _feed_cats(self, skip_first_screenshot=True)->int:
+        finish = 0
         logger.hr('One-click feed cat', level=3)
         has_feed = False
         # empty = Timer(1, count=1).start()
@@ -52,6 +59,7 @@ class Cattery(UI):
                     logger.info('Feed cat finish')
                 else:
                     logger.info('No need feed cat.')
+                finish = 1
                 break
 
             if self.appear_then_click(NEED_FEED_CAT, similarity=0.70):
@@ -60,14 +68,15 @@ class Cattery(UI):
 
             if self.appear_then_click(FEED_CAT_REWARD, similarity=0.7):
                 has_feed = True
+                finish = 1
                 timeout.reset()
+
                 continue
+        return finish
 
-        pass
-
-    def _play_with_cats(self, skip_first_screenshot=True):
+    def _play_with_cats(self, skip_first_screenshot=True)->int:
         logger.hr('One-click play with cat', level=3)
-
+        finish = 0
         timeout = Timer(10).start()
 
         has_play = False
@@ -90,6 +99,7 @@ class Cattery(UI):
                     logger.info('Play with cat finish')
                 else:
                     logger.info('No need play with cat')
+                finish = 1
                 break
 
             if self.appear_then_click(PLAY_WITH_CAT, similarity=0.70, interval=5):
@@ -98,8 +108,9 @@ class Cattery(UI):
                 continue
             if self.appear_then_click(SKIP_BUTTON, similarity=0.70, interval=2):
                 timeout.reset()
+                finish = 1
                 continue
-
+        return finish
     def _hide_and_seek(self):
         pass
 

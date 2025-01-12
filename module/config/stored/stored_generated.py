@@ -1,7 +1,11 @@
 from module.config.stored.classes import (
+    StoredAutoDailyPassword,
     StoredBase,
     StoredBattlePassLevel,
     StoredBuySuperCatBallWhenArriveRankNine,
+    StoredCatteryFeedCat,
+    StoredCatteryPlayWithCat,
+    StoredCelebrityInteract,
     StoredCosplaySendStatusTimes,
     StoredCounter,
     StoredDailyBaoXu,
@@ -12,12 +16,17 @@ from module.config.stored.classes import (
     StoredDailyLiveness,
     StoredExpiredAt0600,
     StoredExpiredAtMonday0600,
+    StoredGetFriendshipPoint,
+    StoredGuildSignIn,
     StoredGuildWeeklyLiveness,
     StoredInt,
+    StoredJinGeDailyWinReward,
     StoredJinGeLevel,
     StoredMonthlyCard,
     StoredMonthlyCard30,
     StoredMonthlyCard68,
+    StoredOfficeAffair,
+    StoredOfficeBuildFurniture,
     StoredPower,
     StoredTalisman,
     StoredTalismanToClean,
@@ -30,10 +39,18 @@ from module.config.stored.classes import (
 
 class StoredGenerated:
     DailyLiveness = StoredDailyLiveness("DailyQuest.DailyStorage.DailyLiveness")
+    JinGeDailyWinReward = StoredJinGeDailyWinReward("DailyQuest.DailyStorage.JinGeDailyWinReward")
+    AutoDailyPassword = StoredAutoDailyPassword("DailyQuest.DailyStorage.AutoDailyPassword")
+    CelebrityInteract = StoredCelebrityInteract("DailyQuest.DailyStorage.CelebrityInteract")
+    GuildSignIn = StoredGuildSignIn("DailyQuest.DailyStorage.GuildSignIn")
+    OfficeAffair = StoredOfficeAffair("DailyQuest.DailyStorage.OfficeAffair")
+    OfficeBuildFurniture = StoredOfficeBuildFurniture("DailyQuest.DailyStorage.OfficeBuildFurniture")
+    CatteryPlayWithCat = StoredCatteryPlayWithCat("DailyQuest.DailyStorage.CatteryPlayWithCat")
+    CatteryFeedCat = StoredCatteryFeedCat("DailyQuest.DailyStorage.CatteryFeedCat")
+    GetFriendshipPoint = StoredGetFriendshipPoint("DailyQuest.DailyStorage.GetFriendshipPoint")
     DailyBaoXuPlan = StoredDailyBaoXu("Dungeon.Dungeon.DailyBaoXuPlan")
-    DailyJingYuanPlan = StoredDailyBaoXu("Dungeon.Dungeon.DailyJingYuanPlan")
+    DailyJingYuanPlan = StoredDailyJingYuan("Dungeon.Dungeon.DailyJingYuanPlan")
     DailyGuShiFengYunPlan = StoredDailyBaoXu("Dungeon.Dungeon.DailyGuShiFengYunPlan")
-    DailyJinGePlan = StoredDailyBaoXu("Dungeon.Dungeon.DailyJinGePlan")
     DailyGuildMission = StoredDailyGuildMission("Guild.GuildMission.DailyGuildMission")
     SendStatusTimes = StoredCosplaySendStatusTimes("Guild.Cosplay.SendStatusTimes")
     MonthlyCard30 = StoredInt("Shop.MonthlyCard.MonthlyCard30")

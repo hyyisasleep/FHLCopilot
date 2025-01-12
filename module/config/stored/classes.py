@@ -182,12 +182,39 @@ class StoredCounter(StoredBase):
             stored['total'] = self.FIXED_TOTAL
         return stored
 
+
+
+# ==================Daily Quest==================
 class StoredDailyLiveness(StoredCounter, StoredExpiredAt0600):
     FIXED_TOTAL = 100
 
-class StoredGuildWeeklyLiveness(StoredCounter, StoredExpiredAtMonday0600):
-    FIXED_TOTAL = 8000
+class StoredGuildSignIn(StoredCounter, StoredExpiredAt0600):
+    FIXED_TOTAL = 1
 
+class StoredOfficeAffair(StoredCounter, StoredExpiredAt0600):
+    FIXED_TOTAL = 1
+
+class StoredOfficeBuildFurniture(StoredCounter, StoredExpiredAt0600):
+    FIXED_TOTAL = 1
+
+class StoredCatteryPlayWithCat(StoredCounter, StoredExpiredAt0600):
+    FIXED_TOTAL = 1
+
+class StoredCatteryFeedCat(StoredCounter, StoredExpiredAt0600):
+    FIXED_TOTAL = 1
+
+class StoredGetFriendshipPoint(StoredCounter, StoredExpiredAt0600):
+    FIXED_TOTAL = 1
+
+class StoredCelebrityInteract(StoredCounter, StoredExpiredAt0600):
+    FIXED_TOTAL = 1
+
+class StoredAutoDailyPassword(StoredCounter, StoredExpiredAt0600):
+    FIXED_TOTAL = 1
+
+class StoredJinGeDailyWinReward(StoredCounter, StoredExpiredAt0600):
+    FIXED_TOTAL = 1
+#======================Shop=======================
 class StoredMonthlyCard(StoredInt):
     value = 0
     def predict_current(self) -> int:
@@ -216,11 +243,11 @@ class StoredMonthlyCard68(StoredMonthlyCard):
 
 class StoredMonthlyCard30(StoredMonthlyCard):
     pass
-
+#=====================BattlePass==================
 class StoredBattlePassLevel(StoredCounter):
     FIXED_TOTAL = 60
+#===================DataUpdate====================
 
-# 体力
 class StoredPower(StoredCounter):
 
 
@@ -250,7 +277,7 @@ class StoredPower(StoredCounter):
         value += int(diff // 360)
         return value
 
-# =============副本===============
+# =============Dungeon===============
 class StoredDailyBaoXu(StoredCounter,StoredExpiredAt0600):
     pass
 
@@ -263,7 +290,7 @@ class StoredDailyGuShiFengYun(StoredCounter,StoredExpiredAt0600):
 class StoredDailyJinGe(StoredCounter,StoredExpiredAt0600):
     pass
 
-# =============金戈===============
+# =============Jin Ge===============
 class StoredBuySuperCatBallWhenArriveRankNine(StoredCounter, StoredExpiredAtMonday0600):
     FIXED_TOTAL = 1
 
@@ -276,62 +303,70 @@ class StoredTalisman(StoredInt):
 class StoredJinGeLevel(StoredInt, StoredExpiredAtMonday0600):
     pass
 
-#=============每日密令============
+#=============Daily Password============
 class StoredWeeklyPassword(StoredCounter, StoredExpiredAtMonday0600):
     # 自己新加的变量不要用全大写……
-    p1 = ''
-    p2 = ''
-    p3 = ''
-    p4 = ''
-    p5 = ''
-    p6 = ''
-    p7 = ''
+    DEFAULT_VALUE = '无'
+    p1 = DEFAULT_VALUE
+    p2 = DEFAULT_VALUE
+    p3 = DEFAULT_VALUE
+    p4 = DEFAULT_VALUE
+    p5 = DEFAULT_VALUE
+    p6 = DEFAULT_VALUE
+    p7 = DEFAULT_VALUE
+
 
     FIXED_TOTAL = 7
 
     def write_daily_password(self, day, value):
         with self._config.multi_set():
             if day == 1:
-                if self.p1 == '':
+                if self.p1 == self.DEFAULT_VALUE:
                     self.value += 1
                 self.p1 = value
             elif day == 2:
-                if self.p2 == '':
+                if self.p2 == self.DEFAULT_VALUE:
                     self.value += 1
                 self.p2 = value
             elif day == 3:
-                if self.p3 == '':
+                if self.p3 == self.DEFAULT_VALUE:
                     self.value += 1
                 self.p3 = value
             elif day == 4:
-                if self.p4 == '':
+                if self.p4 == self.DEFAULT_VALUE:
                     self.value += 1
                 self.p4 = value
             elif day == 5:
-                if self.p5 == '':
+                if self.p5 == self.DEFAULT_VALUE:
                     self.value += 1
                 self.p5 = value
             elif day == 6:
-                if self.p6 == '':
+                if self.p6 == self.DEFAULT_VALUE:
                     self.value += 1
                 self.p6 = value
             elif day == 7:
-                if self.p7 == '':
+                if self.p7 == self.DEFAULT_VALUE:
                     self.value += 1
                 self.p7 = value
 
     def clear(self):
         with self._config.multi_set():
-            self.p1 = ''
-            self.p2 = ''
-            self.p3 = ''
-            self.p4 = ''
-            self.p5 = ''
-            self.p6 = ''
-            self.p7 = ''
+            self.p1 = self.DEFAULT_VALUE
+            self.p2 = self.DEFAULT_VALUE
+            self.p3 = self.DEFAULT_VALUE
+            self.p4 = self.DEFAULT_VALUE
+            self.p5 = self.DEFAULT_VALUE
+            self.p6 = self.DEFAULT_VALUE
+            self.p7 = self.DEFAULT_VALUE
             self.value = 0
 
-#=============雅社==============
+
+
+# =====================Guild=======================
+
+class StoredGuildWeeklyLiveness(StoredCounter, StoredExpiredAtMonday0600):
+    FIXED_TOTAL = 8000
+
 class StoredDailyGuildMission(StoredCounter, StoredExpiredAt0600):
     mission1 = ''
     mission2 = ''

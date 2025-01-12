@@ -28,7 +28,7 @@
     },
     "DailyQuest": {
       "name": "每日任务",
-      "help": "执行任务：\n1.桃源居处理事件、随机制作家具、(百工图转换、拜访他人领君子兰)\n2.喵居吸猫、一键喂猫\n3.忘川速办领供台奖励、虾球、名士赠礼领2碎片"
+      "help": ""
     },
     "MealPower": {
       "name": "午晚餐体力",
@@ -225,30 +225,70 @@
 
   "DailyStorage": {
     "_info": {
-      "name": "每日任务",
+      "name": "每日任务完成情况",
       "help": ""
     },
     "DailyLiveness": {
       "name": "活跃度",
       "help": ""
     },
-    "DailyQuestList": {
-      "name": "每日任务列表",
+    "GuildSignIn": {
+      "name": "雅社-签到",
+      "help": ""
+    },
+    "OfficeAffair": {
+      "name": "桃源居-事务",
+      "help": ""
+    },
+    "OfficeBuildFurniture": {
+      "name": "桃源居-随机打造家具",
+      "help": ""
+    },
+    "CatteryPlayWithCat": {
+      "name": "喵居-吸猫",
+      "help": ""
+    },
+    "CatteryFeedCat": {
+      "name": "喵居-一键喂猫",
+      "help": ""
+    },
+    "GetFriendshipPoint": {
+      "name": "为好友赠送友情点",
+      "help": ""
+    },
+    "CelebrityInteract": {
+      "name": "名士赠礼领2碎片",
+      "help": ""
+    },
+    "JinGeDailyWinReward": {
+      "name": "金戈首胜奖励",
+      "help": ""
+    },
+    "AutoDailyPassword": {
+      "name": "成功签到并填写每日密令",
       "help": ""
     }
   },
-  "Office": {
+  "DailyQuestOptions": {
     "_info": {
-      "name": "桃源居事务设置",
+      "name": "可选项设置",
       "help": ""
     },
     "TransKaoGongTicket": {
-      "name": "自动将聚米画沙转换为百工图",
+      "name": "桃源居-将聚米画沙转换为百工图",
       "help": "每日清空门票，需要留着玩小游戏的话不要勾选"
     },
     "VisitOthersForClivia": {
-      "name": "每日给他人桃源居点赞三次",
+      "name": "桃源居-每日给他人桃源居点赞三次",
       "help": "领君子兰，每日上限三朵\n【注意】在启用前请确保拜访他人→“我的拜访”一栏中至少有三个人"
+    },
+    "DailyJinGeWinReward": {
+      "name": "金戈演武-每日领金戈首胜奖励",
+      "help": "七段及以上打人机也可以领奖励，但是不算活跃度"
+    },
+    "AutoDailyPassword": {
+      "name": "将工具-每日密令功能加入调度器",
+      "help": "勾选后随每日任务启动，但可能由于各种原因签到失败"
     }
   },
   "Interact": {
@@ -279,9 +319,13 @@
       "4": "4",
       "5": "5"
     },
-    "DailyJinGe":{
-      "name": "将金戈3次加入补活跃度方案",
-      "help": "启用该选项后会将优先度修改为 雅社悬赏 > 金戈 > 宝墟 > 镜渊，会顺便打每日首胜奖励\n六段及以上需要在11-13、19-21点间启动每日任务调度该选项才会生效"
+    "DailyBaoXuPlan": {
+      "name": "今日刷宝墟次数",
+      "help": ""
+    },
+    "DailyJingYuanPlan": {
+      "name": "今日刷镜渊次数",
+      "help": ""
     }
   },
   "MealPower": {

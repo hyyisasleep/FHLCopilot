@@ -62,6 +62,123 @@
     "order": 5,
     "color": "#cbe45b"
   },
+  "JinGeDailyWinReward": {
+    "name": "JinGeDailyWinReward",
+    "path": "DailyQuest.DailyStorage.JinGeDailyWinReward",
+    "i18n": "DailyStorage.JinGeDailyWinReward.name",
+    "stored": "StoredJinGeDailyWinReward",
+    "attrs": {
+      "time": "2020-01-01 00:00:00",
+      "total": 1,
+      "value": 0
+    },
+    "order": 0,
+    "color": "#777777"
+  },
+  "AutoDailyPassword": {
+    "name": "AutoDailyPassword",
+    "path": "DailyQuest.DailyStorage.AutoDailyPassword",
+    "i18n": "DailyStorage.AutoDailyPassword.name",
+    "stored": "StoredAutoDailyPassword",
+    "attrs": {
+      "time": "2020-01-01 00:00:00",
+      "total": 1,
+      "value": 0
+    },
+    "order": 0,
+    "color": "#777777"
+  },
+  "CelebrityInteract": {
+    "name": "CelebrityInteract",
+    "path": "DailyQuest.DailyStorage.CelebrityInteract",
+    "i18n": "DailyStorage.CelebrityInteract.name",
+    "stored": "StoredCelebrityInteract",
+    "attrs": {
+      "time": "2020-01-01 00:00:00",
+      "total": 1,
+      "value": 0
+    },
+    "order": 0,
+    "color": "#777777"
+  },
+  "GuildSignIn": {
+    "name": "GuildSignIn",
+    "path": "DailyQuest.DailyStorage.GuildSignIn",
+    "i18n": "DailyStorage.GuildSignIn.name",
+    "stored": "StoredGuildSignIn",
+    "attrs": {
+      "time": "2020-01-01 00:00:00",
+      "total": 1,
+      "value": 0
+    },
+    "order": 0,
+    "color": "#777777"
+  },
+  "OfficeAffair": {
+    "name": "OfficeAffair",
+    "path": "DailyQuest.DailyStorage.OfficeAffair",
+    "i18n": "DailyStorage.OfficeAffair.name",
+    "stored": "StoredOfficeAffair",
+    "attrs": {
+      "time": "2020-01-01 00:00:00",
+      "total": 1,
+      "value": 0
+    },
+    "order": 0,
+    "color": "#777777"
+  },
+  "OfficeBuildFurniture": {
+    "name": "OfficeBuildFurniture",
+    "path": "DailyQuest.DailyStorage.OfficeBuildFurniture",
+    "i18n": "DailyStorage.OfficeBuildFurniture.name",
+    "stored": "StoredOfficeBuildFurniture",
+    "attrs": {
+      "time": "2020-01-01 00:00:00",
+      "total": 1,
+      "value": 0
+    },
+    "order": 0,
+    "color": "#777777"
+  },
+  "CatteryPlayWithCat": {
+    "name": "CatteryPlayWithCat",
+    "path": "DailyQuest.DailyStorage.CatteryPlayWithCat",
+    "i18n": "DailyStorage.CatteryPlayWithCat.name",
+    "stored": "StoredCatteryPlayWithCat",
+    "attrs": {
+      "time": "2020-01-01 00:00:00",
+      "total": 1,
+      "value": 0
+    },
+    "order": 0,
+    "color": "#777777"
+  },
+  "CatteryFeedCat": {
+    "name": "CatteryFeedCat",
+    "path": "DailyQuest.DailyStorage.CatteryFeedCat",
+    "i18n": "DailyStorage.CatteryFeedCat.name",
+    "stored": "StoredCatteryFeedCat",
+    "attrs": {
+      "time": "2020-01-01 00:00:00",
+      "total": 1,
+      "value": 0
+    },
+    "order": 0,
+    "color": "#777777"
+  },
+  "GetFriendshipPoint": {
+    "name": "GetFriendshipPoint",
+    "path": "DailyQuest.DailyStorage.GetFriendshipPoint",
+    "i18n": "DailyStorage.GetFriendshipPoint.name",
+    "stored": "StoredGetFriendshipPoint",
+    "attrs": {
+      "time": "2020-01-01 00:00:00",
+      "total": 1,
+      "value": 0
+    },
+    "order": 0,
+    "color": "#777777"
+  },
   "DailyBaoXuPlan": {
     "name": "DailyBaoXuPlan",
     "path": "Dungeon.Dungeon.DailyBaoXuPlan",
@@ -79,7 +196,7 @@
     "name": "DailyJingYuanPlan",
     "path": "Dungeon.Dungeon.DailyJingYuanPlan",
     "i18n": "Dungeon.DailyJingYuanPlan.name",
-    "stored": "StoredDailyBaoXu",
+    "stored": "StoredDailyJingYuan",
     "attrs": {
       "time": "2020-01-01 00:00:00",
       "total": 0,
@@ -92,19 +209,6 @@
     "name": "DailyGuShiFengYunPlan",
     "path": "Dungeon.Dungeon.DailyGuShiFengYunPlan",
     "i18n": "Dungeon.DailyGuShiFengYunPlan.name",
-    "stored": "StoredDailyBaoXu",
-    "attrs": {
-      "time": "2020-01-01 00:00:00",
-      "total": 0,
-      "value": 0
-    },
-    "order": 0,
-    "color": "#777777"
-  },
-  "DailyJinGePlan": {
-    "name": "DailyJinGePlan",
-    "path": "Dungeon.Dungeon.DailyJinGePlan",
-    "i18n": "Dungeon.DailyJinGePlan.name",
     "stored": "StoredDailyBaoXu",
     "attrs": {
       "time": "2020-01-01 00:00:00",
@@ -211,13 +315,13 @@
     "stored": "StoredWeeklyPassword",
     "attrs": {
       "time": "2020-01-01 00:00:00",
-      "p1": "",
-      "p2": "",
-      "p3": "",
-      "p4": "",
-      "p5": "",
-      "p6": "",
-      "p7": "",
+      "p1": "无",
+      "p2": "无",
+      "p3": "无",
+      "p4": "无",
+      "p5": "无",
+      "p6": "无",
+      "p7": "无",
       "total": 7,
       "value": 0
     },

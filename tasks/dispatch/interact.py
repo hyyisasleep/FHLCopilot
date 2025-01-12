@@ -14,7 +14,9 @@ class Interact(UI):
         logger.hr('Give celebrity gift', level=1)
         # 跳转到互动界面
         self.ui_ensure(page_interact)
-        self._give_gift()
+        finish = self._give_gift()
+        if finish:
+            self.config.stored.CelebrityInteract.set(finish)
         self.ui_goto_main()
 
 
@@ -24,7 +26,7 @@ class Interact(UI):
     def _give_gift(self, interval=2, skip_first_screenshot=True):
 
         timeout = Timer(10).start()
-        finish = False
+        finish = 0
         show = False
         # skip_first_screenshot = False
         while 1:
@@ -51,10 +53,12 @@ class Interact(UI):
                 if self.appear(GIVE_MODE_UPGRADE_LOCKED, interval):
                     self.appear_then_click(GIVE_GIFT, interval)
                     logger.info("Give gift to celebrity")
+                    finish = 1
                     continue
             if self.handle_reward(interval):
                 logger.info("Get fragment reward or upgrade reward")
                 continue
+        return finish
 
 if __name__ == "__main__":
     ui = Interact("fhlc")

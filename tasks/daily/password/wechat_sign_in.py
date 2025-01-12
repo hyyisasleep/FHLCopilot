@@ -8,7 +8,7 @@ from module.exception import RequestHumanTakeover
 from module.logger import logger
 import os
 import psutil
-from pywinauto import Application, findwindows, WindowSpecification,timings
+from pywinauto import Application, findwindows, WindowSpecification
 
 
 

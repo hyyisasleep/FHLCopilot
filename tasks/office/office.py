@@ -20,27 +20,37 @@ class Office(UI):
         """
         Run get support reward task
         """
-        logger.hr('Taoyuan Office', level=1)
+        logger.hr('TaoYuan Office', level=1)
 
         self.device.screenshot()
         self.ui_ensure(page_office)
         # 处理事务
-        Affair(self.config, self.device).run()
+        finish_affair = Affair(self.config, self.device).run()
         # 打造随机家具 太简单了不放单独类写了。。。
-        self._build_random_furniture()
+        finish_furniture = self._build_random_furniture()
         # 拜访拿花
-        if self.config.Office_VisitOthersForClivia:
+        if self.config.DailyQuestOptions_VisitOthersForClivia:
             Visit(self.config, self.device).run()
         # 转化考工图道具
-        if self.config.Office_TransKaoGongTicket:
+        if self.config.DailyQuestOptions_TransKaoGongTicket:
             Jigsaw(self.config, self.device).run()
+
+        with self.config.multi_set():
+            if finish_affair:
+                self.config.stored.OfficeAffair.set(finish_affair)
+            if finish_furniture:
+                self.config.stored.OfficeBuildFurniture.set(finish_furniture)
 
 
         self.ui_goto_main()
 
 
-    def _build_random_furniture(self):
-
+    def _build_random_furniture(self)->int:
+        """
+        Return:
+            int: If finish
+        """
+        finish = 0
         timeout = Timer(10).start()
         skip_first_screenshot = True
         self.ui_ensure(page_office_furniture)
@@ -59,6 +69,7 @@ class Office(UI):
                     logger.info("successfully build furniture")
                 else:
                     logger.info("No need build furniture")
+                finish = 1
                 break
 
             if timeout.reached():
@@ -76,10 +87,11 @@ class Office(UI):
                 continue
             if self.appear_then_click(BUILD_FURNITURE_CONFIRM):
                 has_build = True
+                finish = 1
                 continue
 
         self.ui_ensure(page_office)
-
+        return finish
 
 if __name__ == "__main__":
     ui = Office('fhlc')

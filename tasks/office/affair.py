@@ -9,30 +9,32 @@ from tasks.office.assets.assets_office_affair import *
 
 class Affair(UI):
 
-    def run(self, skip_first_screenshot=True):
+    def run(self, skip_first_screenshot=True)->bool:
         """
-
+            Returns:
+                bool: if finish
         """
         logger.hr('Deal with taoyuan affair', level=1)
         self.ui_ensure(page_office_affair, skip_first_screenshot)
-        has_reward = self._deal_with_affairs()
+        finish = self._deal_with_affairs()
         #
         # if has_reward:
         #     # logger.info("Has impression reward to get")
         #     self._get_affairs_impression_reward()
         self.ui_ensure(page_office)
+        return finish
 
         # self.config.task_delay(server_update=True)
 
-    def _deal_with_affairs(self, interval=2, skip_first_screenshot=True) -> bool:
+    def _deal_with_affairs(self, interval=2, skip_first_screenshot=True) -> int:
         """
-        # 喜报 经过测试发现就算没奖励也会把AFFAIR_HAS_REWARD的红点识别成有奖励
-        # 所以这个函数只会返回True
+            Returns:
+                bool: if finish
         """
+        finish = 0
         timeout = Timer(10).start()
         start_deal = False
         affair_cnt = 0
-        has_reward = True
         while 1:
             if skip_first_screenshot:
                 skip_first_screenshot = False
@@ -42,18 +44,14 @@ class Affair(UI):
                 logger.info("Get taoyuan affair timeout")
                 break
 
-            # if not has_reward and self.appear(AFFAIR_HAS_REWARD):
-            #     has_reward = True
-            # ocr_affair = Digit(DEAL_WITH_AFFAIR_START)
-            # num = ocr_affair.ocr_single_line(self.device.image)
-            # 显示事务0，不用做
             if self.appear(DEAL_WITH_AFFAIR_FINISH, interval):
                 if start_deal:
                     logger.info("Finish deal with affair")
-                    break
                 else:
                     logger.info("No need deal with affair")
-                    break
+                finish = 1
+                break
+
             if not start_deal and self.appear_then_click(DEAL_WITH_AFFAIR_START, interval):
                 logger.info("Start deal with affair")
                 start_deal = True
@@ -76,7 +74,7 @@ class Affair(UI):
                 timeout.reset()
                 continue
 
-        return has_reward
+        return finish
 
     def _get_affairs_impression_reward(self, interval=2, skip_first_screenshot=True):
         """

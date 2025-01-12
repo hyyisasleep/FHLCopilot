@@ -63,7 +63,6 @@ class ConfigGenerator:
 
         # Insert packages
         option_add(keys='Emulator.PackageName.option', options=list(VALID_SERVER.keys()))
-        # 啊下面这个是不是为了同步游戏更新但是尽量不动用户的配置文件。_。（瞎说的
 
         # Insert dungeons
         # from tasks.dungeon.keywords import DungeonList
@@ -575,6 +574,8 @@ class ConfigUpdater:
         if key == 'Alas.Emulator.GameClient' and value == 'cloud_android':
             yield 'Alas.Emulator.PackageName', 'CN-Official'
             yield 'Alas.Optimization.WhenTaskQueueEmpty', 'close_game'
+        # if key == 'DailyPassword.DailyPassword.WechatInstallPath':
+        #     yield 'DailyPassword.DailyPassword.WechatInstallPath', value
         # Sync Dungeon.TrailblazePower and Ornament.TrailblazePower
         # if key == 'Dungeon.TrailblazePower.ExtractReservedTrailblazePower':
         #     yield 'Ornament.TrailblazePower.ExtractReservedTrailblazePower', value
@@ -597,18 +598,24 @@ class ConfigUpdater:
         Yields:
             str: Arg path that should be hidden
         """
-        if deep_get(data, 'Dungeon.TrailblazePower.UseFuel') == False:
-            yield 'Dungeon.TrailblazePower.FuelReserve'
-        if deep_get(data, 'Ornament.TrailblazePower.UseFuel') == False:
-            yield 'Ornament.TrailblazePower.FuelReserve'
-        if deep_get(data, 'Rogue.RogueBlessing.PresetBlessingFilter') != 'custom':
-            yield 'Rogue.RogueBlessing.CustomBlessingFilter'
-        if deep_get(data, 'Rogue.RogueBlessing.PresetResonanceFilter') != 'custom':
-            yield 'Rogue.RogueBlessing.CustomResonanceFilter'
-        if deep_get(data, 'Rogue.RogueBlessing.PresetCurioFilter') != 'custom':
-            yield 'Rogue.RogueBlessing.CustomCurioFilter'
-        if deep_get(data, 'Rogue.RogueWorld.WeeklyFarming', default=False) is False:
-            yield 'Rogue.RogueWorld.SimulatedUniverseFarm'
+        if not deep_get(data, 'ClearJinGeTalisman.ClearJinGeTalisman.BuySuperCatBallWhenArriveRankNineEveryWeek'):
+            yield 'ClearJinGeTalisman.JinGeStorage.BuySuperCatBall'
+        if not deep_get(data, 'Guild.Cosplay.SendCosplayStatus'):
+            yield 'Guild.Cosplay.SendStatusTimes'
+        if not deep_get(data, 'DailyQuest.DailyQuestOptions.DailyJinGeWinReward'):
+            yield 'DailyQuest.DailyStorage.JinGeDailyWinReward'
+        if not deep_get(data, 'DailyQuest.DailyQuestOptions.AutoDailyPassword'):
+            yield 'DailyQuest.DailyStorage.AutoDailyPassword'
+        # if deep_get(data, 'Ornament.TrailblazePower.UseFuel') == False:
+        #     yield 'Ornament.TrailblazePower.FuelReserve'
+        # if deep_get(data, 'Rogue.RogueBlessing.PresetBlessingFilter') != 'custom':
+        #     yield 'Rogue.RogueBlessing.CustomBlessingFilter'
+        # if deep_get(data, 'Rogue.RogueBlessing.PresetResonanceFilter') != 'custom':
+        #     yield 'Rogue.RogueBlessing.CustomResonanceFilter'
+        # if deep_get(data, 'Rogue.RogueBlessing.PresetCurioFilter') != 'custom':
+        #     yield 'Rogue.RogueBlessing.CustomCurioFilter'
+        # if deep_get(data, 'Rogue.RogueWorld.WeeklyFarming', default=False) is False:
+        #     yield 'Rogue.RogueWorld.SimulatedUniverseFarm'
 
     def get_hidden_args(self, data) -> t.Set[str]:
         """

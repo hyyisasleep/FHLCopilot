@@ -99,7 +99,9 @@ class UI(PopupHandler):
             if self.ui_additional():
                 timeout.reset()
                 continue
-
+            if self.handle_login_confirm():
+                timeout.reset()
+                continue
             # if self.handle_popup_single():
             #     timeout.reset()
             #     continue
@@ -112,8 +114,7 @@ class UI(PopupHandler):
             #     self.device.click(LOGIN_CONFIRM)
             #     timeout.reset()
             #     continue
-            if self.handle_login_confirm():
-                continue
+
             # if self.appear(MAP_LOADING, interval=5):
             #     logger.info('Map loading')
             #     timeout.reset()

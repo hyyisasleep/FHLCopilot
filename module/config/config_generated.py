@@ -40,25 +40,30 @@ class GeneratedConfig:
     Optimization_CombatScreenshotInterval = 1.0
     Optimization_WhenTaskQueueEmpty = 'stay_there'  # stay_there, goto_main, close_game
 
+    # Group `DailyQuestOptions`
+    DailyQuestOptions_TransKaoGongTicket = 1
+    DailyQuestOptions_VisitOthersForClivia = 0
+    DailyQuestOptions_DailyJinGeWinReward = 0
+    DailyQuestOptions_AutoDailyPassword = 0
+
     # Group `DailyStorage`
     DailyStorage_DailyLiveness = {}
-
-    # Group `Office`
-    Office_TransKaoGongTicket = 1
-    Office_VisitOthersForClivia = 0
-
-    # Group `Interact`
-    Interact_CurrentCelebrity = 0
-    Interact_CurrentAffectionLevel = 0
+    DailyStorage_JinGeDailyWinReward = {}
+    DailyStorage_AutoDailyPassword = {}
+    DailyStorage_CelebrityInteract = {}
+    DailyStorage_GuildSignIn = {}
+    DailyStorage_OfficeAffair = {}
+    DailyStorage_OfficeBuildFurniture = {}
+    DailyStorage_CatteryPlayWithCat = {}
+    DailyStorage_CatteryFeedCat = {}
+    DailyStorage_GetFriendshipPoint = {}
 
     # Group `Dungeon`
     Dungeon_Team = 1  # 1, 2, 3, 4, 5
-    Dungeon_DailyJinGe = 0
     Dungeon_UseSoonExpiredMeat = 0
     Dungeon_DailyBaoXuPlan = {}
     Dungeon_DailyJingYuanPlan = {}
     Dungeon_DailyGuShiFengYunPlan = {}
-    Dungeon_DailyJinGePlan = {}
 
     # Group `MealPower`
     MealPower_UseTongBaoBuyExpiredPower = 0

@@ -1,5 +1,4 @@
 from module.base.timer import Timer
-from module.config.utils import get_server_next_update
 from module.logger import logger
 from module.ocr.ocr import Digit
 from tasks.base.page import page_daily_quest

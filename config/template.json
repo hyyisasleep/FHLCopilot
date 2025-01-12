@@ -41,16 +41,23 @@
       "Command": "DailyQuest",
       "ServerUpdate": "06:00"
     },
-    "DailyStorage": {
-      "DailyLiveness": {}
-    },
-    "Office": {
+    "DailyQuestOptions": {
       "TransKaoGongTicket": 1,
-      "VisitOthersForClivia": 0
+      "VisitOthersForClivia": 0,
+      "DailyJinGeWinReward": 0,
+      "AutoDailyPassword": 0
     },
-    "Interact": {
-      "CurrentCelebrity": 0,
-      "CurrentAffectionLevel": 0
+    "DailyStorage": {
+      "DailyLiveness": {},
+      "JinGeDailyWinReward": {},
+      "AutoDailyPassword": {},
+      "CelebrityInteract": {},
+      "GuildSignIn": {},
+      "OfficeAffair": {},
+      "OfficeBuildFurniture": {},
+      "CatteryPlayWithCat": {},
+      "CatteryFeedCat": {},
+      "GetFriendshipPoint": {}
     }
   },
   "Dungeon": {
@@ -62,12 +69,10 @@
     },
     "Dungeon": {
       "Team": 1,
-      "DailyJinGe": 0,
       "UseSoonExpiredMeat": 0,
       "DailyBaoXuPlan": {},
       "DailyJingYuanPlan": {},
-      "DailyGuShiFengYunPlan": {},
-      "DailyJinGePlan": {}
+      "DailyGuShiFengYunPlan": {}
     }
   },
   "MealPower": {

@@ -1,7 +1,5 @@
 from module.alas import AzurLaneAutoScript
-from module.exception import GameNotRunningError
 from module.logger import logger
-from tasks.battle_pass.battle_pass import BattlePass
 
 
 class FHLCopilot(AzurLaneAutoScript):
@@ -53,7 +51,7 @@ class FHLCopilot(AzurLaneAutoScript):
         DataUpdate(config=self.config, device=self.device).run()
 
     def daily_password(self):
-        from tasks.daily.daily_password import DailyPassword
+        from tasks.daily.password.daily_password import DailyPassword
         # auto start game
         self.goto_main()
         DailyPassword(config=self.config, device=self.device).run()

@@ -31,10 +31,15 @@ STATE_CLEAR = 1
 
 class JinGeYanWu(UI):
 
+
+
     def run_until_get_daily_reward(self,times=0):
         """
         打到拿每日奖励
         如果有每日副本补活跃要求的话就一直打
+        Returns:
+            win:期间是否赢过（拿每日奖励
+            actual_times:实际打的次数（补活跃度
         """
         actual_times = 0
         win = False
@@ -49,17 +54,14 @@ class JinGeYanWu(UI):
             if level >= 9:
                 self.handle_buy_super_cat_ball_when_arrive_level_nine()
 
-            if self.appear(JINGEYANWU_GOTO_NO_REWARD_PREPARE):
-                logger.info("Jin-ge is not open this time, stop")
-                break
+            # if self.appear(JINGEYANWU_GOTO_NO_REWARD_PREPARE):
+            #     logger.info("Jin-ge is not open this time, stop")
+            #     break
 
-            if level > 6:
-                if not self.wait_for_start(STATE_DAILY):
-                    logger.info("Setting choose this time don't get jin-ge daily reward, stop" )
-                    break
-
-
-
+            # if level > 6:
+            #     if not self.wait_for_start(STATE_DAILY):
+            #         logger.info("This time can't get jin-ge daily reward, stop" )
+            #         break
 
             # if talisman_num == 0 and self.config.ClearJinGeTalisman_EndWhenTalismanIsClear:
             #     logger.info("Clear talisman finish")
@@ -73,8 +75,9 @@ class JinGeYanWu(UI):
             actual_times += 1
             if win:
                 if actual_times >= times:
+                    logger.info("Get today win reward")
                     break
-        return actual_times
+        return [win,actual_times]
 
 
     def run(self):

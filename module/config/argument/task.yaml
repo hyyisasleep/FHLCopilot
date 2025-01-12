@@ -24,9 +24,9 @@ Daily:
   tasks:
     DailyQuest:
       - Scheduler
+      - DailyQuestOptions
       - DailyStorage
-      - Office
-      - Interact
+
 
     Dungeon:
       - Scheduler
