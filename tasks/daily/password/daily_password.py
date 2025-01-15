@@ -95,6 +95,7 @@ class DailyPassword(UI):
             # 用确定框由橙变灰判定是否填完密令
             if has_filled_text and self.appear(FILL_CONFIRM_LOCKED):
                 logger.info("Sign in completed")
+                finish = True
                 break
             if self.appear(FILL_PSW_FAILED):
                 logger.info("Sign in failed, maybe because password is incorrect?")
@@ -110,7 +111,7 @@ class DailyPassword(UI):
                 timeout.reset()
                 continue
 
-            if self.appear(PSW_INPUT_BOX_CHECK):
+            if self.appear(PSW_INPUT_BOX_CHECK,interval=3):
                 self.device.input_text(psw)
                 timeout.reset()
                 continue
@@ -118,7 +119,7 @@ class DailyPassword(UI):
                 continue
             if self.appear_then_click(OPEN_PSW_INPUT_BOX):
                 continue
-        return finish or has_filled_text
+        return finish
 
     def _close_psw_popup(self,skip_first_screenshot=True):
         timeout = Timer(10).start()
