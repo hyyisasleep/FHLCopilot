@@ -216,6 +216,10 @@
       "AutoDailyPassword": {
         "type": "checkbox",
         "value": 0
+      },
+      "CelebrityInteract": {
+        "type": "checkbox",
+        "value": 1
       }
     },
     "DailyStorage": {

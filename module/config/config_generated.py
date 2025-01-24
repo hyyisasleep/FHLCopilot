@@ -45,6 +45,7 @@ class GeneratedConfig:
     DailyQuestOptions_VisitOthersForClivia = 0
     DailyQuestOptions_DailyJinGeWinReward = 0
     DailyQuestOptions_AutoDailyPassword = 0
+    DailyQuestOptions_CelebrityInteract = 1
 
     # Group `DailyStorage`
     DailyStorage_DailyLiveness = {}

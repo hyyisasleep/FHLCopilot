@@ -40,7 +40,9 @@ class Dispatch(UI):
         # 打开麒麟头+领供台奖励+领虾球+关闭麒麟头
         self._kylin_affair()
         # 赠礼
-        Interact(self.config, self.device).run()
+
+        if self.config.DailyQuestOptions_CelebrityInteract:
+            Interact(self.config, self.device).run()
 
         # 邮箱补领奖励
         Mailbox(self.config, self.device).run()

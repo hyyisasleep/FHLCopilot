@@ -606,6 +606,8 @@ class ConfigUpdater:
             yield 'DailyQuest.DailyStorage.JinGeDailyWinReward'
         if not deep_get(data, 'DailyQuest.DailyQuestOptions.AutoDailyPassword'):
             yield 'DailyQuest.DailyStorage.AutoDailyPassword'
+        if not deep_get(data, 'DailyQuest.DailyQuestOptions.CelebrityInteract'):
+            yield 'DailyQuest.DailyStorage.CelebrityInteract'
         # if deep_get(data, 'Ornament.TrailblazePower.UseFuel') == False:
         #     yield 'Ornament.TrailblazePower.FuelReserve'
         # if deep_get(data, 'Rogue.RogueBlessing.PresetBlessingFilter') != 'custom':

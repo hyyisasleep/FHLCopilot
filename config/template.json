@@ -45,7 +45,8 @@
       "TransKaoGongTicket": 1,
       "VisitOthersForClivia": 0,
       "DailyJinGeWinReward": 0,
-      "AutoDailyPassword": 0
+      "AutoDailyPassword": 0,
+      "CelebrityInteract": 1
     },
     "DailyStorage": {
       "DailyLiveness": {},
