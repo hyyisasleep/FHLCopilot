@@ -152,7 +152,7 @@ class Combat(UI):
             if self.appear(SET_AUTO_COMBAT_CHECK):
                 break
             if self.appear(OPEN_SET_AUTO_COMBAT_FAILED):
-                logger.warning("Can't start auto combat,because team is empty / not set cat assistant/ current level not cleared yet")
+                logger.warning("Can't start auto combat,because team is empty / not set cat assistant / current level not cleared yet")
                 raise RequestHumanTakeover
                 # return False
 

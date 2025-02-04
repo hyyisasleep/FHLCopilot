@@ -87,6 +87,10 @@ class SignInHandler(UI):
             if timeout.reached():
                 logger.info("Get timeout, suggest sign in page is closed")
                 break
+            # 有时候会把签到页面一块点了 如果出现签到界面了就算关闭成功了……
+            if self.appear(DAILY_SIGN_IN):
+                logger.info("Daily sign in page appear, stop handling current activity sign in")
+                break
             if click:
                 if cnt > 3:
                     logger.info("Can't find sign in page,suggest sign in page is closed ")
@@ -100,6 +104,7 @@ class SignInHandler(UI):
             if self.appear_then_click(close_button, interval=2):
                 click = True
                 continue
+
         return True
 
     def handle_time_limit_sign_in(self):
@@ -147,9 +152,9 @@ class SignInHandler(UI):
 
         if self.appear(DIVINE_CHECK):
             self.appear_then_click(BACK, interval=2)
-            # logger.info("Sign in finish")
-
+            logger.info("Skip divine, sign in finish")
             return True
+
         return False
 
 

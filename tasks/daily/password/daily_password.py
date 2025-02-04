@@ -134,7 +134,7 @@ class DailyPassword(UI):
             if self.appear(PSW_POPUP_CLOSED_CHECK):
                 logger.info("Password page is closed")
                 break
-            if self.appear_then_click(CLOSE_PSW_POPUP):
+            if self.appear_then_click(CLOSE_PSW_POPUP,interval=3):
                 continue
 
 
