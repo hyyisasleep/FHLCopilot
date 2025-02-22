@@ -8,10 +8,7 @@ from module.exception import RequestHumanTakeover
 from module.logger import logger
 import os
 import psutil
-from pywinauto import Application, findwindows, WindowSpecification
-
-
-
+from pywinauto import Application, findwindows, WindowSpecification, Desktop
 
 
 def click_window(parent_window:WindowSpecification,title_re:str,control_type="",interval=2):
@@ -106,6 +103,13 @@ def wechat_sign_in_and_get_password(config_wechat_path=r'D:\WeChat\WeChat.exe')-
         # 获取最后一条消息
         item = dialog_list.children(control_type="ListItem")[-1]
         text = item.window_text()
+
+
+        # 关窗口
+        windows_name = ["忘川风华录手游","公众号","微信"]
+        for name in windows_name:
+            close_window_by_title(name)
+
         # 返回筛选后的密令
         return handle_password_content(text)
 
@@ -113,6 +117,23 @@ def wechat_sign_in_and_get_password(config_wechat_path=r'D:\WeChat\WeChat.exe')-
         print(e)
         return ""
 
+
+def close_window_by_title(title):
+    try:
+        # 获取所有顶层窗口
+        windows = Desktop(backend="uia").windows()
+
+        for win in windows:
+            if title in win.window_text():
+                logger.info(f"Find window: {win.window_text()}, try to close...")
+                win.close()
+                time.sleep(1)
+                return True
+        logger.warning(f"Can't find window: {title}")
+        return False
+    except Exception as e:
+        logger.warning(e)
+        return False
 
 def handle_password_content(input:str)->str:
     res = input.split("：")
