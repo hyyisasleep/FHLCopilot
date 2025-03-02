@@ -549,6 +549,16 @@ MIJING_GOTO_JINGYUAN = ButtonWrapper(
         button=(163, 221, 203, 318),
     ),
 )
+MIJING_GOTO_QIZHENG = ButtonWrapper(
+    name='MIJING_GOTO_QIZHENG',
+    share=Button(
+        file='./assets/share/base/page/MIJING_GOTO_QIZHENG.png',
+        area=(692, 275, 731, 363),
+        search=(672, 255, 751, 383),
+        color=(212, 144, 116),
+        button=(692, 275, 731, 363),
+    ),
+)
 MOMENTS_CHECK = ButtonWrapper(
     name='MOMENTS_CHECK',
     share=Button(
@@ -567,6 +577,16 @@ PROFILE_CHECK = ButtonWrapper(
         search=(2, 654, 93, 720),
         color=(141, 110, 81),
         button=(22, 674, 73, 714),
+    ),
+)
+QIZHENG_CHECK = ButtonWrapper(
+    name='QIZHENG_CHECK',
+    share=Button(
+        file='./assets/share/base/page/QIZHENG_CHECK.png',
+        area=(100, 17, 155, 46),
+        search=(80, 0, 175, 66),
+        color=(140, 94, 69),
+        button=(100, 17, 155, 46),
     ),
 )
 SHAPANLUNYI_CHECK = ButtonWrapper(

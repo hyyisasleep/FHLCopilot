@@ -15,7 +15,7 @@ class MonthlyCardOCR(Digit):
     def after_process(self, result):
         # 今日已领取，剩余xx小时=明天过期
         if "小时" in result:
-            return 0
+            return '0'
         else:
             return super().after_process(result)
 
