@@ -24,6 +24,7 @@ class ShaPanLunYi(UI):
         self.ui_ensure(page_jingeguan)
         timeout = Timer(10).start()
         skip_first_screenshot = True
+
         while 1:
             if skip_first_screenshot:
                 skip_first_screenshot = False
@@ -35,9 +36,18 @@ class ShaPanLunYi(UI):
             if self.appear(SHAPANLUNYI_CLOSE_CHECK):
                 logger.info("Sha pan lun yi isn't open, return")
                 return
-            if self.appear(JINGEGUAN_GOTO_SHAPANLUNYI):
-                logger.info("Sha pan lun yi is open, continue")
+            if self.appear(SHAPANLUNYI_CLOSE_WARNING):
+                logger.info("Sha pan lun yi isn't open, return")
+                return
+            # 有时候会出现金戈馆到沙盘那个键是灰的但是认成黄的
+            if self.appear(page_shapanlunyi.check_button):
+                logger.info("Arrive at sha pan lun yi page")
                 break
+            if self.appear_then_click(JINGEGUAN_GOTO_SHAPANLUNYI):
+                logger.info("Sha pan lun yi is open, continue")
+                continue
+
+
         self.ui_ensure(page_shapanlunyi)
         while 1:
 

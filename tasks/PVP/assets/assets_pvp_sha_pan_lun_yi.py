@@ -133,3 +133,13 @@ REWARD_UNLOCK = ButtonWrapper(
         button=(410, 574, 508, 646),
     ),
 )
+SHAPANLUNYI_CLOSE_WARNING = ButtonWrapper(
+    name='SHAPANLUNYI_CLOSE_WARNING',
+    share=Button(
+        file='./assets/share/pvp/sha_pan_lun_yi/SHAPANLUNYI_CLOSE_WARNING.png',
+        area=(543, 149, 736, 177),
+        search=(523, 129, 756, 197),
+        color=(101, 90, 85),
+        button=(543, 149, 736, 177),
+    ),
+)
