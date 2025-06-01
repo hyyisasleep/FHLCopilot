@@ -103,15 +103,16 @@ def wechat_sign_in_and_get_password(config_wechat_path=r'D:\WeChat\WeChat.exe')-
         # 获取最后一条消息
         item = dialog_list.children(control_type="ListItem")[-1]
         text = item.window_text()
-
-
+        logger.info("Text:"+text)
+        res = handle_password_content(text)
+        logger.info("Get text:" + res)
         # 关窗口
         windows_name = ["忘川风华录手游","公众号","微信"]
         for name in windows_name:
             close_window_by_title(name)
 
         # 返回筛选后的密令
-        return handle_password_content(text)
+        return res
 
     except Exception as e:
         print(e)
