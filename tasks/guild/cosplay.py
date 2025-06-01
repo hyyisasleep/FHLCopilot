@@ -1,8 +1,8 @@
 import numpy as np
-from asgiref.timeout import timeout
 
 from module.base.timer import Timer
 from module.base.utils import get_color
+from module.config.utils import is_under_maintenance
 from module.exception import RequestHumanTakeover
 from module.logger import logger
 from module.ocr.ocr import Ocr, DigitCounter
@@ -28,6 +28,9 @@ class Cosplay(UI):
 
     def run(self, skip_first_screenshot=True):
         logger.hr("Cosplay", level=1)
+        if is_under_maintenance():
+            logger.info("Social function is under maintenance, stop run cosplay script")
+            return
         remain_times = 4
         if self.config.stored.SendStatusTimes.is_expired():
             self.config.stored.SendStatusTimes.clear()

@@ -1,5 +1,6 @@
 
 from module.base.timer import Timer
+from module.config.utils import is_under_maintenance
 from module.logger import logger
 from module.ocr.ocr import  DigitCounter
 from tasks.base.page import page_moments
@@ -18,6 +19,9 @@ class Moments(UI):
         """
         """
         logger.hr('Give 3 heart in moments', level=1)
+        if is_under_maintenance():
+            logger.info("Social function is under maintenance, stop run moments script")
+            return
         # 跳转到知交圈界面
         self.ui_ensure(page_moments)
         self._give_heart()

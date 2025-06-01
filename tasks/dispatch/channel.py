@@ -1,4 +1,5 @@
 from module.base.timer import Timer
+from module.config.utils import is_under_maintenance
 from module.logger import logger
 
 from tasks.base.ui import UI
@@ -12,6 +13,9 @@ class Channel(UI):
         """
         """
         logger.hr('Send message twice in word channel', level=1)
+        if is_under_maintenance():
+            logger.info("Social function is under maintenance, stop run channel script")
+            return
         # 跳转到互动界面
         self.send_message()
 
