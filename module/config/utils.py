@@ -622,6 +622,21 @@ def get_server_datetime():
     return server_now
 
 
+def is_under_maintenance(year_a=2025,month_a=6,day_a=1,year_b=2025,month_b=6,day_b=6):
+    """
+    fhlc add
+    定期维护会把社交功能关了导致知交圈点赞、世界发言和刷花抽风
+    Returns:
+        True: 在维护中，不启用功能
+    """
+    current_date = get_server_datetime()
+
+
+    start_date = datetime(year_a, month_a, day_a).date()
+    end_date = datetime(year_b,month_b,day_b).date()
+
+
+    return start_date <= current_date <= end_date
 
 def get_server_weekday():
     """
