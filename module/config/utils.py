@@ -629,7 +629,7 @@ def is_under_maintenance(year_a=2025,month_a=6,day_a=1,year_b=2025,month_b=6,day
     Returns:
         True: 在维护中，不启用功能
     """
-    current_date = get_server_datetime()
+    current_date = get_server_datetime().date()
 
 
     start_date = datetime(year_a, month_a, day_a).date()
