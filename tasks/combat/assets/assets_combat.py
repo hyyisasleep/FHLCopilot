@@ -97,10 +97,10 @@ COMBAT_CONTINUE_CHECK = ButtonWrapper(
     name='COMBAT_CONTINUE_CHECK',
     share=Button(
         file='./assets/share/combat/COMBAT_CONTINUE_CHECK.png',
-        area=(1022, 0, 1280, 44),
-        search=(1002, 0, 1280, 64),
-        color=(115, 87, 66),
-        button=(1022, 0, 1280, 44),
+        area=(1220, 0, 1263, 44),
+        search=(1200, 0, 1280, 64),
+        color=(138, 109, 83),
+        button=(1220, 0, 1263, 44),
     ),
 )
 FAIL_CHECK = ButtonWrapper(

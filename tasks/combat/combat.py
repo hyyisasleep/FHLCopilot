@@ -257,4 +257,4 @@ class Combat(UI):
 
 if __name__ == '__main__':
     ui = Combat('fhlc')
-    ui.run_jingyuan(3)
+    ui.run_baoxu(3)
