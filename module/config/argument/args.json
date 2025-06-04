@@ -24,7 +24,8 @@
           "CN-Bilibili",
           "CN-Vivo",
           "CN-Oppo",
-          "CN-Huawei"
+          "CN-Huawei",
+          "CN-Xiaomi"
         ]
       },
       "GameLanguage": {

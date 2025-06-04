@@ -110,7 +110,8 @@
       "CN-Bilibili": "[国服]-B服 ",
       "CN-Vivo": "[国服]-Vivo服",
       "CN-Oppo": "[国服]-Oppo服 ",
-      "CN-Huawei": "[国服]-华为服"
+      "CN-Huawei": "[国服]-华为服",
+      "CN-Xiaomi": "[国服]-小米服"
     },
     "GameLanguage": {
       "name": "游戏内文本语言",

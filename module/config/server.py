@@ -12,7 +12,8 @@ VALID_SERVER = {
     'CN-Bilibili': 'com.netease.pm03.bilibili',
     'CN-Vivo':  'com.netease.pm03.vivo',
     'CN-Oppo':  'com.netease.pm03.nearme.gamecenter',
-    'CN-Huawei':  'com.netease.pm03.huawei'
+    'CN-Huawei':  'com.netease.pm03.huawei',
+    'CN-Xiaomi': 'com.netease.pm03.mi'
     # 'OVERSEA-America': 'com.HoYoverse.hkrpgoversea',
     # 'OVERSEA-Asia': 'com.HoYoverse.hkrpgoversea',
     # 'OVERSEA-Europe': 'com.HoYoverse.hkrpgoversea',
@@ -29,7 +30,8 @@ DICT_PACKAGE_TO_ACTIVITY = {
     'com.netease.pm03.bilibili': 'com.netease.ntunisdk.external.protocol.ProtocolLauncher',
     'com.netease.pm03.vivo': 'com.netease.ntunisdk.external.protocol.ProtocolLauncher',
     'com.netease.pm03.nearme.gamecenter': 'com.netease.ntunisdk.external.protocol.ProtocolLauncher',
-    'com.netease.pm03.huawei': 'com.netease.ntunisdk.external.protocol.ProtocolLauncher'
+    'com.netease.pm03.huawei': 'com.netease.ntunisdk.external.protocol.ProtocolLauncher',
+    'com.netease.pm03.mi':'com.netease.ntunisdk.external.protocol.ProtocolLauncher'
     # 'com.HoYoverse.hkrpgoversea': 'com.mihoyo.combosdk.ComboSDKActivity',
     # 'com.miHoYo.cloudgames.hkrpg': 'com.mihoyo.cloudgame.ui.SplashActivity',
 }
