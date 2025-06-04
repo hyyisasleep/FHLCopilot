@@ -39,7 +39,7 @@ class ZhuLu(JinGeYanWu):
 
     def run(self,skip_first_screenshot=False):
         """
-        现在这个等时间是，看到自动准备被勾上了就停20s（问题非常大，进ban位选择了还在等
+        现在这个等时间是，看到自动准备被勾上了就停10s（问题非常大，进ban位选择了还在等
         出来之后可能自动准备没勾，会看逐鹿星野页面等10s
         """
         while 1:
@@ -49,8 +49,8 @@ class ZhuLu(JinGeYanWu):
                 self.device.screenshot()
 
             if self.appear(AUTO_PREPARE_LOCKED):
-                logger.info("Auto prepared finish,sleep 20 seconds")
-                time.sleep(20)
+                logger.info("Auto prepared finish,sleep 10 seconds")
+                time.sleep(10)
                 self.device.stuck_record_clear()
                 continue
             if self.appear_then_click(AUTO_PREPARE_UNLOCK):
