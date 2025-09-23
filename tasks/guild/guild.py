@@ -1,5 +1,5 @@
 from module.base.timer import Timer
-from module.config.utils import get_server_weekday
+from module.config.utils import get_server_weekday, is_under_maintenance
 from module.logger import logger
 from tasks.PVP.ShaPanLunYi import ShaPanLunYi
 
@@ -119,6 +119,10 @@ class Guild(GuildMission):
                 return True
 
     def _float_river_lantern(self):
+        # 2025.9.23河灯功能突然维护
+        if is_under_maintenance(2025,9,23,2025,10,10):
+            logger.info("Social function is under maintenance, stop run cosplay script")
+            return
         self.ui_ensure(page_guild_begging)
 
 
