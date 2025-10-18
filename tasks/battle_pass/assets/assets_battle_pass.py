@@ -15,13 +15,22 @@ BP_PAGE_CHECK = ButtonWrapper(
 )
 BP_PAGE_STABLE_CHECK = ButtonWrapper(
     name='BP_PAGE_STABLE_CHECK',
-    share=Button(
-        file='./assets/share/battle_pass/BP_PAGE_STABLE_CHECK.png',
-        area=(507, 125, 524, 154),
-        search=(487, 105, 544, 174),
-        color=(217, 168, 97),
-        button=(507, 125, 524, 154),
-    ),
+    share=[
+        Button(
+            file='./assets/share/battle_pass/BP_PAGE_STABLE_CHECK.png',
+            area=(507, 125, 524, 154),
+            search=(487, 105, 544, 174),
+            color=(217, 168, 97),
+            button=(507, 125, 524, 154),
+        ),
+        Button(
+            file='./assets/share/battle_pass/BP_PAGE_STABLE_CHECK.2.png',
+            area=(507, 125, 524, 154),
+            search=(487, 105, 544, 174),
+            color=(218, 166, 102),
+            button=(507, 125, 524, 154),
+        ),
+    ],
 )
 BP_REWARD_LOCKED = ButtonWrapper(
     name='BP_REWARD_LOCKED',
