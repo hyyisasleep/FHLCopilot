@@ -56,6 +56,12 @@ class ConnectionAttr:
         serial = serial.replace('。', '.').replace('，', '.').replace(',', '.').replace('：', ':')
         # 127.0.0.1.5555
         serial = serial.replace('127.0.0.1.', '127.0.0.1:')
+        # Mumu12 5.0 shows double serials, some people may just copy-paste it
+        # 5555,16384
+        if ',' in serial:
+            left, _, right = serial.partition(',')
+            if left.startswith('55') and right.startswith('16'):
+                serial = right
         # 16384
         try:
             port = int(serial)
@@ -138,7 +144,7 @@ class ConnectionAttr:
 
     @cached_property
     def is_mumu12_family(self):
-        # 127.0.0.1:16XXX
+        # 127.0.0.1:16384 + 32*n, assume 32 instances at max
         return 16384 <= self.port <= 17408
 
     @cached_property
@@ -146,6 +152,12 @@ class ConnectionAttr:
         # 127.0.0.1:7555
         # 127.0.0.1:16384 + 32*n
         return self.serial == '127.0.0.1:7555' or self.is_mumu12_family
+
+    @cached_property
+    def is_ldplayer_bluestacks_family(self):
+        # Note that LDPlayer and BlueStacks have the same serial range
+        # 127.0.0.1:5555 + 2*n, assume 32 instances at max
+        return self.serial.startswith('emulator-') or 5555 <= self.port <= 5619
 
     @cached_property
     def is_nox_family(self):

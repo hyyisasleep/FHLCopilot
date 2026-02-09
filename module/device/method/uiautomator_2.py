@@ -1,3 +1,4 @@
+import time
 from dataclasses import dataclass
 from functools import wraps
 from json.decoder import JSONDecodeError
@@ -27,7 +28,7 @@ def retry(func):
         for _ in range(RETRY_TRIES):
             try:
                 if callable(init):
-                    retry_sleep(_)
+                    time.sleep(retry_sleep(_))
                     init()
                 return func(self, *args, **kwargs)
             # Can't handle
@@ -183,9 +184,6 @@ class Uiautomator2(Connection):
                 self.u2.touch.move(x, y)
                 logger.info(point2str(x, y) + ' move')
             self.sleep(second)
-
-
-
 
     def drag_uiautomator2(self, p1, p2, segments=1, shake=(0, 15), point_random=(-10, -10, 10, 10),
                           shake_random=(-5, -5, 5, 5), swipe_duration=0.25, shake_duration=0.1):
@@ -377,7 +375,8 @@ class Uiautomator2(Connection):
 
     @retry
     def dump_hierarchy_uiautomator2(self) -> etree._Element:
-        content = self.u2.dump_hierarchy(compressed=True)
+        content = self.u2.dump_hierarchy(compressed=False)
+        # print(content)
         hierarchy = etree.fromstring(content.encode('utf-8'))
         return hierarchy
 

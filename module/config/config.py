@@ -1,7 +1,7 @@
 import copy
-import datetime
 import operator
 import threading
+from datetime import datetime, timedelta
 
 import pywebio
 
@@ -9,10 +9,11 @@ from module.base.decorator import cached_property, del_cached_property
 from module.base.filter import Filter
 from module.config.config_generated import GeneratedConfig
 from module.config.config_manual import ManualConfig, OutputConfig
-from module.config.config_updater import ConfigUpdater
+from module.config.config_updater import ConfigUpdater, ensure_time, get_server_next_update, nearest_future
+from module.config.deep import deep_get, deep_set
 from module.config.stored.classes import iter_attribute
 from module.config.stored.stored_generated import StoredGenerated
-from module.config.utils import *
+from module.config.utils import DEFAULT_TIME, dict_to_kv, filepath_config, path_to_arg
 from module.config.watcher import ConfigWatcher
 from module.exception import RequestHumanTakeover, ScriptError
 from module.logger import logger
@@ -191,7 +192,6 @@ class AzurLaneConfig(ConfigUpdater, ManualConfig, GeneratedConfig, ConfigWatcher
             self.data, keys="Alas.Emulator.GameClient"
         ) == 'cloud_android'
 
-
     @cached_property
     def stored(self) -> StoredGenerated:
         stored = StoredGenerated()
@@ -366,7 +366,7 @@ class AzurLaneConfig(ConfigUpdater, ManualConfig, GeneratedConfig, ConfigWatcher
     def task_delay(self, success=None, server_update=None, target=None, minute=None, task=None):
         """
         Set Scheduler.NextRun
-        Should set at least one argument.
+        Should set at least one arguments.
         If multiple arguments are set, use the nearest.
 
         Args:
@@ -505,7 +505,6 @@ class AzurLaneConfig(ConfigUpdater, ManualConfig, GeneratedConfig, ConfigWatcher
 
     def is_task_enabled(self, task):
         return bool(self.cross_get(keys=[task, 'Scheduler', 'Enable'], default=False))
-    #
     # def update_daily_quests(self):
     #     """
     #     Raises:
@@ -524,11 +523,11 @@ class AzurLaneConfig(ConfigUpdater, ManualConfig, GeneratedConfig, ConfigWatcher
     #                 'Complete_1_Daily_Mission',
     #                 'Log_in_to_the_game',
     #                 'Dispatch_1_assignments',
-    #                 'Complete_Divergent_Universe_or_Simulated_Universe_1_times',
+    #                 'Complete_Divergent_Universe_or_Currency_Wars_1_times',
     #                 'Obtain_victory_in_combat_with_Support_Characters_1_times',
     #                 'Consume_120_Trailblaze_Power',
     #             ])
-    #
+
     # def update_battle_pass_quests(self):
     #     """
     #     Raises:

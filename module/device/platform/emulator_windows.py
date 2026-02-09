@@ -10,7 +10,7 @@ from dataclasses import dataclass
 # Will be used in Alas Easy Install, they shouldn't import any Alas modules.
 from module.device.platform.emulator_base import EmulatorBase, EmulatorInstanceBase, EmulatorManagerBase, \
     remove_duplicated_path
-from module.device.platform.utils import cached_property, iter_folder
+from module.device.platform.utils import cached_property, iter_folder, iter_process
 
 
 @dataclass
@@ -119,7 +119,7 @@ class Emulator(EmulatorBase):
                 return cls.MuMuPlayerX
             else:
                 return cls.MuMuPlayer
-        if exe == 'mumuplayer.exe':
+        if exe in ['mumuplayer.exe', 'mumunxmain.exe']:
             return cls.MuMuPlayer12
         if exe == 'memu.exe':
             return cls.MEmuPlayer
@@ -168,6 +168,9 @@ class Emulator(EmulatorBase):
         """
         if 'MuMuPlayer.exe' in exe:
             return exe.replace('MuMuPlayer.exe', 'MuMuManager.exe')
+        # MuMuPlayer12 5.0
+        elif 'MuMuNxMain.exe' in exe:
+            return exe.replace('MuMuNxMain.exe', 'MuMuManager.exe')
         elif 'LDPlayer.exe' in exe:
             return exe.replace('LDPlayer.exe', 'ldconsole.exe')
         elif 'dnplayer.exe' in exe:
@@ -299,12 +302,23 @@ class Emulator(EmulatorBase):
             for folder in self.list_folder('../vms', is_dir=True):
                 for file in iter_folder(folder, ext='.nemu'):
                     serial = Emulator.vbox_file_to_serial(file)
+                    name = os.path.basename(folder)
                     if serial:
                         yield EmulatorInstance(
                             serial=serial,
-                            name=os.path.basename(folder),
+                            name=name,
                             path=self.path,
                         )
+                    # Fix for MuMu12 v4.0.4, default instance of which has no forward record in vbox config
+                    else:
+                        instance = EmulatorInstance(
+                            serial=serial,
+                            name=name,
+                            path=self.path,
+                        )
+                        if instance.MuMuPlayer12_id:
+                            instance.serial = f'127.0.0.1:{16384 + 32 * instance.MuMuPlayer12_id}'
+                            yield instance
         elif self == Emulator.MEmuPlayer:
             # ./MemuHyperv VMs/{name}/{name}.memu
             for folder in self.list_folder('./MemuHyperv VMs', is_dir=True):
@@ -450,7 +464,9 @@ class EmulatorManager(EmulatorManagerBase):
             'leidian9',
             'Nemu',
             'Nemu9',
-            'MuMuPlayer-12.0'
+            'MuMuPlayer',
+            'MuMuPlayer-12.0',
+            'MuMu Player 12.0',
             'MEmu',
         ]
         for path in known_uninstall_registry_path:
@@ -483,23 +499,8 @@ class EmulatorManager(EmulatorManagerBase):
         Yields:
             str: Path to emulator executables, may contains duplicate values
         """
-        try:
-            import psutil
-        except ModuleNotFoundError:
-            return
-        # Since this is a one-time-usage, we access psutil._psplatform.Process directly
-        # to bypass the call of psutil.Process.is_running().
-        # This only costs about 0.017s.
-        for pid in psutil.pids():
-            proc = psutil._psplatform.Process(pid)
-            try:
-                exe = proc.cmdline()
-                exe = exe[0].replace(r'\\', '/').replace('\\', '/')
-            except (psutil.AccessDenied, psutil.NoSuchProcess, IndexError):
-                # psutil.AccessDenied
-                # NoSuchProcess: process no longer exists (pid=xxx)
-                continue
-
+        for pid, cmdline in iter_process():
+            exe = cmdline[0]
             if Emulator.is_emulator(exe):
                 yield exe
 

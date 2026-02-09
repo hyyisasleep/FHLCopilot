@@ -3,7 +3,7 @@ import typing as t
 
 from dev_tools.keywords.base import GenerateKeyword, SHARE_DATA, text_to_variable
 from module.base.decorator import cached_property
-from module.config.utils import deep_get
+from module.config.deep import deep_get
 
 
 def dungeon_name(name: str) -> str:
@@ -12,9 +12,22 @@ def dungeon_name(name: str) -> str:
     name = re.sub('Bud_of_(.*)', r'Calyx_Crimson_\1', name).replace('Calyx_Crimson_Calyx_Crimson_', 'Calyx_Crimson_')
     name = re.sub('Shape_of_(.*)', r'Stagnant_Shadow_\1', name)
     name = re.sub('Path_of_(.*)', r'Cavern_of_Corrosion_Path_of_\1', name)
-    if name in ['Destruction_Beginning', 'End_of_the_Eternal_Freeze', 'Divine_Seed', 'Borehole_Planet_Old_Crater']:
+    if name in [
+        'Destruction_Beginning',
+        'End_of_the_Eternal_Freeze',
+        'Divine_Seed',
+        'Borehole_Planet_Past_Nightmares',
+        'Inner_Beast_Battlefield',
+        'Salutations_of_Ashen_Dreams',
+        'Glance_of_Twilight',
+        'Rusted_Crypt_of_the_Iron_Carcass',
+    ]:
         name = f'Echo_of_War_{name}'
-    if name in ['The_Swarm_Disaster', 'Gold_and_Gears']:
+    if name in [
+        'The_Swarm_Disaster',
+        'Swarm_Disaster',
+        'Gold_and_Gears',
+    ]:
         name = f'Simulated_Universe_{name}'
     name = name.replace('Stagnant_Shadow_Stagnant_Shadow', 'Stagnant_Shadow')
     name = name.replace('Cavern_of_Corrosion_Cavern_of_Corrosion', 'Cavern_of_Corrosion')
@@ -73,6 +86,12 @@ class GenerateDungeonList(GenerateKeyword):
         # Add plane suffix
         from tasks.map.keywords import MapPlane
 
+        if text.startswith('Calyx_Golden'):
+            plane = MapPlane.find_plane_id(keyword['plane_id'])
+            if plane is not None:
+                text = f'{text}_{plane.world.name}'
+            else:
+                text = f'{text}_unknown_world'
         if text.startswith('Calyx_Crimson'):
             plane = MapPlane.find_plane_id(keyword['plane_id'])
             if plane is not None:
@@ -103,6 +122,7 @@ class GenerateDungeonList(GenerateKeyword):
             'Calyx_Crimson_Erudition',
             'Calyx_Crimson_Harmony',
             'Calyx_Crimson_Nihility',
+            'Calyx_Crimson_Remembrance',
         ]
         for keyword in order:
             condition = lambda x: x['name'].startswith(keyword)
@@ -110,16 +130,38 @@ class GenerateDungeonList(GenerateKeyword):
             dungeons = [d for d in dungeons if not condition(d)]
         dungeons = calyx + dungeons
 
-        # Reverse Divergent_Universe
-        start = 0
-        end = 0
-        for index, dungeon in enumerate(dungeons):
-            if dungeon['name'].startswith('Divergent_Universe'):
-                if start == 0:
-                    start = index
-                end = index + 1
-        if start > 0 and end > 0:
-            dungeons = dungeons[:start] + dungeons[start:end][::-1] + dungeons[end:]
+        # 2024.09.10, v2.5, add genre prefix
+        for dungeon in dungeons:
+            if 230 <= dungeon['dungeon_id'] < 1000:
+                dungeon['name'] = 'Divergent_Universe_' + dungeon['name']
+            if 100 < dungeon['dungeon_id'] < 200:
+                dungeon['name'] = 'Simulated_Universe_' + dungeon['name']
+
+        # Reverse dungeon list, latest at top
+        def reverse_on_name(d, prefix):
+            start = 0
+            end = 0
+            for index, dungeon in enumerate(d):
+                if dungeon['name'].startswith(prefix):
+                    if start == 0:
+                        start = index
+                    end = index + 1
+            if start > 0 and end > 0:
+                d = d[:start] + d[start:end][::-1] + d[end:]
+            return d
+
+        dungeons = reverse_on_name(dungeons, 'Divergent_Universe')
+        dungeons = reverse_on_name(dungeons, 'Cavern_of_Corrosion')
+        dungeons = reverse_on_name(dungeons, 'Echo_of_War')
+
+        # Reverse Calyx_Golden, sort by world
+        # Poor sort
+        Jarilo = dungeons[0:3]
+        Luofu = dungeons[3:6]
+        Penacony = dungeons[6:9]
+        Amphoreus = dungeons[9:12]
+        others = dungeons[12:]
+        dungeons = Amphoreus + Penacony + Luofu + Jarilo + others
 
         # Re-sort ID
         self.keyword_index = 0

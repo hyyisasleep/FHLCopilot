@@ -4,7 +4,7 @@ from tasks.PVP.JinGeYanWu import JinGeYanWu
 
 from tasks.cattery.cattery import Cattery
 from tasks.daily.daily_quest_state import DailyQuestUI
-from tasks.daily.password.daily_password import DailyPassword
+# from tasks.daily.password.daily_password import DailyPassword
 
 from tasks.dispatch.dispatch import Dispatch
 
@@ -27,7 +27,7 @@ class DailyQuest(DailyQuestUI):
             self.config.stored.CatteryPlayWithCat.clear()
             self.config.stored.CatteryFeedCat.clear()
             self.config.stored.GetFriendshipPoint.clear()
-            self.config.stored.AutoDailyPassword.clear()
+            # self.config.stored.AutoDailyPassword.clear()
             self.config.stored.JinGeDailyWinReward.clear()
 
         # 开始做日常
@@ -35,9 +35,9 @@ class DailyQuest(DailyQuestUI):
         Cattery(config=self.config, device=self.device).run()
         Dispatch(config=self.config, device=self.device).run()
 
-        if self.config.DailyQuestOptions_AutoDailyPassword:
-            # 这个finish写配置写在run里面了
-            DailyPassword(config=self.config,device=self.device).run()
+        # if self.config.DailyQuestOptions_AutoDailyPassword:
+        #     # 这个finish写配置写在run里面了
+        #     DailyPassword(config=self.config,device=self.device).run()
 
         # 打金戈首胜奖励
         if self.config.DailyQuestOptions_DailyJinGeWinReward:

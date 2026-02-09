@@ -42,10 +42,12 @@ Emulator:
       DroidCast_raw,
       scrcpy,
       nemu_ipc,
+      ldopengl,
     ]
   ControlMethod:
     value: MaaTouch
     option: [ minitouch, MaaTouch ]
+  CloudPriorQueue: false
   AdbRestart: false
 EmulatorInfo:
   Emulator:
@@ -86,8 +88,8 @@ Optimization:
   ScreenshotInterval: 0.3
   CombatScreenshotInterval: 1.0
   WhenTaskQueueEmpty:
-    value: stay_there
-    option: [ stay_there, goto_main, close_game ]
+    value: goto_main
+    option: [ stay_there, goto_main, close_game, close_emulator ]
 
 # ==================== Daily ====================
 

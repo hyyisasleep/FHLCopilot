@@ -69,6 +69,91 @@ class ModuleBase:
         pool = ThreadPoolExecutor(1)
         return pool
 
+    def loop(self, skip_first=True, timeout=None):
+        """
+        A syntactic sugar to start a state loop
+
+        Args:
+            skip_first (bool): Usually to be True to reuse the previous screenshot
+            timeout (int | float | Timer): Seconds of timeout or a Timer object
+
+        Yields:
+            np.ndarray: screenshot
+
+        Examples:
+            # state machine that handle clicking until destination
+            for _ in self.loop():
+                if self.appear(...):
+                    break
+                if self.appear_then_click(...):
+                    continue
+
+        Examples:
+            # state machine with timeout
+            for _ in self.loop(timeout=2):
+                if self.appear(...):
+                    logger.info('Wait success')
+                    break
+            else:
+                logger.warning('Wait timeout')
+        """
+        if timeout is not None:
+            if isinstance(timeout, Timer):
+                timeout.reset()
+            else:
+                timeout = Timer.from_seconds(timeout).start()
+
+        while 1:
+            if timeout is not None:
+                if timeout.reached():
+                    return
+
+            if skip_first:
+                skip_first = False
+            else:
+                self.device.screenshot()
+
+            try:
+                yield self.device.image
+            except AttributeError:
+                self.device.screenshot()
+                yield self.device.image
+
+    def loop_hierarchy(self, skip_first=True):
+        """
+        A syntactic sugar to start a hierarchy state loop
+
+        Args:
+            skip_first (bool): Usually to be True to reuse the previous hierarchy
+
+        Yields:
+            etree._Element: hierarchy
+        """
+        while 1:
+            if skip_first:
+                skip_first = False
+            else:
+                self.device.dump_hierarchy()
+            yield self.device.hierarchy
+
+    def loop_screenshot_hierarchy(self, skip_first=True):
+        """
+        A syntactic sugar to start a state loop that takes screenshots and dump hierarchy
+
+        Args:
+            skip_first (bool): Usually to be True to reuse the previous screenshot
+
+        Yields:
+            tuple[np.ndarray, etree._Element]: screenshot, hierarchy
+        """
+        while 1:
+            if skip_first:
+                skip_first = False
+            else:
+                self.device.screenshot()
+                self.device.dump_hierarchy()
+            yield self.device.image, self.device.hierarchy
+
     def match_template(self, button, interval=0, similarity=0.85):
         """
         Args:
@@ -93,6 +178,36 @@ class ModuleBase:
             return False
 
         appear = button.match_template(self.device.image, similarity=similarity)
+
+        if appear and interval:
+            self.interval_reset(button, interval=interval)
+
+        return appear
+
+    def match_template_luma(self, button, interval=0, similarity=0.85):
+        """
+        Args:
+            button (ButtonWrapper):
+            interval (int, float): interval between two active events.
+            similarity (int, float): 0 to 1.
+
+        Returns:
+            bool:
+
+        Examples:
+            Image detection:
+            ```
+            self.device.screenshot()
+            self.appear(Button(area=(...), color=(...), button=(...))
+            self.appear(Template(file='...')
+            ```
+        """
+        self.device.stuck_record_add(button)
+
+        if interval and not self.interval_is_reached(button, interval=interval):
+            return False
+
+        appear = button.match_template_luma(self.device.image, similarity=similarity)
 
         if appear and interval:
             self.interval_reset(button, interval=interval)
@@ -198,12 +313,14 @@ class ModuleBase:
         if appear:
             self.device.click(button)
         return appear
+    
     def appear_then_long_click(self,button,interval=5, similarity=0.85):
         button = self.xpath(button)
         appear = self.appear(button, interval=interval, similarity=similarity)
         if appear:
             self.device.long_click(button)
         return appear
+    
     def wait_until_stable(self, button, timer=Timer(0.3, count=1), timeout=Timer(5, count=10)):
         """
         A terrible method, don't rely too much on it.

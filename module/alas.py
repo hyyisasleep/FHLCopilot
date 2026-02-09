@@ -7,7 +7,7 @@ from cached_property import cached_property
 
 from module.base.decorator import del_cached_property
 from module.config.config import AzurLaneConfig, TaskEnd
-from module.config.utils import deep_get, deep_set
+from module.config.deep import deep_get, deep_set
 from module.exception import *
 from module.logger import logger, save_error_log
 from module.notify import handle_notify
@@ -83,19 +83,19 @@ class AzurLaneAutoScript:
         except GameNotRunningError as e:
             logger.warning(e)
             self.config.task_call('Restart')
-            return True
+            return False
         except (GameStuckError, GameTooManyClickError) as e:
             logger.error(e)
             self.save_error_log()
             logger.warning(f'Game stuck, {self.device.package} will be restarted in 10 seconds')
-            logger.warning('If you are playing by hand, please stop FHLC')
+            logger.warning('If you are playing by hand, please stop Src')
             self.config.task_call('Restart')
             self.device.sleep(10)
             return False
         except GameBugError as e:
             logger.warning(e)
             self.save_error_log()
-            logger.warning('An error has occurred in wcfhl game client, FHLC is unable to handle')
+            logger.warning('An error has occurred in Star Rail game client, Src is unable to handle')
             logger.warning(f'Restarting {self.device.package} to fix it')
             self.config.task_call('Restart')
             self.device.sleep(10)
@@ -108,7 +108,7 @@ class AzurLaneAutoScript:
                 self.save_error_log()
                 handle_notify(
                     self.config.Error_OnePushConfig,
-                    title=f"FHLC <{self.config_name}> crashed",
+                    title=f"Src <{self.config_name}> crashed",
                     content=f"<{self.config_name}> GamePageUnknownError",
                 )
                 exit(1)
@@ -120,7 +120,9 @@ class AzurLaneAutoScript:
             return False
         except ScriptError as e:
             logger.exception(e)
+            self.error_postprocess()
             logger.critical('This is likely to be a mistake of developers, but sometimes just random issues')
+            self.save_error_log()
             handle_notify(
                 self.config.Error_OnePushConfig,
                 title=f"FHLC <{self.config_name}> crashed",
@@ -129,6 +131,7 @@ class AzurLaneAutoScript:
             exit(1)
         except RequestHumanTakeover:
             logger.critical('Request human takeover')
+            self.error_postprocess()
             handle_notify(
                 self.config.Error_OnePushConfig,
                 title=f"FHLC <{self.config_name}> crashed",
@@ -137,6 +140,7 @@ class AzurLaneAutoScript:
             exit(1)
         except Exception as e:
             logger.exception(e)
+            self.error_postprocess()
             self.save_error_log()
             handle_notify(
                 self.config.Error_OnePushConfig,
@@ -151,6 +155,12 @@ class AzurLaneAutoScript:
         Save logs to ./log/error/<timestamp>/log.txt
         """
         save_error_log(config=self.config, device=self.device)
+
+    def error_postprocess(self):
+        """
+        Do something when error occurred
+        """
+        pass
 
     def wait_until(self, future):
         """
@@ -205,7 +215,9 @@ class AzurLaneAutoScript:
                         del_cached_property(self, 'config')
                         continue
                     if task.command != 'Restart':
-                        self.run('start')
+                        self.config.task_call('Restart')
+                        del_cached_property(self, 'config')
+                        continue
                 elif method == 'goto_main':
                     logger.info('Goto main page during wait')
                     self.run('goto_main')
@@ -220,6 +232,31 @@ class AzurLaneAutoScript:
                     self.device.release_during_wait()
                     if not self.wait_until(task.next_run):
                         del_cached_property(self, 'config')
+                        continue
+                elif method == 'close_emulator':
+                    logger.info('Close emulator during wait')
+                    self.run('stop')
+                    release_resources()
+                    self.device.release_during_wait()
+                    # 关闭模拟器
+                    try:
+                        self.device.emulator_stop()
+                        logger.info('Emulator stopped successfully')
+                    except Exception as e:
+                        logger.warning(f'Failed to stop emulator: {e}')
+                    if not self.wait_until(task.next_run):
+                        del_cached_property(self, 'config')
+                        del_cached_property(self, 'device')
+                        continue
+                    if task.command == 'Restart':
+                        del_cached_property(self, 'config')
+                        del_cached_property(self, 'device')
+                        continue
+                    # 重新启动模拟器
+                    if task.command != 'Restart':
+                        self.config.task_call('Restart')
+                        del_cached_property(self, 'config')
+                        del_cached_property(self, 'device')
                         continue
                 else:
                     logger.warning(f'Invalid Optimization_WhenTaskQueueEmpty: {method}, fallback to stay_there')
@@ -260,8 +297,6 @@ class AzurLaneAutoScript:
             _ = self.device
             self.device.config = self.config
             # Skip first restart
-            # self.is_first_task = False
-
             if self.is_first_task and task == 'Restart':
                 logger.info('Skip task `Restart` at scheduler start')
                 self.config.task_delay(server_update=True)

@@ -10,6 +10,7 @@ from module.base.decorator import cached_property
 from module.base.utils import *
 from module.exception import ScriptError
 from module.logger import logger
+from module.ocr.keyword import Keyword
 from module.ocr.models import OCR_MODEL, TextSystem
 from module.ocr.utils import merge_buttons
 
@@ -118,7 +119,7 @@ class Ocr:
         # pre process
         start_time = time.time()
         if not direct_ocr:
-            image = crop(image,self.button.area)
+            image = crop(image, self.button.area, copy=False)
         image = self.pre_process(image)
         # ocr
         result, _ = self.model.ocr_single_line(image)
@@ -161,7 +162,7 @@ class Ocr:
         # pre process
         start_time = time.time()
         if not direct_ocr:
-            image = crop(image, self.button.area)
+            image = crop(image, self.button.area, copy=False)
         image = self.pre_process(image)
         # ocr
         results: list[BoxedResult] = self.model.detect_and_ocr(image)
@@ -224,7 +225,7 @@ class Ocr:
             keyword_classes,
             lang: str = None,
             ignore_punctuation=True
-    ) -> OcrResultButton:
+    ) -> Keyword:
         """
         Args:
             image: Image to detect
@@ -233,7 +234,7 @@ class Ocr:
             ignore_punctuation:
 
         Returns:
-            OcrResultButton: Or None if it didn't matched known keywords.
+            Keyword: Or None if it didn't matched known keywords.
         """
         result = self.ocr_single_line(image)
 
@@ -254,7 +255,7 @@ class Ocr:
             keyword_classes,
             lang: str = None,
             ignore_punctuation=True
-    ) -> list[OcrResultButton]:
+    ) -> list[Keyword]:
         """
         Args:
             image_list:
@@ -263,7 +264,7 @@ class Ocr:
             ignore_punctuation:
 
         Returns:
-            List of matched OcrResultButton.
+            List of matched Keyword.
             OCR result which didn't matched known keywords will be dropped.
         """
         results = self.ocr_multi_lines(image_list)
@@ -301,11 +302,20 @@ class Ocr:
         button = OcrResultButton(boxed_result, matched_keyword)
         return button
 
-    def matched_ocr(self, image, keyword_classes, direct_ocr=False) -> list[OcrResultButton]:
+    def matched_ocr(
+            self,
+            image,
+            keyword_classes,
+            lang=None,
+            ignore_punctuation=True,
+            direct_ocr=False,
+    ) -> list[OcrResultButton]:
+
         """
         Args:
             image: Screenshot
             keyword_classes: `Keyword` class or classes inherited `Keyword`, or a list of them.
+            lang (str):
             direct_ocr: True to ignore `button` attribute and feed the image to OCR model without cropping.
 
         Returns:
@@ -314,7 +324,9 @@ class Ocr:
         """
         results = self.detect_and_ocr(image, direct_ocr=direct_ocr)
 
-        results = [self._product_button(result, keyword_classes) for result in results]
+        results = [self._product_button(
+            result, keyword_classes=keyword_classes, lang=lang, ignore_punctuation=ignore_punctuation
+        ) for result in results]
         results = [result for result in results if result.is_keyword_matched]
 
         logger.attr(name=f'{self.name} matched',

@@ -57,6 +57,8 @@ class ConfigModel:
     # Webui
     WebuiHost: str = "0.0.0.0"
     WebuiPort: int = 24590
+    WebuiSSLKey: Optional[str] = None
+    WebuiSSLCert: Optional[str] = None
     Language: str = "zh-CN"
     Theme: str = "default"
     DpiScaling: bool = True
@@ -81,7 +83,6 @@ class DeployConfig(ConfigModel):
         self.config_template = {}
         self.read()
 
-        self.write()
         self.show_config()
 
     def show_config(self):
@@ -89,22 +90,29 @@ class DeployConfig(ConfigModel):
         for k, v in self.config.items():
             if k in ("Password", "SSHUser"):
                 continue
-            if self.config_template[k] == v:
+            if self.config_template.get(k) == v:
                 continue
             logger.info(f"{k}: {v}")
 
         logger.info(f"Rest of the configs are the same as default")
 
     def read(self):
+        """
+        Read and update deploy config, copy `self.configs` to properties.
+        """
         self.config = poor_yaml_read(DEPLOY_TEMPLATE)
         self.config_template = copy.deepcopy(self.config)
-        self.config.update(poor_yaml_read(self.file))
+        origin = poor_yaml_read(self.file)
+        self.config.update(origin)
 
         for key, value in self.config.items():
             if hasattr(self, key):
                 super().__setattr__(key, value)
 
         self.config_redirect()
+
+        if self.config != origin:
+            self.write()
 
     def write(self):
         poor_yaml_write(self.config, self.file)
@@ -164,12 +172,15 @@ class DeployConfig(ConfigModel):
 
     @cached_property
     def python(self) -> str:
-        exe = self.filepath(self.PythonExecutable)
-        if os.path.exists(exe):
-            return exe
+        # No need to read PythonExecutable
+        # since you run this code with python, current python is the python
+
+        # exe = self.filepath(self.PythonExecutable)
+        # if os.path.exists(exe):
+        #     return exe
 
         current = sys.executable.replace("\\", "/")
-        logger.warning(f'PythonExecutable: {exe} does not exist, use current python instead: {current}')
+        # logger.warning(f'PythonExecutable: {exe} does not exist, use current python instead: {current}')
         return current
 
     @cached_property

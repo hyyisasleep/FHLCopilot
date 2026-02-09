@@ -26,7 +26,12 @@ class TextMap:
         if not os.path.exists(TextMap.DATA_FOLDER):
             logger.critical('`TextMap.DATA_FOLDER` does not exist, please set it to your path to StarRailData')
             exit(1)
-        file = os.path.join(TextMap.DATA_FOLDER, 'TextMap', f'TextMap{self.lang.upper()}.json')
+
+        if self.lang == 'cn':
+            lang = 'chs'
+        else:
+            lang = self.lang
+        file = os.path.join(TextMap.DATA_FOLDER, 'TextMap', f'TextMap{lang.upper()}.json')
         data = {}
         for id_, text in read_file(file).items():
             text = text.replace('\u00A0', '')
@@ -44,9 +49,12 @@ class TextMap:
             text
         """
         if isinstance(name, int) or (isinstance(name, str) and name.isdigit()):
-            name = int(name)
+            text_id = int(name)
+            # if text_id < 10000000000:
+            #     text_id = xxhash.xxh64(str(text_id)).intdigest()
+
             try:
-                return name, self.data[name]
+                return text_id, self.data[text_id]
             except KeyError:
                 pass
 
@@ -63,12 +71,13 @@ class TextMap:
 
 def text_to_variable(text):
     text = re.sub("'s |s' ", '_', text)
-    text = re.sub(r'[ \-—–:\'/•.™]+', '_', text)
+    text = re.sub(r'[ \-—–:\'/•.™@]+', '_', text)
     text = re.sub(r'[█]+', '', text)
     text = re.sub(r'[(),#"?!&%*]|</?\w+>', '', text)
     # text = re.sub(r'[#_]?\d+(_times?)?', '', text)
     text = re.sub(r'<color=#?\w+>', '', text)
-    text = text.replace('é', 'e')
+    text = re.sub(r'^\d+', '', text)
+    text = replace_non_ascii(text)
     return text.strip('_')
 
 
@@ -87,9 +96,17 @@ def replace_templates(text: str) -> str:
     return text
 
 
+def replace_non_ascii(text: str) -> str:
+    text = text.replace('ī', 'i')
+    text = text.replace('é', 'e')
+    text = text.replace('Ā', 'A')
+    return text
+
+
 class GenerateKeyword:
     text_map: dict[str, TextMap] = {lang: TextMap(lang) for lang in UI_LANGUAGES}
-    text_map['cn'] = TextMap('chs')
+
+    # text_map['cn'] = TextMap('chs')
 
     @staticmethod
     def read_file(file: str) -> list:
@@ -101,7 +118,10 @@ class GenerateKeyword:
             list
         """
         file = os.path.join(TextMap.DATA_FOLDER, file)
-        return read_file(file)
+        data = read_file(file)
+        if not data:
+            logger.error(f'Empty data from file {file}')
+        return data
 
     @classmethod
     def find_keyword(cls, keyword, lang) -> tuple[int, str]:
@@ -144,11 +164,20 @@ class GenerateKeyword:
         """
         pass
 
+    def iter_keywords_from_text(self, text_list: list[str], lang: str) -> t.Iterable[dict]:
+        for text in text_list:
+            text_id, _ = self.find_keyword(text, lang)
+            yield {
+                'text_id': text_id
+            }
+
     def convert_name(self, text: str, keyword: dict) -> str:
         return text_to_variable(replace_templates(text))
 
     def convert_keyword(self, text: str, lang: str) -> str:
-        return replace_templates(text)
+        text = replace_templates(text)
+        text = replace_non_ascii(text)
+        return text
 
     def iter_rows(self) -> t.Iterable[dict]:
         for keyword in self.iter_keywords():
@@ -182,7 +211,7 @@ class GenerateKeyword:
             base[lang] = value
         return base
 
-    def generate(self):
+    def generate_content(self):
         self.gen_import()
         self.gen.CommentAutoGenerage('dev_tools.keyword_extract')
 
@@ -190,6 +219,9 @@ class GenerateKeyword:
             with self.gen.Object(key=keyword['name'], object_class=self.keyword_class):
                 for key, value in keyword.items():
                     self.gen.ObjectAttr(key, value)
+
+    def generate(self):
+        self.generate_content()
 
         if self.output_file:
             print(f'Write {self.output_file}')
