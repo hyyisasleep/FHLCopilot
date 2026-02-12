@@ -24,8 +24,7 @@
     "menu": "list",
     "page": "tool",
     "tasks": [
-      "ClearJinGeTalisman",
-      "DailyPassword"
+      "ClearJinGeTalisman"
     ]
   }
 }

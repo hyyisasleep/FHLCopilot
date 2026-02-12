@@ -40,7 +40,6 @@ from module.config.stored.classes import (
 class StoredGenerated:
     DailyLiveness = StoredDailyLiveness("DailyQuest.DailyStorage.DailyLiveness")
     JinGeDailyWinReward = StoredJinGeDailyWinReward("DailyQuest.DailyStorage.JinGeDailyWinReward")
-    AutoDailyPassword = StoredAutoDailyPassword("DailyQuest.DailyStorage.AutoDailyPassword")
     CelebrityInteract = StoredCelebrityInteract("DailyQuest.DailyStorage.CelebrityInteract")
     GuildSignIn = StoredGuildSignIn("DailyQuest.DailyStorage.GuildSignIn")
     OfficeAffair = StoredOfficeAffair("DailyQuest.DailyStorage.OfficeAffair")
@@ -62,4 +61,3 @@ class StoredGenerated:
     TalismanToClean = StoredTalismanToClean("ClearJinGeTalisman.JinGeStorage.TalismanToClean")
     JinGeLevel = StoredJinGeLevel("ClearJinGeTalisman.JinGeStorage.JinGeLevel")
     BuySuperCatBall = StoredBuySuperCatBallWhenArriveRankNine("ClearJinGeTalisman.JinGeStorage.BuySuperCatBall")
-    OneWeekPasswordList = StoredWeeklyPassword("DailyPassword.DailyPassword.OneWeekPasswordList")

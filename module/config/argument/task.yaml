@@ -68,5 +68,5 @@ Tool:
       - JinGeStorage
 
 
-    DailyPassword:
-      - DailyPassword
+    # DailyPassword:
+    #   - DailyPassword

@@ -1,6 +1,11 @@
 import re
 import typing as t
 from copy import deepcopy
+import sys
+import os
+
+# Add project root to sys.path for proper module resolution
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../..'))
 
 from cached_property import cached_property
 
@@ -960,8 +965,8 @@ class ConfigUpdater:
             yield 'Guild.Cosplay.SendStatusTimes'
         if not deep_get(data, 'DailyQuest.DailyQuestOptions.DailyJinGeWinReward'):
             yield 'DailyQuest.DailyStorage.JinGeDailyWinReward'
-        if not deep_get(data, 'DailyQuest.DailyQuestOptions.AutoDailyPassword'):
-            yield 'DailyQuest.DailyStorage.AutoDailyPassword'
+        # if not deep_get(data, 'DailyQuest.DailyQuestOptions.AutoDailyPassword'):
+        #     yield 'DailyQuest.DailyStorage.AutoDailyPassword'
         if not deep_get(data, 'DailyQuest.DailyQuestOptions.CelebrityInteract'):
             yield 'DailyQuest.DailyStorage.CelebrityInteract'
         
@@ -1048,10 +1053,10 @@ if __name__ == '__main__':
     (old) i18n/<lang>.json --------\\========> i18n/<lang>.json
     (old)    template.json ---------\========> template.json
     """
-    # Ensure running in Alas root folder
-    import os
+    # # Ensure running in Alas root folder
+    # import os
 
-    os.chdir(os.path.join(os.path.dirname(__file__), '../../'))
+    # os.chdir(os.path.join(os.path.dirname(__file__), '../../'))
 
     ConfigGenerator().generate()
     ConfigUpdater().update_file('template', is_template=True)

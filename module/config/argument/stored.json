@@ -75,19 +75,6 @@
     "order": 0,
     "color": "#777777"
   },
-  "AutoDailyPassword": {
-    "name": "AutoDailyPassword",
-    "path": "DailyQuest.DailyStorage.AutoDailyPassword",
-    "i18n": "DailyStorage.AutoDailyPassword.name",
-    "stored": "StoredAutoDailyPassword",
-    "attrs": {
-      "time": "2020-01-01 00:00:00",
-      "total": 1,
-      "value": 0
-    },
-    "order": 0,
-    "color": "#777777"
-  },
   "CelebrityInteract": {
     "name": "CelebrityInteract",
     "path": "DailyQuest.DailyStorage.CelebrityInteract",
@@ -303,26 +290,6 @@
     "attrs": {
       "time": "2020-01-01 00:00:00",
       "total": 1,
-      "value": 0
-    },
-    "order": 0,
-    "color": "#777777"
-  },
-  "OneWeekPasswordList": {
-    "name": "OneWeekPasswordList",
-    "path": "DailyPassword.DailyPassword.OneWeekPasswordList",
-    "i18n": "DailyPassword.OneWeekPasswordList.name",
-    "stored": "StoredWeeklyPassword",
-    "attrs": {
-      "time": "2020-01-01 00:00:00",
-      "p1": "无",
-      "p2": "无",
-      "p3": "无",
-      "p4": "无",
-      "p5": "无",
-      "p6": "无",
-      "p7": "无",
-      "total": 7,
       "value": 0
     },
     "order": 0,

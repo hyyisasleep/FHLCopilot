@@ -20,7 +20,7 @@ class GeneratedConfig:
     Emulator_GameClient = 'android'  # android, cloud_android
     Emulator_PackageName = 'auto'  # auto, CN-Official, CN-Bilibili, CN-Vivo, CN-Oppo, CN-Huawei, CN-Xiaomi
     Emulator_GameLanguage = 'cn'  # auto, cn, en
-    Emulator_ScreenshotMethod = 'auto'  # auto, ADB, ADB_nc, uiautomator2, aScreenCap, aScreenCap_nc, DroidCast, DroidCast_raw, scrcpy, nemu_ipc
+    Emulator_ScreenshotMethod = 'auto'  # auto, ADB, ADB_nc, uiautomator2, aScreenCap, aScreenCap_nc, DroidCast, DroidCast_raw, scrcpy, nemu_ipc, ldopengl
     Emulator_ControlMethod = 'MaaTouch'  # minitouch, MaaTouch
     Emulator_AdbRestart = False
 
@@ -38,19 +38,17 @@ class GeneratedConfig:
     # Group `Optimization`
     Optimization_ScreenshotInterval = 0.3
     Optimization_CombatScreenshotInterval = 1.0
-    Optimization_WhenTaskQueueEmpty = 'stay_there'  # stay_there, goto_main, close_game
+    Optimization_WhenTaskQueueEmpty = 'goto_main'  # stay_there, goto_main, close_game, close_emulator
 
     # Group `DailyQuestOptions`
     DailyQuestOptions_TransKaoGongTicket = 1
     DailyQuestOptions_VisitOthersForClivia = 0
     DailyQuestOptions_DailyJinGeWinReward = 0
-    DailyQuestOptions_AutoDailyPassword = 0
     DailyQuestOptions_CelebrityInteract = 1
 
     # Group `DailyStorage`
     DailyStorage_DailyLiveness = {}
     DailyStorage_JinGeDailyWinReward = {}
-    DailyStorage_AutoDailyPassword = {}
     DailyStorage_CelebrityInteract = {}
     DailyStorage_GuildSignIn = {}
     DailyStorage_OfficeAffair = {}

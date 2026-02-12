@@ -47,7 +47,7 @@ Emulator:
   ControlMethod:
     value: MaaTouch
     option: [ minitouch, MaaTouch ]
-  CloudPriorQueue: false
+  # CloudPriorQueue: false
   AdbRestart: false
 EmulatorInfo:
   Emulator:
@@ -103,9 +103,9 @@ DailyQuestOptions:
   DailyJinGeWinReward:
     type: checkbox
     value: 0
-  AutoDailyPassword:
-    type: checkbox
-    value: 0
+  # AutoDailyPassword:
+  #   type: checkbox
+  #   value: 0
   CelebrityInteract:
     type: checkbox
     value: 1
@@ -119,9 +119,9 @@ DailyStorage:
   JinGeDailyWinReward:
     stored: StoredJinGeDailyWinReward
     display: display
-  AutoDailyPassword:
-    stored: StoredAutoDailyPassword
-    display: display
+  # AutoDailyPassword:
+  #   stored: StoredAutoDailyPassword
+  #   display: display
   CelebrityInteract:
     stored: StoredCelebrityInteract
     display: display

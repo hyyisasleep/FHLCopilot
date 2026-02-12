@@ -51,7 +51,8 @@
           "DroidCast",
           "DroidCast_raw",
           "scrcpy",
-          "nemu_ipc"
+          "nemu_ipc",
+          "ldopengl"
         ],
         "display": "hide"
       },
@@ -215,10 +216,6 @@
         "type": "checkbox",
         "value": 0
       },
-      "AutoDailyPassword": {
-        "type": "checkbox",
-        "value": 0
-      },
       "CelebrityInteract": {
         "type": "checkbox",
         "value": 1
@@ -238,12 +235,6 @@
         "value": {},
         "display": "display",
         "stored": "StoredJinGeDailyWinReward"
-      },
-      "AutoDailyPassword": {
-        "type": "stored",
-        "value": {},
-        "display": "display",
-        "stored": "StoredAutoDailyPassword"
       },
       "CelebrityInteract": {
         "type": "stored",
@@ -622,20 +613,6 @@
         "value": {},
         "display": "disabled",
         "stored": "StoredBuySuperCatBallWhenArriveRankNine"
-      }
-    }
-  },
-  "DailyPassword": {
-    "DailyPassword": {
-      "WechatInstallPath": {
-        "type": "textarea",
-        "value": "D:\\WeChat\\WeChat.exe"
-      },
-      "OneWeekPasswordList": {
-        "type": "stored",
-        "value": {},
-        "display": "disabled",
-        "stored": "StoredWeeklyPassword"
       }
     }
   }

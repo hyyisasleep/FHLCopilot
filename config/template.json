@@ -23,7 +23,7 @@
     "Optimization": {
       "ScreenshotInterval": 0.2,
       "CombatScreenshotInterval": 1.0,
-      "WhenTaskQueueEmpty": "stay_there"
+      "WhenTaskQueueEmpty": "goto_main"
     }
   },
   "Restart": {
@@ -45,13 +45,11 @@
       "TransKaoGongTicket": 1,
       "VisitOthersForClivia": 0,
       "DailyJinGeWinReward": 0,
-      "AutoDailyPassword": 0,
       "CelebrityInteract": 1
     },
     "DailyStorage": {
       "DailyLiveness": {},
       "JinGeDailyWinReward": {},
-      "AutoDailyPassword": {},
       "CelebrityInteract": {},
       "GuildSignIn": {},
       "OfficeAffair": {},
@@ -154,12 +152,6 @@
       "TalismanToClean": {},
       "JinGeLevel": {},
       "BuySuperCatBall": {}
-    }
-  },
-  "DailyPassword": {
-    "DailyPassword": {
-      "WechatInstallPath": "D:\\WeChat\\WeChat.exe",
-      "OneWeekPasswordList": {}
     }
   }
 }
