@@ -4,7 +4,7 @@
 
 基于 [StarRailCopilot](https://github.com/LmeSzinc/StarRailCopilot/) / [AzurLaneAutoScript](https://github.com/LmeSzinc/AzurLaneAutoScript) 框架开发
 
-
+2026/10/21 作者退坑了不更新了
 
 ![gui](doc/README.assets/gui_cn.png)
 
